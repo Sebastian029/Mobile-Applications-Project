@@ -53,12 +53,12 @@ import styles from '../styles/register-screen-style.js';
             <AntDesign name="lock" style={styles.icon}/>
           </View>
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Login')} >
             <Text style={styles.buttonText}>Sign Up</Text>
           </Pressable>
 
           <View>
-            <Text style={styles.secondText}>have an account? <Text style={styles.signText}>Sign In</Text>
+            <Text style={styles.secondText} onPress={() => navigation.navigate('Login')}>have an account? <Text style={styles.signText} onPress={() => navigation.navigate('Login')}>Sign In</Text>
             </Text>
           </View>
 
