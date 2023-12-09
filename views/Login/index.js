@@ -1,9 +1,9 @@
-import { Button, StyleSheet, Text, View, Image, TextInput, ScrollView, Pressable } from 'react-native';
+import { Text, View, Image, TextInput, ScrollView, Pressable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
 
 
-import styles from '../styles/login-screen-style.js';
+
+import styles from './style';
 
   export default function LoginScreen({navigation}){
 
@@ -16,7 +16,6 @@ import styles from '../styles/login-screen-style.js';
     }
 
 
-
     return (
       
       <View style={styles.screen}>
@@ -24,7 +23,7 @@ import styles from '../styles/login-screen-style.js';
 
         <View style={styles.topBox}>
           <View style={styles.logoBox}>
-            <Image style={styles.logo} source={require('../assets/baseAppIcon.png')} />
+            <Image style={styles.logo} source={require('../../assets/baseAppIcon.png')} />
           </View>
 
           <Text style={styles.firstText}>Let's get started</Text>
@@ -57,16 +56,8 @@ import styles from '../styles/login-screen-style.js';
           </Pressable>
 
           
-
-        </View>
-
-
-       
-
+         </View>
         </ScrollView>
       </View>
-
-      
-    
   );
   }

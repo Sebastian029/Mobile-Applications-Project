@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
 
 
     mainBox:{
-       // backgroundColor:'yellow',
         alignItems:'center',
         flex:3
         
@@ -64,8 +63,7 @@ const styles = StyleSheet.create({
         height:40,
         margin:5,
         justifyContent:'center',
-       // alignItems:'center',
-       paddingLeft:40,
+        paddingLeft:40,
         borderWidth:1,
         borderRadius:5,
         borderColor:'lightgray'
@@ -84,7 +82,6 @@ const styles = StyleSheet.create({
       paddingLeft:10
 
     },
-
 
     button:{
         backgroundColor:'orange',
@@ -109,13 +106,7 @@ const styles = StyleSheet.create({
         fontSize:15
 
     }
-   
 
-
-  
-
-    
-   
 })
 
 

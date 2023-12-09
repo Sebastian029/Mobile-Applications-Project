@@ -44,15 +44,12 @@ const styles = StyleSheet.create({
         paddingBottom:5
     },
 
-
     logo:{
         width:70,
         height:70,
     },
 
-
     mainBox:{
-       // backgroundColor:'yellow',
         alignItems:'center',
         flex:3
         
@@ -64,8 +61,7 @@ const styles = StyleSheet.create({
         height:40,
         margin:5,
         justifyContent:'center',
-       // alignItems:'center',
-       paddingLeft:40,
+        paddingLeft:40,
         borderWidth:1,
         borderRadius:5,
         borderColor:'lightgray'
@@ -82,9 +78,7 @@ const styles = StyleSheet.create({
       color:'gray',
       position:'absolute',
       paddingLeft:10
-
     },
-
 
     button:{
         backgroundColor:'orange',
@@ -94,8 +88,6 @@ const styles = StyleSheet.create({
         borderRadius:5,
         alignItems:'center',
         justifyContent:'center',
-        
-        
     },
 
     buttonText:{
@@ -107,14 +99,7 @@ const styles = StyleSheet.create({
     signText:{
         color:'orange',
         fontSize:15
-
     }
-   
-
-
-  
-
-    
    
 })
 

@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 
-import styles from '../styles/login-screen-style.js';
+import styles from './style';
 
   export default function HomeScreen({navigation}){
 
@@ -14,8 +14,18 @@ import styles from '../styles/login-screen-style.js';
       <Text>
         Home Screen
       </Text>
+      <Text>
+        Home Screen
+      </Text>
+      <Text>
+        Home Screen
+      </Text>
+      <Text>
+        Home Screen
+      </Text>
+
+  
 
       </View>
-
   );
   }
