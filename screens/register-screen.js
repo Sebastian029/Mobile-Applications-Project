@@ -5,8 +5,18 @@ import { Feather } from '@expo/vector-icons';
 
 import styles from '../styles/register-screen-style.js';
 
-  export default function LoginScreen({navigation}){
+  export default function Register({navigation}){
     
+    const handleRegister = () => {
+        console.log('register handler');
+        navigation.navigate('Login');
+    }
+
+    const goToLogin = () =>{
+      navigation.navigate('Login');
+    }
+
+
     return (
       
       <View style={styles.screen}>
@@ -53,14 +63,14 @@ import styles from '../styles/register-screen-style.js';
             <AntDesign name="lock" style={styles.icon}/>
           </View>
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={handleRegister}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </Pressable>
 
-          <View>
+          <Pressable onPress={goToLogin}>
             <Text style={styles.secondText}>have an account? <Text style={styles.signText}>Sign In</Text>
             </Text>
-          </View>
+          </Pressable>
 
           
 
