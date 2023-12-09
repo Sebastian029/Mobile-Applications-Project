@@ -6,6 +6,9 @@ import TabNav from "../navigation/bottomNav";
 
 import LoginScreen from '../screens/login-screen';
 import RegisterScreen from '../screens/register-screen';
+import LoginScreen from '../screens/login-screen';
+import MainScreen from '../screens/main-screen';
+
 
 const Stack = createNativeStackNavigator();
 
