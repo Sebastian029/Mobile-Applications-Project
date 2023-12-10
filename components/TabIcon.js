@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const TabIcon = ({ routeName, focused }) => {
-  const iconColor = focused ? 'orange' : 'black'; // Change color to orange when focused
+  const iconColor = focused ? 'orange' : 'gray'; // Change color to orange when focused
 
   switch (routeName) {
     case 'Home':

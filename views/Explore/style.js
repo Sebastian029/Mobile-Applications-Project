@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
        height:40,
        justifyContent:'space-evenly',
        paddingLeft:40,
-       
     },
 
     searchIcon:{
@@ -45,11 +44,16 @@ const styles = StyleSheet.create({
 
     titleBar:{
         margin:'5%',
-        width:'60%',
+        width:'100%',
         flexDirection:'row',
         justifyContent:'space-around',
         alignItems:'center',
 
+    },
+
+    searchText:{
+        color:'#223263',
+        fontWeight:'bold',
     },
 
     titleText:{
@@ -79,7 +83,59 @@ const styles = StyleSheet.create({
         paddingTop:5,
         textAlign:'center',
         color:'gray'
-    }
+    },
+
+    hintText:{
+        color:'gray',
+        fontWeight:'bold',
+        fontSize:18,
+        paddingVertical:5
+    },
+    notFoundView:{
+        paddingTop:'10%',
+        display:'flex',
+        flexDirection:'column',
+        gap:20,
+        justifyContent:'center',
+       alignItems:'center',
+    },
+    backButton:{
+    width:'80%',
+    height:'15%',
+    backgroundColor:'#F99C1C',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:8
+   },
+
+   productView:{
+        paddingLeft:20,
+        dispaly:'flex',
+        flexDirection:'row',
+        gap:20,
+        paddingVertical:20
+   },
+
+   productName:{
+    color:'#223263',
+    fontSize:20,
+    fontWeight:'bold',
+   },
+   
+   productPrice:{
+    fontSize:18,
+    color:'orange',
+    fontWeight:'bold'
+   },
+
+   productDiscountedPrice:{
+    fontSize:15,
+    color:'gray',
+    textDecorationLine: 'line-through'
+   }
+  
+  
     
 
 })
