@@ -8,7 +8,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
   export default function HomeScreen({navigation}){
-
+    
+    // dummy data
     const images = {
       sport: require('../../assets/exploreImages/sport.png'),
       socks: require('../../assets/exploreImages/socks.png'),
@@ -34,8 +35,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       {id: '4', img: 'sport', name:'NewBalance def', price:'150$', discountedPrice:'100$'},
       {id: '5', img: 'sport', name:'NewBalance def def def def def def def def def def', price:'150$', discountedPrice:'100$'},
     ]
-   
- 
+    
+    const [searchBar, setSearchBar] = useState('');
+    const [filteredBoots, setFilteredBoots] = useState([]);
+    const [selectedBoots, setSelectedBoots] = useState([]);
+    const [selectedItemName, setSelectedItemName] = useState('');
+    
+    // flat list rendering methods
     const renderItem = ({ item }) => {
       return (
         <View style={styles.productIconView}>
@@ -67,11 +73,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     };
     
 
-    const [searchBar, setSearchBar] = useState('');
-    const [filteredBoots, setFilteredBoots] = useState([]);
-    const [selectedBoots, setSelectedBoots] = useState([]);
-    const [selectedItemName, setSelectedItemName] = useState('');
-
+    
+    // onPress handlers
+    const clearSearchBar = () => {
+      setSearchBar('');
+      if(searchBar === '')
+      setContentView('default');
+    }
     const handleSearchInputChange = (text) => {
       setSearchBar(text);
       if (text !== '') {
@@ -92,6 +100,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       setSearchBar('');
     }
 
+    // use effects to handle filtering items
     useEffect(() => {
       const filteredItems = boots.filter((boot) =>
         boot.name.toLowerCase().includes(searchBar.toLowerCase())
@@ -115,7 +124,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       }
     }, [selectedItemName]); 
 
-
+    // changing content 
     const [contentView, setContentView] = useState('default');
     const renderContent = () => {
       switch (contentView) {
@@ -173,22 +182,21 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
     return (
-      
       <SafeAreaView style={styles.screen}>
         
-      <View style={styles.topBar}>
-        <View style={styles.searchInput}>
-          <AntDesign name="search1" style={styles.searchIcon} />
-          <TextInput placeholder='Search Product' value={searchBar} onChangeText={handleSearchInputChange} style={styles.searchText}/>
+        <View style={styles.topBar}>
+          <View style={styles.searchInput}>
+            <AntDesign name="search1" style={styles.searchIcon} />
+            <TextInput placeholder='Search Product' value={searchBar} onChangeText={handleSearchInputChange} style={styles.searchText}/>
+          </View>
+
+          <AntDesign name="close" style={styles.basicIcon} onPress={clearSearchBar}/>
+          <AntDesign name="filter" style={styles.basicIcon}/>
         </View>
 
-        <AntDesign name="hearto" style={styles.basicIcon}/>
-      </View>
-
-      <View style={styles.content}>
-        {renderContent()}
-      </View>
-  
+        <View style={styles.content}>
+          {renderContent()}
+        </View>
 
       </SafeAreaView>
   );
