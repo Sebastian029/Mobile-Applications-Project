@@ -41,6 +41,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     const [selectedBoots, setSelectedBoots] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState('');
     
+    const goToFilterView = () =>{
+      navigation.navigate('Filter');
+    }
+
     // flat list rendering methods
     const renderItem = ({ item }) => {
       return (
@@ -187,11 +191,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         <View style={styles.topBar}>
           <View style={styles.searchInput}>
             <AntDesign name="search1" style={styles.searchIcon} />
-            <TextInput placeholder='Search Product' value={searchBar} onChangeText={handleSearchInputChange} style={styles.searchText}/>
+            <TextInput placeholder='Search Product' value={searchBar} onChangeText={handleSearchInputChange} onSubmitEditing={() => selectItemFromHint(searchBar)} style={styles.searchText}/>
           </View>
 
           <AntDesign name="close" style={styles.basicIcon} onPress={clearSearchBar}/>
-          <AntDesign name="filter" style={styles.basicIcon}/>
+          <AntDesign name="filter" style={styles.basicIcon} onPress={goToFilterView}/>
         </View>
 
         <View style={styles.content}>
