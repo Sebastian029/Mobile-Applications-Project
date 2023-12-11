@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
 
+
 import styles from './style';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -40,8 +41,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     const [filteredBoots, setFilteredBoots] = useState([]);
     const [selectedBoots, setSelectedBoots] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState('');
-    
+    const [sortBy,setSortBy] = useState('');
+
     const goToFilterView = () =>{
+      
       navigation.navigate('Filter');
     }
 
@@ -127,6 +130,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         setContentView('selectedItem');
       }
     }, [selectedItemName]); 
+
 
     // changing content 
     const [contentView, setContentView] = useState('default');

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import HomeScreen from '../views/Explore/index';
 import FilterScreen from '../views/Explore/filter'
