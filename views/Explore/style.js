@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
         height:80,
         paddingTop:30,
         paddingLeft:20,
+        gap:15,
         borderBottomWidth:1,
         borderColor:'gray'
    },
@@ -165,8 +166,24 @@ const styles = StyleSheet.create({
         paddingVertical:20,
         borderColor:'gray',
         borderWidth:0.2 
-       
+   },
+
+   filterByText:{
+    color:'#223263',
+    fontSize:18,
+    fontWeight:'bold',
+    marginLeft:'auto',
+    paddingRight:20
+   },
+
+   filterByView:{
+    display:'flex',
+    flexDirection:'row',
+    marginLeft:'auto',
+    paddingRight:20
    }
+
+
   
     
 

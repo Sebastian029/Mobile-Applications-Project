@@ -30,11 +30,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     ];
 
     const boots =[
-      {id: '1', img: 'sport', name:'Nike abc', price:'300$', discountedPrice:'300$'},
-      {id: '2', img: 'sport', name:'Adidas abc', price:'250$', discountedPrice:'200$'},
-      {id: '3', img: 'sport', name:'NewBalance abc', price:'100$', discountedPrice:'50$'},
-      {id: '4', img: 'sport', name:'NewBalance def', price:'150$', discountedPrice:'100$'},
-      {id: '5', img: 'sport', name:'NewBalance def def def def def def def def def def', price:'150$', discountedPrice:'100$'},
+      {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:'300$', discountedPrice:'300$'},
+      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:'250$', discountedPrice:'200$'},
+      {id: '3',type:'sport',  img: 'sport', name:'NewBalance abc', price:'100$', discountedPrice:'50$'},
+      {id: '4',type:'sport',  img: 'sport', name:'NewBalance def', price:'150$', discountedPrice:'100$'},
+      {id: '5',type:'socks',  img: 'sport', name:'NewBalance def def def def def def def def def def', price:'150$', discountedPrice:'100$'},
     ]
     
     const [searchBar, setSearchBar] = useState('');
@@ -42,10 +42,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     const [selectedBoots, setSelectedBoots] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState('');
     const [sortBy,setSortBy] = useState('');
+    const [filterBy,setFilterBy] = useState('');
 
-    const goToFilterView = () =>{
+    const goToSortView = () =>{
       
-      navigation.navigate('Filter');
+      navigation.navigate('Sort');
     }
 
     // flat list rendering methods
@@ -107,6 +108,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       setSearchBar('');
     }
 
+    const handleFilterClick = () => {
+      navigation.navigate('Filter');
+    }
+
+
     // use effects to handle filtering items
     useEffect(() => {
       const filteredItems = boots.filter((boot) =>
@@ -131,14 +137,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       }
     }, [selectedItemName]); 
 
-
     // changing content 
     const [contentView, setContentView] = useState('default');
     const renderContent = () => {
       switch (contentView) {
         case 'default':
           return (
-            <View>
+            <View style={{width:'100%'}}>
               <View style={styles.titleBar}>
                 <Text style={styles.titleText}>Man Fashion</Text>
                 <AntDesign name="down" style={styles.basicIcon}/>
@@ -174,13 +179,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
             )
 
           case 'selectedItem':
+            
           return(
+            <View>
+              
             <FlatList
                   data={selectedBoots}
                   renderItem={renderProductList}
                   keyExtractor={(item) => item.id}
                 />
+            </View>
           )
+      
+    
           default:
             return null;
       }
@@ -199,7 +210,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
           </View>
 
           <AntDesign name="close" style={styles.basicIcon} onPress={clearSearchBar}/>
-          <AntDesign name="filter" style={styles.basicIcon} onPress={goToFilterView}/>
+          <AntDesign name="filter" style={styles.basicIcon} onPress={goToSortView}/>
         </View>
 
         <View style={styles.content}>

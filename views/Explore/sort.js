@@ -18,6 +18,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       try{
         await AsyncStorage.setItem("sortName", sortName);
         console.log(sortName);
+        navigation.goBack();
       }catch(e){
         console.log(e);
       }
@@ -30,12 +31,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       
       <View style={styles.screen}>
 
-        <View style={styles.backBar}>
+        <Pressable style={styles.backBar} onPress={navigation.goBack}>
            <AntDesign name="left" style={styles.backIcon} />
            <Text style={styles.titleText}>Sort By</Text>
-        </View>
+        </Pressable>
 
         <View style={{width:'100%', padding:10}}>
+        <Pressable onPress={()=>goBack('Alphabetical')}>
+            <Text style={styles.backItem}>Alphabetical</Text>
+          </Pressable>
+
           <Pressable onPress={()=>goBack('PriceLowest')}>
             <Text style={styles.backItem}>Price: lowest first</Text>
           </Pressable>
