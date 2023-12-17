@@ -94,6 +94,7 @@ import styles from './style';
                     renderItem={renderInRow}
                     keyExtractor={(item) => item.id}
                     horizontal={true}
+                    showsHorizontalScrollIndicator={false}
                   />
       </View>
 
@@ -104,6 +105,7 @@ import styles from './style';
                     renderItem={renderCategories}
                     keyExtractor={(item) => item.id}
                     horizontal={true}
+                    showsHorizontalScrollIndicator={false}
                   />
       </View>
 
@@ -115,6 +117,7 @@ import styles from './style';
                     renderItem={renderInRow}
                     keyExtractor={(item) => item.id}
                     horizontal={true}
+                    showsHorizontalScrollIndicator={false}
                   />
       </View>
 

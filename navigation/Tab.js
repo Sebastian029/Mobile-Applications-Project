@@ -34,7 +34,6 @@ export default function TabNav() {
             <Tab.Screen name="Cart" component={HomeScreen} options={optionScreen} />
             <Tab.Screen name="Account" component={AccountStack} options={optionScreen} />
             <Tab.Screen name="DrawerNav" component={DrawerNav} options={optionScreen} />
-            
         </Tab.Navigator>
     );
 }

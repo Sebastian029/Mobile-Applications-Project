@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import HomeScreen from '../views/Explore/index';
 import SortScreen from '../views/Explore/sort'
+import ProductScreen from '../views/Product';
 import {ExploreProvider} from '../views/Explore/context'
 
 
@@ -17,6 +18,7 @@ export default function ExploreStackNav(){
       <Stack.Navigator  screenOptions={{headerShown: false}} initialRouteName="Explore">
         <Stack.Screen name="Explore" component={HomeScreen} /> 
         <Stack.Screen name="Sort" component={SortScreen} /> 
+        <Stack.Screen name="Product" component={ProductScreen} /> 
       </Stack.Navigator>
     </ExploreProvider>
  
