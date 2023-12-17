@@ -1,27 +1,27 @@
 import { Text, View, Image, TextInput, Pressable } from 'react-native';
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { useRoute } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+
+import { ExploreContext } from './context';
 
 
 
 import styles from './style';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-  export default function FilterScreen({navigation})
-  {
-    
 
-    const goBack = async (sortName) => {
-      try{
-        await AsyncStorage.setItem("sortName", sortName);
-        console.log(sortName);
+  export default function FilterScreen({navigation}){
+
+    const { sortName, setSortName } = useContext(ExploreContext);
+
+    const goBack =(sortNameParam) => {
+       // await AsyncStorage.setItem("sortName", sortName);
+        setSortName(sortNameParam);
+       // console.log(sortName);
         navigation.goBack();
-      }catch(e){
-        console.log(e);
-      }
+      
     }
 
  

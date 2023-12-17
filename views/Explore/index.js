@@ -1,11 +1,13 @@
 import { Text, View, Image, TextInput, FlatList, Pressable} from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
+import { ExploreContext } from './context';
 
 
 import styles from './style';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 
 
   export default function HomeScreen({navigation}){
@@ -30,24 +32,57 @@ import { SafeAreaView } from 'react-native-safe-area-context';
     ];
 
     const boots =[
-      {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:'300$', discountedPrice:'300$'},
-      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:'250$', discountedPrice:'200$'},
-      {id: '3',type:'sport',  img: 'sport', name:'NewBalance abc', price:'100$', discountedPrice:'50$'},
-      {id: '4',type:'sport',  img: 'sport', name:'NewBalance def', price:'150$', discountedPrice:'100$'},
-      {id: '5',type:'socks',  img: 'sport', name:'NewBalance def def def def def def def def def def', price:'150$', discountedPrice:'100$'},
+      {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:220, discountedPrice:300},
+      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200},
+      {id: '3',type:'sport',  img: 'sport', name:'NewBalance abc', price:30, discountedPrice:50},
+      {id: '4',type:'sport',  img: 'sport', name:'NewBalance dfds', price:150, discountedPrice:100},
+      {id: '5',type:'sport',  img: 'sport', name:'NewBalance iuo', price:150, discountedPrice:100},
+      {id: '6',type:'sport',  img: 'sport', name:'Adidas dasd', price:1510, discountedPrice:100},
+      {id: '7',type:'sport',  img: 'sport', name:'Adidas def', price:30, discountedPrice:100},
+      {id: '8',type:'sport',  img: 'sport', name:'Nike def', price:99, discountedPrice:100},
+      {id: '9',type:'socks',  img: 'sport', name:'NewBalance def def def def def def def def def def', price:150, discountedPrice:100},
     ]
-    
+
+    const { sortName, setSortName } = useContext(ExploreContext);
     const [searchBar, setSearchBar] = useState('');
     const [filteredBoots, setFilteredBoots] = useState([]);
     const [selectedBoots, setSelectedBoots] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState('');
-    const [sortBy,setSortBy] = useState('');
+    const [sortedData, setSortedData] = useState([...selectedBoots]);
     const [filterBy,setFilterBy] = useState('');
 
-    const goToSortView = () =>{
-      
-      navigation.navigate('Sort');
+    const sortDataByName = () => {
+      const sorted = [...selectedBoots].sort((a, b) => a.name.localeCompare(b.name));
+      setSortedData(sorted);
+    };
+ 
+    const sortDataByPrice = (desc) => {
+      const sorted = [...selectedBoots].sort((a, b) => {
+        const priceA = a.price;
+        const priceB = b.price;
+        if(desc)
+          return priceA - priceB;
+        else
+          return priceB - priceA;
+      });
+      setSortedData(sorted);
+    };
+
+    const sortData = () => {  
+      console.log(sortName);
+      if(sortName == 'PriceLowest')
+           sortDataByPrice(true);
+        else if (sortName == 'PriceHighest')
+           sortDataByPrice(false);
+        else
+          sortDataByName(); 
     }
+  
+    useEffect(() => {
+      sortData();
+    }, [sortName]); 
+
+    
 
     // flat list rendering methods
     const renderItem = ({ item }) => {
@@ -73,8 +108,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
           <Image source={images[item.img]}/>
           <View style={styles.singleProductView}>
             <Text style={styles.productName}>{item.name}</Text>
-            <Text style={styles.productPrice}>New Price: {item.price}</Text>
-            <Text style={styles.productDiscountedPrice}>{item.discountedPrice}</Text>
+            <Text style={styles.productPrice}>New Price: {item.price}$</Text>
+            <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text>
             </View>
         </View>
       );
@@ -108,24 +143,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
       setSearchBar('');
     }
 
-    const handleFilterClick = () => {
-      navigation.navigate('Filter');
-    }
-
 
     // use effects to handle filtering items
     useEffect(() => {
       const filteredItems = boots.filter((boot) =>
         boot.name.toLowerCase().includes(searchBar.toLowerCase())
       );
-      setFilteredBoots(filteredItems);
-    }, [searchBar]);
-
-    useEffect(() => {
-      const filteredItems = boots.filter((boot) =>
-        boot.name.toLowerCase().includes(searchBar.toLowerCase())
-      );
       setSelectedBoots(filteredItems);
+      setFilteredBoots(filteredItems);
     }, [searchBar]);
 
     useEffect(() => {
@@ -133,9 +158,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
         setContentView('default');
       }else{
         setSearchBar(selectedItemName);
+        sortData();
         setContentView('selectedItem');
       }
     }, [selectedItemName]); 
+
 
     // changing content 
     const [contentView, setContentView] = useState('default');
@@ -179,19 +206,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
             )
 
           case 'selectedItem':
-            
-          return(
-            <View>
-              
-            <FlatList
-                  data={selectedBoots}
-                  renderItem={renderProductList}
-                  keyExtractor={(item) => item.id}
-                />
-            </View>
-          )
-      
-    
+            return(
+              <FlatList
+                    data={sortedData}
+                    renderItem={renderProductList}
+                    keyExtractor={(item) => item.id}
+                  />
+            )
           default:
             return null;
       }
@@ -201,8 +222,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
     return (
+      
       <SafeAreaView style={styles.screen}>
-        
         <View style={styles.topBar}>
           <View style={styles.searchInput}>
             <AntDesign name="search1" style={styles.searchIcon} />
@@ -210,7 +231,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
           </View>
 
           <AntDesign name="close" style={styles.basicIcon} onPress={clearSearchBar}/>
-          <AntDesign name="filter" style={styles.basicIcon} onPress={goToSortView}/>
+          <AntDesign name="filter" style={styles.basicIcon} onPress={()=>navigation.navigate('Sort')}/>
         </View>
 
         <View style={styles.content}>
