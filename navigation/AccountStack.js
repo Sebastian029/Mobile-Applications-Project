@@ -32,7 +32,7 @@ const AccountStack = () => {
         <Stack.Screen name="Message Center" component={MessageCenterScreen} />
         <Stack.Screen name="My Sale" component={MySaleScreen} />
         <Stack.Screen name="Sell Product" component={SellProductScreen} />
-        <Stack.Screen name="Add Card" component={AddCardScreen} />
+        <Stack.Screen name="AddCard" component={AddCardScreen} />
         <Stack.Screen name="DeleteCard" component={DeleteCardScreen} />
         <Stack.Screen name="SucessCard" component={SucessCardScreen} />
         <Stack.Screen name="SucessAddress" component={SucessAddressScreen} />

@@ -1,11 +1,15 @@
 import { Text, View, Image, TextInput, ScrollView, Pressable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import styles from './style';
 
-  export default function LoginScreen({navigation}){
+const LoginScreen = ({navigation}) => {
+ 
+
+
+
 
     const handleLogin = () => {
         console.log('login handler');
@@ -61,3 +65,4 @@ import styles from './style';
       </View>
   );
   }
+  export default LoginScreen;
