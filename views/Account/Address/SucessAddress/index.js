@@ -1,20 +1,20 @@
+
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const SucessCardScreen = ({ navigation }) => {
+const SucessAddressScreen = ({ navigation }) => {
   return (
     <View style={[styles.Ekran]}>
-     
-      <Text>Sucess</Text>
+      <Text>SucessAddress</Text>
       <Button
-        title="BacktoCard"
-        onPress={() => navigation.navigate('Payment')}
+        title="back to address"
+        onPress={() => navigation.navigate('Address')}
       />
     </View>
   );
 };
 
-export default SucessCardScreen;
+export default SucessAddressScreen;
 
 const styles = StyleSheet.create({
   Ekran:{

@@ -1,8 +1,6 @@
 /* fonts */
 export const FontFamily = {
-  poppinsRegular: "Poppins-Regular",
-  headingH4: "Poppins-Bold",
-  defaultBoldBody: "SF Pro Text",
+
 };
 /* font sizes */
 export const FontSize = {

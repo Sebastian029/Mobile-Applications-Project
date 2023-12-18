@@ -1,23 +1,24 @@
+
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const SellProductScreen = ({ navigation }) => {
+const DeleteMySaleScreen = ({ navigation }) => {
   return (
     <View style={[styles.Ekran]}>
-      <Text>Sellproduct</Text>
+      <Text>DeleteAddress</Text>
       <Button
-        title="Back"
+        title="Cancel"
         onPress={() => navigation.goBack()}
       />
       <Button
-        title="Add"
-        onPress={() => navigation.navigate('My Sale')}
+        title="Delete"
+        onPress={() => navigation.goBack()}
       />
     </View>
   );
 };
 
-export default SellProductScreen;
+export default DeleteMySaleScreen;
 
 const styles = StyleSheet.create({
   Ekran:{

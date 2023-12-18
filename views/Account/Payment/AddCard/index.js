@@ -11,7 +11,7 @@ const AddCardScreen = ({ navigation }) => {
       />
       <Button
         title="Save"
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('SucessCard')}
       />
       
     </View>

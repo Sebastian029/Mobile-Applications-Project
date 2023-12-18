@@ -11,7 +11,14 @@ import MessageCenterScreen from '../views/Account/MessageCenter';
 import MySaleScreen from '../views/Account/MySale';
 import SellProductScreen from '../views/Account/SellProduct';
 import AddCardScreen from '../views/Account/Payment/AddCard';
-import DeleteScreen from '../views/Account/Payment/DeleteCard';
+import DeleteCardScreen from '../views/Account/Payment/DeleteCard';
+import SucessCardScreen from '../views/Account/Payment/Sucess.js';
+import SucessAddressScreen from '../views/Account/Address/SucessAddress/index.js';
+import AddAddressScreen from '../views/Account/Address/AddAddress/index.js';
+import EditAddressScreen from '../views/Account/Address/EditAddress/index.js';
+import DeleteAddressScreen from '../views/Account/Address/DeleteAddress/index.js';
+import DeleteMySaleScreen from '../views/Account/MySale/DeleteMySale/index.js';
+import EditMySaleScreen from '../views/Account/MySale/EditMySale/index.js';
 const Stack = createNativeStackNavigator();
 
 const AccountStack = () => {
@@ -26,7 +33,16 @@ const AccountStack = () => {
         <Stack.Screen name="My Sale" component={MySaleScreen} />
         <Stack.Screen name="Sell Product" component={SellProductScreen} />
         <Stack.Screen name="Add Card" component={AddCardScreen} />
-        <Stack.Screen name="Delete" component={DeleteScreen} />
+        <Stack.Screen name="DeleteCard" component={DeleteCardScreen} />
+        <Stack.Screen name="SucessCard" component={SucessCardScreen} />
+        <Stack.Screen name="SucessAddress" component={SucessAddressScreen} />
+        <Stack.Screen name="AddAddress" component={AddAddressScreen} />
+        <Stack.Screen name="EditAddress" component={EditAddressScreen} />
+        <Stack.Screen name="DeleteAddress" component={DeleteAddressScreen} />
+        <Stack.Screen name="DeleteMySale" component={DeleteMySaleScreen} />
+        <Stack.Screen name="EditMySale" component={EditMySaleScreen} />
+
+
 
 
       </Stack.Navigator>

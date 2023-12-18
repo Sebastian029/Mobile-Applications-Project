@@ -15,7 +15,7 @@ const PaymentScreen = ({ navigation }) => {
       />
       <Button
         title="Delete"
-        onPress={() => navigation.navigate('Delete')}
+        onPress={() => navigation.navigate('DeleteCard')}
       />
     </View>
   );
