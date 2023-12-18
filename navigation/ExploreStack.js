@@ -16,8 +16,8 @@ const Stack = createNativeStackNavigator();
 export default function ExploreStackNav(){
   return (
     <ExploreProvider>
-      <Stack.Navigator  screenOptions={{headerShown: false}} initialRouteName="Explore">
-        <Stack.Screen name="Explore" component={HomeScreen} /> 
+      <Stack.Navigator  screenOptions={{headerShown: false}} initialRouteName="ExploreStackName">
+        <Stack.Screen name="ExploreStackName" component={HomeScreen} /> 
         <Stack.Screen name="Sort" component={SortScreen} /> 
         <Stack.Screen name="Product" component={ProductScreen} /> 
         <Stack.Screen name="Reviews" component={ReviewsScreen} /> 

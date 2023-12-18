@@ -21,6 +21,13 @@ import { useFocusEffect } from '@react-navigation/native';
       winter: require('../../assets/exploreImages/winter.png'),
       worker: require('../../assets/exploreImages/worker.png'),
       NikeAirZoom: require('../../assets/productImages/NikeAirZoom.png'),
+      AdidasCampus: require('../../assets/productImages/AdidasCampus.png'),
+      AdidasSuperstar: require('../../assets/productImages/AdidasSuperstar.png'),
+      NewBalanceBB550: require('../../assets/productImages/NewBalanceBB550.png'),
+      NewBalanceu574: require('../../assets/productImages/NewBalanceu574.png'),
+      NIkeMarshmallow: require('../../assets/productImages/NIkeMarshmallow.png'),
+      ReebokNylon: require('../../assets/productImages/ReebokNylon.png'),
+      ReebokRoyal: require('../../assets/productImages/ReebokRoyal.png'),
     };
   
     const data = [
@@ -35,13 +42,13 @@ import { useFocusEffect } from '@react-navigation/native';
       const boots =[
         {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '3',type:'sport',  img: 'sport', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '4',type:'sport',  img: 'sport', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '5',type:'sport',  img: 'sport', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '6',type:'sport',  img: 'sport', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '7',type:'sport',  img: 'sport', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '8',type:'sport',  img: 'sport', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '9',type:'socks',  img: 'slippers', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '3',type:'sport',  img: 'ReebokRoyal', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '4',type:'sport',  img: 'ReebokNylon', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '5',type:'sport',  img: 'NewBalanceBB550', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '6',type:'sport',  img: 'NewBalanceu574', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '7',type:'sport',  img: 'NIkeMarshmallow', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '8',type:'sport',  img: 'AdidasSuperstar', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '9',type:'socks',  img: 'AdidasCampus', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '10',type:'sport',  img: 'NikeAirZoom', name:'Nike Air Zoom', price:299, discountedPrice:499, size:40, brand:'Nike', condition:'Good', description:'Produkt bogow', review:'rev1'},
       ]
 

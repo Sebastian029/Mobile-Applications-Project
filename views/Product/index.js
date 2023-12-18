@@ -10,6 +10,7 @@ import styles from './style';
     const { selectedItem} = route.params;
 
 
+    // dummy data
     const images = {
       sport: require('../../assets/exploreImages/sport.png'),
       socks: require('../../assets/exploreImages/socks.png'),
@@ -18,7 +19,15 @@ import styles from './style';
       winter: require('../../assets/exploreImages/winter.png'),
       worker: require('../../assets/exploreImages/worker.png'),
       NikeAirZoom: require('../../assets/productImages/NikeAirZoom.png'),
+      AdidasCampus: require('../../assets/productImages/AdidasCampus.png'),
+      AdidasSuperstar: require('../../assets/productImages/AdidasSuperstar.png'),
+      NewBalanceBB550: require('../../assets/productImages/NewBalanceBB550.png'),
+      NewBalanceu574: require('../../assets/productImages/NewBalanceu574.png'),
+      NIkeMarshmallow: require('../../assets/productImages/NIkeMarshmallow.png'),
+      ReebokNylon: require('../../assets/productImages/ReebokNylon.png'),
+      ReebokRoyal: require('../../assets/productImages/ReebokRoyal.png'),
     };
+
 
     const reviews =[
       {id: 1, name:'Nike Air Zoom', review: [

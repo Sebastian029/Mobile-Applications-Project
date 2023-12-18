@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Text} from 'react-native';
 
-import DrawerNav from "./Drawer";
 import TabIcon from '../components/TabIcon' 
 import HomeScreen from '../views/Home';
 
@@ -34,7 +33,7 @@ export default function TabNav() {
             <Tab.Screen name="Explore" component={ExploreStackNav} options={optionScreen} />
             <Tab.Screen name="Cart" component={HomeScreen} options={optionScreen} />
             <Tab.Screen name="Account" component={AccountStack} options={optionScreen} />
-            <Tab.Screen name="DrawerNav" component={DrawerNav} options={optionScreen} />
+           
         </Tab.Navigator>
     );
 }
