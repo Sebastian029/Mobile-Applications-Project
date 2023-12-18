@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     productIcon:{
         width:100,
         height:100,
+        resizeMode: 'contain'
     },
 
     productText:{
