@@ -35,7 +35,7 @@ import { useFocusEffect } from '@react-navigation/native';
       const boots =[
         {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '3',type:'sport',  img: 'sport', name:'NewBalance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+        {id: '3',type:'sport',  img: 'sport', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '4',type:'sport',  img: 'sport', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '5',type:'sport',  img: 'sport', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
         {id: '6',type:'sport',  img: 'sport', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
@@ -106,7 +106,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
     const renderProductList = ({ item }) => {
       return (
-        <Pressable style={styles.productView} onPress={() => navigation.navigate('Product', { selectedItem: item, itemImg: item.img , data: boots})}>
+        <Pressable style={styles.productView} onPress={() => navigation.navigate('Product', { selectedItem: item})}>
           <Image source={images[item.img]} style={styles.productIcon}/>
           <View style={styles.singleProductView}>
             <Text style={styles.productName}>{item.name}</Text>

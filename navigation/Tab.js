@@ -7,6 +7,7 @@ import TabIcon from '../components/TabIcon'
 import HomeScreen from '../views/Home';
 
 import ExploreStackNav from './ExploreStack';
+import HomeStackNav from './HomeStack';
 import AccountStack from './AccountStack';
 
 const optionScreen = {
@@ -29,7 +30,7 @@ export default function TabNav() {
            tabBarHideOnKeyboard:true,
         }
         )}>
-            <Tab.Screen name="Home" component={HomeScreen} options={optionScreen} />
+            <Tab.Screen name="Home" component={HomeStackNav} options={optionScreen} />
             <Tab.Screen name="Explore" component={ExploreStackNav} options={optionScreen} />
             <Tab.Screen name="Cart" component={HomeScreen} options={optionScreen} />
             <Tab.Screen name="Account" component={AccountStack} options={optionScreen} />

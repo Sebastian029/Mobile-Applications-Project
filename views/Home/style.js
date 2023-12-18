@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
         width:100,
         height:100,
         marginLeft:'auto',
-        marginRight:'auto'
+        marginRight:'auto',
+        resizeMode: 'contain'
     },
     productName:{
         color:'#223263',

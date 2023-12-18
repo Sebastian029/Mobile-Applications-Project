@@ -8,15 +8,16 @@ import styles from './style';
 
   export default function HomeScreen({navigation}){
     const boots =[
-      {id: '1',type:'sport', img: 'elegant', name:'Nike abc', price:220, discountedPrice:300},
-      {id: '2',type:'sport',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200},
-      {id: '3',type:'sport',  img: 'sport', name:'NewBalance abc', price:30, discountedPrice:50},
-      {id: '4',type:'sport',  img: 'sport', name:'NewBalance dfds', price:150, discountedPrice:100},
-      {id: '5',type:'sport',  img: 'elegant', name:'NewBalance iuo', price:150, discountedPrice:100},
-      {id: '6',type:'sport',  img: 'elegant', name:'Adidas dasd', price:1510, discountedPrice:100},
-      {id: '7',type:'sport',  img: 'sport', name:'Adidas def', price:30, discountedPrice:100},
-      {id: '8',type:'sport',  img: 'elegant', name:'Nike def', price:99, discountedPrice:100},
-      {id: '9',type:'socks',  img: 'sport', name:'NewBalance def def', price:150, discountedPrice:100},
+      {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '3',type:'sport',  img: 'sport', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '4',type:'sport',  img: 'sport', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '5',type:'sport',  img: 'sport', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '6',type:'sport',  img: 'sport', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '7',type:'sport',  img: 'sport', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '8',type:'sport',  img: 'sport', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '9',type:'socks',  img: 'slippers', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '10',type:'sport',  img: 'NikeAirZoom', name:'Nike Air Zoom', price:299, discountedPrice:499, size:40, brand:'Nike', condition:'Good', description:'Produkt bogow', review:'rev1'},
     ]
     const images = {
       sport: require('../../assets/exploreImages/sport.png'),
@@ -25,6 +26,7 @@ import styles from './style';
       slippers: require('../../assets/exploreImages/slippers.png'),
       winter: require('../../assets/exploreImages/winter.png'),
       worker: require('../../assets/exploreImages/worker.png'),
+      NikeAirZoom: require('../../assets/productImages/NikeAirZoom.png'),
     };
   
     const data = [
@@ -52,14 +54,14 @@ import styles from './style';
 
     const renderInRow = ({ item }) => {
       return (
-        <View style={styles.productView}>
+        <Pressable style={styles.productView} onPress={() => navigation.navigate('Product', { selectedItem: item})}>
           <Image source={images[item.img]} style={styles.productIcon} />
           <View style={styles.singleProductView}>
             <Text style={styles.productName}>{item.name}</Text>
             <Text style={styles.productPrice}>{item.price}$</Text>
             <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text>
             </View>
-        </View>
+        </Pressable>
       );
     };
 

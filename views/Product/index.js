@@ -7,7 +7,7 @@ import { Feather } from '@expo/vector-icons';
 import styles from './style';
 
   export default function ProductScreen({navigation, route}){
-    const { selectedItem, data } = route.params;
+    const { selectedItem} = route.params;
 
 
     const images = {
