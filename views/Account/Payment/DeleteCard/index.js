@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const DeleteScreen = ({ navigation, route }) => {
+const DeleteCardScreen = ({ navigation, route }) => {
   const { card, onDelete } = route.params;
 
   const handleDelete = () => {
@@ -27,7 +27,7 @@ const DeleteScreen = ({ navigation, route }) => {
 // ... reszta kodu
 
 
-export default DeleteScreen;
+export default DeleteCardScreen;
 
 const styles = StyleSheet.create({
   Ekran:{
