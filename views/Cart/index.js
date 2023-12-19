@@ -24,14 +24,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       ReebokNylon: require('../../assets/productImages/ReebokNylon.png'),
       ReebokRoyal: require('../../assets/productImages/ReebokRoyal.png'),
     };
-    const [items, setItems] = useState([]);
 
+    const [items, setItems] = useState([]);
+    const [itemsCount, setItemsCount] = useState(0);
+    const [shippingPrice, setShippingPrice] = useState(0);
+    const [basicPrice, setBasicPrice] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalDiscountedPrice, setTotalDiscountedPrice] = useState(0);
 
   const saveItemsToStorage = async () => {
     try {
       await AsyncStorage.setItem('storedItems', JSON.stringify(items));
-    } catch (error) {
-      console.error('Error saving items to AsyncStorage:', error);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -41,8 +46,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       if (serializedItems !== null) {
         setItems(JSON.parse(serializedItems));
       }
-    } catch (error) {
-      console.error('Error loading items from AsyncStorage:', error);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -53,20 +58,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       if (serializedItem !== null) {
         const newItem = JSON.parse(serializedItem);
         const itemExists = items.some(existingItem => existingItem.id === newItem.id);
-  
         if (!itemExists) {
-          // Dynamically adding 'quantity' property with a default value to newItem
           const newItemWithQuantity = { ...newItem, quantity: 1 };
-  
           setItems(prevItems => [...prevItems, newItemWithQuantity]);
-          console.log('Item added to array with default quantity');
-        } else {
-          console.log('Item already exists in array');
-        }
-  
+
+        } 
         if (itemExists) {
           await AsyncStorage.removeItem('CartItem');
-          console.log('Item removed from AsyncStorage');
         }
       }
     } catch (e) {
@@ -76,6 +74,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
   useEffect(() => {
     loadItemsFromStorage();
+    countTotal();
     return () => {
       saveItemsToStorage(items);
     };
@@ -84,6 +83,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
   useFocusEffect(
     React.useCallback(() => {
       getItem();
+      countTotal();
     },[items])
   );
 
@@ -101,6 +101,34 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     setItems(prevItems => prevItems.filter(item => item.id !== itemToDelete.id));
   };
 
+  
+
+  const countTotal = () =>{
+    let count = 0;
+    let tmpPrice = 0;
+    let shipping = 10;
+    let tmpDisc = 0;
+    let basic = 0;
+    
+    
+    items.forEach(item =>{
+      count += item.quantity;
+      basic += (item.discountedPrice  * item.quantity);
+
+      tmpPrice += (item.price * item.quantity);
+      tmpDisc += ((item.discountedPrice - item.price) * item.quantity);
+      
+
+    })
+    if(tmpPrice>200 || count <=0)
+      shipping=0;
+
+    setBasicPrice(basic);
+    setShippingPrice(shipping);
+    setItemsCount(count);
+    setTotalDiscountedPrice(tmpDisc);
+    setTotalPrice(basic-tmpDisc + shipping);
+  }
   
 
     const renderItem = ({ item }) => {
@@ -133,17 +161,37 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
         </View>
 
         <View style={styles.content}>
+          {items.length > 0 ? (
           <FlatList
                     data={items}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
-                  />
+                    />
+          ) : (
+            <Text style={styles.noItemsText}>Cart is empty</Text>
+          )}
         </View>
 
         <View style={styles.summary}>
-          <Text>Items</Text>
-          <Text>Items</Text>
-          <Text>Items</Text>
+            <View style={styles.specification}>
+                <Text style={styles.spec}>Items ({itemsCount})</Text>
+                <Text style={styles.spec}>{basicPrice}$</Text>
+             </View>
+
+             <View style={styles.specification}>
+                <Text style={styles.spec}>Shipping</Text>
+                <Text style={styles.spec}>{shippingPrice}$</Text>
+             </View>
+
+             <View style={styles.specification}>
+                <Text style={styles.spec}>Total Discounts</Text>
+                <Text style={styles.spec}>{totalDiscountedPrice}$</Text>
+             </View>
+
+             <View style={styles.specification}>
+                <Text style={[styles.spec, {fontWeight:'bold'}]}>Total price</Text>
+                <Text style={[styles.spec, {fontWeight:'bold'}]}>{totalPrice}$</Text>
+             </View>
         </View>
 
         <Pressable onPress={console.log('cart')} style={styles.button}>

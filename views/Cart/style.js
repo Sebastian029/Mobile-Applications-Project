@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         gap:10,
         paddingVertical:10,
-        Width:'100%'
+        width:'100%'
    },
    singleProductView:{
         flex:1,
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
    productName:{
     color:'#223263',
     fontSize:20,
-    fontWeight:'bold'
+    fontWeight:'bold',
+    maxWidth:'90%'
    },
    productPrice:{
     fontSize:18,
@@ -66,12 +67,16 @@ const styles = StyleSheet.create({
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:8
+        borderRadius:8,
+        marginLeft:'auto',
+        marginRight:'auto',
+        borderBottom:10
     },
     buttonText:{
         fontSize:18,
         fontWeight:'bold',
         color:'#223263',
+        letterSpacing:1
 
     },
 
@@ -102,8 +107,34 @@ const styles = StyleSheet.create({
         fontSize:25,
         color:'gray',
         padding:5,
-    }
+    },
 
+
+    summary:{
+        width:'100%',
+        flex:0.9,
+        paddingTop:10
+    },
+    specification:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        width:'80%',
+        marginLeft:'auto',
+        marginRight:'auto'
+    },
+    spec:{
+        color:'#223263',
+        fontSize:14,
+        paddingVertical:5
+    },
+    
+    noItemsText:{
+        color:'orange',
+        fontSize:22,
+        paddingVertical:5,
+        textAlign:'center',
+        marginTop:10
+    }
 })
 
 

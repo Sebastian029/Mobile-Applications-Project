@@ -1,7 +1,7 @@
 import { Button, StyleSheet, Text, View, Image, TextInput, ScrollView, Pressable, SafeAreaView, FlatList } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import { CommonActions } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -69,6 +69,10 @@ import styles from './style';
       try{
         await AsyncStorage.setItem('CartItem', JSON.stringify(selectedItem));
       }catch(e){}
+      navigation.dispatch(CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      }));
       navigation.navigate('Cart'); 
     }
 
