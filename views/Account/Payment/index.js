@@ -26,7 +26,7 @@ import { AntDesign } from '@expo/vector-icons';
   
     const renderItem = ({ item }) => (
       <Pressable >
-        <AntDesign name="CloseOutlined" style={styles.exitIcon}  onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: handleDeleteCard })}/>
+        <AntDesign name="closecircleo" style={styles.exitIcon}  onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: handleDeleteCard })}/>
         <Text>{item.number}</Text>
         <Text>CARD HOLDER</Text>
         <Text>{item.cardHolder}</Text>
