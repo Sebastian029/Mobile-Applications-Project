@@ -19,6 +19,7 @@ import EditAddressScreen from '../views/Account/Address/EditAddress/index.js';
 import DeleteAddressScreen from '../views/Account/Address/DeleteAddress/index.js';
 import DeleteMySaleScreen from '../views/Account/MySale/DeleteMySale/index.js';
 import EditMySaleScreen from '../views/Account/MySale/EditMySale/index.js';
+import ProductSaleScreen from '../views/Account/MySale/ProductSale/index.js';
 const Stack = createNativeStackNavigator();
 
 const AccountStack = () => {
@@ -41,7 +42,7 @@ const AccountStack = () => {
         <Stack.Screen name="DeleteAddress" component={DeleteAddressScreen} />
         <Stack.Screen name="DeleteMySale" component={DeleteMySaleScreen} />
         <Stack.Screen name="EditMySale" component={EditMySaleScreen} />
-
+        <Stack.Screen name="ProductSale" component={ProductSaleScreen} />
 
 
 

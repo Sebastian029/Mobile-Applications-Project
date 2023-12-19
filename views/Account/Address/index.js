@@ -22,7 +22,7 @@ import { AntDesign } from '@expo/vector-icons';
         region:"Swietokrzyskie",
         zip:"100-200",
         phone:"100000",
-
+        
       },
       {
         country: "Polska",
@@ -33,6 +33,7 @@ import { AntDesign } from '@expo/vector-icons';
         region:"Swietokrzyskie",
         zip:"100-200",
         phone:"100000",
+        
       },
     ]);
   

@@ -84,19 +84,6 @@ const AccountScreen = ({navigation}) => {
           source={require("../../assets/materialsymbolspointofsalerounded.png")}
         />
       </Pressable>
-      <Pressable
-        style={[styles.claritydollarSolidParent, styles.parentLayout]}
-        onPress={() => navigation.navigate('Sell Product')}
-      >
-        <Image
-          style={[styles.claritydollarSolidIcon1, styles.iconPosition]}
-          contentFit="cover"
-          source={require("../../assets/claritydollarsolid.png")}
-        />
-        <Text style={[styles.sellProduct, styles.mySaleTypo]}>
-          Sell Product
-        </Text>
-      </Pressable>
       
     </View>
   );

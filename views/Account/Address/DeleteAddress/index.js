@@ -18,8 +18,10 @@ const DeleteAddressScreen = ({ navigation, route }) => {
     <View style={styles.notFoundView}>
       <Image source={require('../../../../assets/exploreImages/redCross.png')}/>
       <Text style={styles.titleText}>Warning!</Text>
+      <View>
 	<Text style={styles.upperText}>Are you sure wanna delete address?</Text>
   <Text style={styles.upperText}>Changes will be irreversible</Text>
+  </View>
       <Pressable style={[styles.backButton, { backgroundColor: '#E22A2A' }]} onPress={handleDelete}>
         <Text style={styles.buttonText}>Delete</Text>
      </Pressable>

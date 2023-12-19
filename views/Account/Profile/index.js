@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, Image, SafeAreaView,StyleSheet } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { Text, View, Image, SafeAreaView, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
+import { Camera ,CameraType} from 'expo-camera';
 
 const ProfileScreen = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const cameraRef = useRef(null);
 
   useEffect(() => {
-    // Funkcja do pobierania danych z AsyncStorage
     const getUserDataFromStorage = async () => {
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
-          // Jeśli dane są dostępne, ustaw je w stanie komponentu
           setUserData(JSON.parse(storedUserData));
         }
       } catch (error) {
@@ -20,25 +23,74 @@ const ProfileScreen = ({ navigation }) => {
       }
     };
 
-    // Wywołaj funkcję pobierania danych po zamontowaniu komponentu
     getUserDataFromStorage();
+
+    const requestCameraPermission = async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(status === 'granted');
+    };
+
+    requestCameraPermission();
   }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setProfileImage(result.uri);
+    }
+  };
+
+  const takePicture = async () => {
+    if (cameraRef.current) {
+      let photo = await cameraRef.current.takePictureAsync();
+      setProfileImage(photo.uri);
+    }
+  };
+
+  const toggleCameraType = () => {
+    // Toggle between front and back camera
+    setCameraType((prevType) =>
+      prevType === Camera.Constants.Type.back
+        ? Camera.Constants.Type.front
+        : Camera.Constants.Type.back
+    );
+  };
 
   return (
     <SafeAreaView>
-      <View style={[styles.screen]}>
-      <View style={[styles.topBar]}>
-        <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
-        <Text style={styles.title}>Add Card</Text>
-      </View>
-      <View>
+      <View style={styles.screen}>
+        <View style={styles.topBar}>
+          <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
+          <Text style={styles.title}>Profile</Text>
+        </View>
+
+        <View style={styles.imageContainer}>
+          <TouchableOpacity onPress={pickImage}>
+            {profileImage ? (
+              <Image source={{ uri: profileImage }} style={styles.profileImage} />
+            ) : (
+              <View style={styles.profileImagePlaceholder}>
+                <AntDesign name="plus" size={24} color="white" />
+              </View>
+            )}
+          </TouchableOpacity>
+        </View>
+
+        <View>
           {userData && (
             <View>
-              <Text>Hi ! {userData.firstName}</Text>
+              <Text>Hi! {userData.firstName}</Text>
               <Text>{userData.email}</Text>
             </View>
           )}
         </View>
+
         <View>
           {userData && (
             <View>
@@ -57,6 +109,24 @@ const ProfileScreen = ({ navigation }) => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
+  cameraContainer: {
+    flex: 1,
+  },
+  camera: {
+    flex: 1,
+  },
+  cameraToggleButton: {
+    position: 'absolute',
+    bottom: 16,
+    left: 16,
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 8,
+  },
+  cameraToggleText: {
+    color: 'white',
+    fontSize: 16,
+  },
   input: {
     height: 40,
     borderColor: 'gray',
@@ -90,7 +160,25 @@ screen:{
   flexDirection:'column',
   
 },
-
+imageContainer: {
+  alignItems: 'center',
+  marginTop: 20,
+},
+profileImage: {
+  width: 120,
+  height: 120,
+  borderRadius: 60, // połowa szerokości/średnicy, aby uzyskać efekt okrągłego zdjęcia
+  overflow: 'hidden',
+},
+profileImagePlaceholder: {
+  width: 120,
+  height: 120,
+  borderRadius: 60,
+  overflow: 'hidden',
+  backgroundColor: 'gray',
+  justifyContent: 'center',
+  alignItems: 'center',
+},
 topBar: {
   width: '100%' ,
   flexDirection: 'row',
