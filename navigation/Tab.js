@@ -8,6 +8,7 @@ import HomeScreen from '../views/Home';
 import ExploreStackNav from './ExploreStack';
 import HomeStackNav from './HomeStack';
 import AccountStack from './AccountStack';
+import CartStackNav from  './CartStack'
 
 const optionScreen = {
     headerShown: false,
@@ -31,7 +32,7 @@ export default function TabNav() {
         )}>
             <Tab.Screen name="Home" component={HomeStackNav} options={optionScreen} />
             <Tab.Screen name="Explore" component={ExploreStackNav} options={optionScreen} />
-            <Tab.Screen name="Cart" component={HomeScreen} options={optionScreen} />
+            <Tab.Screen name="Cart" component={CartStackNav} options={optionScreen}/>
             <Tab.Screen name="Account" component={AccountStack} options={optionScreen} />
            
         </Tab.Navigator>

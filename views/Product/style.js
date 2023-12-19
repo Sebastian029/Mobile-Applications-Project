@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         marginLeft:'auto',
         marginRight:'auto',
         width:'100%',
+        height:250,
         resizeMode: 'contain',
     },
     specifications:{
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
         color:'#223263',
         fontSize:16,
         fontWeight:'bold',
-        paddingTop:10,
-        paddingBottom:20
+        paddingVertical:10,
+        
     },
     specification:{
         flex:1,
@@ -81,7 +82,24 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         marginLeft:'auto',
         marginRight:'auto',
-        paddingTop:20
+        paddingBottom:10
+    },
+    button:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        width:'90%',
+        height:60,
+        backgroundColor:'#F99C1C',
+        marginLeft:'auto',
+        marginRight:'auto',
+        borderRadius:5,
+    },
+    buttonText:{
+        color:'#223263',
+        fontSize:20,
+        fontWeight:'bold',
+        letterSpacing:1,
     }
 
 })

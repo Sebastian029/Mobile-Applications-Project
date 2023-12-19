@@ -39,18 +39,18 @@ import { useFocusEffect } from '@react-navigation/native';
       { id: '6', img: 'worker', name: 'Worker Shoes' },
     ];
 
-      const boots =[
-        {id: '1',type:'sport', img: 'sport', name:'Nike abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '3',type:'sport',  img: 'ReebokRoyal', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '4',type:'sport',  img: 'ReebokNylon', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '5',type:'sport',  img: 'NewBalanceBB550', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '6',type:'sport',  img: 'NewBalanceu574', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '7',type:'sport',  img: 'NIkeMarshmallow', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '8',type:'sport',  img: 'AdidasSuperstar', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '9',type:'socks',  img: 'AdidasCampus', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-        {id: '10',type:'sport',  img: 'NikeAirZoom', name:'Nike Air Zoom', price:299, discountedPrice:499, size:40, brand:'Nike', condition:'Good', description:'Produkt bogow', review:'rev1'},
-      ]
+    const boots =[
+      {id: '1',type:'sport', img: 'sport', name:'Nike abc abc abc abc abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '3',type:'sport',  img: 'ReebokRoyal', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '4',type:'sport',  img: 'ReebokNylon', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '5',type:'sport',  img: 'NewBalanceBB550', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '6',type:'sport',  img: 'NewBalanceu574', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '7',type:'sport',  img: 'NIkeMarshmallow', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '8',type:'sport',  img: 'AdidasSuperstar', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '9',type:'socks',  img: 'AdidasCampus', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
+      {id: '10',type:'sport',  img: 'NikeAirZoom', name:'Nike Air Zoom', price:299, discountedPrice:499, size:40, brand:'Nike', condition:'Good', description:'Produkt bogow', review:'rev1'},
+    ]
 
     const { sortName, setSortName } = useContext(ExploreContext);
     const [searchBar, setSearchBar] = useState('');

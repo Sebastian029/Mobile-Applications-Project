@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, View, Image, TextInput, ScrollView, Pressable
 import React, { useState, useEffect, useContext } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import styles from './style';
@@ -64,6 +65,12 @@ import styles from './style';
       }
     };
 
+    const AddToCart = async () => {
+      try{
+        await AsyncStorage.setItem('CartItem', JSON.stringify(selectedItem));
+      }catch(e){}
+      navigation.navigate('Cart'); 
+    }
 
     return (
       
@@ -107,6 +114,12 @@ import styles from './style';
           <Pressable onPress={() => reviewsHandler()}>
             <Text style={styles.productReview}>See product reviews</Text>
           </Pressable>
+
+          <Pressable style={styles.button} onPress={() => AddToCart()}>
+            <Text style={styles.buttonText}>Add To Cart</Text>
+          </Pressable>
+
+
         </View>
 
       </ScrollView>
