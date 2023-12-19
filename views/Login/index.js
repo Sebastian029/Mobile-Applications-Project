@@ -28,6 +28,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleLogin = () => {
+    saveUserDataToStorage(formData);
     navigation.navigate('TabNav');
     // Sprawdź, czy wprowadzone dane są poprawne
     if (email === formData.email && password === formData.password) {

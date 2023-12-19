@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera ,CameraType} from 'expo-camera';
 
+import styles from './style';
+
 const ProfileScreen = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
@@ -62,15 +64,21 @@ const ProfileScreen = ({ navigation }) => {
     );
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <SafeAreaView>
-      <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
+   
         <View style={styles.topBar}>
           <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
           <Text style={styles.title}>Profile</Text>
         </View>
 
-        <View style={styles.imageContainer}>
+        <View style={styles.topContainer}>
           <TouchableOpacity onPress={pickImage}>
             {profileImage ? (
               <Image source={{ uri: profileImage }} style={styles.profileImage} />
@@ -80,148 +88,60 @@ const ProfileScreen = ({ navigation }) => {
               </View>
             )}
           </TouchableOpacity>
+
+          <View style={styles.welcomeView}>
+          {userData && (
+            <View>
+              <Text style={styles.welcomeText}>Hi, {userData.firstName}!</Text>
+              <Text style={[styles.welcomeText, {fontSize:15}]}>{userData.email}</Text>
+            </View>
+          )}
+          </View>
         </View>
 
+        
         <View>
           {userData && (
             <View>
-              <Text>Hi! {userData.firstName}</Text>
-              <Text>{userData.email}</Text>
-            </View>
-          )}
-        </View>
+              <View style={styles.row}>
+                 <AntDesign name="user" style={styles.icon} />
+                 <Text style={styles.leftText}>Full Name</Text>
+                 <Text style={styles.dataText}>{userData.firstName} {userData.lastName}</Text>
+              </View>
 
-        <View>
-          {userData && (
-            <View>
-              <Text>Full Name: {userData.firstName} {userData.lastName}</Text>
-              <Text>Your Email: {userData.email}</Text>
-              <Text>Phone Number: {userData.phoneNumber}</Text>
-              <Text>Birthday: {userData.birthday}</Text>
+              <View style={styles.row}>
+                 <AntDesign name="mail" style={styles.icon} />
+                 <Text style={styles.leftText}>Your Email</Text>
+                 <Text style={styles.dataText}>{userData.email}</Text>
+              </View>
+
+              <View style={styles.row}>
+                 <AntDesign name="phone" style={styles.icon} />
+                 <Text style={styles.leftText}>Phone Number</Text>
+                 <Text style={styles.dataText}>{userData.phoneNumber}</Text>
+              </View>
+
+              <View style={styles.row}>
+                 <AntDesign name="calendar" style={styles.icon} />
+                 <Text style={styles.leftText}>Birthday</Text>
+                 <Text style={styles.dataText}>{userData.birthday}</Text>
+              </View>
+
+              <View style={styles.row}>
+                 <AntDesign name="lock" style={styles.icon} />
+                 <Text style={styles.leftText}>Password</Text>
+
+                  <TouchableOpacity style={styles.dataText} onPress={togglePasswordVisibility}>
+                    <Text style={styles.dataText}>{showPassword ? userData.password : '********'}</Text>
+                 </TouchableOpacity>
+              </View>
+
             </View>
           )}
         </View>
-      </View>
+ 
     </SafeAreaView>
   );
 };
 
 export default ProfileScreen;
-
-const styles = StyleSheet.create({
-  cameraContainer: {
-    flex: 1,
-  },
-  camera: {
-    flex: 1,
-  },
-  cameraToggleButton: {
-    position: 'absolute',
-    bottom: 16,
-    left: 16,
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 8,
-  },
-  cameraToggleText: {
-    color: 'white',
-    fontSize: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingLeft: 10,
-  },
-  button: {
-    backgroundColor: 'orange',
-    padding: 15,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:300,
-  },
-  buttonText: {
-    color:'#223263',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  
-  cialo:{
-   
-    
-  },
-screen:{
-  width:'100%',
-  height:'100%',
-  backgroundColor:'white',
-  display:'flex',
-  flexDirection:'column',
-  
-},
-imageContainer: {
-  alignItems: 'center',
-  marginTop: 20,
-},
-profileImage: {
-  width: 120,
-  height: 120,
-  borderRadius: 60, // połowa szerokości/średnicy, aby uzyskać efekt okrągłego zdjęcia
-  overflow: 'hidden',
-},
-profileImagePlaceholder: {
-  width: 120,
-  height: 120,
-  borderRadius: 60,
-  overflow: 'hidden',
-  backgroundColor: 'gray',
-  justifyContent: 'center',
-  alignItems: 'center',
-},
-topBar: {
-  width: '100%' ,
-  flexDirection: 'row',
-  justifyContent: 'flex-start', // Align items to the left
-  paddingLeft: 30,
-  paddingTop: 45,
-  borderBottomWidth: 0.2,
-  borderColor: 'gray',
-  paddingBottom: 10,
-  backgroundColor: 'white',
-  
-},
-Back: {
-  backgroundColor: 'blue',
-  height: 40,
-  justifyContent: 'center',
-  
- 
-},
-basicIcon: {
-  fontSize: 22,
-  color: 'gray',
-},
-exitIcon: {
-  fontSize: 22,
-  color: 'red',
-},
-title: {
-  marginLeft: 10, // Adjust margin as needed
-  
- 
-  fontSize: 20, // Adjust font size as needed
-  color:'#223263',
-
-  fontWeight:'bold',
-
-},
-buttonContainer: {
-  flex: 1,
-  justifyContent: 'center',
-},
-
-
-
-})
-
