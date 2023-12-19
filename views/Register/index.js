@@ -32,8 +32,12 @@ import styles from './style.js';
 
         <View style={styles.mainBox}>
         <Text style={styles.secondText}>Create an new account</Text>
+        <View style={styles.inputBox}>
+            <TextInput placeholder='First Name' style={styles.textInput}></TextInput>
+            <Feather name="user" style={styles.icon}/>
+          </View>
           <View style={styles.inputBox}>
-            <TextInput placeholder='Full Name' style={styles.textInput}></TextInput>
+            <TextInput placeholder='Last Name' style={styles.textInput}></TextInput>
             <Feather name="user" style={styles.icon}/>
           </View>
 
