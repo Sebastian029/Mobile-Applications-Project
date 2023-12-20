@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { View, Text,  StyleSheet, Pressable, FlatList,Image} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
+import styles from './style';
 
   const MySaleScreen = ({ navigation }) => {
     
@@ -13,14 +14,14 @@ import { AntDesign } from '@expo/vector-icons';
         brand: "Nike",
         size: "43",
         condition: "good",
-        description:"Super Buty w zimie zimno, w lecie grzeją",
+        description:"Super Buty w zimie zimno, w lecie grzejąaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         price:"140",
         parcel:"Big",
         pieces:"3",
         img: require('../../../assets/productImages/AdidasSuperstar.png'),
       },
       {
-        title: "AirMax",
+        title: "AirProooooooooooooooooooooooooooo",
         category: "Dominik",
         brand: "Nike",
         size: "43",
@@ -31,21 +32,105 @@ import { AntDesign } from '@expo/vector-icons';
         pieces:"3",
         img: require('../../../assets/productImages/NewBalanceBB550.png'),
       },
+      {
+        title: "AirProooooooooooooooooooooooooooo",
+        category: "Dominik",
+        brand: "Nike",
+        size: "43",
+        condition: "good",
+        description:"Super Buty w zimie zimno, w lecie grzeją",
+        price:"140",
+        parcel:"Big",
+        pieces:"3",
+        img: require('../../../assets/productImages/NewBalanceBB550.png'),
+      },
+      {
+        title: "AirProooooooooooooooooooooooooooo",
+        category: "Dominik",
+        brand: "Nike",
+        size: "43",
+        condition: "good",
+        description:"Super Buty w zimie zimno, w lecie grzeją",
+        price:"140",
+        parcel:"Big",
+        pieces:"3",
+        img: require('../../../assets/productImages/NewBalanceBB550.png'),
+      },
+      {
+        title: "AirProooooooooooooooooooooooooooo",
+        category: "Dominik",
+        brand: "Nike",
+        size: "43",
+        condition: "good",
+        description:"Super Buty w zimie zimno, w lecie grzeją",
+        price:"140",
+        parcel:"Big",
+        pieces:"3",
+        img: require('../../../assets/productImages/NewBalanceBB550.png'),
+      },
+      
     ]);
   
+    const renderItem = ({ item }) => {
+      return (
+        <Pressable  style={styles.productView} onPress={() => navigation.navigate('ProductSale', { selectedItem: item})}>
+          <Image source={item.img} style={styles.productIcon} />
+          <View style={styles.singleProductView}>
+            <View style={styles.itemTop}>
+              <Text style={styles.productName}>{item.brand} {item.title}</Text>
+              <View>
+                <AntDesign name="edit" style={styles.basicIcon}  onPress={() =>
+                  navigation.navigate('EditMySale', {
+                    mySale: item,
+                    onSave: (editedMySale) => handleEditMySale(editedMySale, item),
+                  })}/>
+              </View>
+              <AntDesign name="delete" style={styles.basicIcon} onPress={() => navigation.navigate('DeleteMySale', { mySale: item, onDelete: handleDeleteMySale })}/>
+            </View>
+            <Text style={styles.productPrice}>{item.price}$</Text>
+            </View>
+        </Pressable>
+      );
+    };
+
+
+
+    /*
     const renderItem = ({ item }) => (
-      <Pressable onPress={() => navigation.navigate('ProductSale', { selectedItem: item})}>
-        <Image source={item.img} style={{ width: 40, height: 40 }} />
-        <Text> {item.title}</Text>
-        <Text>{item.price}</Text>
-        <AntDesign name="delete" style={styles.basicIcon}  onPress={() => navigation.navigate('DeleteMySale', { mySale: item, onDelete: handleDeleteMySale })}/>
-        <AntDesign name="edit" style={styles.basicIcon}  onPress={() =>
-    navigation.navigate('EditMySale', {
-      mySale: item,
-      onSave: (editedMySale) => handleEditMySale(editedMySale, item),
-    })}/>
+      <Pressable  style={styles.productView} onPress={() => navigation.navigate('ProductSale', { selectedItem: item})}>
+        <View style={styles.singleProductView}>
+          <Image source={item.img} style={styles.productIcon} />
+          <Text>{item.brand} {item.title}</Text>
+          <Text>{item.price}</Text>
+          <AntDesign name="edit" style={styles.deleteIcon}  onPress={() =>
+              navigation.navigate('EditMySale', {
+                mySale: item,
+                onSave: (editedMySale) => handleEditMySale(editedMySale, item),
+              })}/>
+          <AntDesign name="delete" style={styles.deleteIcon} onPress={() => navigation.navigate('DeleteMySale', { mySale: item, onDelete: handleDeleteMySale })}/>
+        
+        </View>
       </Pressable>
     );
+              */
+    /*
+    const renderItem = ({ item }) => {
+      return (
+      
+    
+          <View style={styles.singleProductView}>
+            <View style={styles.itemTop}>
+              <Text style={styles.productName}>{item.brand} {item.title}</Text>
+              <AntDesign name="delete" style={styles.deleteIcon} onPress={() => deleteItem(item)}/>
+            </View>
+            <Text style={styles.productPrice}>{item.price}$</Text>
+            </View>
+   
+      );
+    };
+    */
+
+
     const handleSaveMySale = (newMySale) => {
       // Add the new mySale to the state
       setMySaleData([...mySaleData, newMySale]);
@@ -89,14 +174,19 @@ import { AntDesign } from '@expo/vector-icons';
     <AntDesign name="left" style={styles.basicIcon}  onPress={() => navigation.goBack()}/>
     <Text style={styles.title}>MySale</Text>
       </View>
-       <View style={styles.cialo} >
-       <FlatList
-  data={mySaleData}
-  renderItem={renderItem}
-  keyExtractor={(item, index) => index.toString()} 
-/>
+  
+       <View style={styles.content}>
+          {mySaleData.length > 0 ? (
+           <FlatList
+                    data={mySaleData}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                    />
+          ) : (
+            <Text style={styles.noItemsText}>Cart is empty</Text>
+          )}
+        </View>
 
-       </View>
       
       <View style={[styles]}>
       
@@ -118,89 +208,3 @@ import { AntDesign } from '@expo/vector-icons';
 };
 
 export default MySaleScreen;
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: 'orange',
-    padding: 15,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:300,
-  },
-  buttonSmall:{
-    backgroundColor: 'orange',
-    padding: 10,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:100,
-  },
-  buttonText: {
-    color:'#223263',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  buttonSmallText: {
-    color:'#223263',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  cialo:{
-   
-    
-  },
-screen:{
-  width:'100%',
-  height:'100%',
-  backgroundColor:'white',
-  display:'flex',
-  flexDirection:'column',
-  
-},
-
-topBar: {
-  width: '100%' ,
-  flexDirection: 'row',
-  justifyContent: 'flex-start', // Align items to the left
-  paddingLeft: 30,
-  paddingTop: 45,
-  borderBottomWidth: 0.2,
-  borderColor: 'gray',
-  paddingBottom: 10,
-  backgroundColor: 'white',
-  
-},
-Back: {
-  backgroundColor: 'blue',
-  height: 40,
-  justifyContent: 'center',
-  
- 
-},
-basicIcon: {
-  fontSize: 22,
-  color: 'gray',
-},
-exitIcon: {
-  fontSize: 22,
-  color: 'red',
-},
-title: {
-  marginLeft: 10, // Adjust margin as needed
-  
- 
-  fontSize: 20, // Adjust font size as needed
-  color:'#223263',
-
-  fontWeight:'bold',
-
-},
-buttonContainer: {
-  flex: 1,
-  justifyContent: 'center',
-},
-
-
-
-})

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Pressable,TouchableOpacity,Image } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, Pressable,TouchableOpacity,Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+
+import styles from './style';
 
 const AddSellProductScreen = ({ navigation, route }) => {
   const [title, setTitle] = useState('');
@@ -66,62 +68,107 @@ const AddSellProductScreen = ({ navigation, route }) => {
             )}
           </TouchableOpacity>
         </View>
-      <View style={styles.cialo}>
+
+      <ScrollView style={styles.content}>
+      <View style={styles.row}>
+        <Text style={styles.leftText}>Title</Text>
         <TextInput
-          style={styles.input}
-          placeholder="Title"
-          value={title}
-          onChangeText={(text) => setTitle(text)}
-        />
+            style={styles.dataText}
+            placeholder="Title"
+            value={title}
+            onChangeText={(text) => setTitle(text)}
+            multiline={true}
+          />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.leftText}>Category</Text>
         <TextInput
-          style={styles.input}
+          style={styles.dataText}
           placeholder="Category"
           value={category}
           onChangeText={(text) => setCategory(text)}
         />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.leftText}>Brand</Text>
         <TextInput
-          style={styles.input}
+          style={styles.dataText}
           placeholder="Brand"
           value={brand}
           onChangeText={(text) => setBrand(text)}
         />
+      </View>
+
+
+        <View style={styles.row}>
+          <Text style={styles.leftText}>Size</Text>
+          <TextInput
+            style={styles.dataText}
+            placeholder="Size"
+            value={size}
+            onChangeText={(text) => setSize(text)}
+          />
+        </View>
+
+
+        <View style={styles.row}>
+          <Text style={styles.leftText}>Condition</Text>
+          <TextInput
+            style={styles.dataText}
+            placeholder="Condition"
+            value={condition}
+            onChangeText={(text) => setCondition(text)}
+          />
+        </View>
+
+
+        <View style={styles.row}>
+        <Text style={styles.leftText}>Description</Text>
         <TextInput
-          style={styles.input}
-          placeholder="Size"
-          value={size}
-          onChangeText={(text) => setSize(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Condition"
-          value={condition}
-          onChangeText={(text) => setCondition(text)}
-        />
-        <TextInput
-          style={styles.input}
+          style={styles.dataText}
           placeholder="Description"
           value={description}
           onChangeText={(text) => setDescription(text)}
+          multiline={true}
         />
+        </View>
+
+
+        <View style={styles.row}>
+        <Text style={styles.leftText}>Price</Text>
         <TextInput
-          style={styles.input}
+          style={styles.dataText}
           placeholder="Price"
           value={price}
           onChangeText={(text) => setPrice(text)}
         />
+        </View>
+
+
+        <View style={styles.row}>
+        <Text style={styles.leftText}>Parcel</Text>
         <TextInput
-          style={styles.input}
+          style={styles.dataText}
           placeholder="Parcel"
           value={parcel}
           onChangeText={(text) => setParcel(text)}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Pieces"
-          value={pieces}
-          onChangeText={(text) => setPieces(text)}
-        />
-      </View>
+
+        </View>
+
+
+        <View style={styles.row}>
+          <Text style={styles.leftText}>Pieces</Text>
+          <TextInput
+            style={styles.dataText}
+            placeholder="Pieces"
+            value={pieces}
+            onChangeText={(text) => setPieces(text)}
+          />
+        </View>
+      </ScrollView>
 
       <View style={[styles]}>
         <Pressable
@@ -142,102 +189,4 @@ const AddSellProductScreen = ({ navigation, route }) => {
 
 export default AddSellProductScreen;
 
-const styles = StyleSheet.create({
-  imageContainer: {
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  profileImage: {
-    width: 120,
-    height: 120,
-    
-    overflow: 'hidden',
-  },
-  profileImagePlaceholder: {
-    width: 120,
-    height: 120,
-    
-    overflow: 'hidden',
-    backgroundColor: 'gray',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingLeft: 10,
-  },
-  button: {
-    backgroundColor: 'orange',
-    padding: 15,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:300,
-  },
-  buttonText: {
-    color:'#223263',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  
-  cialo:{
-   
-    
-  },
-screen:{
-  width:'100%',
-  height:'100%',
-  backgroundColor:'white',
-  display:'flex',
-  flexDirection:'column',
-  
-},
-
-topBar: {
-  width: '100%' ,
-  flexDirection: 'row',
-  justifyContent: 'flex-start', // Align items to the left
-  paddingLeft: 30,
-  paddingTop: 45,
-  borderBottomWidth: 0.2,
-  borderColor: 'gray',
-  paddingBottom: 10,
-  backgroundColor: 'white',
-  
-},
-Back: {
-  backgroundColor: 'blue',
-  height: 40,
-  justifyContent: 'center',
-  
- 
-},
-basicIcon: {
-  fontSize: 22,
-  color: 'gray',
-},
-exitIcon: {
-  fontSize: 22,
-  color: 'red',
-},
-title: {
-  marginLeft: 10, // Adjust margin as needed
-  
- 
-  fontSize: 20, // Adjust font size as needed
-  color:'#223263',
-
-  fontWeight:'bold',
-
-},
-buttonContainer: {
-  flex: 1,
-  justifyContent: 'center',
-},
-
-
-
-})
 
