@@ -21,7 +21,8 @@ const AddCardScreen = ({ navigation, route }) => {
     route.params.onSave(newCard);
 
     // Navigate back
-    navigation.goBack();
+    //navigation.goBack();
+    navigation.navigate('SucessCard');
   };
 
   return (
