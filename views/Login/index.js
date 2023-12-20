@@ -18,7 +18,65 @@ const LoginScreen = ({ navigation }) => {
     password: 'password',
     repeatPassword: 'password',
   };
+  const [cardData, setCardData] = useState([
+    {
+      number: "5000 0000 1111 4000",
+      cardHolder: "Dominik Jaroszek",
+      expiryDate: "01/2024",
+    },
+    {
+      number: "9000 0030 1111 4020",
+      cardHolder: "Pawel Zaporozy",
+      expiryDate: "01/2025",
+    },
+    {
+      number: "1234 0030 1111 4020",
+      cardHolder: "Pawel Bialy",
+      expiryDate: "01/2025",
+    },
+    
+  ]);
+  const [addressData, setAddressData] = useState([
+    {
+      country: "Polska",
+      first: "Dominik",
+      last: "Jaroszek",
+      street: "Podraje",
+      city: "Nowy Korczyn",
+      region:"Swietokrzyskie",
+      zip:"100-200",
+      phone:"+48 100-000-123",
+      houseNumber:'100'
+      
+    },
+    {
+      country: "Polska",
+      first: "Dominik",
+      last: "Jaroszek",
+      street: "Podraje",
+      city: "Nowy Korczyn",
+      region:"Swietokrzyskie",
+      zip:"100-200",
+      phone:"+48 123-467-789",
+      houseNumber:'123'
+      
+    },
+  ]);
 
+  const saveCardDataToStorage = async (cardData) => {
+    try {
+      await AsyncStorage.setItem('cardData', JSON.stringify(cardData));
+    } catch (error) {
+      console.error('Error saving user data to AsyncStorage:', error);
+    }
+  };
+  const saveAddressDataToStorage = async (addressData) => {
+    try {
+      await AsyncStorage.setItem('addressData', JSON.stringify(addressData));
+    } catch (error) {
+      console.error('Error saving user data to AsyncStorage:', error);
+    }
+  };
   const saveUserDataToStorage = async (userData) => {
     try {
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
@@ -29,6 +87,8 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     saveUserDataToStorage(formData);
+    saveCardDataToStorage(cardData);
+    saveAddressDataToStorage(addressData);
     navigation.navigate('TabNav');
     // Sprawdź, czy wprowadzone dane są poprawne
     if (email === formData.email && password === formData.password) {

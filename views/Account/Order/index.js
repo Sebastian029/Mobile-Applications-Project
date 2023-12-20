@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 const OrderScreen = ({ navigation }) => {
   return (
     <View style={[styles.Ekran]}>
-      <Text>Profile</Text>
+      <Text>Order</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.goBack()}

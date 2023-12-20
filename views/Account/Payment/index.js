@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { View, Text,  StyleSheet, Pressable, FlatList} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import styles from './style';
@@ -11,6 +11,9 @@ import styles from './style';
 
 
   const PaymentScreen = ({ navigation }) => {
+
+
+
     const [cardData, setCardData] = useState([
       {
         number: "5000 0000 1111 4000",
@@ -30,6 +33,14 @@ import styles from './style';
       
     ]);
   
+    const saveCardDataToStorage = async (cardData) => {
+      try {
+        await AsyncStorage.setItem('cardData', JSON.stringify(cardData));
+      } catch (error) {
+        console.error('Error saving user data to AsyncStorage:', error);
+      }
+    };
+
     const renderItem = ({ item }) => (
       <Pressable style={styles.card}>
         <AntDesign name="closecircleo" style={styles.exitIcon}  onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: handleDeleteCard })}/>
@@ -65,14 +76,17 @@ import styles from './style';
       }
     };
 
-
+    const handleGoBackAndSaveData = () => {
+      navigation.goBack();
+      saveCardDataToStorage(cardData); 
+    };
 
 
   return (
     <View style={styles.screen}>
 
       <View style={[styles.topBar]}>
-        <AntDesign name="left" style={styles.basicIcon}  onPress={() => navigation.goBack()}/>
+        <AntDesign name="left" style={styles.basicIcon}  onPress={handleGoBackAndSaveData}/>
         <Text style={styles.title}>Card</Text>
       </View>
 

@@ -8,6 +8,10 @@ import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
   export default function HomeScreen({navigation}){
+
+   
+
+
     const images = {
       sport: require('../../assets/exploreImages/sport.png'),
       socks: require('../../assets/exploreImages/socks.png'),
@@ -31,6 +35,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     const [basicPrice, setBasicPrice] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalDiscountedPrice, setTotalDiscountedPrice] = useState(0);
+
+    const handleCheckout = () => {
+     if(totalPrice!=0)
+      navigation.navigate('CheckOut', { totalPrice, itemsCount, basicPrice, totalDiscountedPrice, shippingPrice });
+    };
 
   const saveItemsToStorage = async () => {
     try {
@@ -194,7 +203,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
              </View>
         </View>
 
-        <Pressable onPress={console.log('cart')} style={styles.button}>
+        <Pressable onPress={handleCheckout} style={styles.button}>
                   <Text style={styles.buttonText}>Check out</Text>
          </Pressable>
 
