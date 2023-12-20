@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Pressable, Alert } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as Location from 'expo-location';
+
+import styles from './style';
 const AddAddressScreen = ({ navigation, route }) => {
   const [country, setCountry] = useState('');
   const [first, setFirst] = useState('');
@@ -100,56 +102,72 @@ const AddAddressScreen = ({ navigation, route }) => {
         <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
         <Text style={styles.title}>Add Address</Text>
       </View>
-      <View style={styles.cialo}>
+
+      <ScrollView style={styles.content}>
+      <Text style={styles.header}>Country</Text>
         <TextInput
           style={styles.input}
           placeholder="Country"
           value={country}
           onChangeText={(text) => setCountry(text)}
         />
+
+        <Text style={styles.header}>First Name</Text>
         <TextInput
           style={styles.input}
           placeholder="First Name"
           value={first}
           onChangeText={(text) => setFirst(text)}
         />
+
+        <Text style={styles.header}>Last Name</Text>
         <TextInput
           style={styles.input}
           placeholder="Last Name"
           value={last}
           onChangeText={(text) => setLast(text)}
         />
+
+        <Text style={styles.header}>Street</Text>
         <TextInput
           style={styles.input}
           placeholder="Street"
           value={street}
           onChangeText={(text) => setStreet(text)}
         />
+
+        <Text style={styles.header}>City</Text>
         <TextInput
           style={styles.input}
           placeholder="City"
           value={city}
           onChangeText={(text) => setCity(text)}
         />
+
+        <Text style={styles.header}>Region</Text>
         <TextInput
           style={styles.input}
           placeholder="Region"
           value={region}
           onChangeText={(text) => setRegion(text)}
         />
+
+        <Text style={styles.header}>ZIP Code</Text> 
         <TextInput
           style={styles.input}
           placeholder="ZIP Code"
           value={zip}
           onChangeText={(text) => setZip(text)}
         />
+
+        <Text style={styles.header}>Phone</Text>
         <TextInput
           style={styles.input}
           placeholder="Phone"
           value={phone}
           onChangeText={(text) => setPhone(text)}
         />
-      </View>
+      </ScrollView>
 
       <View style={[styles]}>
         <Pressable
@@ -183,72 +201,3 @@ const AddAddressScreen = ({ navigation, route }) => {
 
 export default AddAddressScreen;
 
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingLeft: 10,
-  },
-  button: {
-    backgroundColor: 'orange',
-    padding: 15,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-  },
-  buttonText: {
-    color: '#223263',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-
-  cialo: {},
-
-  screen: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  topBar: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-start', // Align items to the left
-    paddingLeft: 30,
-    paddingTop: 45,
-    borderBottomWidth: 0.2,
-    borderColor: 'gray',
-    paddingBottom: 10,
-    backgroundColor: 'white',
-  },
-  Back: {
-    backgroundColor: 'blue',
-    height: 40,
-    justifyContent: 'center',
-  },
-  basicIcon: {
-    fontSize: 22,
-    color: 'gray',
-  },
-  exitIcon: {
-    fontSize: 22,
-    color: 'red',
-  },
-  title: {
-    marginLeft: 10, // Adjust margin as needed
-
-    fontSize: 20, // Adjust font size as needed
-    color: '#223263',
-
-    fontWeight: 'bold',
-  },
-  buttonContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-});

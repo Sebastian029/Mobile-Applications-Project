@@ -69,22 +69,22 @@ import styles from './style';
 
 
   return (
-    <View style={[styles.screen]}>
+    <View style={styles.screen}>
 
       <View style={[styles.topBar]}>
         <AntDesign name="left" style={styles.basicIcon}  onPress={() => navigation.goBack()}/>
         <Text style={styles.title}>Card</Text>
       </View>
 
-      <View style={{maxHeight:'70%'}}>
-       <FlatList
-        data={cardData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.number}
-       />
-      </View>
-      
-      
+      <View style={[styles.content]}>
+        <FlatList
+          data={cardData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.number}
+        />
+        
+        </View>
+
         <Pressable
           style={({ pressed }) => [
             styles.button,
@@ -96,7 +96,7 @@ import styles from './style';
           >
           <Text style={styles.buttonText}>Add</Text>
         </Pressable>
-      
+        
     </View>
   );
 };
