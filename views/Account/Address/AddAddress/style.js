@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
   
   topBar: {
     width: '100%' ,
-    flexDirection: 'row', 
+    flexDirection: 'row',
+    justifyContent: 'flex-start', // Align items to the left
     paddingLeft: 30,
     paddingTop: 45,
     borderBottomWidth: 0.2,
@@ -23,13 +24,8 @@ const styles = StyleSheet.create({
     
   },
 
-  content:{
-    height:'75%',
-    paddingBottom:20
-  },
-
   basicIcon: {
-    fontSize: 25,
+    fontSize: 22,
     color: 'gray',
   },
   title: {
@@ -38,49 +34,26 @@ const styles = StyleSheet.create({
     color:'#223263',
     fontWeight:'bold',
   },
-
-  card:{
+  
+  content:{
     width:'80%',
-    backgroundColor:'#F99C1C',
+    maxHeight:'60%',
     marginLeft:'auto',
-    marginRight:'auto',
-    marginVertical:20,
-    borderRadius:5,
-    borderWidth:2,
-    borderColor:'navy'
+    marginRight:'auto'
   },
-  exitIcon:{
-    fontSize:20,
-    color:'red',
-    marginLeft:'auto',
-    padding:10
-  },
-  cardNumber:{
-    textAlign:'center',
-    fontSize:20,
-    color:'white',
-    fontWeight:'bold',
-    letterSpacing:1,
-    wordSpacing:10,
-    paddingBottom:20
-  },
-  cardBottom:{
-    display:'flex',
-    flexDirection:'row',
-    gap:30,
-    padding:10
-  },
-  cardDetailTop:{
-    marginLeft:'auto',
-    color:'white',
-    opacity:0.8
 
+  header:{
+    fontSize:16,
+    fontWeight:'bold',
+    color:'#223263',
+    paddingTop:10
   },
-  cardDetailBottom:{
-    marginLeft:'auto',
-    color:'white',
-    fontWeight:'bold'
+  input:{
+    color:'gray',
+    paddingLeft:10
   },
+
+
 
   button:{
     width:'80%',
@@ -92,16 +65,15 @@ const styles = StyleSheet.create({
     borderRadius:8,
     marginLeft:'auto',
     marginRight:'auto',
-    borderBottom:101
-  },
-  buttonText:{
-      fontSize:18,
-      fontWeight:'bold',
-      color:'#223263',
-      letterSpacing:1
+    marginVertical:10
+},
+buttonText:{
+    fontSize:18,
+    fontWeight:'bold',
+    color:'#223263',
+    letterSpacing:1
 
-  },
-
+},
   
   
   })
