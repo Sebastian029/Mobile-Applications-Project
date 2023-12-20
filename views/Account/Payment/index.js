@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 
 
-
+import styles from './style';
 
  
 
@@ -22,16 +22,28 @@ import { AntDesign } from '@expo/vector-icons';
         cardHolder: "Pawel Zaporozy",
         expiryDate: "01/2025",
       },
+      {
+        number: "9000 0030 1111 4020",
+        cardHolder: "Pawel asd",
+        expiryDate: "01/2025",
+      },
+      
     ]);
   
     const renderItem = ({ item }) => (
-      <Pressable >
+      <Pressable style={styles.card}>
         <AntDesign name="closecircleo" style={styles.exitIcon}  onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: handleDeleteCard })}/>
-        <Text>{item.number}</Text>
-        <Text>CARD HOLDER</Text>
-        <Text>{item.cardHolder}</Text>
-        <Text>CARD SAVE</Text>
-        <Text>{item.expiryDate}</Text>
+        <Text style={styles.cardNumber}>{item.number}</Text>
+        <View style={styles.cardBottom}>
+          <View style={styles.cardDetail}>
+            <Text style={styles.cardDetailTop}>CARD HOLDER</Text>
+            <Text style={styles.cardDetailBottom}>{item.cardHolder}</Text>
+          </View>
+          <View style={styles.cardDetail}>
+            <Text style={styles.cardDetailTop}>CARD SAVE</Text>
+            <Text style={styles.cardDetailBottom}>{item.expiryDate}</Text>
+          </View>
+        </View>
       </Pressable>
     );
     const handleSaveCard = (newCard) => {
@@ -58,111 +70,37 @@ import { AntDesign } from '@expo/vector-icons';
 
   return (
     <View style={[styles.screen]}>
-    <View style={[styles.topBar]}>
-    
-    <AntDesign name="left" style={styles.basicIcon}  onPress={() => navigation.goBack()}/>
-    <Text style={styles.title}>Card</Text>
+
+      <View style={[styles.topBar]}>
+        <AntDesign name="left" style={styles.basicIcon}  onPress={() => navigation.goBack()}/>
+        <Text style={styles.title}>Card</Text>
       </View>
-       <View style={styles.cialo} >
+
+      <View style={{maxHeight:'70%'}}>
        <FlatList
         data={cardData}
         renderItem={renderItem}
         keyExtractor={(item) => item.number}
-      />
-
-       </View>
-      
-      <View style={[styles]}>
+       />
+      </View>
       
       
-      <Pressable
-  style={({ pressed }) => [
-    styles.button,
-    {
-      backgroundColor: pressed ? 'darkorange' : 'orange',
-    },
-  ]}
-   onPress={() => navigation.navigate('AddCard', { onSave: handleSaveCard })} // Użyj funkcji anonimowej tutaj
->
-  <Text style={styles.buttonText}>Add</Text>
-</Pressable>
-    </View>
+        <Pressable
+          style={({ pressed }) => [
+            styles.button,
+            {
+              backgroundColor: pressed ? 'darkorange' : 'orange',
+            },
+          ]}
+          onPress={() => navigation.navigate('AddCard', { onSave: handleSaveCard })}
+          >
+          <Text style={styles.buttonText}>Add</Text>
+        </Pressable>
+      
     </View>
   );
 };
 
 export default PaymentScreen;
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: 'orange',
-    padding: 15,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width:300,
-  },
-  buttonText: {
-    color:'#223263',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  
-  cialo:{
-   
-    
-  },
-screen:{
-  width:'100%',
-  height:'100%',
-  backgroundColor:'white',
-  display:'flex',
-  flexDirection:'column',
-  
-},
 
-topBar: {
-  width: '100%' ,
-  flexDirection: 'row',
-  justifyContent: 'flex-start', // Align items to the left
-  paddingLeft: 30,
-  paddingTop: 45,
-  borderBottomWidth: 0.2,
-  borderColor: 'gray',
-  paddingBottom: 10,
-  backgroundColor: 'white',
-  
-},
-Back: {
-  backgroundColor: 'blue',
-  height: 40,
-  justifyContent: 'center',
-  
- 
-},
-basicIcon: {
-  fontSize: 22,
-  color: 'gray',
-},
-exitIcon: {
-  fontSize: 22,
-  color: 'red',
-},
-title: {
-  marginLeft: 10, // Adjust margin as needed
-  
- 
-  fontSize: 20, // Adjust font size as needed
-  color:'#223263',
-
-  fontWeight:'bold',
-
-},
-buttonContainer: {
-  flex: 1,
-  justifyContent: 'center',
-},
-
-
-
-})
