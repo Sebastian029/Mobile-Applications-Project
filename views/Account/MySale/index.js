@@ -4,12 +4,6 @@ import { View, Text,  StyleSheet, Pressable, FlatList,Image} from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 
-
-
-
- 
-
-
   const MySaleScreen = ({ navigation }) => {
     
     const [mySaleData, setMySaleData] = useState([

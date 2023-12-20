@@ -9,6 +9,9 @@ const StarRating = ({ stars }) => {
 
     const starIcons = [];
 
+
+
+    
     for (let i = 0; i < totalStars; i++) {
       if (i < filledStars) {
         starIcons.push(
