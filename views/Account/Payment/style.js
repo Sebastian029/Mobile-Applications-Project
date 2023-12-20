@@ -89,14 +89,14 @@ const styles = StyleSheet.create({
     marginLeft:'auto',
     marginRight:'auto',
     borderBottom:101
-},
-buttonText:{
-    fontSize:18,
-    fontWeight:'bold',
-    color:'#223263',
-    letterSpacing:1
+  },
+  buttonText:{
+      fontSize:18,
+      fontWeight:'bold',
+      color:'#223263',
+      letterSpacing:1
 
-},
+  },
 
   
   

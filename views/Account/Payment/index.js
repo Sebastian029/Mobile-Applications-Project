@@ -23,8 +23,8 @@ import styles from './style';
         expiryDate: "01/2025",
       },
       {
-        number: "9000 0030 1111 4020",
-        cardHolder: "Pawel asd",
+        number: "1234 0030 1111 4020",
+        cardHolder: "Pawel Bialy",
         expiryDate: "01/2025",
       },
       

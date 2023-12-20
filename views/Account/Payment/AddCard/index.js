@@ -33,24 +33,37 @@ const AddCardScreen = ({ navigation, route }) => {
       </View>
 
       <View style={styles.mainBox}>
-        <TextInput
-          style={styles.input}
-          placeholder="Card Number"
-          value={cardNumber}
-          onChangeText={(text) => setCardNumber(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Card Holder"
-          value={cardHolder}
-          onChangeText={(text) => setCardHolder(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Expiry Date"
-          value={expiryDate}
-          onChangeText={(text) => setExpiryDate(text)}
-        />
+
+        <View style={styles.cardDetail}>
+          <Text style={styles.cardDetailName}>Card Number</Text>
+          <TextInput
+            style={styles.cardDetailInput}
+            placeholder="_ _ _ _ _  _ _ _ _ _  _ _ _ _ _  _ _ _ _ _"
+            value={cardNumber}
+            onChangeText={(text) => setCardNumber(text)}
+          />
+        </View>
+
+        <View style={styles.cardDetail}>
+          <Text style={styles.cardDetailName}>Card Holder</Text>
+          <TextInput
+            style={styles.cardDetailInput}
+            placeholder="Name LastName"
+            value={cardHolder}
+            onChangeText={(text) => setCardHolder(text)}
+            />
+        </View>
+
+
+        <View style={styles.cardDetail}>
+          <Text style={styles.cardDetailName}>Expiration Date</Text>
+          <TextInput
+            style={styles.cardDetailInput}
+            placeholder="MM/YYYY"
+            value={expiryDate}
+            onChangeText={(text) => setExpiryDate(text)}
+          />
+        </View>
       </View>
 
       <View style={[styles]}>
