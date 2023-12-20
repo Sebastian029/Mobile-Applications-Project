@@ -20,7 +20,7 @@ import { AntDesign } from '@expo/vector-icons';
         img: require('../../../assets/productImages/AdidasSuperstar.png'),
       },
       {
-        title: "AirPro",
+        title: "AirMax",
         category: "Dominik",
         brand: "Nike",
         size: "43",
@@ -67,7 +67,7 @@ import { AntDesign } from '@expo/vector-icons';
 
     const handleDeleteMySale = (mySaleToDelete) => {
       // Znajdź indeks karty do usunięcia
-      const index = mySaleData.findIndex((mySale) => mySale.number === mySaleToDelete.number);
+      const index = mySaleData.findIndex((mySale) => mySale.title === mySaleToDelete.title);
   
       if (index !== -1) {
         // Utwórz kopię stanu i usuń kartę

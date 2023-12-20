@@ -51,7 +51,7 @@ import styles from './style';
                   backgroundColor: pressed ? 'gray' : 'lightgray',
                 },
               ]}
-              onPress={() => navigation.navigate('DeleteAddress', { address: item, onDelete: handleDeleteAddress })} Użyj funkcji anonimowej tutaj
+              onPress={() => navigation.navigate('DeleteAddress', { address: item, onDelete: handleDeleteAddress })} 
             >
             <Text style={styles.buttonSmallText}>Delete</Text>
           </Pressable>
@@ -96,7 +96,7 @@ import styles from './style';
 
     const handleDeleteAddress = (addressToDelete) => {
       // Znajdź indeks karty do usunięcia
-      const index = addressData.findIndex((address) => address.number === addressToDelete.number);
+      const index = addressData.findIndex((address) => address.phone === addressToDelete.phone);
   
       if (index !== -1) {
         // Utwórz kopię stanu i usuń kartę
