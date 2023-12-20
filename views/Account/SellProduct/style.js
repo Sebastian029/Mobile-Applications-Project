@@ -34,12 +34,75 @@ const styles = StyleSheet.create({
     color:'#223263',
     fontWeight:'bold',
   },
+
+  imageContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  profileImage: {
+    width: 120,
+    height: 120,
+    resizeMode: 'contain'
+
+  },
+  profileImagePlaceholder: {
+    width: 120,
+    height: 120,
+    overflow: 'hidden',
+    backgroundColor: 'gray',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   content:{
-    width:'90%',
+    width:'100%',
     marginLeft:'auto',
     marginRight:'auto',
-    minHeight:'10%',
-    maxHeight:'50%'
+    maxHeight:'55%',
+},
+
+  row:{
+    display:'flex',
+    flexDirection:'row',
+    gap:15,
+    marginVertical:5,
+    width:'80%',
+    marginLeft:'auto',
+    marginRight:'auto',
+    alignItems:'start'
+},
+leftText:{
+  color:'#223263',
+  fontSize: 16,
+  fontWeight: 'bold',
+  flex:1
+},
+dataText:{
+  textAlign:'right',
+  marginLeft:'auto',
+  color:'gray',
+  paddingRight:10,
+  flex:2,
+  height: '100%'
+},
+
+button:{
+  width:'80%',
+  height:70,
+  backgroundColor:'#F99C1C',
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  borderRadius:8,
+  marginLeft:'auto',
+  marginRight:'auto',
+},
+buttonText:{
+  fontSize:18,
+  fontWeight:'bold',
+  color:'#223263',
+  letterSpacing:1
+
 },
 
 
