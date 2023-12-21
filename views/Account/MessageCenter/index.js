@@ -25,10 +25,13 @@ const MessageCenterScreen = ({ navigation }) => {
     },
   ]);
   const renderItem = ({ item }) => (
-    <Pressable onPress={() => navigation.navigate('MessageDetail', { selectedItem: item})}>
-      <Text> {item.title}</Text>
+   
+      <Pressable style={styles.infoBox} onPress={() => navigation.navigate('MessageDetail', { selectedItem: item})}>
+        
+        <Text style={styles.infoText}> {item.title}</Text>
 
-    </Pressable>
+      </Pressable>
+    
   );
 
 
@@ -62,24 +65,25 @@ const MessageCenterScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.screen}>
    
-    <View style={styles.topBar}>
-      <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
-      <Text style={styles.title}>Message Center</Text>
-    </View>
-    <View style={styles.welcomeView}>
-          {userData && (
-            <View>
-              <Text style={styles.welcomeText}>Hi, {userData.firstName}!</Text>
-            </View>
-          )}
-          
-          <FlatList
-  data={messageData}
-  renderItem={renderItem}
-  keyExtractor={(item, index) => index.toString()} 
-/>
+      <View style={styles.topBar}>
+        <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
+        <Text style={styles.title}>Message Center</Text>
+      </View>
 
-       </View>
+      <View style={styles.welcomeView}>
+            {userData && (
+              <View>
+                <Text style={styles.title}>Hi, {userData.firstName}!</Text>
+              </View>
+            )}
+            
+            <FlatList
+              data={messageData}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()} 
+            />
+
+      </View>
     </SafeAreaView>
   );
 };
