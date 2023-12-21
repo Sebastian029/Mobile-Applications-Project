@@ -56,7 +56,7 @@ export default function OrderDetail({navigation}){
 
     const renderItem = ({ item }) => {
         return (
-            <View style={styles.productView}>
+            <Pressable style={styles.productView} onPress={()=>navigation.navigate('Product', { selectedItem: item})}>
                 <Image source={images[item.img]} style={styles.productIcon}/>
                 <View style={styles.singleProductView}>
                     <View style={styles.itemTop}>
@@ -68,7 +68,7 @@ export default function OrderDetail({navigation}){
                         <Text style={styles.basicIcon}>{item.quantity}</Text>
                     </View>
                 </View>
-            </View>
+            </Pressable>
         );
     };
 
