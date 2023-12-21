@@ -36,14 +36,19 @@ import styles from './style';
     
 
     const renderItem = ({ item }) => (
-      <Pressable style={styles.card} onPress={() => navigation.navigate('CheckOut', { card: item })}>
+      <Pressable style={({ pressed }) => [
+          styles.card,
+          {
+              borderColor: pressed ? 'navy' : '#0030ef',
+          },
+      ]} onPress={() => navigation.navigate('CheckOut', { card: item })}>
         <Text style={styles.cardNumber}>{item.number}</Text>
         <View style={styles.cardBottom}>
-          <View style={styles.cardDetail}>
+          <View>
             <Text style={styles.cardDetailTop}>CARD HOLDER</Text>
             <Text style={styles.cardDetailBottom}>{item.cardHolder}</Text>
           </View>
-          <View style={styles.cardDetail}>
+          <View>
             <Text style={styles.cardDetailTop}>CARD SAVE</Text>
             <Text style={styles.cardDetailBottom}>{item.expiryDate}</Text>
           </View>
