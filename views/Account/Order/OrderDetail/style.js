@@ -131,9 +131,12 @@ const styles = StyleSheet.create({
 
 
   summary:{
-    width:'100%',
-    flex:0.9,
-    paddingTop:10
+    paddingVertical: 10,
+    borderColor: "#9098b1",
+    borderWidth: 1,
+    borderRadius: 3,
+    margin: 10
+
   },
   specification:{
     flexDirection:'row',
@@ -146,6 +149,12 @@ const styles = StyleSheet.create({
     color:'#223263',
     fontSize:14,
     paddingVertical:5
+  },
+
+  specAdr:{
+    color:'#223263',
+    fontSize:14,
+    textAlign: "right"
   },
 
   noItemsText:{

@@ -9,6 +9,31 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function OrderDetail({navigation}){
 
+    const items =[
+        {
+            id: '1',
+            type:'sport',
+            img: 'NewBalanceBB550',
+            name:'NewBalance iuo',
+            price:100,
+            discountedPrice:150,
+            size:40, brand:'Nike',
+            condition:'Good',
+            description:'des',
+            review:'rev1'
+        },
+        {
+            id: '2',
+            type:'sport',
+            img: 'NewBalanceu574',
+            name:'Adidas dasd',
+            price:110,
+            discountedPrice:160,
+            size:40, brand:'Nike',
+            condition:'Good',
+            description:'des',
+            review:'rev1'
+        }]
 
 
 
@@ -29,117 +54,6 @@ export default function OrderDetail({navigation}){
         ReebokRoyal: require('../../../../assets/productImages/ReebokRoyal.png'),
     };
 
-    const [items, setItems] = useState([]);
-    const [itemsCount, setItemsCount] = useState(0);
-    const [shippingPrice, setShippingPrice] = useState(0);
-    const [basicPrice, setBasicPrice] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalDiscountedPrice, setTotalDiscountedPrice] = useState(0);
-
-    const handleCheckout = () => {
-        if(totalPrice!=0)
-            navigation.navigate('CheckOut', { totalPrice, itemsCount, basicPrice, totalDiscountedPrice, shippingPrice });
-    };
-
-    const saveItemsToStorage = async () => {
-        try {
-            await AsyncStorage.setItem('storedItems', JSON.stringify(items));
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    const loadItemsFromStorage = async () => {
-        try {
-            const serializedItems = await AsyncStorage.getItem('storedItems');
-            if (serializedItems !== null) {
-                setItems(JSON.parse(serializedItems));
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-
-    const getItem = async () => {
-        try {
-            const serializedItem = await AsyncStorage.getItem('CartItem');
-            if (serializedItem !== null) {
-                const newItem = JSON.parse(serializedItem);
-                const itemExists = items.some(existingItem => existingItem.id === newItem.id);
-                if (!itemExists) {
-                    const newItemWithQuantity = { ...newItem, quantity: 1 };
-                    setItems(prevItems => [...prevItems, newItemWithQuantity]);
-
-                }
-                if (itemExists) {
-                    await AsyncStorage.removeItem('CartItem');
-                }
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    useEffect(() => {
-        loadItemsFromStorage();
-        countTotal();
-        return () => {
-            saveItemsToStorage(items);
-        };
-    }, []);
-
-    useFocusEffect(
-        React.useCallback(() => {
-            getItem();
-            countTotal();
-        },[items])
-    );
-
-    const changeQuantity = (item, num) => {
-        if(num>0 || (item.quantity>1 && num <0)){
-            setItems(prevItems =>
-                prevItems.map(i =>
-                    i.id === item.id ? { ...i, quantity: i.quantity + num } : i
-                )
-            );
-        }
-    };
-
-    const deleteItem = (itemToDelete) => {
-        setItems(prevItems => prevItems.filter(item => item.id !== itemToDelete.id));
-    };
-
-
-
-    const countTotal = () =>{
-        let count = 0;
-        let tmpPrice = 0;
-        let shipping = 10;
-        let tmpDisc = 0;
-        let basic = 0;
-
-
-        items.forEach(item =>{
-            count += item.quantity;
-            basic += (item.discountedPrice  * item.quantity);
-
-            tmpPrice += (item.price * item.quantity);
-            tmpDisc += ((item.discountedPrice - item.price) * item.quantity);
-
-
-        })
-        if(tmpPrice>200 || count <=0)
-            shipping=0;
-
-        setBasicPrice(basic);
-        setShippingPrice(shipping);
-        setItemsCount(count);
-        setTotalDiscountedPrice(tmpDisc);
-        setTotalPrice(basic-tmpDisc + shipping);
-    }
-
-
     const renderItem = ({ item }) => {
         return (
             <View style={styles.productView}>
@@ -147,14 +61,11 @@ export default function OrderDetail({navigation}){
                 <View style={styles.singleProductView}>
                     <View style={styles.itemTop}>
                         <Text style={styles.productName}>{item.name}</Text>
-                        <AntDesign name="delete" style={styles.deleteIcon} onPress={() => deleteItem(item)}/>
                     </View>
                     <Text style={styles.productPrice}>{item.price}$</Text>
                     <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text>
                     <View style={styles.pieces}>
-                        <AntDesign name="minus" style={styles.basicIcon} onPress={()=>changeQuantity(item, -1)}/>
                         <Text style={styles.basicIcon}>{item.quantity}</Text>
-                        <AntDesign name="plus" style={styles.basicIcon} onPress={()=>changeQuantity(item, 1)}/>
                     </View>
                 </View>
             </View>
@@ -182,31 +93,54 @@ export default function OrderDetail({navigation}){
                 )}
             </View>
 
+            <Text style={styles.title}>Shipping details</Text>
             <View style={styles.summary}>
                 <View style={styles.specification}>
-                    <Text style={styles.spec}>Items ({itemsCount})</Text>
-                    <Text style={styles.spec}>{basicPrice}$</Text>
+                    <Text style={styles.spec}>Expected delivery date:</Text>
+                    <Text style={styles.spec}>22-12-2023</Text>
                 </View>
 
                 <View style={styles.specification}>
                     <Text style={styles.spec}>Shipping</Text>
-                    <Text style={styles.spec}>{shippingPrice}$</Text>
+                    <Text style={styles.spec}>Poczta Polska</Text>
+                </View>
+
+                <View style={styles.specification}>
+                    <Text style={styles.spec}>Address</Text>
+                    <View>
+                        <Text style={styles.specAdr}>Podraje 2, 28-136</Text>
+                        <Text style={styles.specAdr}>Nowy Korczyn</Text>
+                    </View>
+                </View>
+
+            </View>
+
+            <Text style={styles.title}>Payment details</Text>
+            <View style={styles.summary}>
+                <View style={styles.specification}>
+                    <Text style={styles.spec}>Items (2)</Text>
+                    <Text style={styles.spec}>310$</Text>
+                </View>
+
+                <View style={styles.specification}>
+                    <Text style={styles.spec}>Shipping</Text>
+                    <Text style={styles.spec}>40$</Text>
                 </View>
 
                 <View style={styles.specification}>
                     <Text style={styles.spec}>Total Discounts</Text>
-                    <Text style={styles.spec}>{totalDiscountedPrice}$</Text>
+                    <Text style={styles.spec}>100$</Text>
                 </View>
 
                 <View style={styles.specification}>
                     <Text style={[styles.spec, {fontWeight:'bold'}]}>Total price</Text>
-                    <Text style={[styles.spec, {fontWeight:'bold'}]}>{totalPrice}$</Text>
+                    <Text style={[styles.spec, {fontWeight:'bold'}]}>250$</Text>
                 </View>
             </View>
 
-            <Pressable onPress={handleCheckout} style={styles.button}>
+            {/*<Pressable onPress={handleCheckout} style={styles.button}>
                 <Text style={styles.buttonText}>Check out</Text>
-            </Pressable>
+            </Pressable>*/}
 
 
         </SafeAreaView>
