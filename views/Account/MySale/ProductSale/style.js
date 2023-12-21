@@ -69,12 +69,15 @@ const styles = StyleSheet.create({
         color:'#223263',
         fontSize:14,
         fontWeight:'bold',
-        paddingVertical:5
+        paddingVertical:5,
+        marginHorizontal:5
     },
     specRight:{
         color:'gray',
         fontSize:14,
         paddingVertical:5,
+        marginHorizontal:5,
+        maxWidth: '80%'
     },
     productReview:{
         color:'orange',
