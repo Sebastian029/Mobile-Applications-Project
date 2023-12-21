@@ -28,7 +28,13 @@ import styles from './style';
 
   
     const renderItem = ({ item }) => (
-        <Pressable style={styles.card} onPress={() => navigation.navigate('CheckOut', { address: item })}>
+        <Pressable style={({ pressed }) => [
+                styles.card,
+                {
+                    borderColor: pressed ? "#f99c1c" : 'lightgrey',
+                },
+            ]}
+            onPress={() => navigation.navigate('CheckOut', { address: item })}>
         <Text style={styles.heading}>My Address 1</Text>
 
         <Text style={styles.cardInformation}>{item.first} {item.last}</Text>
