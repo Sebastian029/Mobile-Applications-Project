@@ -101,7 +101,6 @@ buttonText:{
   fontWeight:'bold',
   color:'#223263',
   letterSpacing:1
-
 },
 
   

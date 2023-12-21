@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
         alignItems:'center'
         
       },
-      basicIcon: {
-        fontSize: 22,
-        color: 'gray',
-      },
       title: {
         marginLeft: 10, // Adjust margin as needed
         fontSize: 20, // Adjust font size as needed

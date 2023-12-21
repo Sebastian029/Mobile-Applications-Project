@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         paddingBottom: 10,
         backgroundColor: 'white',
-        alignItems:'center'
+        alignItems:'center',
         
       },
    
@@ -31,25 +31,49 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         paddingVertical:10
       },
-      basicIcon:{
-        fontSize:22,
-        color:'gray',
-      }, 
 
       infoBox:{
         width:'80%',
         marginLeft:'auto',
         marginRight:'auto',
-        backgroundColor:'lightgray',
         padding:10,
+        borderRadius:5,
         borderWidth:2,
-        borderColor:'navy',
-        marginTop: -1
+        borderColor:'lightgray',
+        margin:10
+      },
+      infoTitle:{
+        color:'#223263',
+        fontWeight:'500',
+        fontSize:20,
+        paddingBottom:5
       },
       infoText:{
-        color:'#223263',
-        fontWeight:'500'
+        color:'gray',
+        fontWeight:'400',
+        fontSize:16,
+        paddingBottom:10
+      },
+      basicIcon:{
+        fontSize:22,
+        color:'gray',
+      },
+      addCommentButton:{
+        width:'50%',
+        marginRight:'auto',
+
+        borderRadius:5,
+        padding:5
+      },
+      addCommentButtonText:{
+          color:'#223263',
+          fontWeight:'500',
+          textAlign:'center'
       }
+
+      
+
+
       
 
         

@@ -19,7 +19,8 @@ const StarComment = () => {
           <AntDesign
             name={i < filledStars ? 'star' : 'staro'}
             color={i < filledStars ? 'orange' : 'gray'}
-            size={20}
+            size={24}
+            style={{paddingBottom:10}}
           />
         </Pressable>
       );
