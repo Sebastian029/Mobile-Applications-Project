@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     borderRadius:8,
     marginLeft:'auto',
     marginRight:'auto',
+    marginVertical:10
 },
 buttonText:{
     fontSize:18,
@@ -78,6 +79,5 @@ buttonText:{
   })
   
   
-
 
 export default styles;

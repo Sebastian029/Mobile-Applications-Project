@@ -80,5 +80,4 @@ buttonText:{
   
   
 
-
 export default styles;
