@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 
 const styles = StyleSheet.create({
-    
+
     screen:{
         width:'100%',
         height:'100%',
@@ -10,7 +10,27 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection:'column',
         paddingTop:15
-        
+
+    },
+
+    topBar: {
+        width: '100%' ,
+        flexDirection: 'row',
+        justifyContent: 'flex-start', // Align items to the left
+        paddingLeft: 30,
+        paddingTop: 45,
+        borderBottomWidth: 0.2,
+        borderColor: 'gray',
+        paddingBottom: 10,
+        backgroundColor: 'white',
+
+    },
+
+    title: {
+        marginLeft: 10, // Adjust margin as needed
+        fontSize: 20, // Adjust font size as needed
+        color:'#223263',
+        fontWeight:'bold',
     },
 
     topText:{
@@ -26,7 +46,7 @@ const styles = StyleSheet.create({
         minHeight:'10%',
         maxHeight:'50%'
     },
-    
+
 
     productView:{
         paddingLeft:20,
@@ -35,31 +55,31 @@ const styles = StyleSheet.create({
         gap:10,
         paddingVertical:10,
         width:'100%'
-   },
-   singleProductView:{
-        flex:1,
-   },
-   productIcon:{
-    width:100,
-    height:100,
-    resizeMode: 'contain'
     },
-   productName:{
-    color:'#223263',
-    fontSize:20,
-    fontWeight:'bold',
-    maxWidth:'90%'
-   },
-   productPrice:{
-    fontSize:18,
-    color:'orange',
-    fontWeight:'bold'
-   },
-   productDiscountedPrice:{
-    fontSize:15,
-    color:'gray',
-    textDecorationLine: 'line-through'
-   },
+    singleProductView:{
+        flex:1,
+    },
+    productIcon:{
+        width:100,
+        height:100,
+        resizeMode: 'contain'
+    },
+    productName:{
+        color:'#223263',
+        fontSize:20,
+        fontWeight:'bold',
+        maxWidth:'90%'
+    },
+    productPrice:{
+        fontSize:18,
+        color:'orange',
+        fontWeight:'bold'
+    },
+    productDiscountedPrice:{
+        fontSize:15,
+        color:'gray',
+        textDecorationLine: 'line-through'
+    },
     button:{
         width:'80%',
         height:70,
@@ -70,7 +90,7 @@ const styles = StyleSheet.create({
         borderRadius:8,
         marginLeft:'auto',
         marginRight:'auto',
-        borderBottom:10
+        marginBottom: 10,
     },
     buttonText:{
         fontSize:18,
@@ -85,8 +105,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         marginLeft:'auto',
-       
-        
+
+
     },
     basicIcon:{
         fontSize:18,
@@ -100,8 +120,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems:'center',
         maxWidth:'100%'
-        
-        
+
+
     },
     deleteIcon:{
         fontSize:25,
@@ -118,7 +138,7 @@ const styles = StyleSheet.create({
     specification:{
         flexDirection:'row',
         justifyContent:'space-between',
-        width:'80%',
+        width:'100%',
         marginLeft:'auto',
         marginRight:'auto'
     },
@@ -127,13 +147,40 @@ const styles = StyleSheet.create({
         fontSize:14,
         paddingVertical:5
     },
-    
+
     noItemsText:{
         color:'orange',
         fontSize:22,
         paddingVertical:5,
         textAlign:'center',
         marginTop:10
+    },
+    summaryText:{
+        marginLeft:10,
+        marginTop: 5,
+        marginBottom:10,
+        color:'#223263',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    input: {
+        height: 40,
+        borderColor: '#ebf0ff',
+        borderWidth: 1,
+        marginBottom: 10,
+        marginHorizontal: 15,
+        paddingHorizontal: 10,
+        borderRadius:5
+    },
+
+    frame: {
+        borderWidth: 1,
+        borderRadius: 6,
+        borderColor: "#ebf0ff",
+        marginHorizontal: 20,
+        paddingHorizontal: 10,
+        marginBottom: 25
     }
 })
 

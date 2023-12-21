@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         marginLeft:'auto',
         marginRight:'auto',
         width:'100%',
+        height:250,
         resizeMode: 'contain',
     },
     specifications:{

@@ -142,7 +142,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
     const renderItem = ({ item }) => {
       return (
-        <View style={styles.productView}>
+        <Pressable style={styles.productView}onPress={()=>navigation.navigate('Product', { selectedItem: item})}>
           <Image source={images[item.img]} style={styles.productIcon}/>
           <View style={styles.singleProductView}>
             <View style={styles.itemTop}>
@@ -157,7 +157,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
               <AntDesign name="plus" style={styles.basicIcon} onPress={()=>changeQuantity(item, 1)}/>
             </View>
             </View>
-        </View>
+        </Pressable>
       );
     };
   
