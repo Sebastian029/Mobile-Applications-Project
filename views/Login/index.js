@@ -3,11 +3,13 @@ import { Text, View, Image, TextInput, ScrollView, Pressable } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
+import axios from 'axios';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [loginData, setLoginData] = useState(null);
+  
   const formData = {
     id: '1',
     firstName: 'John',
@@ -85,13 +87,21 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     saveUserDataToStorage(formData);
     saveCardDataToStorage(cardData);
     saveAddressDataToStorage(addressData);
-    navigation.navigate('TabNav');
+   // navigation.navigate('TabNav');
+
+    const response = await axios.get('http://192.168.1.25:3004/users');
+      console.log('Dane z serwera:', response.data);
+
+      const users = response.data;
+      const authenticatedUser = users.find((user) => user.email === email && user.password === password);
+      console.log(authenticatedUser);
+
     // Sprawdź, czy wprowadzone dane są poprawne
-    if (email === formData.email && password === formData.password) {
+    if (authenticatedUser){ //(email === formData.email && password === formData.password) {
       console.log('Login successful');
 
       // Zapisz dane zalogowanego użytkownika w AsyncStorage

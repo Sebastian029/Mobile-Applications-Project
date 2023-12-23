@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "login",
+      "phoneNumber": 123456789,
+      "birthday": "1990-01-01",
+      "password": "password",
+      "repeatPassword": "password"
+    },
+    {
+      "firstName": "G",
+      "lastName": "H",
+      "email": "Login",
+      "phoneNumber": "Hg",
+      "birthday": "Gh",
+      "password": "Password",
+      "repeatPassword": "Password",
+      "id": 2
+    }
+  ]
+}
