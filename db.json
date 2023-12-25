@@ -51,20 +51,32 @@
       "region":"Swietokrzyskie",
       "zip":"100-200",
       "phone":"+48 100-000-123",
-      "houseNumber":100,
+      "houseNumber": 100,
       "userid": 1
     },
     {
       "country": "Polska",
-      "first": "Dominik",
+      "first": "Dominiqe",
       "last": "Jaroszek",
       "street": "Podraje",
       "city": "Nowy Korczyn",
       "region":"Swietokrzyskie",
       "zip":"100-200",
       "phone":"+48 123-467-789",
-      "houseNumber":123,
+      "houseNumber": 123,
       "userid": 1 
+    },
+    {
+      "country": "Uruguay",
+      "first": "Gailed",
+      "last": "Gullette",
+      "street": "bo ja wiem",
+      "city": "chyba nie",
+      "region":"Zadupie wielkie",
+      "zip":"123-234",
+      "phone":"+48 123-467-789",
+      "houseNumber": 567,
+      "userid": 2 
     }
   ]
 }
