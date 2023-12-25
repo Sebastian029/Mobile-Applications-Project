@@ -8,7 +8,6 @@ import axios from 'axios';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginData, setLoginData] = useState(null);
   
   const formData = {
     id: '1',
@@ -23,18 +22,21 @@ const LoginScreen = ({ navigation }) => {
   const [cardData, setCardData] = useState([
     {
       number: "5000 0000 1111 4000",
-      cardHolder: "Dominik Jaroszek",
+      cardHolder: "Dominiqe Jaroszek",
       expiryDate: "01/2024",
+      userid: "",
     },
     {
       number: "9000 0030 1111 4020",
       cardHolder: "Pawel Zaporozy",
       expiryDate: "01/2025",
+      userid: ""
     },
     {
       number: "1234 0030 1111 4020",
       cardHolder: "Pawel Bialy",
       expiryDate: "01/2025",
+      userid: ""
     },
     
   ]);
@@ -65,20 +67,37 @@ const LoginScreen = ({ navigation }) => {
     },
   ]);
 
-  const saveCardDataToStorage = async (cardData) => {
+  const saveCardDataToStorage = async (userId, cardData) => {
     try {
-      await AsyncStorage.setItem('cardData', JSON.stringify(cardData));
+      // Sprawdź, czy użytkownik jest zalogowany
+      const authenticatedUser = await AsyncStorage.getItem('userData');
+      if (!authenticatedUser) {
+        console.error('User not authenticated');
+        return;
+      }
+  
+      // Pobierz istniejące dane kart z AsyncStorage
+      const existingCardData = await AsyncStorage.getItem('cardData');
+      let parsedCardData = existingCardData ? JSON.parse(existingCardData) : [];
+  
+      if (!Array.isArray(parsedCardData)) {
+        parsedCardData = [];
+      }
+  
+      // Filtruj dane kart tylko dla zalogowanego użytkownika
+      const filteredCardData = parsedCardData.filter((card) => card.userid === userId);
+  
+      // Dodaj nowe dane karty dla zalogowanego użytkownika
+      const userCardData = cardData.map(card => ({ ...card, userid: userId }));
+      filteredCardData.push(...userCardData);
+  
+      // Zapisz dane kart do AsyncStorage
+      await AsyncStorage.setItem('cardData', JSON.stringify(filteredCardData));
     } catch (error) {
-      console.error('Error saving user data to AsyncStorage:', error);
+      console.error('Error saving card data to AsyncStorage:', error);
     }
   };
-  const saveAddressDataToStorage = async (addressData) => {
-    try {
-      await AsyncStorage.setItem('addressData', JSON.stringify(addressData));
-    } catch (error) {
-      console.error('Error saving user data to AsyncStorage:', error);
-    }
-  };
+  
   const saveUserDataToStorage = async (userData) => {
     try {
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
@@ -86,31 +105,62 @@ const LoginScreen = ({ navigation }) => {
       console.error('Error saving user data to AsyncStorage:', error);
     }
   };
-
+  const displayStoredData = async () => {
+    try {
+      const storedUserData = await AsyncStorage.getItem('userData');
+      const storedCardData = await AsyncStorage.getItem('cardData');
+  
+      console.log('Stored User Data:', storedUserData);
+      console.log('Stored Card Data:', storedCardData);
+    } catch (error) {
+      console.error('Error reading data from AsyncStorage:', error);
+    }
+  };
+  
   const handleLogin = async () => {
-    saveUserDataToStorage(formData);
-    saveCardDataToStorage(cardData);
-    saveAddressDataToStorage(addressData);
+    //saveUserDataToStorage(formData);
+    //saveCardDataToStorage(cardData);
+   // saveAddressDataToStorage(addressData);
    // navigation.navigate('TabNav');
+    try{
+    const responseUsers = await axios.get('http://192.168.1.25:3004/users');
+      console.log('Dane z serwera:', responseUsers.data);
+    const responseCardData = await axios.get('http://192.168.1.25:3004/cardData');
+      console.log('Dane z serwera:', responseCardData.data);
 
-    const response = await axios.get('http://192.168.1.25:3004/users');
-      console.log('Dane z serwera:', response.data);
+      const getResponseDataUsers = responseUsers.data;
+      const getResponseDataCardData = responseCardData.data;
 
-      const users = response.data;
-      const authenticatedUser = users.find((user) => user.email === email && user.password === password);
-      console.log(authenticatedUser);
+      const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
+      //const authenticatedCardData = getResponseDataCardData.find((cardData) => cardData.userid === authenticatedUser.id);
 
+      console.log("user: "+authenticatedUser.id);
+      //console.log("card: "+authenticatedCardData.userid);
+     // console.log('Dane z serwera:', authenticatedCardData);
     // Sprawdź, czy wprowadzone dane są poprawne
-    if (authenticatedUser){ //(email === formData.email && password === formData.password) {
+    if (authenticatedUser){ 
       console.log('Login successful');
+      const authenticatedCardData = getResponseDataCardData.filter((cardData) => {
+        const match = cardData.userid === authenticatedUser.id;
+        console.log('Checking:', cardData.userid, ' === ', authenticatedUser.id, ' => ', match);
+        return match;
+      });
+      console.log('Authenticated card data:', authenticatedCardData);
+      console.log("card: " + authenticatedCardData.map(card => card.userid).join(', '));
+      console.log('Dane z serwera:', authenticatedCardData);
 
       // Zapisz dane zalogowanego użytkownika w AsyncStorage
-      saveUserDataToStorage(formData);
-
+      saveUserDataToStorage(authenticatedUser);
+      saveCardDataToStorage(authenticatedUser.id, authenticatedCardData);
+      displayStoredData();
       navigation.navigate('TabNav');
     } else {
       console.log('Invalid credentials');
     }
+  }catch(error)
+  {
+    console.log("error: ",error);
+  }
   };
 
   const goToRegister = () => {

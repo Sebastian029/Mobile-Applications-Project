@@ -20,5 +20,51 @@
       "repeatPassword": "Password",
       "id": 2
     }
+  ],
+  "cardData": [
+    {
+      "number": "5000 0000 1111 4000",
+      "cardHolder": "Dominiqe Jaroszek",
+      "expiryDate": "01/2024",
+      "userid": 1
+    },
+    {
+      "number": "9000 0030 1111 4020",
+      "cardHolder": "Pawel Zaporozy",
+      "expiryDate": "01/2025",
+      "userid": 1
+    },
+    {
+      "number": "1234 0030 1111 4020",
+      "cardHolder": "Pawel Bialy",
+      "expiryDate": "01/2025",
+      "userid": 2
+    }
+  ],
+  "addressData": [
+    {
+      "country": "Polska",
+      "first": "Dominik",
+      "last": "Jaroszek",
+      "street": "Podraje",
+      "city": "Nowy Korczyn",
+      "region":"Swietokrzyskie",
+      "zip":"100-200",
+      "phone":"+48 100-000-123",
+      "houseNumber":100,
+      "userid": 1
+    },
+    {
+      "country": "Polska",
+      "first": "Dominik",
+      "last": "Jaroszek",
+      "street": "Podraje",
+      "city": "Nowy Korczyn",
+      "region":"Swietokrzyskie",
+      "zip":"100-200",
+      "phone":"+48 123-467-789",
+      "houseNumber":123,
+      "userid": 1 
+    }
   ]
 }
