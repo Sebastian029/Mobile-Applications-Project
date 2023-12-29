@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
+import axios from 'axios';
 
 const AddressScreen = ({ navigation }) => {
   const [addressData, setAddressData] = useState([]);
@@ -14,6 +15,12 @@ const AddressScreen = ({ navigation }) => {
         const storedAddressData = await AsyncStorage.getItem('addressData');
         if (storedAddressData) {
           setAddressData(JSON.parse(storedAddressData));
+          const storedUserData = await AsyncStorage.getItem('userData');
+          const parsedUserData = JSON.parse(storedUserData);
+          if (parsedUserData && parsedUserData.id) {
+            const userId = parsedUserData.id;
+            console.log("User ID:", userId);
+          }
         }
       } catch (error) {
         console.error('Error reading address data from AsyncStorage:', error);
@@ -78,33 +85,50 @@ const AddressScreen = ({ navigation }) => {
     saveAddressDataToStorage([...addressData, newAddress]);
   };
 
-  const handleEditAddress = (editedAddress, originalAddress) => {
-    // Znajdź indeks oryginalnego adresu w tablicy
-    const index = addressData.findIndex((address) => address === originalAddress);
-
+  const handleEditAddress = async (editedAddress, originalAddress) => {
+    const index = addressData.findIndex((address) => address.id === originalAddress.id);
+  
     if (index !== -1) {
-      // Utwórz kopię danych adresowych i zastąp oryginalny adres edytowanym
       const updatedAddressData = [...addressData];
       updatedAddressData[index] = editedAddress;
-
-      // Zaktualizuj stan i zapisz dane adresowe do AsyncStorage
-      setAddressData(updatedAddressData);
-      saveAddressDataToStorage(updatedAddressData);
+  
+      try {
+        const storedUserData = await AsyncStorage.getItem('userData');
+        const parsedUserData = JSON.parse(storedUserData);
+        if (parsedUserData && parsedUserData.id) {
+          const userId = parsedUserData.id;
+          // Aktualizuj dane w bazie danych
+          await axios.put(`http://192.168.1.25:3004/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
+  
+          // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
+          setAddressData(updatedAddressData);
+          saveAddressDataToStorage(updatedAddressData);
+        } else {
+          console.error("Error reading user data from AsyncStorage");
+        }
+      } catch (error) {
+        console.error('Error updating data in the database:', error);
+      }
     }
-  }
+  };
 
-  const handleDeleteAddress = (addressToDelete) => {
-    // Znajdź indeks adresu do usunięcia
-    const index = addressData.findIndex((address) => address.phone === addressToDelete.phone);
-
+  const handleDeleteAddress = async (addressToDelete) => {
+    const index = addressData.findIndex((address) => address.id === addressToDelete.id);
+    
     if (index !== -1) {
-      // Utwórz kopię stanu i usuń adres
       const updatedAddressData = [...addressData];
       updatedAddressData.splice(index, 1);
-
-      // Zaktualizuj stan i zapisz dane adresowe do AsyncStorage
-      setAddressData(updatedAddressData);
-      saveAddressDataToStorage(updatedAddressData);
+    
+      try {
+        // Usuń dane z bazy danych
+        await axios.delete(`http://192.168.1.25:3004/addressData/${addressToDelete.id}`);
+        
+        // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
+        setAddressData(updatedAddressData);
+        saveAddressDataToStorage(updatedAddressData);
+      } catch (error) {
+        console.error('Error deleting data from the database:', error);
+      }
     }
   };
 

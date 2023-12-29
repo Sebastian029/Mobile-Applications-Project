@@ -43,18 +43,7 @@
   ],
   "addressData": [
     {
-      "country": "Polska",
-      "first": "Dominik",
-      "last": "Jaroszek",
-      "street": "Podraje",
-      "city": "Nowy Korczyn",
-      "region": "Swietokrzyskie",
-      "zip": "100-200",
-      "phone": "+48 100-000-123",
-      "houseNumber": 100,
-      "userid": 1
-    },
-    {
+      "id": 2,
       "country": "Polska",
       "first": "Dominiqe",
       "last": "Jaroszek",
@@ -75,8 +64,8 @@
       "region": "Zadupie wielkie",
       "zip": "123-234",
       "phone": "+48 123-467-789",
-      "houseNumber": 567,
-      "userid": 2
+      "userid": 2,
+      "id": 3
     }
   ]
 }

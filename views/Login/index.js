@@ -150,10 +150,6 @@ const LoginScreen = ({ navigation }) => {
   };
   
   const handleLogin = async () => {
-    //saveUserDataToStorage(formData);
-    //saveCardDataToStorage(cardData);
-   // saveAddressDataToStorage(addressData);
-   // navigation.navigate('TabNav');
    // Clear AsyncStorage data before attempting to save new data
   try {
     await AsyncStorage.removeItem('userData');
