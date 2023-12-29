@@ -4,9 +4,10 @@ import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 import axios from 'axios';
+import { baseUrl } from '../../config';
 
 // Bazowy adres URL dla zapytań axios
-const baseUrl = 'http://192.168.1.25:3004';
+//const baseUrl = 'http://192.168.1.25:3004';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -94,10 +95,42 @@ const LoginScreen = ({ navigation }) => {
       console.error('Error reading data from AsyncStorage:', error);
     }
   };
+
+  const saveMySaleDataToStorage = async (userId, mySaleData) => {
+    try {
+      // Sprawdź, czy użytkownik jest zalogowany
+      const authenticatedUser = await AsyncStorage.getItem('userData');
+      if (!authenticatedUser) {
+        console.error('User not authenticated');
+        return;
+      }
   
+      // Pobierz istniejące dane mySale z AsyncStorage
+      const existingMySaleData = await AsyncStorage.getItem('mySaleData');
+      let parsedMySaleData = existingMySaleData ? JSON.parse(existingMySaleData) : [];
+  
+      if (!Array.isArray(parsedMySaleData)) {
+        parsedMySaleData = [];
+      }
+  
+      // Filtruj dane mySale tylko dla zalogowanego użytkownika
+      const filteredMySaleData = parsedMySaleData.filter((mySale) => mySale.userid === userId);
+  
+      // Dodaj nowe dane mySale dla zalogowanego użytkownika
+      const userMySaleData = mySaleData.map((mySale) => ({ ...mySale, userid: userId }));
+      filteredMySaleData.push(...userMySaleData);
+  
+      // Zapisz dane mySale do AsyncStorage
+      await AsyncStorage.setItem('mySaleData', JSON.stringify(filteredMySaleData));
+    } catch (error) {
+      console.error('Error saving mySale data to AsyncStorage:', error);
+    }
+  };
+
   const handleLogin = async () => {
    // Clear AsyncStorage data before attempting to save new data
   try {
+    await AsyncStorage.removeItem('mySaleData');
     await AsyncStorage.removeItem('userData');
     await AsyncStorage.removeItem('cardData');
     await AsyncStorage.removeItem('addressData');
@@ -111,10 +144,13 @@ const LoginScreen = ({ navigation }) => {
       console.log('Dane z serwera:', responseCardData.data);
     const responseAddressData = await axios.get(`${baseUrl}/addressData`);
       console.log('Dane z serwera:', responseAddressData.data);
+    const responseMySaleData = await axios.get(`${baseUrl}/mySaleData`);
+      console.log('Dane z serwera:', responseMySaleData.data);
 
       const getResponseDataUsers = responseUsers.data;
       const getResponseDataCardData = responseCardData.data;
       const getResponseAddressCardData =  responseAddressData.data;
+      const getResponseMySaleData =  responseMySaleData.data;
 
       const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
       //const authenticatedCardData = getResponseDataCardData.find((cardData) => cardData.userid === authenticatedUser.id);
@@ -136,10 +172,14 @@ const LoginScreen = ({ navigation }) => {
       console.log("card: " + authenticatedCardData.map(card => card.userid).join(', '));
       //console.log('Authenticated address data:', authenticatedAddressData);
 
+      const authenticatedMySaleData = getResponseMySaleData.filter((mySaleData) => mySaleData.userid === authenticatedUser.id);
+      console.log('Authenticated mysale data:', authenticatedMySaleData);
+      console.log("mysale: " + authenticatedMySaleData.map(mySale => mySale.userid).join(', '));
       // Zapisz dane zalogowanego użytkownika w AsyncStorage
       saveUserDataToStorage(authenticatedUser);
       saveCardDataToStorage(authenticatedUser.id, authenticatedCardData);
       saveAddressDataToStorage(authenticatedUser.id, authenticatedAddressData);
+      saveMySaleDataToStorage(authenticatedUser.id,authenticatedMySaleData);
       displayStoredData();
       navigation.navigate('TabNav');
     } else {

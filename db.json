@@ -70,5 +70,21 @@
       "userid": 2,
       "id": 3
     }
+  ],
+  "mySaleData": [
+    {
+      "title": "AirPro",
+      "category": "Dominik",
+      "brand": "Nike",
+      "size": "43",
+      "condition": "good",
+      "description": "Super Buty w zimie zimno, w lecie grzejąaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "price": "140",
+      "parcel": "Big",
+      "pieces": "3",
+      "img": "../../../assets/productImages/AdidasSuperstar.png",
+      "userid": 2,
+      "id": 1
+    }
   ]
 }
