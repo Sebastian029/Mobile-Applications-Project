@@ -154,6 +154,14 @@ const LoginScreen = ({ navigation }) => {
     //saveCardDataToStorage(cardData);
    // saveAddressDataToStorage(addressData);
    // navigation.navigate('TabNav');
+   // Clear AsyncStorage data before attempting to save new data
+  try {
+    await AsyncStorage.removeItem('userData');
+    await AsyncStorage.removeItem('cardData');
+    await AsyncStorage.removeItem('addressData');
+  } catch (error) {
+    console.error('Error clearing AsyncStorage data:', error);
+  }
     try{
     const responseUsers = await axios.get('http://192.168.1.25:3004/users');
       console.log('Dane z serwera:', responseUsers.data);
