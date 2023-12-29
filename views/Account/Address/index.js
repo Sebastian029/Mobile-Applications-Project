@@ -79,11 +79,25 @@ const AddressScreen = ({ navigation }) => {
     </View>
   );
 
-  const handleSaveAddress = (newAddress) => {
+  const handleSaveAddress = async (newAddress) => {
     // Dodaj nowy adres do stanu
     setAddressData([...addressData, newAddress]);
     // Zapisz dane adresowe do AsyncStorage
     saveAddressDataToStorage([...addressData, newAddress]);
+  
+    try {
+      const storedUserData = await AsyncStorage.getItem('userData');
+      const parsedUserData = JSON.parse(storedUserData);
+      if (parsedUserData && parsedUserData.id) {
+        const userId = parsedUserData.id;
+        // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
+        await axios.post(`${baseUrl}/addressData`, { ...newAddress, userid: userId });
+      } else {
+        console.error("Error reading user data from AsyncStorage");
+      }
+    } catch (error) {
+      console.error('Error updating data in the database:', error);
+    }
   };
 
   const handleEditAddress = async (editedAddress, originalAddress) => {
