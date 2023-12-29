@@ -128,6 +128,10 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleLogin = async () => {
+    //saveUserDataToStorage(formData);
+    //saveCardDataToStorage(cardData);
+   // saveAddressDataToStorage(addressData);
+   // navigation.navigate('TabNav');
    // Clear AsyncStorage data before attempting to save new data
   try {
     await AsyncStorage.removeItem('mySaleData');
@@ -138,11 +142,11 @@ const LoginScreen = ({ navigation }) => {
     console.error('Error clearing AsyncStorage data:', error);
   }
     try{
-    const responseUsers = await axios.get(`${baseUrl}/users`);
+    const responseUsers = await axios.get('http://192.168.1.25:3004/users');
       console.log('Dane z serwera:', responseUsers.data);
-    const responseCardData = await axios.get(`${baseUrl}/cardData`);
+    const responseCardData = await axios.get('http://192.168.1.25:3004/cardData');
       console.log('Dane z serwera:', responseCardData.data);
-    const responseAddressData = await axios.get(`${baseUrl}/addressData`);
+    const responseAddressData = await axios.get('http://192.168.1.25:3004/addressData');
       console.log('Dane z serwera:', responseAddressData.data);
     const responseMySaleData = await axios.get(`${baseUrl}/mySaleData`);
       console.log('Dane z serwera:', responseMySaleData.data);

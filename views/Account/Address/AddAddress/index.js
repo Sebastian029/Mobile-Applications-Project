@@ -57,9 +57,9 @@ const AddAddressScreen = ({ navigation, route }) => {
     console.log("jol");
     const userLocation = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
     console.log("nyg");
-      setLocation(currentLocation);
+      setLocation(location);
       console.log("Location:");
-      console.log(currentLocation);
+      console.log(location);
 
     try {
       const { coords } = await Location.getCurrentPositionAsync({
@@ -82,9 +82,12 @@ const AddAddressScreen = ({ navigation, route }) => {
 
       if (location && location.length > 0) {
         const address = location[0];
+        setCountry(address.country || '');
         setCity(address.city || '');
         setRegion(address.region || '');
         setZip(address.postalCode || '');
+        const fullStreet = `${address.street || ''} ${address.streetNumber || ''}`;
+        setStreet(fullStreet.trim());
 
         console.log('Formatted Address:', address);
       } else {

@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     alignItems: 'center',
     marginTop: 20,
+    flexDirection: 'row'
   },
   profileImage: {
     width: 120,
@@ -50,6 +51,15 @@ const styles = StyleSheet.create({
     height: 120,
     overflow: 'hidden',
     backgroundColor: 'gray',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  cameraPlaceholder: {
+    width: 120,
+    height: 120,
+    overflow: 'hidden',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -97,6 +107,19 @@ button:{
   marginLeft:'auto',
   marginRight:'auto',
 },
+
+  buttonCam:{
+    width:'40%',
+    height:70,
+    backgroundColor:'#F99C1C',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:8,
+    marginLeft:'auto',
+    marginRight:'auto',
+  },
+
 buttonText:{
   fontSize:18,
   fontWeight:'bold',
@@ -104,6 +127,19 @@ buttonText:{
   letterSpacing:1
 
 },
+
+  camera: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    height: '85%',
+  },
+
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  }
 
 
 
