@@ -150,6 +150,7 @@ const LoginScreen = ({ navigation }) => {
   };
   
   const handleLogin = async () => {
+    console.log('123')
     //saveUserDataToStorage(formData);
     //saveCardDataToStorage(cardData);
    // saveAddressDataToStorage(addressData);
@@ -163,11 +164,11 @@ const LoginScreen = ({ navigation }) => {
     console.error('Error clearing AsyncStorage data:', error);
   }
     try{
-    const responseUsers = await axios.get('http://192.168.1.25:3004/users');
+    const responseUsers = await axios.get('http://192.168.0.17:3004/users');
       console.log('Dane z serwera:', responseUsers.data);
-    const responseCardData = await axios.get('http://192.168.1.25:3004/cardData');
+    const responseCardData = await axios.get('http://192.168.0.17:3004/cardData');
       console.log('Dane z serwera:', responseCardData.data);
-    const responseAddressData = await axios.get('http://192.168.1.25:3004/addressData');
+    const responseAddressData = await axios.get('http://192.168.0.17:3004/addressData');
       console.log('Dane z serwera:', responseAddressData.data);
 
       const getResponseDataUsers = responseUsers.data;

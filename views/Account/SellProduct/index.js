@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView, StyleSheet, Pressable,TouchableOpacity,Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import { Camera, CameraType } from 'expo-camera';
 
 import styles from './style';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddSellProductScreen = ({ navigation, route }) => {
   const [title, setTitle] = useState('');
@@ -51,6 +53,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
     }
   };
 
+
   return (
     <View style={[styles.screen]}>
       <View style={[styles.topBar]}>
@@ -67,6 +70,11 @@ const AddSellProductScreen = ({ navigation, route }) => {
               </View>
             )}
           </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("ProductPicture")}>
+              <View style={styles.cameraPlaceholder}>
+                <AntDesign name="camerao" size={42} color="black" />
+              </View>
+        </TouchableOpacity>
         </View>
 
       <ScrollView style={styles.content}>
