@@ -8,6 +8,7 @@ import axios from 'axios';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(null);
   
   const formData = {
     id: '1',
@@ -168,7 +169,7 @@ const LoginScreen = ({ navigation }) => {
       const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
       //const authenticatedCardData = getResponseDataCardData.find((cardData) => cardData.userid === authenticatedUser.id);
 
-     // console.log("user: "+authenticatedUser.id);
+      console.log("user: "+authenticatedUser.id);
       //console.log("card: "+authenticatedCardData.userid);
      // console.log('Dane z serwera:', authenticatedCardData);
     // Sprawdź, czy wprowadzone dane są poprawne
@@ -177,6 +178,7 @@ const LoginScreen = ({ navigation }) => {
       const authenticatedCardData = getResponseDataCardData.filter((cardData) => {
         const match = cardData.userid === authenticatedUser.id;
         console.log('Checking:', cardData.userid, ' === ', authenticatedUser.id, ' => ', match);
+        setLoginError('');
         return match;
       });
       const authenticatedAddressData = getResponseAddressCardData.filter((addressData) => addressData.userid === authenticatedUser.id);
@@ -192,10 +194,13 @@ const LoginScreen = ({ navigation }) => {
       navigation.navigate('TabNav');
     } else {
       console.log('Invalid credentials');
+      setLoginError('Invalid credentials');
+
     }
   }catch(error)
   {
     console.log("error: ",error);
+    setLoginError('An error occurred hehe');
   }
   };
 
@@ -214,6 +219,11 @@ const LoginScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.mainBox}>
+
+        {loginError && (
+    <Text style={styles.errorText}>{loginError}</Text>
+  )}
+
           <Text style={styles.secondText}>Sign in to continue</Text>
 
           <View style={styles.inputBox}>
@@ -251,3 +261,4 @@ const LoginScreen = ({ navigation }) => {
 };
 
 export default LoginScreen;
+

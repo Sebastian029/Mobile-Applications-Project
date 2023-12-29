@@ -14,9 +14,27 @@ import styles from './style.js';
     const [birthday, setBirthday] = useState('');
     const [password, setPassword] = useState('');
    const [repeatPassword, setRepeatPassword] = useState('');
+   const [passwordError, setPasswordError] = useState(null);
 
     const handleRegister = async () => {
+      if (password !== repeatPassword) {
+        console.log("Password and repeat password do not match");
+        setPasswordError('Passwords do not match');
+        // Display an error message or update UI accordingly
+        return;
+      }
+      setPasswordError(' ');
       try {
+        // Check if the email already exists
+        const emailExistsResponse = await axios.get(`http://192.168.1.25:3004/users?email=${email}`);
+
+        if (emailExistsResponse.data.length > 0) {
+          console.log("Email already exists");
+          setPasswordError('Email already exists');
+          // Display an error message or update UI accordingly
+          return;
+        }
+
         const response = await axios.post('http://192.168.1.25:3004/users', {
           firstName,
           lastName,
@@ -92,6 +110,9 @@ import styles from './style.js';
             <AntDesign name="lock" style={styles.icon}/>
           </View>
 
+          {passwordError && (
+    <Text style={styles.errorText}>{passwordError}</Text>
+  )}
           <Pressable style={styles.button} onPress={handleRegister}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </Pressable>
