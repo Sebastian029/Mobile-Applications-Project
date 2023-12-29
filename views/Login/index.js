@@ -5,68 +5,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 import axios from 'axios';
 
+// Bazowy adres URL dla zapytań axios
+const baseUrl = 'http://192.168.1.25:3004';
+
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(null);
   
-  const formData = {
-    id: '1',
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'login',
-    phoneNumber: '123456789',
-    birthday: '1990-01-01',
-    password: 'password',
-    repeatPassword: 'password',
-  };
-  const [cardData, setCardData] = useState([
-    {
-      number: "5000 0000 1111 4000",
-      cardHolder: "Dominiqe Jaroszek",
-      expiryDate: "01/2024",
-      userid: "",
-    },
-    {
-      number: "9000 0030 1111 4020",
-      cardHolder: "Pawel Zaporozy",
-      expiryDate: "01/2025",
-      userid: ""
-    },
-    {
-      number: "1234 0030 1111 4020",
-      cardHolder: "Pawel Bialy",
-      expiryDate: "01/2025",
-      userid: ""
-    },
-    
-  ]);
-  const [addressData, setAddressData] = useState([
-    {
-      country: "Polska",
-      first: "Dominik",
-      last: "Jaroszek",
-      street: "Podraje",
-      city: "Nowy Korczyn",
-      region:"Swietokrzyskie",
-      zip:"100-200",
-      phone:"+48 100-000-123",
-      houseNumber:'100'
-      
-    },
-    {
-      country: "Polska",
-      first: "Dominik",
-      last: "Jaroszek",
-      street: "Podraje",
-      city: "Nowy Korczyn",
-      region:"Swietokrzyskie",
-      zip:"100-200",
-      phone:"+48 123-467-789",
-      houseNumber:'123'
-      
-    },
-  ]);
 
   const saveAddressDataToStorage = async (userId, addressData) => {
     try {
@@ -159,11 +105,11 @@ const LoginScreen = ({ navigation }) => {
     console.error('Error clearing AsyncStorage data:', error);
   }
     try{
-    const responseUsers = await axios.get('http://192.168.1.25:3004/users');
+    const responseUsers = await axios.get(`${baseUrl}/users`);
       console.log('Dane z serwera:', responseUsers.data);
-    const responseCardData = await axios.get('http://192.168.1.25:3004/cardData');
+    const responseCardData = await axios.get(`${baseUrl}/cardData`);
       console.log('Dane z serwera:', responseCardData.data);
-    const responseAddressData = await axios.get('http://192.168.1.25:3004/addressData');
+    const responseAddressData = await axios.get(`${baseUrl}/addressData`);
       console.log('Dane z serwera:', responseAddressData.data);
 
       const getResponseDataUsers = responseUsers.data;

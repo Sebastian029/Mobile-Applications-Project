@@ -4,6 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 import axios from 'axios';
+import { baseUrl } from '../../../config';
 
 const AddressScreen = ({ navigation }) => {
   const [addressData, setAddressData] = useState([]);
@@ -98,7 +99,7 @@ const AddressScreen = ({ navigation }) => {
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
           // Aktualizuj dane w bazie danych
-          await axios.put(`http://192.168.1.25:3004/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
+          await axios.put(`${baseUrl}/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
   
           // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
           setAddressData(updatedAddressData);
