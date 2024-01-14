@@ -10,71 +10,56 @@ import styles from './style';
   export default function ProductScreen({navigation, route}){
     const { selectedItem} = route.params;
 
-
-    // dummy data
-    const images = {
-      sport: require('../../assets/exploreImages/sport.png'),
-      socks: require('../../assets/exploreImages/socks.png'),
-      elegant: require('../../assets/exploreImages/elegant.png'),
-      slippers: require('../../assets/exploreImages/slippers.png'),
-      winter: require('../../assets/exploreImages/winter.png'),
-      worker: require('../../assets/exploreImages/worker.png'),
-      NikeAirZoom: require('../../assets/productImages/NikeAirZoom.png'),
-      AdidasCampus: require('../../assets/productImages/AdidasCampus.png'),
-      AdidasSuperstar: require('../../assets/productImages/AdidasSuperstar.png'),
-      NewBalanceBB550: require('../../assets/productImages/NewBalanceBB550.png'),
-      NewBalanceu574: require('../../assets/productImages/NewBalanceu574.png'),
-      NIkeMarshmallow: require('../../assets/productImages/NIkeMarshmallow.png'),
-      ReebokNylon: require('../../assets/productImages/ReebokNylon.png'),
-      ReebokRoyal: require('../../assets/productImages/ReebokRoyal.png'),
-    };
-
-
-    const reviews =[
-      {id: 1, name:'Nike Air Zoom', review: [
-                                  { id: 1, user:'Sebastian Iwan', stars: 5, content: 'Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem.' },
-                                  { id: 2, user:'Dominik Jaroszek', stars: 4,  content: 'Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.' },
-                                  { id: 3, user:'Blazej Jakubczyk', stars: 3,  content: 'Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier..' },
-                                  { id: 4, user:'Jakub Jordan', stars: 2,  content: 'Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier.' }]
-                                 },
-
-       {id: 2, name:'New Balance abc', review: [
-                                { id: 1, user:'Sebastian Iwan', stars: 5, content: 'This shoe is great!111' },
-                                { id: 2, user:'Dominik Jaroszek', stars: 4,  content: 'Very comfortable and stylish.222' },
-                                { id: 3, user:'Blazej Jakubczyk', stars: 3,  content: 'I love the quality.333' },
-                                { id: 4, user:'Jakub Jordan', stars: 2,  content: 'I love the quality.444' }]
-                                 },
-      
-      
-    ]
-
     const reviewsHandler = () => {
-      const selectedName = selectedItem.name; 
-      const selectedProduct = reviews.find(product => product.name === selectedName);
-    
-      if (selectedProduct) {
-        const filteredReviews = selectedProduct.review.map(review => ({
-          id: review.id,
-          user: review.user,
-          stars: review.stars,
-          content: review.content
-        }));
-        navigation.navigate('Reviews', { filteredReviews });
-      } else {
-        navigation.navigate('Reviews', { filteredReviews: [] }); 
-      }
-    };
+  const selectedName = selectedItem.name; 
+  const selectedProduct = reviews.find(product => product.name === selectedName);
 
-    const AddToCart = async () => {
-      try{
-        await AsyncStorage.setItem('CartItem', JSON.stringify(selectedItem));
-      }catch(e){}
-      navigation.dispatch(CommonActions.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      }));
-      navigation.navigate('Cart'); 
+  if (selectedProduct) {
+    const filteredReviews = selectedProduct.review.map(review => (
+      <View key={review.id}>
+        <Text>{review.user}</Text>
+        <Text>{review.stars} stars</Text>
+        <Text>{review.content}</Text>
+      </View>
+    ));
+    navigation.navigate('Reviews', { filteredReviews });
+  } else {
+    navigation.navigate('Reviews', { filteredReviews: [] }); 
+  }
+};
+
+const AddToCart = async () => {
+  try {
+    // Retrieve existing items from AsyncStorage
+    const existingItemsString = await AsyncStorage.getItem('CartItem');
+    const existingItems = existingItemsString ? JSON.parse(existingItemsString) : [];
+
+    // Check if the selected item already exists in the cart
+    const itemExistsIndex = existingItems.findIndex(item => item.id === selectedItem.id);
+
+    if (itemExistsIndex !== -1) {
+      // Item already exists, update the quantity
+      existingItems[itemExistsIndex].quantity += 1;
+    } else {
+      // Item does not exist, add it to the cart with quantity 1
+      const newItemWithQuantity = { ...selectedItem, quantity: 1 };
+      existingItems.push(newItemWithQuantity);
     }
+
+    // Save the updated array back to AsyncStorage
+    await AsyncStorage.setItem('CartItem', JSON.stringify(existingItems));
+  } catch (error) {
+    // Handle errors if any
+    console.error('Error adding item to cart:', error);
+  }
+
+  // Navigate to the Cart screen
+  navigation.dispatch(CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'Home' }],
+  }));
+  navigation.navigate('Cart');
+};
 
     return (
       
@@ -86,11 +71,11 @@ import styles from './style';
         </Pressable>
 
         <View>
-          <Image source={images[selectedItem.img]} style={styles.shoeImage}/>
+          <Image source={{uri: selectedItem.img.uri}} style={styles.shoeImage}/>
         </View>
-
+        
         <View style={styles.specifications}>
-          <Text style={styles.shoeName}>{selectedItem.name}</Text>
+          <Text style={styles.shoeName}>{selectedItem.titlee}</Text>
           <Text style={styles.shoePrice}>${selectedItem.price}</Text>
           <Text style={styles.title}>Specification</Text>
 
@@ -116,7 +101,7 @@ import styles from './style';
 
 
           <Pressable onPress={() => reviewsHandler()}>
-            <Text style={styles.productReview}>See product reviews</Text>
+            <Text style={styles.productReview}>See user reviews</Text>
           </Pressable>
 
           <Pressable style={styles.button} onPress={() => AddToCart()}>

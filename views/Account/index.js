@@ -1,6 +1,5 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Pressable,Image } from "react-native";
-import { Color, FontSize, FontFamily, Border } from "./GlobalStyles";
 import styles from "./style";
 import {AntDesign} from "@expo/vector-icons";
 const AccountScreen = ({navigation}) => {

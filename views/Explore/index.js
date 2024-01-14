@@ -1,14 +1,13 @@
 import { Text, View, Image, TextInput, FlatList, Pressable} from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ExploreContext } from './context';
 
 
 import styles from './style';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
-
 
   export default function HomeScreen({navigation}){
     
@@ -20,38 +19,18 @@ import { useFocusEffect } from '@react-navigation/native';
       slippers: require('../../assets/exploreImages/slippers.png'),
       winter: require('../../assets/exploreImages/winter.png'),
       worker: require('../../assets/exploreImages/worker.png'),
-      NikeAirZoom: require('../../assets/productImages/NikeAirZoom.png'),
-      AdidasCampus: require('../../assets/productImages/AdidasCampus.png'),
-      AdidasSuperstar: require('../../assets/productImages/AdidasSuperstar.png'),
-      NewBalanceBB550: require('../../assets/productImages/NewBalanceBB550.png'),
-      NewBalanceu574: require('../../assets/productImages/NewBalanceu574.png'),
-      NIkeMarshmallow: require('../../assets/productImages/NIkeMarshmallow.png'),
-      ReebokNylon: require('../../assets/productImages/ReebokNylon.png'),
-      ReebokRoyal: require('../../assets/productImages/ReebokRoyal.png'),
     };
   
     const data = [
-      { id: '1', img: 'sport', name: 'Sport Shoes' },
-      { id: '2', img: 'socks', name: 'Socks' },
-      { id: '3', img: 'elegant', name: 'Elegant Shoes' },
-      { id: '4', img: 'slippers', name: 'Slippers' },
-      { id: '5', img: 'winter', name: 'Winter Boots' },
-      { id: '6', img: 'worker', name: 'Worker Shoes' },
+      { id: '1', img: 'sport', title: 'Sport Shoes' },
+      { id: '2', img: 'socks', title: 'Socks' },
+      { id: '3', img: 'elegant', title: 'Elegant Shoes' },
+      { id: '4', img: 'slippers', title: 'Slippers' },
+      { id: '5', img: 'winter', title: 'Winter Boots' },
+      { id: '6', img: 'worker', title: 'Worker Shoes' },
     ];
 
-    const boots =[
-      {id: '1',type:'sport', img: 'sport', name:'Nike abc abc abc abc abc', price:220, discountedPrice:300, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '2',type:'elegant',  img: 'sport', name:'Adidas abc', price:190, discountedPrice:200, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '3',type:'sport',  img: 'ReebokRoyal', name:'New Balance abc', price:30, discountedPrice:50, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '4',type:'sport',  img: 'ReebokNylon', name:'NewBalance dfds', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '5',type:'sport',  img: 'NewBalanceBB550', name:'NewBalance iuo', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '6',type:'sport',  img: 'NewBalanceu574', name:'Adidas dasd', price:1510, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '7',type:'sport',  img: 'NIkeMarshmallow', name:'Adidas def', price:30, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '8',type:'sport',  img: 'AdidasSuperstar', name:'Nike def', price:99, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '9',type:'socks',  img: 'AdidasCampus', name:'NewBalance def def', price:150, discountedPrice:100, size:40, brand:'Nike', condition:'Good', description:'des', review:'rev1'},
-      {id: '10',type:'sport',  img: 'NikeAirZoom', name:'Nike Air Zoom', price:299, discountedPrice:499, size:40, brand:'Nike', condition:'Good', description:'Produkt bogow', review:'rev1'},
-    ]
-
+    const [boots, setBoots] = useState([]);
     const { sortName, setSortName } = useContext(ExploreContext);
     const [searchBar, setSearchBar] = useState('');
     const [filteredBoots, setFilteredBoots] = useState([]);
@@ -60,8 +39,29 @@ import { useFocusEffect } from '@react-navigation/native';
     const [sortedData, setSortedData] = useState([...selectedBoots]);
     const [filterBy,setFilterBy] = useState('');
 
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const storedBootsData = await AsyncStorage.getItem('bootsData');
+          if (storedBootsData) {
+            const parsedBootsData = JSON.parse(storedBootsData);
+
+  
+            setBoots(parsedBootsData); // Update state after setting newData and newData2
+          }
+        } catch (error) {
+          console.error('Error reading boots data from AsyncStorage:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
+
+
     const sortDataByName = () => {
-      const sorted = [...selectedBoots].sort((a, b) => a.name.localeCompare(b.name));
+      const sorted = [...selectedBoots].sort((a, b) => a.title.localeCompare(b.title));
       setSortedData(sorted);
     };
  
@@ -98,15 +98,15 @@ import { useFocusEffect } from '@react-navigation/native';
       return (
         <View style={styles.productIconView}>
           <Image source={images[item.img]} style={styles.productIcon} />
-          <Text style={styles.productText}>{item.name}</Text>
+          <Text style={styles.productText}>{item.title}</Text>
         </View>
       );
     };
 
     const renderItemHint = ({ item }) => {
       return (
-        <Pressable onPress={() => selectItemFromHint(item.name)}>
-          <Text style={styles.hintText}>{item.name}</Text>
+        <Pressable onPress={() => selectItemFromHint(item.title)}>
+          <Text style={styles.hintText}>{item.title}</Text>
         </Pressable>
       );
     };
@@ -114,11 +114,11 @@ import { useFocusEffect } from '@react-navigation/native';
     const renderProductList = ({ item }) => {
       return (
         <Pressable style={styles.productView} onPress={() => navigation.navigate('Product', { selectedItem: item})}>
-          <Image source={images[item.img]} style={styles.productIcon}/>
+          <Image source={{uri: item.img.uri }} style={styles.productIcon}/>
           <View style={styles.singleProductView}>
-            <Text style={styles.productName}>{item.name}</Text>
-            <Text style={styles.productPrice}>New Price: {item.price}$</Text>
-            <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text>
+            <Text style={styles.productName}>{item.title}</Text>
+            <Text style={styles.productPrice}>{item.price}$</Text>
+            {/* <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text> */}
             </View>
         </Pressable>
       );
@@ -141,8 +141,8 @@ import { useFocusEffect } from '@react-navigation/native';
       }
     };
 
-    const selectItemFromHint = (name) => {
-      setSelectedItemName(name);
+    const selectItemFromHint = (title) => {
+      setSelectedItemName(title);
       setContentView('selectedItem');
       setSearchBar(selectedItemName);
     };
@@ -156,7 +156,7 @@ import { useFocusEffect } from '@react-navigation/native';
     // use effects to handle filtering items
     useEffect(() => {
       const filteredItems = boots.filter((boot) =>
-        boot.name.toLowerCase().includes(searchBar.toLowerCase())
+        boot.title.toLowerCase().includes(searchBar.toLowerCase())
       );
       setSelectedBoots(filteredItems);
       setFilteredBoots(filteredItems);

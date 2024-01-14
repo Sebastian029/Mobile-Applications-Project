@@ -28,7 +28,6 @@ const AddSellProductScreen = ({ navigation, route }) => {
       condition: condition,
       description: description,
       price: price,
-      parcel: parcel,
       pieces: pieces,
       img: {uri:profileImage},
     };
@@ -155,16 +154,6 @@ const AddSellProductScreen = ({ navigation, route }) => {
         </View>
 
 
-        <View style={styles.row}>
-        <Text style={styles.leftText}>Parcel</Text>
-        <TextInput
-          style={styles.dataText}
-          placeholder="Parcel"
-          value={parcel}
-          onChangeText={(text) => setParcel(text)}
-        />
-
-        </View>
 
 
         <View style={styles.row}>

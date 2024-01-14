@@ -3,11 +3,7 @@ import { Text, View, Image, TextInput, ScrollView, Pressable } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
-import axios from 'axios';
-import { baseUrl } from '../../config';
-
-// Bazowy adres URL dla zapytań axios
-//const baseUrl = 'http://192.168.1.25:3004';
+import config from '../../config';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -84,17 +80,14 @@ const LoginScreen = ({ navigation }) => {
       console.error('Error saving user data to AsyncStorage:', error);
     }
   };
-  const displayStoredData = async () => {
+  const saveBootsDataToStorage = async (bootsData) => {
     try {
-      const storedUserData = await AsyncStorage.getItem('userData');
-      const storedCardData = await AsyncStorage.getItem('cardData');
-  
-      console.log('Stored User Data:', storedUserData);
-      console.log('Stored Card Data:', storedCardData);
+      await AsyncStorage.setItem('bootsData', JSON.stringify(bootsData));
     } catch (error) {
-      console.error('Error reading data from AsyncStorage:', error);
+      console.error('Error saving boots data to AsyncStorage:', error);
     }
   };
+
 
   const saveMySaleDataToStorage = async (userId, mySaleData) => {
     try {
@@ -127,6 +120,39 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+  const saveOrderDataToStorage = async (userId, orderData) => {
+    try {
+      // Sprawdź, czy użytkownik jest zalogowany
+      const authenticatedUser = await AsyncStorage.getItem('userData');
+      if (!authenticatedUser) {
+        console.error('User not authenticated');
+        return;
+      }
+  
+      // Pobierz istniejące dane mySale z AsyncStorage
+      const existingOrderData = await AsyncStorage.getItem('orderData');
+      let parsedMySaleData = existingOrderData ? JSON.parse(existingOrderData) : [];
+  
+      if (!Array.isArray(parsedMySaleData)) {
+        parsedMySaleData = [];
+      }
+  
+      // Filtruj dane mySale tylko dla zalogowanego użytkownika
+      const filteredMySaleData = parsedMySaleData.filter((orderData) => orderData.userid === userId);
+  
+      // Dodaj nowe dane mySale dla zalogowanego użytkownika
+      const userMySaleData = orderData.map((orderData) => ({ ...orderData, userid: userId }));
+      filteredMySaleData.push(...userMySaleData);
+  
+      // Zapisz dane mySale do AsyncStorage
+      await AsyncStorage.setItem('orderData', JSON.stringify(filteredMySaleData));
+    } catch (error) {
+      console.error('Error saving mySale data to AsyncStorage:', error);
+    }
+  };
+
+
+
   const handleLogin = async () => {
     //saveUserDataToStorage(formData);
     //saveCardDataToStorage(cardData);
@@ -134,27 +160,36 @@ const LoginScreen = ({ navigation }) => {
    // navigation.navigate('TabNav');
    // Clear AsyncStorage data before attempting to save new data
   try {
-    await AsyncStorage.removeItem('mySaleData');
+    // await AsyncStorage.removeItem('mySaleData');
     await AsyncStorage.removeItem('userData');
     await AsyncStorage.removeItem('cardData');
     await AsyncStorage.removeItem('addressData');
+    await AsyncStorage.removeItem('boots');
+    await AsyncStorage.removeItem('orderData');
+    await AsyncStorage.removeItem('CartItem');
+
   } catch (error) {
     console.error('Error clearing AsyncStorage data:', error);
   }
     try{
-    const responseUsers = await axios.get('http://192.168.1.25:3004/users');
-      console.log('Dane z serwera:', responseUsers.data);
-    const responseCardData = await axios.get('http://192.168.1.25:3004/cardData');
-      console.log('Dane z serwera:', responseCardData.data);
-    const responseAddressData = await axios.get('http://192.168.1.25:3004/addressData');
-      console.log('Dane z serwera:', responseAddressData.data);
-    const responseMySaleData = await axios.get(`${baseUrl}/mySaleData`);
-      console.log('Dane z serwera:', responseMySaleData.data);
-
+    const responseUsers = await config.get('/users');
+     // console.log('Dane z serwera:', responseUsers.data);
+    const responseCardData = await config.get('/cardData');
+      //console.log('Dane z serwera:', responseCardData.data);
+    const responseAddressData = await config.get('/addressData');
+      //console.log('Dane z serwera:', responseAddressData.data);
+    // const responseMySaleData = await config.get(`/mySaleData`);
+   //   console.log('Dane z serwera:', responseMySaleData.data);
+    const responseBoots = await config.get(`/boots`);
+    //console.log('Dane z serwera:', responseBoots.data);
+    const responseOrder = await config.get(`/orderData`);
+    // console.log('Dane z serwera:', responseOrder.data);
       const getResponseDataUsers = responseUsers.data;
       const getResponseDataCardData = responseCardData.data;
       const getResponseAddressCardData =  responseAddressData.data;
-      const getResponseMySaleData =  responseMySaleData.data;
+      // const getResponseMySaleData =  responseMySaleData.data;
+      const getResponseBoots = responseBoots.data;
+      const getResponseOrder = responseOrder.data;
 
       const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
       //const authenticatedCardData = getResponseDataCardData.find((cardData) => cardData.userid === authenticatedUser.id);
@@ -162,29 +197,34 @@ const LoginScreen = ({ navigation }) => {
       console.log("user: "+authenticatedUser.id);
       //console.log("card: "+authenticatedCardData.userid);
      // console.log('Dane z serwera:', authenticatedCardData);
-    // Sprawdź, czy wprowadzone dane są poprawne
+    
     if (authenticatedUser){ 
-      console.log('Login successful');
+      //console.log('Login successful');
+      
       const authenticatedCardData = getResponseDataCardData.filter((cardData) => {
         const match = cardData.userid === authenticatedUser.id;
-        console.log('Checking:', cardData.userid, ' === ', authenticatedUser.id, ' => ', match);
+        //console.log('Checking:', cardData.userid, ' === ', authenticatedUser.id, ' => ', match);
         setLoginError('');
         return match;
       });
       const authenticatedAddressData = getResponseAddressCardData.filter((addressData) => addressData.userid === authenticatedUser.id);
-      console.log('Authenticated card data:', authenticatedCardData);
-      console.log("card: " + authenticatedCardData.map(card => card.userid).join(', '));
+      //console.log('Authenticated card data:', authenticatedCardData);
+      //console.log("card: " + authenticatedCardData.map(card => card.userid).join(', '));
       //console.log('Authenticated address data:', authenticatedAddressData);
 
-      const authenticatedMySaleData = getResponseMySaleData.filter((mySaleData) => mySaleData.userid === authenticatedUser.id);
-      console.log('Authenticated mysale data:', authenticatedMySaleData);
-      console.log("mysale: " + authenticatedMySaleData.map(mySale => mySale.userid).join(', '));
+     // const authenticatedMySaleData = getResponseMySaleData.filter((mySaleData) => mySaleData.userid === authenticatedUser.id);
+
+      const authenticatedOrderData = getResponseOrder.filter((orderData) => orderData.userid === authenticatedUser.id);
+      
+      console.log(authenticatedOrderData);
       // Zapisz dane zalogowanego użytkownika w AsyncStorage
       saveUserDataToStorage(authenticatedUser);
+      saveBootsDataToStorage(getResponseBoots);
       saveCardDataToStorage(authenticatedUser.id, authenticatedCardData);
       saveAddressDataToStorage(authenticatedUser.id, authenticatedAddressData);
-      saveMySaleDataToStorage(authenticatedUser.id,authenticatedMySaleData);
-      displayStoredData();
+      // saveMySaleDataToStorage(authenticatedUser.id,authenticatedMySaleData);
+      saveOrderDataToStorage(authenticatedUser.id,authenticatedOrderData);
+
       navigation.navigate('TabNav');
     } else {
       console.log('Invalid credentials');

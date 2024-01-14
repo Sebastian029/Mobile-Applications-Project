@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera ,CameraType} from 'expo-camera';
 
+import config from '../../../config';
+
 import styles from './style';
 
 const ProfileScreen = ({ navigation }) => {
@@ -18,22 +20,29 @@ const ProfileScreen = ({ navigation }) => {
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
-          setUserData(JSON.parse(storedUserData));
+          const parsedUserData = JSON.parse(storedUserData);
+        setUserData(parsedUserData);
+        if (parsedUserData?.img) {
+          setProfileImage(parsedUserData.img.uri);
+          console.log(parsedUserData.img.uri);
+        }
         }
       } catch (error) {
         console.error('Error reading user data from AsyncStorage:', error);
       }
     };
-
+    
     getUserDataFromStorage();
-
+    
     const requestCameraPermission = async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(status === 'granted');
     };
-
+  
     requestCameraPermission();
   }, []);
+
+  
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -42,21 +51,29 @@ const ProfileScreen = ({ navigation }) => {
       aspect: [4, 3],
       quality: 1,
     });
-
+  
     if (!result.cancelled) {
       setProfileImage(result.uri);
+      console.log('New image URI:', result.uri);
+      updateProfileImageInStorage(result.uri);
     }
   };
+  
 
+  
   const takePicture = async () => {
     if (cameraRef.current) {
-      let photo = await cameraRef.current.takePictureAsync();
-      setProfileImage(photo.uri);
+      try {
+        let photo = await cameraRef.current.takePictureAsync();
+        setProfileImage(photo.uri);
+        updateProfileImageInStorage(photo.uri);
+      } catch (error) {
+        console.error('Error taking picture:', error);
+      }
     }
   };
 
   const toggleCameraType = () => {
-    // Toggle between front and back camera
     setCameraType((prevType) =>
       prevType === Camera.Constants.Type.back
         ? Camera.Constants.Type.front
@@ -70,6 +87,41 @@ const ProfileScreen = ({ navigation }) => {
     setShowPassword(!showPassword);
   };
 
+  const updateProfileImageInStorage = async (newProfileImage) => {
+    try {
+      if (userData && userData.id) {
+        // Update only the profile image in the database
+        try {
+          const userId = userData.id;
+          // Aktualizuj dane w bazie danych tylko dla obecnie zalogowanego użytkownika
+          await config.patch(`/users/${userId}`, { img: { uri: newProfileImage } });
+        } catch (error) {
+          console.error('Error updating profile image in the database:', error);
+        }
+  
+        // Update the profile image in userData
+        const updatedUserData = {
+          ...userData,
+          img: { uri: newProfileImage },
+        };
+  
+        // Save the updated userData to AsyncStorage
+        await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData));
+  
+        // Update the state to reflect the change
+        setUserData(updatedUserData);
+      } else {
+        console.error('Error updating profile image: userData or userData.id is null');
+      }
+    } catch (error) {
+      console.error('Error updating profile image in AsyncStorage:', error);
+    }
+  };
+  
+  
+  
+
+
   return (
     <SafeAreaView style={styles.screen}>
    
@@ -79,15 +131,17 @@ const ProfileScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.topContainer}>
-          <TouchableOpacity onPress={pickImage}>
-            {profileImage ? (
-              <Image source={{ uri: profileImage }} style={styles.profileImage} />
-            ) : (
-              <View style={styles.profileImagePlaceholder}>
-                <AntDesign name="plus" size={24} color="white" />
-              </View>
-            )}
-          </TouchableOpacity>
+        <TouchableOpacity onPress={pickImage}>
+          
+  {profileImage ? (
+    <Image source={{ uri: profileImage }} style={styles.profileImage} />
+  ) : (
+    <View style={styles.profileImagePlaceholder}>
+      <AntDesign name="plus" size={24} color="white" />
+    </View>
+  )}
+</TouchableOpacity>
+
 
           <View style={styles.welcomeView}>
           {userData && (

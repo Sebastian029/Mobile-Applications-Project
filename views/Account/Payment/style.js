@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     color:'white',
     fontWeight:'bold',
     letterSpacing:1,
-    wordSpacing:10,
+    
     paddingBottom:20
   },
   cardBottom:{

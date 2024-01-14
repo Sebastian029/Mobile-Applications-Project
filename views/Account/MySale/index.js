@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, Pressable, FlatList, Image } from 'react-native
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
-import axios from 'axios';
-import { baseUrl } from '../../../config';
+import config from '../../../config';
 
 const MySaleScreen = ({ navigation }) => {
   const [mySaleData, setMySaleData] = useState([]);
@@ -12,27 +11,33 @@ const MySaleScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedMySaleData = await AsyncStorage.getItem('mySaleData');
+        const storedMySaleData = await AsyncStorage.getItem('bootsData');
         if (storedMySaleData) {
-          setMySaleData(JSON.parse(storedMySaleData));
+          const allMySaleData = JSON.parse(storedMySaleData);
+          
           const storedUserData = await AsyncStorage.getItem('userData');
           const parsedUserData = JSON.parse(storedUserData);
+  
           if (parsedUserData && parsedUserData.id) {
             const userId = parsedUserData.id;
             console.log("User ID:", userId);
+  
+            // Filtruj produkty, aby wyświetlać tylko te z odpowiednim userid
+            const filteredMySaleData = allMySaleData.filter(item => item.userid === userId);
+            setMySaleData(filteredMySaleData);
           }
         }
       } catch (error) {
         console.error('Error reading MySale data from AsyncStorage:', error);
       }
     };
-
+  
     fetchData();
   }, []);
 
   const saveMySaleDataToStorage = async (mySaleData) => {
     try {
-      await AsyncStorage.setItem('mySaleData', JSON.stringify(mySaleData));
+      await AsyncStorage.setItem('bootsData', JSON.stringify(mySaleData));
     } catch (error) {
       console.error('Error saving MySale data to AsyncStorage:', error);
     }
@@ -49,7 +54,7 @@ const MySaleScreen = ({ navigation }) => {
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
         // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
-        await axios.post(`${baseUrl}/MySaleData`, { ...newMySale, userid: userId });
+        await config.post(`/boots`, { ...newMySale, userid: userId });
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -71,7 +76,7 @@ const MySaleScreen = ({ navigation }) => {
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
           // Aktualizuj dane w bazie danych
-          await axios.put(`${baseUrl}/mySaleData/${originalMySale.id}`, { ...editedMySale, userid: userId });
+          await config.put(`/boots/${originalMySale.id}`, { ...editedMySale, userid: userId });
   
           // Aktualizuj stan i zapisz dane sprzedażowe do AsyncStorage
           setMySaleData(updatedMySaleData);
@@ -96,7 +101,7 @@ const MySaleScreen = ({ navigation }) => {
   
       try {
         // Usuń dane z bazy danych
-        await axios.delete(`http://192.168.1.25:3004/mySaleData/${mySaleToDelete.id}`);
+        await config.delete(`/boots/${mySaleToDelete.id}`);
   
         // Aktualizuj stan i zapisz dane sprzedażowe do AsyncStorage
         setMySaleData(updatedMySaleData);

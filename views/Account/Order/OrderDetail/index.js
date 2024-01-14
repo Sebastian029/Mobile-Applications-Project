@@ -7,63 +7,20 @@ import { AntDesign } from '@expo/vector-icons';
 import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function OrderDetail({navigation}){
-
-    const items =[
-        {
-            id: '1',
-            type:'sport',
-            img: 'NewBalanceBB550',
-            name:'NewBalance iuo',
-            price:100,
-            discountedPrice:150,
-            size:40, brand:'Nike',
-            condition:'Good',
-            description:'des',
-            review:'rev1'
-        },
-        {
-            id: '2',
-            type:'sport',
-            img: 'NewBalanceu574',
-            name:'Adidas dasd',
-            price:110,
-            discountedPrice:160,
-            size:40, brand:'Nike',
-            condition:'Good',
-            description:'des',
-            review:'rev1'
-        }]
-
-
-
-    const images = {
-        sport: require('../../../../assets/exploreImages/sport.png'),
-        socks: require('../../../../assets/exploreImages/socks.png'),
-        elegant: require('../../../../assets/exploreImages/elegant.png'),
-        slippers: require('../../../../assets/exploreImages/slippers.png'),
-        winter: require('../../../../assets/exploreImages/winter.png'),
-        worker: require('../../../../assets/exploreImages/worker.png'),
-        NikeAirZoom: require('../../../../assets/productImages/NikeAirZoom.png'),
-        AdidasCampus: require('../../../../assets/productImages/AdidasCampus.png'),
-        AdidasSuperstar: require('../../../../assets/productImages/AdidasSuperstar.png'),
-        NewBalanceBB550: require('../../../../assets/productImages/NewBalanceBB550.png'),
-        NewBalanceu574: require('../../../../assets/productImages/NewBalanceu574.png'),
-        NIkeMarshmallow: require('../../../../assets/productImages/NIkeMarshmallow.png'),
-        ReebokNylon: require('../../../../assets/productImages/ReebokNylon.png'),
-        ReebokRoyal: require('../../../../assets/productImages/ReebokRoyal.png'),
-    };
+export default function OrderDetail({navigation, route}){
+    const { selectedItem} = route.params;
+    
 
     const renderItem = ({ item }) => {
         return (
-            <Pressable style={styles.productView} onPress={()=>navigation.navigate('Product', { selectedItem: item})}>
-                <Image source={images[item.img]} style={styles.productIcon}/>
+            <Pressable style={styles.productView} >
+                <Image source={item.img} style={styles.productIcon}/>
                 <View style={styles.singleProductView}>
                     <View style={styles.itemTop}>
                         <Text style={styles.productName}>{item.name}</Text>
                     </View>
                     <Text style={styles.productPrice}>{item.price}$</Text>
-                    <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text>
+                    {/* <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text> */}
                     <View style={styles.pieces}>
                         <Text style={styles.basicIcon}>{item.quantity}</Text>
                     </View>
@@ -82,22 +39,18 @@ export default function OrderDetail({navigation}){
             </View>
 
             <View style={styles.content}>
-                {items.length > 0 ? (
                     <FlatList
-                        data={items}
+                        data={selectedItem.boot}
                         renderItem={renderItem}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item, index) => index.toString()}
                     />
-                ) : (
-                    <Text style={styles.noItemsText}>Cart is empty</Text>
-                )}
             </View>
 
             <Text style={styles.title}>Shipping details</Text>
             <View style={styles.summary}>
                 <View style={styles.specification}>
                     <Text style={styles.spec}>Expected delivery date:</Text>
-                    <Text style={styles.spec}>22-12-2023</Text>
+                    <Text style={styles.spec}>{selectedItem.date}</Text>
                 </View>
 
                 <View style={styles.specification}>
@@ -108,8 +61,8 @@ export default function OrderDetail({navigation}){
                 <View style={styles.specification}>
                     <Text style={styles.spec}>Address</Text>
                     <View>
-                        <Text style={styles.specAdr}>Podraje 2, 28-136</Text>
-                        <Text style={styles.specAdr}>Nowy Korczyn</Text>
+                        <Text style={styles.specAdr}>{selectedItem.address}</Text>
+                        {/* <Text style={styles.specAdr}>Nowy Korczyn</Text> */}
                     </View>
                 </View>
 
@@ -118,23 +71,23 @@ export default function OrderDetail({navigation}){
             <Text style={styles.title}>Payment details</Text>
             <View style={styles.summary}>
                 <View style={styles.specification}>
-                    <Text style={styles.spec}>Items (2)</Text>
-                    <Text style={styles.spec}>310$</Text>
+                    <Text style={styles.spec}>Items ({selectedItem.items})</Text>
+                    <Text style={styles.spec}>{selectedItem.price}$</Text>
                 </View>
 
                 <View style={styles.specification}>
                     <Text style={styles.spec}>Shipping</Text>
-                    <Text style={styles.spec}>40$</Text>
+                    <Text style={styles.spec}>{selectedItem.shipping}$</Text>
                 </View>
 
-                <View style={styles.specification}>
+                {/* <View style={styles.specification}>
                     <Text style={styles.spec}>Total Discounts</Text>
                     <Text style={styles.spec}>100$</Text>
-                </View>
+                </View> */}
 
                 <View style={styles.specification}>
                     <Text style={[styles.spec, {fontWeight:'bold'}]}>Total price</Text>
-                    <Text style={[styles.spec, {fontWeight:'bold'}]}>250$</Text>
+                    <Text style={[styles.spec, {fontWeight:'bold'}]}>{selectedItem.totalPrice}$</Text>
                 </View>
             </View>
 

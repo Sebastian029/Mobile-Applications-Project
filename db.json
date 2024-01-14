@@ -4,60 +4,59 @@
       "id": 1,
       "firstName": "John",
       "lastName": "Doe",
-      "email": "login",
+      "email": "l",
       "phoneNumber": 123456789,
       "birthday": "1990-01-01",
-      "password": "password",
-      "repeatPassword": "password"
+      "password": "p",
+      "repeatPassword": "password",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/933d5480-8d88-4156-bad8-1a91b0d99318.jpeg"
+      }
     },
     {
-      "firstName": "G",
-      "lastName": "H",
-      "email": "Login",
+      "firstName": "dominik",
+      "lastName": "Jaroszek",
+      "email": "L",
       "phoneNumber": "Hg",
       "birthday": "Gh",
-      "password": "Password",
+      "password": "P",
       "repeatPassword": "Password",
-      "id": 2
+      "id": 2,
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+      }
+    },
+    {
+      "firstName": "Dominik",
+      "lastName": "Jaroszek",
+      "email": "ll",
+      "phoneNumber": "6666",
+      "birthday": "677",
+      "password": "pp",
+      "repeatPassword": "pp",
+      "id": 3,
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/1c075384-6958-4cea-8491-369fdc20f52b.png"
+      }
     }
   ],
   "cardData": [
     {
       "id": 1,
-      "number": "5000 0000 1111 4000",
-      "cardHolder": "Dominiqe Jaroszek",
-      "expiryDate": "01/2024",
-      "userid": 1
-    },
-    {
-      "id": 2,
       "number": "9000 0030 1111 4020",
-      "cardHolder": "Pawel Zaporozy",
-      "expiryDate": "01/2025",
-      "userid": 1
-    },
-    {
-      "id": 3,
-      "number": "1234 0030 1111 4020",
-      "cardHolder": "Pawel Bialy",
+      "cardHolder": "dominik Jaroszek",
       "expiryDate": "01/2025",
       "userid": 2
+    },
+    {
+      "number": "5555666666",
+      "cardHolder": "hhh",
+      "expiryDate": "22/3333",
+      "userid": 1,
+      "id": 2
     }
   ],
   "addressData": [
-    {
-      "id": 2,
-      "country": "Polska",
-      "first": "Dominiqe",
-      "last": "Jaroszek",
-      "street": "Podraje",
-      "city": "Nowy Korczyn",
-      "region": "Swietokrzyskie",
-      "zip": "100-200",
-      "phone": "+48 123-467-789",
-      "houseNumber": 123,
-      "userid": 1
-    },
     {
       "country": "Uruguay",
       "first": "Gailed",
@@ -69,22 +68,201 @@
       "phone": "+48 123-467-789",
       "userid": 2,
       "id": 3
+    },
+    {
+      "country": "Polska",
+      "first": "Dominik",
+      "last": "Jaroszek",
+      "street": "Romualda 4",
+      "city": "Kielce",
+      "region": "Świętokrzyskie",
+      "zip": "25-001",
+      "phone": "501747037",
+      "userid": 1,
+      "id": 4
     }
   ],
-  "mySaleData": [
+ 
+  "boots": [
     {
-      "title": "AirPro",
-      "category": "Dominik",
+      "id": 1,
+      "category": "sport",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+      },
+      "title": "Nie",
+      "price": 190,
+      "size": 40,
       "brand": "Nike",
-      "size": "43",
-      "condition": "good",
-      "description": "Super Buty w zimie zimno, w lecie grzejąaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "price": "140",
-      "parcel": "Big",
-      "pieces": "3",
-      "img": "../../../assets/productImages/AdidasSuperstar.png",
-      "userid": 2,
-      "id": 1
+      "condition": "Good",
+      "description": "des",
+      "userid": 0,
+      "pieces": 1
+    },
+    {
+      "id": 2,
+      "category": "elegant",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+      },
+      "title": "Nienie",
+      "price": 190,
+      "size": 40,
+      "brand": "Nike",
+      "condition": "Good",
+      "description": "des",
+      "userid": 0,
+      "pieces": 1
+    },
+    {
+      "title": "Uj",
+      "category": "Hh",
+      "brand": "Nng",
+      "size": "Ikl",
+      "condition": "Ff",
+      "description": "Iij",
+      "price": "200",
+      "pieces": "Pp",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/95973c72-bb9d-472b-9623-c42f456a0eae.png"
+      },
+      "userid": 1,
+      "id": 3
     }
-  ]
+  ],
+
+
+
+  "orderData": [
+    {
+      "id": 1,
+      "userid": 1,
+      "orderID": "AAAA2137",
+      "date": "15-10-2023",
+      "status": "Packing",
+      "items": 2,
+      "price": 500,
+      "totalPrice": 540,
+      "boot": [
+        {
+          "idp": 1,
+          "name": "Nike",
+          "price": 100,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        },
+        {
+          "idp": 2,
+          "name": "Nike",
+          "price": 200,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Podraje 2, 18-136",
+      "shipping": "40"
+    },
+    {
+      "id": 2,
+      "userid": 1,
+      "orderID": "AAAA2137",
+      "date": "15-10-2023",
+      "status": "Packing",
+      "items": 2,
+      "totalPrice": 540,
+      "boot": [
+        {
+          "idp": 1,
+          "name": "Nike",
+          "price": 100,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        },
+        {
+          "idp": 2,
+          "name": "Nike",
+          "price": 200,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Podraje 2, 18-136",
+      "shipping": "40"
+    },
+    {
+      "orderID": "AAAA2137",
+      "date": "14.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 1,
+      "totalPrice": 11,
+      "boot": [
+        {
+          "idp": 2,
+          "name": "Nienie",
+          "price": 190,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Romualda 4, Kielce",
+      "shipping": 10,
+      "userid": 1,
+      "id": 3
+    },
+    {
+      "orderID": "AAAA2137",
+      "date": "14.01.2024",
+      "status": "Packing",
+      "items": 2,
+      "price": 2,
+      "totalPrice": 2,
+      "boot": [
+        {
+          "idp": 1,
+          "name": "Nie",
+          "price": 190,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        },
+        {
+          "idp": 2,
+          "name": "Nienie",
+          "price": 190,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Romualda 4, Kielce",
+      "shipping": 0,
+      "userid": 1,
+      "id": 4
+    }
+  ],
+  "reviews": [
+    {"id": 1, "userid": 1,"name": "Nike Air Zoom", "review": [
+        {"idr": 1, "user": "Sebastian Iwan", "stars": 5, "content": "Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem."},
+        {"idr": 2, "user": "Dominik Jaroszek", "stars": 4, "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier."},
+        {"idr": 3, "user": "Blazej Jakubczyk", "stars": 3, "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.."},
+        {"idr": 4, "user": "Jakub Jordan", "stars": 2, "content": "Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier."}
+    ]},
+    {"id": 2, "userid": 2 ,"name": "New Balance abc", "review": [
+        {"idr": 1, "user": "Sebastian Iwan", "stars": 5, "content": "This shoe is great!111"},
+        {"idr": 2, "user": "Dominik Jaroszek", "stars": 4, "content": "Very comfortable and stylish.222"},
+        {"idr": 3, "user": "Blazej Jakubczyk", "stars": 3, "content": "I love the quality.333"},
+        {"idr": 4, "user": "Jakub Jordan", "stars": 2, "content": "I love the quality.444"}
+    ]}
+]
 }

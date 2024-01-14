@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
-import { baseUrl } from '../../../config';
-import axios from 'axios';
+import config from '../../../config';
 
 const PaymentScreen = ({ navigation }) => {
   const [cardData, setCardData] = useState([]);
@@ -66,7 +65,7 @@ const PaymentScreen = ({ navigation }) => {
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
         // Dodaj nową kartę do bazy danych
-        await axios.post(`${baseUrl}/cardData`, { ...newCard, userid: userId });
+        await config.post(`/cardData`, { ...newCard, userid: userId });
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -84,7 +83,7 @@ const PaymentScreen = ({ navigation }) => {
 
       try {
         // Usuń dane z bazy danych
-        await axios.delete(`${baseUrl}/cardData/${cardToDelete.id}`);
+        await config.delete(`/cardData/${cardToDelete.id}`);
 
         // Aktualizuj stan i zapisz dane karty do AsyncStorage
         setCardData(updatedCardData);

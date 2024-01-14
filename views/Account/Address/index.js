@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, Pressable, FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
-import axios from 'axios';
-import { baseUrl } from '../../../config';
+
+import config from '../../../config';
 
 const AddressScreen = ({ navigation }) => {
   const [addressData, setAddressData] = useState([]);
@@ -91,7 +91,7 @@ const AddressScreen = ({ navigation }) => {
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
         // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
-        await axios.post(`${baseUrl}/addressData`, { ...newAddress, userid: userId });
+        await config.post(`/addressData`, { ...newAddress, userid: userId });
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -113,7 +113,7 @@ const AddressScreen = ({ navigation }) => {
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
           // Aktualizuj dane w bazie danych
-          await axios.put(`${baseUrl}/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
+          await config.put(`/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
   
           // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
           setAddressData(updatedAddressData);
@@ -128,6 +128,7 @@ const AddressScreen = ({ navigation }) => {
   };
 
   const handleDeleteAddress = async (addressToDelete) => {
+    console.log(addressToDelete);
     const index = addressData.findIndex((address) => address.id === addressToDelete.id);
     
     if (index !== -1) {
@@ -136,7 +137,7 @@ const AddressScreen = ({ navigation }) => {
     
       try {
         // Usuń dane z bazy danych
-        await axios.delete(`http://192.168.1.25:3004/addressData/${addressToDelete.id}`);
+        await config.delete(`/addressData/${addressToDelete.id}`);
         
         // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
         setAddressData(updatedAddressData);

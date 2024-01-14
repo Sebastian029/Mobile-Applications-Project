@@ -1,32 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Button, StyleSheet, FlatList, Pressable} from 'react-native';
 import styles from './style';
 import {AntDesign} from "@expo/vector-icons";
-
-
-const orderData = [
-    {
-        id: 1,
-        orderID: "AAAA2137",
-        date: "15-10-2023",
-        status: "Packing",
-        items: 2,
-        totalPrice: 540
-    },
-    {
-        id: 2,
-        orderID: "AABB2115",
-        date: "15-12-2023",
-        status: "Done",
-        items: 2,
-        totalPrice: 300
-    }
-];
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OrderScreen = ({ navigation }) => {
+
+    const [orderData, setOrderData] = useState([]);
+
+    useEffect(() => {
+        // Odczytaj dane z AsyncStorage po załadowaniu komponentu
+        const fetchData = async () => {
+          try {
+            const storedOrderData = await AsyncStorage.getItem('orderData');
+            if (storedOrderData) {
+              setOrderData(JSON.parse(storedOrderData));
+            }
+          } catch (error) {
+            console.error('Error reading order data from AsyncStorage:', error);
+          }
+        };
+    
+        fetchData();
+      }, []); // Pusta zależność oznacza, że useEffect zostanie uruchomiony tylko raz po zamontowaniu komponentu
+    
+      
+
     const renderItem = ({ item }) => (
-        <Pressable style={styles.order} onPress={() => navigation.navigate('OrderDetail')}>
+        <Pressable style={styles.order} onPress={() => navigation.navigate('OrderDetail',{selectedItem: item})}>
             <Text style={styles.leftText}> {item.orderID}</Text>
             <View style={styles.row}>
                 <Text style={styles.leftText}>Order date:</Text>
@@ -58,7 +59,7 @@ const OrderScreen = ({ navigation }) => {
             <FlatList
                 data={orderData}
                 renderItem={renderItem}
-                //keyExtractor={(item, index) => index.toString()}
+                keyExtractor={(item, index) => index.toString()}
             />
 
         </View>

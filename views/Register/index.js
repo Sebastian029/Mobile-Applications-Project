@@ -2,7 +2,7 @@ import {Text, View, Image, TextInput, ScrollView, Pressable } from 'react-native
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import axios from 'axios';
+import config from '../../config'
 
 import styles from './style.js';
 
@@ -26,7 +26,7 @@ import styles from './style.js';
       setPasswordError(' ');
       try {
         // Check if the email already exists
-        const emailExistsResponse = await axios.get(`http://192.168.1.25:3004/users?email=${email}`);
+        const emailExistsResponse = await config.get(`/users?email=${email}`);
 
         if (emailExistsResponse.data.length > 0) {
           console.log("Email already exists");
@@ -35,7 +35,7 @@ import styles from './style.js';
           return;
         }
 
-        const response = await axios.post('http://192.168.1.25:3004/users', {
+        const response = await config.post('/users', {
           firstName,
           lastName,
           email,

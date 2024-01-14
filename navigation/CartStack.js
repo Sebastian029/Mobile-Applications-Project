@@ -12,8 +12,8 @@ const Stack = createNativeStackNavigator();
 
 export default function CartStackNav(){
   return (
-      <Stack.Navigator  screenOptions={{headerShown: false}} initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} /> 
+      <Stack.Navigator  screenOptions={{headerShown: false}} initialRouteName="Cart">
+        <Stack.Screen name="CartHome" component={HomeScreen} /> 
         <Stack.Screen name="CheckOut" component={CheckOutScreen} /> 
         <Stack.Screen name="PaymentChoose" component={PaymentChooseScreen} /> 
         <Stack.Screen name="ChooseAddress" component={ChooseAddressScreen} /> 
