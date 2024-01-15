@@ -11,22 +11,10 @@ import styles from './style';
     const { selectedItem} = route.params;
 
     const reviewsHandler = () => {
-  const selectedName = selectedItem.name; 
-  const selectedProduct = reviews.find(product => product.name === selectedName);
+      select = selectedItem.userid;
+  navigation.navigate('Reviews', {  select});
+  };
 
-  if (selectedProduct) {
-    const filteredReviews = selectedProduct.review.map(review => (
-      <View key={review.id}>
-        <Text>{review.user}</Text>
-        <Text>{review.stars} stars</Text>
-        <Text>{review.content}</Text>
-      </View>
-    ));
-    navigation.navigate('Reviews', { filteredReviews });
-  } else {
-    navigation.navigate('Reviews', { filteredReviews: [] }); 
-  }
-};
 
 const AddToCart = async () => {
   try {

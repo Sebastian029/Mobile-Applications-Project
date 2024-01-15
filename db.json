@@ -82,7 +82,6 @@
       "id": 4
     }
   ],
- 
   "boots": [
     {
       "id": 1,
@@ -96,7 +95,7 @@
       "brand": "Nike",
       "condition": "Good",
       "description": "des",
-      "userid": 0,
+      "userid": 2,
       "pieces": 1
     },
     {
@@ -111,7 +110,7 @@
       "brand": "Nike",
       "condition": "Good",
       "description": "des",
-      "userid": 0,
+      "userid": 2,
       "pieces": 1
     },
     {
@@ -130,9 +129,6 @@
       "id": 3
     }
   ],
-
-
-
   "orderData": [
     {
       "id": 1,
@@ -249,20 +245,130 @@
       "shipping": 0,
       "userid": 1,
       "id": 4
+    },
+    {
+      "orderID": "AAAA2137",
+      "date": "15.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 1,
+      "totalPrice": 11,
+      "boot": [
+        {
+          "idp": 2,
+          "name": "Nienie",
+          "price": 190,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Romualda 4, Kielce",
+      "shipping": 10,
+      "userid": 1,
+      "id": 5
+    },
+    {
+      "orderID": "AAAA2137",
+      "date": "15.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 1,
+      "totalPrice": 11,
+      "boot": [
+        {
+          "idp": 2,
+          "name": "Nienie",
+          "price": 190,
+          "quantity": 1,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Romualda 4, Kielce",
+      "shipping": 10,
+      "userid": 1,
+      "id": 6
     }
   ],
   "reviews": [
-    {"id": 1, "userid": 1,"name": "Nike Air Zoom", "review": [
-        {"idr": 1, "user": "Sebastian Iwan", "stars": 5, "content": "Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem."},
-        {"idr": 2, "user": "Dominik Jaroszek", "stars": 4, "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier."},
-        {"idr": 3, "user": "Blazej Jakubczyk", "stars": 3, "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.."},
-        {"idr": 4, "user": "Jakub Jordan", "stars": 2, "content": "Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier."}
-    ]},
-    {"id": 2, "userid": 2 ,"name": "New Balance abc", "review": [
-        {"idr": 1, "user": "Sebastian Iwan", "stars": 5, "content": "This shoe is great!111"},
-        {"idr": 2, "user": "Dominik Jaroszek", "stars": 4, "content": "Very comfortable and stylish.222"},
-        {"idr": 3, "user": "Blazej Jakubczyk", "stars": 3, "content": "I love the quality.333"},
-        {"idr": 4, "user": "Jakub Jordan", "stars": 2, "content": "I love the quality.444"}
-    ]}
-]
+    {
+      "id": 1,
+      "userid": 1,
+      "user": "Sebastian Iwan",
+      "stars": 5,
+      "content": "Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem."
+    },
+    {
+      "id": 2,
+      "userid": 1,
+      "user": "Dominik Jaroszek",
+      "stars": 4,
+      "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier."
+    },
+    {
+      "id": 3,
+      "userid": 2,
+      "user": "Blazej Jakubczyk",
+      "stars": 3,
+      "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.."
+    },
+    {
+      "id": 4,
+      "userid": 2,
+      "user": "Jakub Jordan",
+      "stars": 2,
+      "content": "Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier."
+    },
+    {
+      "user": "John Doe",
+      "stars": 4,
+      "content": "Dobre",
+      "userid": 2,
+      "id": 5
+    },
+    {
+      "user": "John Doe",
+      "stars": 4,
+      "content": "Iiii",
+      "userid": 2,
+      "id": 6
+    }
+  ],
+  "message": [
+    {
+      "id": 1,
+      "title": "Confirm",
+      "detail": "Wiecej miodu elo",
+      "userid": 1,
+      "sellid": 2,
+      "type": "Confirm"
+    },
+    {
+      "id": 1,
+      "title": "Add comment to your purhase",
+      "detail": "Wiecej trytolu",
+      "userid": 1,
+      "sellid": 2,
+      "type": "Comment"
+    },
+    {
+      "title": "Confirm",
+      "detail": "Wiecej miodu elo",
+      "userid": 1,
+      "type": "Confirm",
+      "sellid": 2,
+      "id": 2
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 1,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 3
+    }
+  ]
 }

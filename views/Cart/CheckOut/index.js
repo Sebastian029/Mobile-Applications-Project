@@ -41,57 +41,68 @@ import { CommonActions } from '@react-navigation/native';
 
 
   
-    const createOrder = async () => {
-      try {
-        
-          const storedUserData = await AsyncStorage.getItem('userData');
-          const parsedUserData = JSON.parse(storedUserData);
-          if (parsedUserData && parsedUserData.id) {
-            const userId = parsedUserData.id;
-          }
-        const cartItemsString = await AsyncStorage.getItem('CartItem');
-        if (cartItemsString) {
-          const cartItems = JSON.parse(cartItemsString);
-  
-          // Utwórz strukturę zamówienia
-          const orderData = {
-            orderID: 'AAAA2137', // Możesz użyć odpowiedniej logiki do generowania unikalnego ID zamówienia
-            date: new Date().toLocaleDateString(),
-            status: 'Packing',
-            items: itemsCountCheck,
-            price: basicPriceCheck,
-            totalPrice: totalPriceCheck,
-            boot: cartItems.map((item) => ({
-              idp: item.id,
-              name: item.title,
-              price: item.price,
-              quantity: item.quantity,
-              img: { uri: item.img.uri },
-            })),
-            address: `${addressStreet}, ${addressCity}`,
-            shipping: shippingPriceCheck,
-          };
-          
-          const existingOrdersString = await AsyncStorage.getItem('orderData');
+     const createOrder = async () => {
+    try {
+      let userId;
+      const storedUserData = await AsyncStorage.getItem('userData');
+      const parsedUserData = JSON.parse(storedUserData);
+      if (parsedUserData && parsedUserData.id) {
+        userId = parsedUserData.id;
+      }
+
+      const cartItemsString = await AsyncStorage.getItem('CartItem');
+      if (cartItemsString) {
+        const cartItems = JSON.parse(cartItemsString);
+
+        // Utwórz strukturę zamówienia
+        const orderData = {
+          orderID: 'AAAA2137', // Możesz użyć odpowiedniej logiki do generowania unikalnego ID zamówienia
+          date: new Date().toLocaleDateString(),
+          status: 'Packing',
+          items: itemsCountCheck,
+          price: basicPriceCheck,
+          totalPrice: totalPriceCheck,
+          boot: cartItems.map((item) => ({
+            idp: item.id,
+            name: item.title,
+            price: item.price,
+            quantity: item.quantity,
+            img: { uri: item.img.uri },
+          })),
+          address: `${addressStreet}, ${addressCity}`,
+          shipping: shippingPriceCheck,
+        };
+
+        const existingOrdersString = await AsyncStorage.getItem('orderData');
         const existingOrders = existingOrdersString ? JSON.parse(existingOrdersString) : [];
         const updatedOrders = [...existingOrders, orderData];
         await AsyncStorage.setItem('orderData', JSON.stringify(updatedOrders));
 
-          // Wysyłka danych zamówienia na serwer JSON
-          await config.post('/orderData',{...orderData, userid: userId});
-         
-          
-          // // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
-          await AsyncStorage.removeItem('CartItem');
-  
-          
+        // Iteruj po właścicielach i wysyłaj wiadomości do każdego z nich
+        const owners = new Set(cartItems.map((item) => item.userid));
 
-          
+        for (const ownerId of owners) {
+          const message = {
+            title: 'Comment',
+            detail: 'Wiecej miodu elo',
+            userid: ownerId,
+            type: 'Comment',
+          };
+
+          // Wysyłka wiadomości na serwer JSON
+          await config.post('/message', { ...message, sellid: ownerId, userid: userId });
         }
-      } catch (error) {
-        console.log(error);
+        await config.post('/orderData',{...orderData, userid: userId});
+        // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
+        await AsyncStorage.removeItem('CartItem');
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+ 
+
     const onPressCreate =()=> {
       createOrder();
 

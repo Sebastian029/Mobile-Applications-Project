@@ -6,26 +6,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 
 
-
+import config from '../../../config'
 
 const MessageCenterScreen = ({ navigation }) => {
 
-  const [messageData, setMessageData] = useState([
-    {
-      id: 1,
-      type: "Comment",
-      title: "Add comment to your purhase A5555",
-      detail: "Your order was placed successfully on 31 February 2137 24:59 and will be delivered yesterday."
-    },
-    {
-      id: 2,
-      type: "Confirm",
-      title: "Confirm to your purhase A5555",
-      detail: "Your order was placed successfully on 31 February 2137 24:59 and will be delivered yesterday."
-    },
-  ]);
+ 
+
+  
   const renderItem = ({ item }) => (
-   
+    
       <Pressable style={styles.infoBox} onPress={() => navigation.navigate('MessageDetail', { selectedItem: item})}>
         
         <Text style={styles.infoText}> {item.title}</Text>
@@ -36,7 +25,7 @@ const MessageCenterScreen = ({ navigation }) => {
 
 
 
-
+  const [messageData, setMessageData] = useState([]);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -45,6 +34,10 @@ const MessageCenterScreen = ({ navigation }) => {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
           setUserData(JSON.parse(storedUserData));
+          const responseOrder = await config.get(`/message`);
+          const getResponseOrder = responseOrder.data;
+          setMessageData(getResponseOrder);
+          
         }
       } catch (error) {
         console.error('Error reading user data from AsyncStorage:', error);
@@ -53,12 +46,7 @@ const MessageCenterScreen = ({ navigation }) => {
 
     getUserDataFromStorage();
 
-    const requestCameraPermission = async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasCameraPermission(status === 'granted');
-    };
-
-    requestCameraPermission();
+    
   }, []);
 
 

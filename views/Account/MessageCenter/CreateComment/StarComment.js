@@ -1,12 +1,14 @@
+// StarComment.js
 import React, { useState } from 'react';
 import { View, Pressable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const StarComment = () => {
+const StarComment = ({ onStarChange }) => {
   const [filledStars, setFilledStars] = useState(0);
 
   const handleStarPress = (index) => {
-    setFilledStars((prevStars) => (index === prevStars ? index - 1 : index));
+    setFilledStars(index);
+    onStarChange && onStarChange(index); // Zaktualizowano wywołanie onStarChange z aktualną ilością gwiazdek
   };
 
   const renderStars = () => {
@@ -20,7 +22,7 @@ const StarComment = () => {
             name={i < filledStars ? 'star' : 'staro'}
             color={i < filledStars ? 'orange' : 'gray'}
             size={24}
-            style={{paddingBottom:10}}
+            style={{ paddingBottom: 10 }}
           />
         </Pressable>
       );

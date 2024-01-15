@@ -9,15 +9,21 @@ import styles from './style';
     const [title, setTitle] = useState('');
     const [type, setType] = useState('');
     const [detail, setDetail] = useState('');
-   
+    const [sellData, setSellData] = useState('');
     useEffect(() => {
       
         if (route.params?.selectedItem) {
-          const { title, type, detail } = route.params.selectedItem;
+          const { title, type, detail, sellid } = route.params.selectedItem;
+          console.log(sellid)
+
+          setSellData(sellid);
+          
           setTitle(title);
           setType(type);
           setDetail(detail);
         }
+       
+
       }, [route.params?.selectedItem]);
 
   return (
@@ -40,7 +46,7 @@ import styles from './style';
               backgroundColor: pressed ? 'darkorange' : 'orange',
             },
           ]}
-           onPress={() => navigation.navigate('CreateComment')}
+           onPress={() => navigation.navigate('CreateComment', {sellData : sellData})}
         >
           <Text style={styles.addCommentButtonText}>Add Comment</Text>
         </Pressable>
