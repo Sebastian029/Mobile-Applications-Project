@@ -13,15 +13,14 @@ const EditMySaleScreen = ({ navigation, route }) => {
   const [condition, setCondition] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [parcel, setParcel] = useState('');
-  const [pieces, setPieces] = useState('');
+ 
   const [profileImage, setProfileImage] = useState(null);
 
   useEffect(() => {
     console.log("mySale from route.params:", route.params?.mySale);
   
     if (route.params?.mySale) {
-      const { title, category, brand, size, condition, description, price, parcel, pieces, img } = route.params.mySale;
+      const { title, category, brand, size, condition, description, price, pieces, img } = route.params.mySale;
       setTitle(title);
       setCategory(category);
       setBrand(brand);
@@ -29,8 +28,7 @@ const EditMySaleScreen = ({ navigation, route }) => {
       setCondition(condition);
       setDescription(description);
       setPrice(price);
-      setParcel(parcel);
-      setPieces(pieces);
+      // setPieces(pieces);
       setProfileImage(img);
     }
   }, [route.params?.mySale]);
@@ -167,7 +165,7 @@ const EditMySaleScreen = ({ navigation, route }) => {
         </View>
 
 
-        <View style={styles.row}>
+        {/* <View style={styles.row}>
         <Text style={styles.leftText}>Parcel</Text>
         <TextInput
           style={styles.dataText}
@@ -176,10 +174,10 @@ const EditMySaleScreen = ({ navigation, route }) => {
           onChangeText={(text) => setParcel(text)}
         />
 
-        </View>
+        </View> */}
 
 
-        <View style={styles.row}>
+        {/* <View style={styles.row}>
           <Text style={styles.leftText}>Pieces</Text>
           <TextInput
             style={styles.dataText}
@@ -187,7 +185,7 @@ const EditMySaleScreen = ({ navigation, route }) => {
             value={pieces}
             onChangeText={(text) => setPieces(text)}
           />
-      </View>
+      </View> */}
 
       </ScrollView>
       <View style={[styles]}>

@@ -39,6 +39,8 @@ const AddSellProductScreen = ({ navigation, route }) => {
     navigation.goBack();
   };
 
+
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -156,7 +158,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
 
 
 
-        <View style={styles.row}>
+        {/* <View style={styles.row}>
           <Text style={styles.leftText}>Pieces</Text>
           <TextInput
             style={styles.dataText}
@@ -164,7 +166,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
             value={pieces}
             onChangeText={(text) => setPieces(text)}
           />
-        </View>
+        </View> */}
       </ScrollView>
 
       <View style={[styles]}>

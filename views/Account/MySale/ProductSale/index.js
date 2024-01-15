@@ -13,25 +13,6 @@ import styles from './style';
     // dummy data
     
 
-
-    const reviews =[
-      {id: 1, name:'Nike Air Zoom', review: [
-                                  { id: 1, user:'Sebastian Iwan', stars: 5, content: 'Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem.' },
-                                  { id: 2, user:'Dominik Jaroszek', stars: 4,  content: 'Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.' },
-                                  { id: 3, user:'Blazej Jakubczyk', stars: 3,  content: 'Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier..' },
-                                  { id: 4, user:'Jakub Jordan', stars: 2,  content: 'Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier.' }]
-                                 },
-
-       {id: 2, name:'New Balance abc', review: [
-                                { id: 1, user:'Sebastian Iwan', stars: 5, content: 'This shoe is great!111' },
-                                { id: 2, user:'Dominik Jaroszek', stars: 4,  content: 'Very comfortable and stylish.222' },
-                                { id: 3, user:'Blazej Jakubczyk', stars: 3,  content: 'I love the quality.333' },
-                                { id: 4, user:'Jakub Jordan', stars: 2,  content: 'I love the quality.444' }]
-                                 },
-      
-      
-    ]
-
     const reviewsHandler = () => {
       const selectedName = selectedItem.name; 
       const selectedProduct = reviews.find(product => product.name === selectedName);

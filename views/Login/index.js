@@ -194,7 +194,7 @@ const LoginScreen = ({ navigation }) => {
       const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
       //const authenticatedCardData = getResponseDataCardData.find((cardData) => cardData.userid === authenticatedUser.id);
 
-      console.log("user: "+authenticatedUser.id);
+      //console.log("user: "+authenticatedUser.id);
       //console.log("card: "+authenticatedCardData.userid);
      // console.log('Dane z serwera:', authenticatedCardData);
     
@@ -216,7 +216,7 @@ const LoginScreen = ({ navigation }) => {
 
       const authenticatedOrderData = getResponseOrder.filter((orderData) => orderData.userid === authenticatedUser.id);
       
-      console.log(authenticatedOrderData);
+     // console.log(authenticatedOrderData);
       // Zapisz dane zalogowanego użytkownika w AsyncStorage
       saveUserDataToStorage(authenticatedUser);
       saveBootsDataToStorage(getResponseBoots);

@@ -43,17 +43,18 @@ import { CommonActions } from '@react-navigation/native';
   
      const createOrder = async () => {
     try {
-      let userId;
-      const storedUserData = await AsyncStorage.getItem('userData');
-      const parsedUserData = JSON.parse(storedUserData);
-      if (parsedUserData && parsedUserData.id) {
-        userId = parsedUserData.id;
-      }
-
       const cartItemsString = await AsyncStorage.getItem('CartItem');
+      console.log('Cart Items:', JSON.parse(cartItemsString));
+
+      const storedUserData = await AsyncStorage.getItem('userData');
+      console.log('Cart Items:', JSON.parse(cartItemsString));
+      const parsedUserData = JSON.parse(storedUserData);
+      let userId = parsedUserData.id;
+
+      
       if (cartItemsString) {
         const cartItems = JSON.parse(cartItemsString);
-
+        console.log('nig2');
         // Utwórz strukturę zamówienia
         const orderData = {
           orderID: 'AAAA2137', // Możesz użyć odpowiedniej logiki do generowania unikalnego ID zamówienia
@@ -66,7 +67,6 @@ import { CommonActions } from '@react-navigation/native';
             idp: item.id,
             name: item.title,
             price: item.price,
-            quantity: item.quantity,
             img: { uri: item.img.uri },
           })),
           address: `${addressStreet}, ${addressCity}`,
@@ -80,18 +80,19 @@ import { CommonActions } from '@react-navigation/native';
 
         // Iteruj po właścicielach i wysyłaj wiadomości do każdego z nich
         const owners = new Set(cartItems.map((item) => item.userid));
-
+        console.log('tutaj1');
         for (const ownerId of owners) {
           const message = {
             title: 'Comment',
             detail: 'Wiecej miodu elo',
-            userid: ownerId,
+            userid: userId,
             type: 'Comment',
           };
-
+          console.log('tutaj2');
           // Wysyłka wiadomości na serwer JSON
-          await config.post('/message', { ...message, sellid: ownerId, userid: userId });
+          await config.post('/message', { ...message, sellid: ownerId });
         }
+        console.log('tutaj3');
         await config.post('/orderData',{...orderData, userid: userId});
         // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
         await AsyncStorage.removeItem('CartItem');
@@ -101,16 +102,55 @@ import { CommonActions } from '@react-navigation/native';
     }
   };
 
- 
+  const deleteBought = async () => {
+    try {
+      // 1. Remove items from local storage (AsyncStorage)
+      const cartItemsString = await AsyncStorage.getItem('CartItem');
+      const storedBootsData = await AsyncStorage.getItem('bootsData');
+  
+      if (cartItemsString && storedBootsData) {
+        const cartItems = JSON.parse(cartItemsString);
+        const updatedBootsData = JSON.parse(storedBootsData);
+  
+        // Filter out items with IDs present in both cartItems and updatedBootsData
+        const updatedBootsDataFiltered = updatedBootsData.filter(bootItem => {
+          return !cartItems.some(cartItem => cartItem.id === bootItem.id);
+        });
+        //console.log(updatedBootsDataFiltered);
+        // Update the bootsData in AsyncStorage
+        await AsyncStorage.setItem('bootsData', JSON.stringify(updatedBootsDataFiltered));
+  
+        // Delete items from the server
+        const owners = new Set(cartItems.map(item => item.id));
+  
+        for (const ownerId of owners) {
+          await config.delete(`/boots/${ownerId}`);
+        }
+  
+        // Continue with the rest of your logic if needed
+      } else {
+        console.log('No items found in the cart or bootsData.');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  
+  
 
-    const onPressCreate =()=> {
+  
+
+    const onPressCreate = async ()  => {
+      console.log('nig');
       createOrder();
-
+      deleteBought();
+      await AsyncStorage.removeItem('CartItem');
       navigation.dispatch(CommonActions.reset({
         index: 0,
         routes: [{ name: 'CartHome' }],
       }));
-      navigation.navigate('Home');
+      navigation.navigate('CartHome');
     
     };
 

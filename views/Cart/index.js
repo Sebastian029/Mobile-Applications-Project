@@ -70,7 +70,7 @@ export default function HomeScreen({ navigation }) {
             />
           </View>
           <Text style={styles.productPrice}>{item.price}$</Text>
-          <View style={styles.pieces}>
+          {/* <View style={styles.pieces}>
             <AntDesign
               name="minus"
               style={styles.basicIcon}
@@ -82,7 +82,7 @@ export default function HomeScreen({ navigation }) {
               style={styles.basicIcon}
               onPress={() => changeQuantity(item, 1)}
             />
-          </View>
+          </View> */}
         </View>
       </Pressable>
     );
@@ -152,7 +152,8 @@ export default function HomeScreen({ navigation }) {
     }
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
+   // console.log(await AsyncStorage.getItem('CartItem'));
     if (totalPrice !== 0) {
       navigation.navigate('CheckOut', {
         totalPrice,

@@ -43,6 +43,10 @@ const ProductPicture = ({ navigation, route }) => {
             await FileSystem.moveAsync({ from: uri, to: temporaryUri});
             const asset = await MediaLibrary.createAssetAsync(temporaryUri)
             const album = await MediaLibrary.createAlbumAsync('expoCamera', asset);
+            
+
+  // Wróć do poprzedniego ekranu
+        navigation.goBack();
         }
 
     return (

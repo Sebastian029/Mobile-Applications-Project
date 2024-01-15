@@ -21,9 +21,9 @@ export default function OrderDetail({navigation, route}){
                     </View>
                     <Text style={styles.productPrice}>{item.price}$</Text>
                     {/* <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text> */}
-                    <View style={styles.pieces}>
+                    {/* <View style={styles.pieces}>
                         <Text style={styles.basicIcon}>{item.quantity}</Text>
-                    </View>
+                    </View> */}
                 </View>
             </Pressable>
         );

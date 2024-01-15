@@ -1,9 +1,22 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Text, View, Image, SafeAreaView, StyleSheet, TouchableOpacity, Button } from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {
+    View,
+    Text,
+    TextInput,
+    ScrollView,
+    StyleSheet,
+    Pressable,
+    TouchableOpacity,
+    Image,
+    Platform, Alert,
+    SafeAreaView
+} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as ImagePicker from 'expo-image-picker';
-import { Camera ,CameraType} from 'expo-camera';
+import { Camera, CameraType } from 'expo-camera';
+import * as ImagePicker from "expo-image-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as MediaLibrary from "expo-media-library";
+import * as FileSystem from 'expo-file-system';
 
 import config from '../../../config';
 
@@ -62,16 +75,13 @@ const ProfileScreen = ({ navigation }) => {
 
   
   const takePicture = async () => {
-    if (cameraRef.current) {
-      try {
-        let photo = await cameraRef.current.takePictureAsync();
-        setProfileImage(photo.uri);
-        updateProfileImageInStorage(photo.uri);
-      } catch (error) {
-        console.error('Error taking picture:', error);
-      }
-    }
-  };
+
+    const  {uri}  = await cameraRef.current.takePictureAsync();
+    const temporaryUri = `${FileSystem.cacheDirectory}expo-image-${Date.now()}.jpg`;
+    await FileSystem.moveAsync({ from: uri, to: temporaryUri});
+    const asset = await MediaLibrary.createAssetAsync(temporaryUri)
+    const album = await MediaLibrary.createAlbumAsync('expoCamera', asset);
+}
 
   const toggleCameraType = () => {
     setCameraType((prevType) =>
@@ -131,7 +141,7 @@ const ProfileScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.topContainer}>
-        <TouchableOpacity onPress={pickImage}>
+        <TouchableOpacity onPress={takePicture}>
           
   {profileImage ? (
     <Image source={{ uri: profileImage }} style={styles.profileImage} />

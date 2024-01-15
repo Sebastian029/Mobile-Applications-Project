@@ -95,23 +95,35 @@
       "brand": "Nike",
       "condition": "Good",
       "description": "des",
-      "userid": 2,
-      "pieces": 1
+      "userid": 2
     },
     {
       "id": 2,
-      "category": "elegant",
+      "category": "sport",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
       },
-      "title": "Nienie",
+      "title": "Niewiem",
       "price": 190,
       "size": 40,
       "brand": "Nike",
       "condition": "Good",
       "description": "des",
-      "userid": 2,
-      "pieces": 1
+      "userid": 2
+    },
+    {
+      "id": 4,
+      "category": "sport",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+      },
+      "title": "Niewiemalewiem",
+      "price": 190,
+      "size": 40,
+      "brand": "Nike",
+      "condition": "Good",
+      "description": "des",
+      "userid": 2
     },
     {
       "title": "Uj",
@@ -121,7 +133,6 @@
       "condition": "Ff",
       "description": "Iij",
       "price": "200",
-      "pieces": "Pp",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/95973c72-bb9d-472b-9623-c42f456a0eae.png"
       },
@@ -144,37 +155,6 @@
           "idp": 1,
           "name": "Nike",
           "price": 100,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        },
-        {
-          "idp": 2,
-          "name": "Nike",
-          "price": 200,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        }
-      ],
-      "address": "Podraje 2, 18-136",
-      "shipping": "40"
-    },
-    {
-      "id": 2,
-      "userid": 1,
-      "orderID": "AAAA2137",
-      "date": "15-10-2023",
-      "status": "Packing",
-      "items": 2,
-      "totalPrice": 540,
-      "boot": [
-        {
-          "idp": 1,
-          "name": "Nike",
-          "price": 100,
           "img": {
             "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
           }
@@ -190,107 +170,6 @@
       ],
       "address": "Podraje 2, 18-136",
       "shipping": "40"
-    },
-    {
-      "orderID": "AAAA2137",
-      "date": "14.01.2024",
-      "status": "Packing",
-      "items": 1,
-      "price": 1,
-      "totalPrice": 11,
-      "boot": [
-        {
-          "idp": 2,
-          "name": "Nienie",
-          "price": 190,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        }
-      ],
-      "address": "Romualda 4, Kielce",
-      "shipping": 10,
-      "userid": 1,
-      "id": 3
-    },
-    {
-      "orderID": "AAAA2137",
-      "date": "14.01.2024",
-      "status": "Packing",
-      "items": 2,
-      "price": 2,
-      "totalPrice": 2,
-      "boot": [
-        {
-          "idp": 1,
-          "name": "Nie",
-          "price": 190,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        },
-        {
-          "idp": 2,
-          "name": "Nienie",
-          "price": 190,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        }
-      ],
-      "address": "Romualda 4, Kielce",
-      "shipping": 0,
-      "userid": 1,
-      "id": 4
-    },
-    {
-      "orderID": "AAAA2137",
-      "date": "15.01.2024",
-      "status": "Packing",
-      "items": 1,
-      "price": 1,
-      "totalPrice": 11,
-      "boot": [
-        {
-          "idp": 2,
-          "name": "Nienie",
-          "price": 190,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        }
-      ],
-      "address": "Romualda 4, Kielce",
-      "shipping": 10,
-      "userid": 1,
-      "id": 5
-    },
-    {
-      "orderID": "AAAA2137",
-      "date": "15.01.2024",
-      "status": "Packing",
-      "items": 1,
-      "price": 1,
-      "totalPrice": 11,
-      "boot": [
-        {
-          "idp": 2,
-          "name": "Nienie",
-          "price": 190,
-          "quantity": 1,
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-          }
-        }
-      ],
-      "address": "Romualda 4, Kielce",
-      "shipping": 10,
-      "userid": 1,
-      "id": 6
     }
   ],
   "reviews": [
@@ -321,20 +200,6 @@
       "user": "Jakub Jordan",
       "stars": 2,
       "content": "Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier."
-    },
-    {
-      "user": "John Doe",
-      "stars": 4,
-      "content": "Dobre",
-      "userid": 2,
-      "id": 5
-    },
-    {
-      "user": "John Doe",
-      "stars": 4,
-      "content": "Iiii",
-      "userid": 2,
-      "id": 6
     }
   ],
   "message": [
@@ -347,7 +212,7 @@
       "type": "Confirm"
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "Add comment to your purhase",
       "detail": "Wiecej trytolu",
       "userid": 1,
@@ -360,7 +225,7 @@
       "userid": 1,
       "type": "Confirm",
       "sellid": 2,
-      "id": 2
+      "id": 3
     },
     {
       "title": "Comment",
@@ -368,7 +233,7 @@
       "userid": 1,
       "type": "Comment",
       "sellid": 2,
-      "id": 3
+      "id": 4
     }
   ]
 }
