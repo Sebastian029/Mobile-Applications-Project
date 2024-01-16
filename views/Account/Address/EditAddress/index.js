@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import styles from './style'
@@ -34,6 +34,8 @@ const EditAddressScreen = ({ navigation, route }) => {
     }
   }, [route.params?.address]);
 
+  
+
   const onSave = () => {
     // Add your logic to save the edited address data
     const editedAddress = {
@@ -49,6 +51,32 @@ const EditAddressScreen = ({ navigation, route }) => {
       zip: zip,
       phone: phone,
     };
+
+    if (!name || !country || !first || !last || !street || !city || !region || !zip || !phone) {
+      Alert.alert('Error', 'All fields must be filled out.');
+      return;
+    }
+
+    // Validate first and last names
+  const nameRegex = /^[a-zA-Z]+$/;
+  if (!nameRegex.test(first) || !nameRegex.test(last)) {
+    Alert.alert('Error', 'First and last names should contain only letters.');
+    return;
+  }
+
+  // Validate phone format
+  const phoneRegex = /^\+48\d{9}$/;
+  if (!phoneRegex.test(phone)) {
+    Alert.alert('Error', 'Phone number should be in the format +489123456789.');
+    return;
+  }
+
+  // Validate ZIP code format
+  const zipRegex = /^\d{2}-\d{3}$/;
+  if (!zipRegex.test(zip)) {
+    Alert.alert('Error', 'ZIP code should be in the format xx-xxx.');
+    return;
+  }
 
     // Pass the edited address data to the onSave callback
     route.params.onSave(editedAddress);
