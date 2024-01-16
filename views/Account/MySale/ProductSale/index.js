@@ -9,28 +9,6 @@ import styles from './style';
   export default function ProductScreen({navigation, route}){
     const { selectedItem} = route.params;
 
-
-    // dummy data
-    
-
-    const reviewsHandler = () => {
-      const selectedName = selectedItem.name; 
-      const selectedProduct = reviews.find(product => product.name === selectedName);
-    
-      if (selectedProduct) {
-        const filteredReviews = selectedProduct.review.map(review => ({
-          id: review.id,
-          user: review.user,
-          stars: review.stars,
-          content: review.content
-        }));
-        navigation.navigate('Reviews', { filteredReviews });
-      } else {
-        navigation.navigate('Reviews', { filteredReviews: [] }); 
-      }
-    };
-
-
     return (
       
       <ScrollView style={styles.screen}>
@@ -70,9 +48,6 @@ import styles from './style';
           </View>
 
 
-          <Pressable onPress={() => reviewsHandler()}>
-            <Text style={styles.productReview}>See product reviews</Text>
-          </Pressable>
         </View>
 
       </ScrollView>
