@@ -38,6 +38,46 @@
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/1c075384-6958-4cea-8491-369fdc20f52b.png"
       }
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phoneNumber": "",
+      "birthday": "",
+      "password": "",
+      "repeatPassword": "",
+      "id": 4
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "Dgh",
+      "phoneNumber": "",
+      "birthday": "",
+      "password": "",
+      "repeatPassword": "",
+      "id": 5
+    },
+    {
+      "firstName": "A",
+      "lastName": "A",
+      "email": "A@asd.pl",
+      "phoneNumber": "+48111222333",
+      "birthday": "11-19-2000",
+      "password": "A",
+      "repeatPassword": "A",
+      "id": 6
+    },
+    {
+      "firstName": "A",
+      "lastName": "A",
+      "email": "As@gmail.com",
+      "phoneNumber": "+48123456789",
+      "birthday": "11.01.2000",
+      "password": "A",
+      "repeatPassword": "A",
+      "id": 7
     }
   ],
   "cardData": [

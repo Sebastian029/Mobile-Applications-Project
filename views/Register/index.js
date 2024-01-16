@@ -1,4 +1,4 @@
-import {Text, View, Image, TextInput, ScrollView, Pressable } from 'react-native';
+import {Text, View, Image, TextInput, ScrollView, Pressable, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
@@ -18,22 +18,51 @@ import styles from './style.js';
 
     const handleRegister = async () => {
       if (password !== repeatPassword) {
-        console.log("Password and repeat password do not match");
-        setPasswordError('Passwords do not match');
-        // Display an error message or update UI accordingly
+        Alert.alert('Error', 'Password and repeat password do not match')
         return;
       }
-      setPasswordError(' ');
+  
       try {
-        // Check if the email already exists
         const emailExistsResponse = await config.get(`/users?email=${email}`);
 
         if (emailExistsResponse.data.length > 0) {
-          console.log("Email already exists");
-          setPasswordError('Email already exists');
-          // Display an error message or update UI accordingly
+          Alert.alert('Error', 'Email already exists')
           return;
         }
+
+        if (!firstName || !lastName || !email || !phoneNumber || !birthday || !password || !password || !repeatPassword) {
+          Alert.alert('Error', 'All fields must be filled out.');
+          return;
+        }
+        
+        
+        const nameRegex = /^[a-zA-Z]+$/;
+        if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+          Alert.alert('Error', 'First and last names should contain only letters.');
+          return;
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+          Alert.alert('Error', 'Make sure that the input follows the user@mail.com format');
+          return;
+        }
+
+     
+        const phoneRegex = /^\+48\d{9}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+          Alert.alert('Error', 'Phone number should be in the format +489123456789.');
+          return;
+        }
+
+   
+        const birthdayRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.(19|20)\d{2}$/;
+        if (!birthdayRegex.test(birthday)) {
+          Alert.alert('Error', 'Make sure that the input follows the DD.MM.YYYY format, and values are in correct range.');
+          return;
+        }
+
+
 
         const response = await config.post('/users', {
           firstName,
@@ -44,6 +73,7 @@ import styles from './style.js';
           password,
           repeatPassword,
         });
+
   
         console.log('Response from server:', response.data);
 
@@ -96,7 +126,7 @@ import styles from './style.js';
           </View>
 
           <View style={styles.inputBox}>
-            <TextInput placeholder='Birthday' style={styles.textInput} onChangeText={(text) => setBirthday(text)}></TextInput>
+            <TextInput placeholder='Birthday     DD.MM.YYYY' style={styles.textInput} onChangeText={(text) => setBirthday(text)}></TextInput>
             <AntDesign name="calendar" style={styles.icon}/>
           </View>
 
