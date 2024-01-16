@@ -15,12 +15,16 @@ const EditMySaleScreen = ({ navigation, route }) => {
   const [price, setPrice] = useState('');
  
   const [profileImage, setProfileImage] = useState(null);
+  const [id, setId] = useState(null);
+  const [userid, setUserid] = useState(null);
 
   useEffect(() => {
     console.log("mySale from route.params:", route.params?.mySale);
   
     if (route.params?.mySale) {
-      const { title, category, brand, size, condition, description, price, pieces, img } = route.params.mySale;
+      const { id, userid, title, category, brand, size, condition, description, price, img } = route.params.mySale;
+      setUserid(userid);
+      setId(id)
       setTitle(title);
       setCategory(category);
       setBrand(brand);
@@ -28,7 +32,6 @@ const EditMySaleScreen = ({ navigation, route }) => {
       setCondition(condition);
       setDescription(description);
       setPrice(price);
-      // setPieces(pieces);
       setProfileImage(img);
     }
   }, [route.params?.mySale]);
@@ -36,6 +39,8 @@ const EditMySaleScreen = ({ navigation, route }) => {
   const onSave = () => {
     // Add your logic to save the edited mySale data
     const editedSellProduct = {
+      id : id,
+      userid: userid,
       title: title,
       category: category,
       brand: brand,
@@ -43,8 +48,6 @@ const EditMySaleScreen = ({ navigation, route }) => {
       condition: condition,
       description: description,
       price: price,
-      parcel: parcel,
-      pieces: pieces,
       img:  profileImage  ,
     };
 

@@ -55,8 +55,13 @@ const MySaleScreen = ({ navigation }) => {
         // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/boots`, { ...newMySale, userid: userId });
         
-        setMySaleData([...mySaleData, newMySale]);
-    saveMySaleDataToStorage([...mySaleData, newMySale]);
+        const responseData = await config.get('/boots');
+        const getResponseCardData =  responseData.data;
+        
+        const filteredMySaleData = getResponseCardData.filter(item => item.userid === userId);
+
+        setMySaleData(filteredMySaleData);
+    saveMySaleDataToStorage(filteredMySaleData);
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -147,8 +152,9 @@ const renderItem = ({ item }) => {
           <FlatList
           data={mySaleData}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          />
+          keyExtractor={(item, index) => index.toString()}
+        />
+        
           ) : (
             <Text style={styles.noItemsText}>Cart is empty</Text>
             )}
