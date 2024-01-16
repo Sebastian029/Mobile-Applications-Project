@@ -55,7 +55,7 @@ const ReviewsScreen = ({ navigation, route }) => {
         <FlatList
           data={reviewsData}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item, index) => index.toString()}
           contentContainerStyle={{ padding: 15 }}
         />
       );

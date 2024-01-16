@@ -39,15 +39,49 @@ const AddAddressScreen = ({ navigation, route }) => {
   }, []);
 
   const onSave = () => {
-    // Add your logic to save the address data
+    // Check if any field is empty
+    if (!name || !country || !first || !last || !street || !city || !region || !zip || !phone) {
+      Alert.alert('Error', 'All fields must be filled out.');
+      return;
+    }
+
+    // Validate first and last names
+    const nameRegex = /^[a-zA-Z]+$/;
+    if (!nameRegex.test(first) || !nameRegex.test(last)) {
+      Alert.alert('Error', 'First and last names should contain only letters.');
+      return;
+    }
+
+    // Validate phone format
+    const phoneRegex = /^\+48\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      Alert.alert('Error', 'Phone number should be in the format +489123456789.');
+      return;
+    }
+
+    // Validate ZIP code format
+    const zipRegex = /^\d{2}-\d{3}$/;
+    if (!zipRegex.test(zip)) {
+      Alert.alert('Error', 'ZIP code should be in the format xx-xxx.');
+      return;
+    }
+
+    // Truncate other fields to 20 characters
+    const truncatedFirst = first.slice(0, 20);
+    const truncatedLast = last.slice(0, 20);
+    const truncatedStreet = street.slice(0, 20);
+    const truncatedCity = city.slice(0, 20);
+    const truncatedRegion = region.slice(0, 20);
+    const truncatedCountry = country.slice(0, 20);
+
     const newAddress = {
-      name : name,
-      country: country,
-      first: first,
-      last: last,
-      street: street,
-      city: city,
-      region: region,
+      name: name,
+      country: truncatedCountry,
+      first: truncatedFirst,
+      last: truncatedLast,
+      street: truncatedStreet,
+      city: truncatedCity,
+      region: truncatedRegion,
       zip: zip,
       phone: phone,
     };

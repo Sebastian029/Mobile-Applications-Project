@@ -10,7 +10,7 @@
       "password": "p",
       "repeatPassword": "password",
       "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/933d5480-8d88-4156-bad8-1a91b0d99318.jpeg"
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/6d75bd5a-cc9c-473c-b1d5-5d6974e5e25e.jpeg"
       }
     },
     {
@@ -61,13 +61,6 @@
       "expiryDate": "12/6666",
       "userid": 1,
       "id": 5
-    },
-    {
-      "number": "9999999999999999",
-      "cardHolder": "Skkskksks",
-      "expiryDate": "12/7777",
-      "userid": 1,
-      "id": 6
     }
   ],
   "addressData": [
