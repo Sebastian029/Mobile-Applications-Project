@@ -1,8 +1,29 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable,Image } from "react-native";
+import { StyleSheet, View, Text, Pressable,Image, Alert } from "react-native";
 import styles from "./style";
 import {AntDesign} from "@expo/vector-icons";
 const AccountScreen = ({navigation}) => {
+
+  const handleLogout=() => {
+    Alert.alert(
+      'Confirmation',
+      'Are you sure to log out?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('Login'),
+        },
+      ],
+      { cancelable: false }
+    );
+
+    
+  }
+
   return (
     <View >
       <View style={[styles.topBar]}>
@@ -43,6 +64,12 @@ const AccountScreen = ({navigation}) => {
             <View style={styles.row}>
                 <AntDesign name="wallet" style={styles.basicIcon}/>
                 <Text style={styles.tekst}>My sale</Text>
+            </View>
+        </Pressable>
+
+        <Pressable onPress={() => handleLogout()}>
+         <View style={[styles.row, {justifyContent:'center'}]}>
+                <Text style={styles.tekst}>Log Out</Text>
             </View>
         </Pressable>
       </View>

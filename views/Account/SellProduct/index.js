@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, Pressable,TouchableOpacity,Image } from 'react-native';
+import { View, Text, TextInput, ScrollView, Pressable,TouchableOpacity,Image, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -25,6 +25,55 @@ const AddSellProductScreen = ({ navigation, route }) => {
       price: price,
       img: {uri:profileImage},
     };
+
+    if (!title || !category || !brand || !size || !condition || !description || !price) {
+      Alert.alert('Error', 'All fields must be filled out.');
+      return;
+    }
+
+    if(!profileImage){
+      Alert.alert('Error', 'No item image');
+      return;
+    }
+
+
+  const categoryRegex = /^[a-zA-Z\s]+$/;
+  if (!categoryRegex.test(category)) {
+    Alert.alert('Error', 'Invalid category name');
+    return;
+  }
+
+  const brandRegex = /^[a-zA-Z0-9\s]+$/;
+  if (!brandRegex.test(brand)) {
+    Alert.alert('Error', 'Invalid brand name');
+    return;
+  }
+
+  const sizeRegex = /^[0-9]+$/;
+  if (!sizeRegex.test(size)) {
+    Alert.alert('Error', 'Only number are available in shoe size');
+    return;
+  }
+
+  const conditionRegex = /^[a-zA-Z\s]+$/;;
+  if (!conditionRegex.test(condition)) {
+    Alert.alert('Error', 'Phone number should be in the format +489123456789.');
+    return;
+  }
+
+  const descriptionRegex = /^.{0,255}$/;
+  if (!descriptionRegex.test(description)) {
+    Alert.alert('Error', 'Invalid description');
+    return;
+  }
+
+  const priceRegex = /^\d+(\.\d{1,2})?$/;
+  if (!priceRegex.test(price)) {
+    Alert.alert('Error', 'Only number are available in shoe price');
+    return;
+  }
+
+  
 
     route.params.onSave(newSellProduct);
 

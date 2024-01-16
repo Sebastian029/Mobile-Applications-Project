@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   tekst: {
     color:'#223263',
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }
 })
 

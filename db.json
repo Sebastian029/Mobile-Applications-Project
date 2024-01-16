@@ -7,7 +7,7 @@
       "email": "l",
       "phoneNumber": 123456789,
       "birthday": "1990-01-01",
-      "password": "p",
+      "password": "+48123123123",
       "repeatPassword": "password",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/6d75bd5a-cc9c-473c-b1d5-5d6974e5e25e.jpeg"
@@ -17,7 +17,7 @@
       "firstName": "dominik",
       "lastName": "Jaroszek",
       "email": "L",
-      "phoneNumber": "Hg",
+      "phoneNumber": "+48234234234",
       "birthday": "Gh",
       "password": "P",
       "repeatPassword": "Password",
@@ -30,7 +30,7 @@
       "firstName": "Dominik",
       "lastName": "Jaroszek",
       "email": "ll",
-      "phoneNumber": "6666",
+      "phoneNumber": "+48456456456",
       "birthday": "677",
       "password": "pp",
       "repeatPassword": "pp",
@@ -38,6 +38,46 @@
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/1c075384-6958-4cea-8491-369fdc20f52b.png"
       }
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phoneNumber": "",
+      "birthday": "",
+      "password": "",
+      "repeatPassword": "",
+      "id": 4
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "Dgh",
+      "phoneNumber": "",
+      "birthday": "",
+      "password": "",
+      "repeatPassword": "",
+      "id": 5
+    },
+    {
+      "firstName": "A",
+      "lastName": "A",
+      "email": "A@asd.pl",
+      "phoneNumber": "+48111222333",
+      "birthday": "11-19-2000",
+      "password": "A",
+      "repeatPassword": "A",
+      "id": 6
+    },
+    {
+      "firstName": "A",
+      "lastName": "A",
+      "email": "As@gmail.com",
+      "phoneNumber": "+48123456789",
+      "birthday": "11.01.2000",
+      "password": "A",
+      "repeatPassword": "A",
+      "id": 7
     }
   ],
   "cardData": [
@@ -65,6 +105,8 @@
   ],
   "addressData": [
     {
+      "id": 4,
+      "userid": 2,
       "name": "My Addres 1",
       "country": "Polska",
       "first": "Dominik",
@@ -73,9 +115,7 @@
       "city": "Kielce",
       "region": "Świętokrzyskie",
       "zip": "25-001",
-      "phone": "501747037",
-      "userid": 2,
-      "id": 4
+      "phone": "+48501747037"
     },
     {
       "name": "Adres2222",
@@ -147,20 +187,6 @@
       "userid": 2
     },
     {
-      "id": 4,
-      "category": "sport",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      },
-      "title": "Niewiemalewiem",
-      "price": 190,
-      "size": 40,
-      "brand": "Nike",
-      "condition": "Good",
-      "description": "des",
-      "userid": 2
-    },
-    {
       "title": "Uj",
       "category": "Hh",
       "brand": "Nng",
@@ -173,6 +199,30 @@
       },
       "userid": 1,
       "id": 3
+    },
+    {
+      "id": 4,
+      "userid": 2,
+      "title": "A",
+      "category": "A",
+      "brand": "A",
+      "size": "33",
+      "condition": "A",
+      "description": "Aa",
+      "price": "38",
+      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/05baf9e3-60a3-4402-88c3-21a66e1762c9.jpeg"
+    },
+    {
+      "id": 5,
+      "userid": 2,
+      "title": "A",
+      "category": "A",
+      "brand": "A",
+      "size": "33",
+      "condition": "A",
+      "description": "A",
+      "price": "99",
+      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/10bd4f25-9a68-43e1-998d-a195e94c4595.jpeg"
     }
   ],
   "orderData": [

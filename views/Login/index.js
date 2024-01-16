@@ -224,8 +224,13 @@ const LoginScreen = ({ navigation }) => {
       saveAddressDataToStorage(authenticatedUser.id, authenticatedAddressData);
       // saveMySaleDataToStorage(authenticatedUser.id,authenticatedMySaleData);
       saveOrderDataToStorage(authenticatedUser.id,authenticatedOrderData);
+      
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'TabNav' }],
+      });
 
-      navigation.navigate('TabNav');
+      //navigation.navigate('TabNav');
     } else {
       console.log('Invalid credentials');
       setLoginError('Invalid credentials');
