@@ -65,27 +65,40 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
       },
-      imageContainer: {
+    imageContainer: {
         alignItems: 'center',
-        marginTop: 20,
-      },
-      profileImage: {
+        alignSelf: "flex-start",
+        flexDirection: 'row',
+    },
+    profileImage: {
         width: 120,
         height: 120,
-        borderRadius: 60, 
-        overflow: 'hidden',
-      },
-      profileImagePlaceholder: {
+        resizeMode: 'contain',
+        borderRadius:60,
+
+    },
+    profileImagePlaceholder: {
         width: 120,
         height: 120,
-        borderRadius: 60,
         overflow: 'hidden',
         backgroundColor: 'gray',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth:2,
-        borderColor:'orange'
-      },
+        borderRadius:60,
+    },
+
+    cameraPlaceholder: {
+        width: 40,
+        height: 40,
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        borderRadius:20,
+    },
       basicIcon:{
         fontSize:22,
         color:'gray',
@@ -130,7 +143,8 @@ const styles = StyleSheet.create({
         marginLeft:'auto',
         color:'gray',
         paddingRight:10,
-    }
+    },
+
     
 
 

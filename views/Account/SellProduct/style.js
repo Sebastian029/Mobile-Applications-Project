@@ -37,31 +37,38 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     alignItems: 'center',
+    alignSelf: "center",
     marginTop: 20,
     flexDirection: 'row'
   },
   profileImage: {
-    width: 120,
-    height: 120,
-    resizeMode: 'contain'
+    width: 200,
+    height: 140,
+    resizeMode: 'contain',
+    borderRadius:30,
 
   },
   profileImagePlaceholder: {
-    width: 120,
-    height: 120,
+    width: 200,
+    height: 140,
     overflow: 'hidden',
     backgroundColor: 'gray',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius:30,
   },
 
   cameraPlaceholder: {
-    width: 120,
-    height: 120,
+    width: 50,
+    height: 50,
     overflow: 'hidden',
     backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    borderRadius:25,
   },
 
   content:{

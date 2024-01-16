@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, Pressable,TouchableOpacity,Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, ScrollView, Pressable,TouchableOpacity,Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { Camera, CameraType } from 'expo-camera';
 
 import styles from './style';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddSellProductScreen = ({ navigation, route }) => {
   const [title, setTitle] = useState('');
@@ -15,11 +13,8 @@ const AddSellProductScreen = ({ navigation, route }) => {
   const [condition, setCondition] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [parcel, setParcel] = useState('');
-  const [pieces, setPieces] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const onSave = () => {
-    // Add your logic to save the sellProduct data
     const newSellProduct = {
       title: title,
       category: category,
@@ -28,14 +23,11 @@ const AddSellProductScreen = ({ navigation, route }) => {
       condition: condition,
       description: description,
       price: price,
-      pieces: pieces,
       img: {uri:profileImage},
     };
 
-    // Pass the new sellProduct data to the onSave callback
     route.params.onSave(newSellProduct);
 
-    // Navigate back
     navigation.goBack();
   };
 
@@ -49,8 +41,8 @@ const AddSellProductScreen = ({ navigation, route }) => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      setProfileImage(result.uri);
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
     }
   };
 
@@ -63,19 +55,23 @@ const AddSellProductScreen = ({ navigation, route }) => {
       </View>
       <View style={styles.imageContainer}>
           <TouchableOpacity onPress={pickImage}>
+
             {profileImage ? (
               <Image source={{ uri: profileImage }} style={styles.profileImage} />
             ) : (
               <View style={styles.profileImagePlaceholder}>
                 <AntDesign name="plus" size={24} color="white" />
+
               </View>
             )}
-          </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("ProductPicture")}>
-              <View style={styles.cameraPlaceholder}>
-                <AntDesign name="camerao" size={42} color="black" />
+            <TouchableOpacity style={styles.cameraPlaceholder} onPress={() => navigation.navigate("ProductPicture")}>
+              <View >
+                <AntDesign name="camerao" size={28} color="black" />
               </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+
+          </TouchableOpacity>
+
         </View>
 
       <ScrollView style={styles.content}>
@@ -155,18 +151,6 @@ const AddSellProductScreen = ({ navigation, route }) => {
         />
         </View>
 
-
-
-
-        {/* <View style={styles.row}>
-          <Text style={styles.leftText}>Pieces</Text>
-          <TextInput
-            style={styles.dataText}
-            placeholder="Pieces"
-            value={pieces}
-            onChangeText={(text) => setPieces(text)}
-          />
-        </View> */}
       </ScrollView>
 
       <View style={[styles]}>

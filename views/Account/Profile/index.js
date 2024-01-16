@@ -2,17 +2,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import {
     View,
     Text,
-    TextInput,
-    ScrollView,
-    StyleSheet,
-    Pressable,
     TouchableOpacity,
     Image,
-    Platform, Alert,
     SafeAreaView
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { Camera, CameraType } from 'expo-camera';
+import { Camera } from 'expo-camera';
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as MediaLibrary from "expo-media-library";
@@ -65,30 +60,11 @@ const ProfileScreen = ({ navigation }) => {
       quality: 1,
     });
   
-    if (!result.cancelled) {
-      setProfileImage(result.uri);
-      console.log('New image URI:', result.uri);
-      updateProfileImageInStorage(result.uri);
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+      console.log('New image URI:', result.assets[0].uri);
+      updateProfileImageInStorage(result.assets[0].uri);
     }
-  };
-  
-
-  
-  const takePicture = async () => {
-
-    const  {uri}  = await cameraRef.current.takePictureAsync();
-    const temporaryUri = `${FileSystem.cacheDirectory}expo-image-${Date.now()}.jpg`;
-    await FileSystem.moveAsync({ from: uri, to: temporaryUri});
-    const asset = await MediaLibrary.createAssetAsync(temporaryUri)
-    const album = await MediaLibrary.createAlbumAsync('expoCamera', asset);
-}
-
-  const toggleCameraType = () => {
-    setCameraType((prevType) =>
-      prevType === Camera.Constants.Type.back
-        ? Camera.Constants.Type.front
-        : Camera.Constants.Type.back
-    );
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -100,25 +76,20 @@ const ProfileScreen = ({ navigation }) => {
   const updateProfileImageInStorage = async (newProfileImage) => {
     try {
       if (userData && userData.id) {
-        // Update only the profile image in the database
         try {
           const userId = userData.id;
-          // Aktualizuj dane w bazie danych tylko dla obecnie zalogowanego użytkownika
           await config.patch(`/users/${userId}`, { img: { uri: newProfileImage } });
         } catch (error) {
           console.error('Error updating profile image in the database:', error);
         }
   
-        // Update the profile image in userData
         const updatedUserData = {
           ...userData,
           img: { uri: newProfileImage },
         };
   
-        // Save the updated userData to AsyncStorage
         await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData));
   
-        // Update the state to reflect the change
         setUserData(updatedUserData);
       } else {
         console.error('Error updating profile image: userData or userData.id is null');
@@ -141,16 +112,22 @@ const ProfileScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.topContainer}>
-        <TouchableOpacity onPress={takePicture}>
-          
-  {profileImage ? (
-    <Image source={{ uri: profileImage }} style={styles.profileImage} />
-  ) : (
-    <View style={styles.profileImagePlaceholder}>
-      <AntDesign name="plus" size={24} color="white" />
-    </View>
-  )}
-</TouchableOpacity>
+            <View style={styles.imageContainer}>
+                <TouchableOpacity onPress={pickImage}>
+                    {profileImage ? (
+                        <Image source={{ uri: profileImage }} style={styles.profileImage} />
+                    ) : (
+                        <View style={styles.profileImagePlaceholder}>
+                            <AntDesign name="plus" size={24} color="white" />
+                        </View>
+                    )}
+                    <TouchableOpacity style={styles.cameraPlaceholder}onPress={() => navigation.navigate("ProductPicture")}>
+                        <View >
+                            <AntDesign name="camerao" size={24} color="black" />
+                        </View>
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
 
 
           <View style={styles.welcomeView}>
