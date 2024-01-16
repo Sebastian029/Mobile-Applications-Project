@@ -45,8 +45,7 @@ const MySaleScreen = ({ navigation }) => {
 
   
   const handleSaveMySale = async (newMySale) => {
-    setMySaleData([...mySaleData, newMySale]);
-    saveMySaleDataToStorage([...mySaleData, newMySale]);
+    
     
     try {
       const storedUserData = await AsyncStorage.getItem('userData');
@@ -55,6 +54,9 @@ const MySaleScreen = ({ navigation }) => {
         const userId = parsedUserData.id;
         // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/boots`, { ...newMySale, userid: userId });
+        
+        setMySaleData([...mySaleData, newMySale]);
+    saveMySaleDataToStorage([...mySaleData, newMySale]);
       } else {
         console.error("Error reading user data from AsyncStorage");
       }

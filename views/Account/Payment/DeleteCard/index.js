@@ -6,6 +6,7 @@ const DeleteCardScreen = ({ navigation, route }) => {
 
   const handleDelete = () => {
     // Wywołaj funkcję onDelete przekazaną przez parametr routingu
+    console.log(card);
     if (onDelete) {
       onDelete(card);
     }

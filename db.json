@@ -56,48 +56,21 @@
       "id": 4
     },
     {
-      "number": "6666666644444444",
-      "cardHolder": "Cos",
-      "expiryDate": "12/2023",
-      "userid": 2,
+      "number": "6555555414455444",
+      "cardHolder": "Gdy",
+      "expiryDate": "12/6666",
+      "userid": 1,
+      "id": 5
+    },
+    {
+      "number": "9999999999999999",
+      "cardHolder": "Skkskksks",
+      "expiryDate": "12/7777",
+      "userid": 1,
       "id": 6
-    },
-    {
-      "number": "3333333333333333",
-      "cardHolder": "Cos",
-      "expiryDate": "12/2029",
-      "userid": 1,
-      "id": 7
-    },
-    {
-      "number": "6669966666666699",
-      "cardHolder": "Gh",
-      "expiryDate": "12/2039",
-      "userid": 1,
-      "id": 8
-    },
-    {
-      "number": "3333333433333333",
-      "cardHolder": "Pawel",
-      "expiryDate": "02/2030",
-      "userid": 1,
-      "id": 9
     }
   ],
   "addressData": [
-    {
-      "name": "My Addres 1",
-      "country": "Uruguay",
-      "first": "Gailed",
-      "last": "Gullette",
-      "street": "bo ja wiem",
-      "city": "chyba nie",
-      "region": "Zadupie wielkie",
-      "zip": "123-234",
-      "phone": "+48 123-467-789",
-      "userid": 2,
-      "id": 3
-    },
     {
       "name": "My Addres 1",
       "country": "Polska",
@@ -108,7 +81,7 @@
       "region": "Świętokrzyskie",
       "zip": "25-001",
       "phone": "501747037",
-      "userid": 1,
+      "userid": 2,
       "id": 4
     },
     {
@@ -125,17 +98,30 @@
       "id": 5
     },
     {
-      "name": "Dlapolaka",
+      "name": "NIGDY",
       "country": "Polska",
-      "first": "Dominik",
-      "last": "Jaroszek",
+      "first": "Kahshhahj",
+      "last": "Uhs",
       "street": "Romualda 4",
       "city": "Kielce",
       "region": "Świętokrzyskie",
       "zip": "25-001",
-      "phone": "",
+      "phone": "9u",
       "userid": 1,
       "id": 6
+    },
+    {
+      "name": "Oj nie byczq",
+      "country": "Polska",
+      "first": "Kffjsj",
+      "last": "Shjd",
+      "street": "Romualda 4",
+      "city": "Kielce",
+      "region": "Świętokrzyskie",
+      "zip": "25-001",
+      "phone": "64774",
+      "userid": 1,
+      "id": 7
     }
   ],
   "boots": [

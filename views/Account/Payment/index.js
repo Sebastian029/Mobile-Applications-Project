@@ -4,10 +4,14 @@ import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 import config from '../../../config';
+import { useFocusEffect } from '@react-navigation/native';
 
 const PaymentScreen = ({ navigation }) => {
   const [cardData, setCardData] = useState([]);
 
+
+
+  
   useEffect(() => {
     // Odczytaj dane z AsyncStorage po załadowaniu komponentu
     const fetchData = async () => {
@@ -59,10 +63,8 @@ const PaymentScreen = ({ navigation }) => {
   };
 
   const handleSaveCard = async (newCard) => {
-    // Dodaj nową kartę do stanu
-    setCardData([...cardData, newCard]);
-    // Zapisz dane karty do AsyncStorage
-    saveCardDataToStorage([...cardData, newCard]);
+    
+    
 
     try {
       const storedUserData = await AsyncStorage.getItem('userData');
@@ -70,7 +72,14 @@ const PaymentScreen = ({ navigation }) => {
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
         // Dodaj nową kartę do bazy danych
-        await config.post(`/cardData`, { ...newCard, userid: userId });
+    await config.post(`/cardData`, { ...newCard, userid: userId });
+    const responseData = await config.get('/cardData');
+    const getResponseCardData =  responseData.data;
+    
+    const filteredMySaleData = getResponseCardData.filter(item => item.userid === userId);
+    setCardData(filteredMySaleData);
+    
+    saveCardDataToStorage(filteredMySaleData);
       } else {
         console.error("Error reading user data from AsyncStorage");
       }

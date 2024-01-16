@@ -121,14 +121,6 @@ const AddAddressScreen = ({ navigation, route }) => {
           onChangeText={(text) => setName(text)}
         />
 
-      <Text style={styles.header}>Country</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Country"
-          value={country}
-          onChangeText={(text) => setCountry(text)}
-        />
-
         <Text style={styles.header}>First Name</Text>
         <TextInput
           style={styles.input}
@@ -143,6 +135,14 @@ const AddAddressScreen = ({ navigation, route }) => {
           placeholder="Last Name"
           value={last}
           onChangeText={(text) => setLast(text)}
+        />
+
+        <Text style={styles.header}>Phone</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Phone"
+          value={phone}
+          onChangeText={(text) => setPhone(text)}
         />
 
         <Text style={styles.header}>Street</Text>
@@ -176,14 +176,14 @@ const AddAddressScreen = ({ navigation, route }) => {
           value={zip}
           onChangeText={(text) => setZip(text)}
         />
-
-        <Text style={styles.header}>Phone</Text>
+        <Text style={styles.header}>Country</Text>
         <TextInput
           style={styles.input}
-          placeholder="Phone"
-          value={phone}
-          onChangeText={(text) => setPhone(text)}
+          placeholder="Country"
+          value={country}
+          onChangeText={(text) => setCountry(text)}
         />
+        
       </ScrollView>
 
       <View style={[styles]}>

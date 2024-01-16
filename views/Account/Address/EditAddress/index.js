@@ -14,11 +14,14 @@ const EditAddressScreen = ({ navigation, route }) => {
   const [zip, setZip] = useState('');
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
-
+  const [id, setId] = useState('');
+  const [userid, setUserid] = useState('');
   useEffect(() => {
     // Check if address data is passed through route.params
     if (route.params?.address) {
-      const { name, country, first, last, street, city, region, zip, phone } = route.params.address;
+      const { id, name, country, first, last, street, city, region, zip, phone, userid} = route.params.address;
+      setUserid(userid);
+      setId(id);
       setName(name);
       setCountry(country);
       setFirst(first);
@@ -34,6 +37,8 @@ const EditAddressScreen = ({ navigation, route }) => {
   const onSave = () => {
     // Add your logic to save the edited address data
     const editedAddress = {
+      id: id,
+      userid : userid,
       name : name,
       country: country,
       first: first,
@@ -66,13 +71,6 @@ const EditAddressScreen = ({ navigation, route }) => {
           value={name}
           onChangeText={(text) => setName(text)}
         />
-      <Text style={styles.header}>Country</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Country"
-          value={country}
-          onChangeText={(text) => setCountry(text)}
-        />
 
         <Text style={styles.header}>First Name</Text>
         <TextInput
@@ -89,7 +87,14 @@ const EditAddressScreen = ({ navigation, route }) => {
           value={last}
           onChangeText={(text) => setLast(text)}
         />
-
+        <Text style={styles.header}>Phone</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Phone"
+          value={phone}
+          onChangeText={(text) => setPhone(text)}
+        />
+        
         <Text style={styles.header}>Street</Text>
         <TextInput
           style={styles.input}
@@ -121,14 +126,15 @@ const EditAddressScreen = ({ navigation, route }) => {
           value={zip}
           onChangeText={(text) => setZip(text)}
         />
-
-        <Text style={styles.header}>Phone</Text>
+      <Text style={styles.header}>Country</Text>
         <TextInput
           style={styles.input}
-          placeholder="Phone"
-          value={phone}
-          onChangeText={(text) => setPhone(text)}
+          placeholder="Country"
+          value={country}
+          onChangeText={(text) => setCountry(text)}
         />
+
+        
       </ScrollView>
       <View style={[styles]}>
         <Pressable

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { View, Text, Button, StyleSheet, Image, Pressable } from 'react-native';
 
 const SucessCardScreen = ({ navigation }) => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const handlePress = () => {
+    setIsButtonDisabled(true);
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 1000); // Set the duration of the delay in milliseconds
+    // Your navigation logic or other actions can be added here
+    navigation.navigate('Payment');
+  };
+
   return (
     <View style={styles.notFoundView}>
     <Image source={require('../../../../assets/exploreImages/success.png')}/>
@@ -9,7 +20,9 @@ const SucessCardScreen = ({ navigation }) => {
     <View>
 <Text style={styles.upperText}>You successfully added a new card</Text>
 </View>
-   <Pressable style={styles.backButton} onPress={() => navigation.navigate('Payment')}>
+   <Pressable style={styles.backButton} 
+   onPress={handlePress}
+   disabled={isButtonDisabled}>
       <Text style={styles.buttonText}>Back to card</Text>
    </Pressable>
  </View>

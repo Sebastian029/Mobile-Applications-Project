@@ -56,7 +56,7 @@ const AddressScreen = ({ navigation }) => {
               backgroundColor: pressed ? 'gray' : 'lightgray',
             },
           ]}
-          onPress={() => navigation.navigate('DeleteAddress', { address: item, onDelete: handleDeleteAddress })}
+          onPress={() => navigation.navigate('DeleteAddress', { address: item, onDelete: () => handleDeleteAddress(item) })}
         >
           <Text style={styles.buttonSmallText}>Delete</Text>
         </Pressable>
@@ -80,10 +80,7 @@ const AddressScreen = ({ navigation }) => {
   );
 
   const handleSaveAddress = async (newAddress) => {
-    // Dodaj nowy adres do stanu
-    setAddressData([...addressData, newAddress]);
-    // Zapisz dane adresowe do AsyncStorage
-    saveAddressDataToStorage([...addressData, newAddress]);
+    
   
     try {
       const storedUserData = await AsyncStorage.getItem('userData');
@@ -92,6 +89,13 @@ const AddressScreen = ({ navigation }) => {
         const userId = parsedUserData.id;
         // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/addressData`, { ...newAddress, userid: userId });
+        const responseData = await config.get('/addressData');
+       const getResponseAddressData =  responseData.data;
+       const filteredAddressData = getResponseAddressData.filter(item => item.userid === userId);
+      setAddressData(filteredAddressData);
+      saveAddressDataToStorage(filteredAddressData);
+
+
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -102,7 +106,9 @@ const AddressScreen = ({ navigation }) => {
 
   const handleEditAddress = async (editedAddress, originalAddress) => {
     const index = addressData.findIndex((address) => address.id === originalAddress.id);
-  
+  console.log(editedAddress.id);
+  console.log(originalAddress.id);
+
     if (index !== -1) {
       const updatedAddressData = [...addressData];
       updatedAddressData[index] = editedAddress;
@@ -130,7 +136,8 @@ const AddressScreen = ({ navigation }) => {
   const handleDeleteAddress = async (addressToDelete) => {
     console.log(addressToDelete);
     const index = addressData.findIndex((address) => address.id === addressToDelete.id);
-    
+    console.log(addressToDelete.id);
+    console.log(addressToDelete.userid);
     if (index !== -1) {
       const updatedAddressData = [...addressData];
       updatedAddressData.splice(index, 1);
