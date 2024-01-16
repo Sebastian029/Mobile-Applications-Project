@@ -13,11 +13,13 @@ const EditAddressScreen = ({ navigation, route }) => {
   const [region, setRegion] = useState('');
   const [zip, setZip] = useState('');
   const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
 
   useEffect(() => {
     // Check if address data is passed through route.params
     if (route.params?.address) {
-      const { country, first, last, street, city, region, zip, phone } = route.params.address;
+      const { name, country, first, last, street, city, region, zip, phone } = route.params.address;
+      setName(name);
       setCountry(country);
       setFirst(first);
       setLast(last);
@@ -32,6 +34,7 @@ const EditAddressScreen = ({ navigation, route }) => {
   const onSave = () => {
     // Add your logic to save the edited address data
     const editedAddress = {
+      name : name,
       country: country,
       first: first,
       last: last,
@@ -56,6 +59,13 @@ const EditAddressScreen = ({ navigation, route }) => {
         <Text style={styles.title}>Edit Address</Text>
       </View>
       <ScrollView style={styles.content}>
+      <Text style={styles.header}>Name Address</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Name Address"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
       <Text style={styles.header}>Country</Text>
         <TextInput
           style={styles.input}

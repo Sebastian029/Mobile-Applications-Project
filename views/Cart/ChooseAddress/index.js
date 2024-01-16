@@ -35,7 +35,7 @@ import styles from './style';
                 },
             ]}
             onPress={() => navigation.navigate('CheckOut', { address: item })}>
-        <Text style={styles.heading}>My Address 1</Text>
+        <Text style={styles.heading}>{item.name}</Text>
 
         <Text style={styles.cardInformation}>{item.first} {item.last}</Text>
         <Text style={styles.cardInformation}>{item.street} {item.houseNumber}, {item.city},</Text>

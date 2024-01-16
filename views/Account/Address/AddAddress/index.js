@@ -4,6 +4,11 @@ import { AntDesign } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 
 import styles from './style';
+import { LogBox } from 'react-native'
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
+
 const AddAddressScreen = ({ navigation, route }) => {
   const [country, setCountry] = useState('');
   const [first, setFirst] = useState('');
@@ -13,7 +18,7 @@ const AddAddressScreen = ({ navigation, route }) => {
   const [region, setRegion] = useState('');
   const [zip, setZip] = useState('');
   const [phone, setPhone] = useState('');
-
+  const [name, setName] = useState('');
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -36,6 +41,7 @@ const AddAddressScreen = ({ navigation, route }) => {
   const onSave = () => {
     // Add your logic to save the address data
     const newAddress = {
+      name : name,
       country: country,
       first: first,
       last: last,
@@ -54,12 +60,12 @@ const AddAddressScreen = ({ navigation, route }) => {
   };
 
   const onGetLocation = async () => {
-    console.log("jol");
+   
     const userLocation = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
-    console.log("nyg");
+   
       setLocation(location);
-      console.log("Location:");
-      console.log(location);
+      // console.log("Location:");
+      // console.log(location);
 
     try {
       const { coords } = await Location.getCurrentPositionAsync({
@@ -107,6 +113,14 @@ const AddAddressScreen = ({ navigation, route }) => {
       </View>
 
       <ScrollView style={styles.content}>
+      <Text style={styles.header}>Name Address</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Name Address"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
+
       <Text style={styles.header}>Country</Text>
         <TextInput
           style={styles.input}

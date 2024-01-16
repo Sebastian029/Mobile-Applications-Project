@@ -32,26 +32,31 @@ const PaymentScreen = ({ navigation }) => {
     }
   };
 
-  const renderItem = ({ item }) => (
-    <Pressable style={styles.card}>
-      <AntDesign
-        name="closecircleo"
-        style={styles.exitIcon}
-        onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: handleDeleteCard })}
-      />
-      <Text style={styles.cardNumber}>{item.number}</Text>
-      <View style={styles.cardBottom}>
-        <View style={styles.cardDetail}>
-          <Text style={styles.cardDetailTop}>CARD HOLDER</Text>
-          <Text style={styles.cardDetailBottom}>{item.cardHolder}</Text>
+  const renderItem = ({ item }) => {
+    // Formatowanie numeru karty w grupy po 4 cyfry z spacjami
+    const formattedCardNumber = item.number.replace(/(\d{4})/g, '$1 ').trim();
+  
+    return (
+      <Pressable style={styles.card}>
+        <AntDesign
+          name="closecircleo"
+          style={styles.exitIcon}
+          onPress={() => navigation.navigate('DeleteCard', { card: item, onDelete: () => handleDeleteCard(item) })}
+        />
+        <Text style={styles.cardNumber}>{formattedCardNumber}</Text>
+        <View style={styles.cardBottom}>
+          <View style={styles.cardDetail}>
+            <Text style={styles.cardDetailTop}>CARD HOLDER</Text>
+            <Text style={styles.cardDetailBottom}>{item.cardHolder}</Text>
+          </View>
+          <View style={styles.cardDetail}>
+            <Text style={styles.cardDetailTop}>CARD SAVE</Text>
+            <Text style={styles.cardDetailBottom}>{item.expiryDate}</Text>
+          </View>
         </View>
-        <View style={styles.cardDetail}>
-          <Text style={styles.cardDetailTop}>CARD SAVE</Text>
-          <Text style={styles.cardDetailBottom}>{item.expiryDate}</Text>
-        </View>
-      </View>
-    </Pressable>
-  );
+      </Pressable>
+    );
+  };
 
   const handleSaveCard = async (newCard) => {
     // Dodaj nową kartę do stanu
@@ -76,23 +81,33 @@ const PaymentScreen = ({ navigation }) => {
 
   const handleDeleteCard = async (cardToDelete) => {
     const index = cardData.findIndex((card) => card.number === cardToDelete.number);
-
+  
     if (index !== -1) {
       const updatedCardData = [...cardData];
       updatedCardData.splice(index, 1);
-
+  
+      console.log('Deleting card with number:', cardToDelete.number);
+      console.log('Deleting card with id:', cardToDelete.id);
+  
       try {
+        // Log the URL being requested
+        console.log('DELETE request URL:', `/cardData/${cardToDelete.id}`);
+  
         // Usuń dane z bazy danych
         await config.delete(`/cardData/${cardToDelete.id}`);
-
+  
         // Aktualizuj stan i zapisz dane karty do AsyncStorage
         setCardData(updatedCardData);
         saveCardDataToStorage(updatedCardData);
+  
+        console.log('Card deleted successfully.');
       } catch (error) {
         console.error('Error deleting data from the database:', error);
       }
     }
   };
+  
+  
 
   const handleGoBackAndSaveData = () => {
     navigation.goBack();
