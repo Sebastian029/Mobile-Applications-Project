@@ -130,7 +130,12 @@ const PaymentScreen = ({ navigation }) => {
         <Text style={styles.title}>Card</Text>
       </View>
       <View style={[styles.content]}>
+      {cardData.length > 0 ? (
         <FlatList data={cardData} renderItem={renderItem} keyExtractor={(item) => item.number} />
+        ) : (
+          <Text style={styles.noItemsText}>Card data is empty</Text>
+        )}
+        
       </View>
       <Pressable
         style={({ pressed }) => [

@@ -99,6 +99,13 @@ buttonText:{
     letterSpacing:1
 
 },
+noItemsText:{
+  color:'orange',
+  fontSize:22,
+  paddingVertical:5,
+  textAlign:'center',
+  marginTop:10
+}
 
 
   

@@ -29,6 +29,7 @@ export default function HomeScreen({ navigation }) {
 
   const [newData, setNewData] = useState([]);
   const [newData2, setNewData2] = useState([]);
+  const [newData3, setNewData3] = useState([]);
   const [boots, setBoots] = useState([]);
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -48,6 +49,8 @@ export default function HomeScreen({ navigation }) {
         setNewData(selectedItems);
         const selectedItems2 = getRandomItems(parsedBootsData, 5);
         setNewData2(selectedItems2);
+        const selectedItems3 = getRandomItems(parsedBootsData, 5);
+        setNewData3(selectedItems3);
 
         setBoots(parsedBootsData);
       }
@@ -147,21 +150,24 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
 
+    
         <View style={{ alignSelf: 'flex-row' }}>
-          <Text style={styles.titleText}>Category</Text>
+          <Text style={styles.titleText}>New Products</Text>
           <FlatList
-            data={data}
-            renderItem={renderCategories}
+            data={newData2}
+            renderItem={renderInRow}
             keyExtractor={(item) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           />
         </View>
 
+        
+
         <View style={{ alignSelf: 'flex-row' }}>
           <Text style={styles.titleText}>Mega Sale</Text>
           <FlatList
-            data={newData2}
+            data={newData3}
             renderItem={renderInRow}
             keyExtractor={(item) => item.id}
             horizontal={true}

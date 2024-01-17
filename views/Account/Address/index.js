@@ -163,11 +163,16 @@ const AddressScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.content} >
+      {addressData.length > 0 ? (
         <FlatList
           data={addressData}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
         />
+        ) : (
+          <Text style={styles.noItemsText}>Addresses are empty</Text>
+        )}
+        
       </View>
 
       <Pressable
