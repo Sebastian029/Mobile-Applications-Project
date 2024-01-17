@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView, StyleSheet, Pressable, TouchableOpacity, Image, Alert } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-
+import { useFocusEffect } from '@react-navigation/native';
 import styles from './style';
 
 const EditMySaleScreen = ({ navigation, route }) => {
@@ -17,8 +17,9 @@ const EditMySaleScreen = ({ navigation, route }) => {
   const [profileImage, setProfileImage] = useState(null);
   const [id, setId] = useState(null);
   const [userid, setUserid] = useState(null);
-
-  useEffect(() => {
+  const [zmienna,setZmeinna] = useState('0');
+  useFocusEffect(
+    React.useCallback(() => {
     console.log("mySale from route.params:", route.params?.mySale);
   
     if (route.params?.mySale) {
@@ -33,8 +34,10 @@ const EditMySaleScreen = ({ navigation, route }) => {
       setDescription(description);
       setPrice(price);
       setProfileImage(img);
+      
+      console.log('tuttutuu')
     }
-  }, [route.params?.mySale]);
+  }, [route.params?.mySale]));
 
   const onSave = () => {
     // Add your logic to save the edited mySale data
@@ -48,8 +51,9 @@ const EditMySaleScreen = ({ navigation, route }) => {
       condition: condition,
       description: description,
       price: price,
-      img:  profileImage  ,
+      img: {uri:profileImage},
     };
+    
     if (!title || !category || !brand || !size || !condition || !description || !price) {
       Alert.alert('Error', 'All fields must be filled out.');
       return;
@@ -110,9 +114,12 @@ const EditMySaleScreen = ({ navigation, route }) => {
       aspect: [4, 3],
       quality: 1,
     });
+    
+    if (!result.canceled) {
+      console.log(result.assets[0].uri);
+      setZmeinna('1');
+      setProfileImage(result.assets[0].uri);
 
-    if (!result.cancelled) {
-      setProfileImage(result.uri);
     }
   };
 
@@ -124,14 +131,21 @@ const EditMySaleScreen = ({ navigation, route }) => {
       </View>
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={pickImage}>
-          {profileImage ? (
-            <Image source={profileImage } style={styles.profileImage} />
+        {zmienna==='1' ? (
+               <Image source={{ uri: String(profileImage) }} style={styles.profileImage} />
           ) : (
-            <View style={styles.profileImagePlaceholder}>
-              <AntDesign name="plus" size={24} color="white" />
-            </View>
+            <Image source={ { uri:profileImage?.uri} } style={styles.profileImage} />
           )}
+              
+         
+          <TouchableOpacity style={styles.cameraPlaceholder} onPress={() => navigation.navigate("ProductPicture")}>
+            <View >
+              <AntDesign name="camerao" size={28} color="black" />
+            </View>
+          </TouchableOpacity>
+
         </TouchableOpacity>
+
       </View>
 
       <ScrollView style={styles.content}>
