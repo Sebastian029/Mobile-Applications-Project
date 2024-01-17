@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import uuid from 'react-native-uuid';
 
 import { View, Text,  StyleSheet, Pressable, FlatList, TextInput} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
@@ -37,6 +38,11 @@ import { CommonActions } from '@react-navigation/native';
     }, [route.params?.address]);
 
   const [text, setText] = useState('');
+
+  const generateID= () =>{
+    const tmpId = uuid.v4();
+    return tmpId.substring(0, 8);
+  }
   
 
 
@@ -54,10 +60,8 @@ import { CommonActions } from '@react-navigation/native';
       
       if (cartItemsString) {
         const cartItems = JSON.parse(cartItemsString);
-        console.log('nig2');
-        // Utwórz strukturę zamówienia
         const orderData = {
-          orderID: 'AAAA2137', // Możesz użyć odpowiedniej logiki do generowania unikalnego ID zamówienia
+          orderID: generateID(), 
           date: new Date().toLocaleDateString(),
           status: 'Packing',
           items: itemsCountCheck,

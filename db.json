@@ -159,72 +159,6 @@
   ],
   "boots": [
     {
-      "id": 1,
-      "category": "sport",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      },
-      "title": "Nie",
-      "price": 190,
-      "size": 40,
-      "brand": "Nike",
-      "condition": "Good",
-      "description": "des",
-      "userid": 2
-    },
-    {
-      "id": 2,
-      "category": "sport",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      },
-      "title": "Niewiem",
-      "price": 190,
-      "size": 40,
-      "brand": "Nike",
-      "condition": "Good",
-      "description": "des",
-      "userid": 2
-    },
-    {
-      "title": "Uj",
-      "category": "Hh",
-      "brand": "Nng",
-      "size": "Ikl",
-      "condition": "Ff",
-      "description": "Iij",
-      "price": "200",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/95973c72-bb9d-472b-9623-c42f456a0eae.png"
-      },
-      "userid": 1,
-      "id": 3
-    },
-    {
-      "id": 4,
-      "userid": 2,
-      "title": "A",
-      "category": "A",
-      "brand": "A",
-      "size": "33",
-      "condition": "A",
-      "description": "Aa",
-      "price": "38",
-      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/05baf9e3-60a3-4402-88c3-21a66e1762c9.jpeg"
-    },
-    {
-      "id": 5,
-      "userid": 2,
-      "title": "A",
-      "category": "A",
-      "brand": "A",
-      "size": "33",
-      "condition": "A",
-      "description": "A",
-      "price": "99",
-      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/10bd4f25-9a68-43e1-998d-a195e94c4595.jpeg"
-    },
-    {
       "id": 6,
       "userid": 4,
       "title": "Jsjs",
@@ -269,6 +203,70 @@
       ],
       "address": "Podraje 2, 18-136",
       "shipping": "40"
+    },
+    {
+      "orderID": "a4c59d64-d5c3-41c0-945d-b86e8717c06a",
+      "date": "17.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 38,
+      "totalPrice": 48,
+      "boot": [
+        {
+          "idp": 4,
+          "name": "A",
+          "price": "38",
+          "img": {}
+        }
+      ],
+      "address": ", ",
+      "shipping": 10,
+      "userid": 4,
+      "id": 2
+    },
+    {
+      "orderID": "296tqure",
+      "date": "17.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 190,
+      "totalPrice": 190,
+      "boot": [
+        {
+          "idp": 1,
+          "name": "Nie",
+          "price": 190,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": ", ",
+      "shipping": 0,
+      "userid": 4,
+      "id": 3
+    },
+    {
+      "orderID": "b830a809-9",
+      "date": "17.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 200,
+      "totalPrice": 200,
+      "boot": [
+        {
+          "idp": 3,
+          "name": "Uj",
+          "price": "200",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/95973c72-bb9d-472b-9623-c42f456a0eae.png"
+          }
+        }
+      ],
+      "address": ", ",
+      "shipping": 0,
+      "userid": 4,
+      "id": 4
     }
   ],
   "reviews": [
@@ -333,6 +331,38 @@
       "type": "Comment",
       "sellid": 2,
       "id": 4
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 4,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 5
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 4,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 6
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 4,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 7
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 4,
+      "type": "Comment",
+      "sellid": 1,
+      "id": 8
     }
   ]
 }
