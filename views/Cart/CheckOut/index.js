@@ -9,7 +9,7 @@ import styles from './style';
 import { CommonActions } from '@react-navigation/native';
 
   const CheckOutScreen = ({ navigation, route }) => {
-
+    const [generate, setGenerate] = useState();
     const [cardNumber, setCardNumber] = useState('');
     const [addressStreet, setAddressStreet] = useState('');
     const [addressCity, setAddressCity] = useState('');
@@ -18,7 +18,7 @@ import { CommonActions } from '@react-navigation/native';
     const [itemsCountCheck, setItemsCountCheck] = useState(itemsCount);
     const [basicPriceCheck, setBasicPriceCheck] = useState(basicPrice);
     const [shippingPriceCheck, setShippingPriceCheck] = useState(shippingPrice);
-  
+    
      useEffect(() => {
         
       if (route.params?.card) {
@@ -71,6 +71,7 @@ import { CommonActions } from '@react-navigation/native';
       
       if (cartItemsString) {
         const cartItems = JSON.parse(cartItemsString);
+        
         const orderData = {
           orderID: generateID(), 
           date: new Date().toLocaleDateString(),
@@ -98,8 +99,8 @@ import { CommonActions } from '@react-navigation/native';
         console.log('tutaj1');
         for (const ownerId of owners) {
           const message = {
-            title: 'Comment',
-            detail: 'Wiecej miodu elo',
+            title: 'Add comment to your purhase ',
+            detail: 'Thank you for your shopping. Comment on the product you purchased.',
             userid: userId,
             type: 'Comment',
           };
