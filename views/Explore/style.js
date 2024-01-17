@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
         color:'#223263',
         fontSize:25,
         fontWeight:'bold',
+        textAlign:'center',
+        
     },
 
 
@@ -182,6 +184,13 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     marginLeft:'auto',
     paddingRight:20
+   },
+   mainIcon:{
+    paddingTop:100,
+    marginLeft:'auto',
+    marginRight:'auto',
+    fontSize:150,
+    color:'darkorange'
    }
 
 

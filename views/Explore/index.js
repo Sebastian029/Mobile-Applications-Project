@@ -180,18 +180,10 @@ import { useFocusEffect } from '@react-navigation/native';
         case 'default':
           return (
             <View style={{width:'100%'}}>
-              <View style={styles.titleBar}>
-                <Text style={styles.titleText}>Man Fashion</Text>
-                <AntDesign name="down" style={styles.basicIcon}/>
-              </View>
-
-              <FlatList
-                data={data}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                numColumns={3}
-              />
+              <AntDesign name="search1" style={styles.mainIcon}/>
+                <Text style={styles.titleText}>Search for our products!</Text>
             </View>
+            
           );
           case 'foundItems':
             if (filteredBoots.length > 0) {
