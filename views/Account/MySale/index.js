@@ -156,7 +156,7 @@ const renderItem = ({ item }) => {
         />
         
           ) : (
-            <Text style={styles.noItemsText}>Cart is empty</Text>
+            <Text style={styles.noItemsText}>Your sale is empty</Text>
             )}
       </View>
 
