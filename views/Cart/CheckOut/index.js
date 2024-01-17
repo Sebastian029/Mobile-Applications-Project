@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import uuid from 'react-native-uuid';
 
-import { View, Text,  StyleSheet, Pressable, FlatList, TextInput} from 'react-native';
+import { View, Text,  StyleSheet, Pressable, FlatList, TextInput, Alert} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from '../../../config';
@@ -49,6 +49,17 @@ import { CommonActions } from '@react-navigation/native';
   
      const createOrder = async () => {
     try {
+
+      if(!cardNumber){
+          Alert.alert('Error', 'Please select a card.');
+          return;
+      }
+
+      if(!addressCity || !addressStreet){
+        Alert.alert('Error', 'Please select an address.');
+        return;
+      }
+
       const cartItemsString = await AsyncStorage.getItem('CartItem');
       console.log('Cart Items:', JSON.parse(cartItemsString));
 
@@ -100,7 +111,16 @@ import { CommonActions } from '@react-navigation/native';
         await config.post('/orderData',{...orderData, userid: userId});
         // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
         await AsyncStorage.removeItem('CartItem');
-      }
+
+
+        deleteBought();
+        await AsyncStorage.removeItem('CartItem');
+          navigation.dispatch(CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'CartHome' }],
+          }));
+          navigation.navigate('CartHome');
+          }
     } catch (error) {
       console.log(error);
     }
@@ -146,16 +166,7 @@ import { CommonActions } from '@react-navigation/native';
   
 
     const onPressCreate = async ()  => {
-      console.log('nig');
       createOrder();
-      deleteBought();
-      await AsyncStorage.removeItem('CartItem');
-      navigation.dispatch(CommonActions.reset({
-        index: 0,
-        routes: [{ name: 'CartHome' }],
-      }));
-      navigation.navigate('CartHome');
-    
     };
 
   return (
