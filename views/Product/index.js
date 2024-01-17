@@ -27,7 +27,7 @@ const AddToCart = async () => {
 
     if (itemExistsIndex !== -1) {
       // Item already exists, update the quantity
-      existingItems[itemExistsIndex].quantity += 1;
+      //existingItems[itemExistsIndex].quantity += 1;
     } else {
       // Item does not exist, add it to the cart with quantity 1
       const newItemWithQuantity = { ...selectedItem, quantity: 1 };
@@ -41,7 +41,7 @@ const AddToCart = async () => {
     console.error('Error adding item to cart:', error);
   }
 
-  // Navigate to the Cart screen
+
   navigation.dispatch(CommonActions.reset({
     index: 0,
     routes: [{ name: 'Home' }],

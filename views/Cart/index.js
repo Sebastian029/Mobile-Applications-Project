@@ -17,8 +17,10 @@ export default function HomeScreen({ navigation }) {
       const serializedItems = await AsyncStorage.getItem('CartItem');
       if (serializedItems !== null) {
         const storedItems = JSON.parse(serializedItems);
-        setItems(storedItems);
-        countTotal(storedItems);
+        
+        const filtered = Array.from(new Set(storedItems))
+        setItems(filtered);
+        countTotal(filtered);
       }
     } catch (error) {
       console.log(error);
@@ -41,11 +43,11 @@ export default function HomeScreen({ navigation }) {
 
     items.forEach((item) => {
       count += item.quantity;
-      basic += item.quantity * item.quantity;
+      basic += item.quantity * item.price;
       tmpPrice += item.price * item.quantity;
     });
 
-    if (tmpPrice > 200 || count <= 0) shipping = 0;
+    if (tmpPrice > 100 || count <= 0) shipping = 0;
 
     setBasicPrice(basic);
     setShippingPrice(shipping);
