@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     topBar: {
         width: '100%' ,
         flexDirection: 'row',
-        justifyContent: 'flex-start', // Align items to the left
+        justifyContent: 'flex-start', 
         paddingLeft: 30,
         paddingTop: 45,
         borderBottomWidth: 0.2,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        marginLeft: 10, // Adjust margin as needed
-        fontSize: 20, // Adjust font size as needed
+        marginLeft: 10, 
+        fontSize: 20, 
         color:'#223263',
         fontWeight:'bold',
     },

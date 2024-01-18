@@ -22,7 +22,6 @@ const MySaleScreen = ({ navigation }) => {
             const userId = parsedUserData.id;
             console.log("User ID:", userId);
   
-            // Filtruj produkty, aby wyświetlać tylko te z odpowiednim userid
             const filteredMySaleData = allMySaleData.filter(item => item.userid === userId);
             setMySaleData(filteredMySaleData);
           }
@@ -52,7 +51,6 @@ const MySaleScreen = ({ navigation }) => {
       const parsedUserData = JSON.parse(storedUserData);
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
-        // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/boots`, { ...newMySale, userid: userId });
         
         const responseData = await config.get('/boots');
@@ -82,10 +80,8 @@ const MySaleScreen = ({ navigation }) => {
         const parsedUserData = JSON.parse(storedUserData);
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
-          // Aktualizuj dane w bazie danych
           await config.put(`/boots/${originalMySale.id}`, { ...editedMySale, userid: userId });
   
-          // Aktualizuj stan i zapisz dane sprzedażowe do AsyncStorage
           const filteredMySaleData = updatedMySaleData.filter(item => item.userid === userId);
           setMySaleData(filteredMySaleData);
 
@@ -113,7 +109,6 @@ const MySaleScreen = ({ navigation }) => {
         const parsedUserData = JSON.parse(storedUserData);
         
           const userId = parsedUserData.id;
-        // Usuń dane z bazy danych
         await config.delete(`/boots/${mySaleToDelete.id}`);
   
         const filteredMySaleData = updatedMySaleData.filter(item => item.userid === userId);

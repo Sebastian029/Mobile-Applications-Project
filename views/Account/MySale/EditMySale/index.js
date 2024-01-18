@@ -40,7 +40,6 @@ const EditMySaleScreen = ({ navigation, route }) => {
   }, [route.params?.mySale]));
 
   const onSave = () => {
-    // Add your logic to save the edited mySale data
     const editedSellProduct = {
       id : id,
       userid: userid,
@@ -100,10 +99,8 @@ const EditMySaleScreen = ({ navigation, route }) => {
     Alert.alert('Error', 'Only number are available in shoe price');
     return;
   }
-    // Pass the edited mySale data to the onSave callback
     route.params.onSave(editedSellProduct);
 
-    // Navigate back
     navigation.goBack();
   };
 

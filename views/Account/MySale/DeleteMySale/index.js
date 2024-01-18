@@ -5,12 +5,10 @@ const DeleteMySaleScreen = ({ navigation, route }) => {
   const { mySale, onDelete } = route.params;
 
   const handleDelete = () => {
-    // Wywołaj funkcję onDelete przekazaną przez parametr routingu
     if (onDelete) {
       onDelete(mySale);
     }
 
-    // Przejdź do poprzedniego ekranu
     navigation.goBack();
   };
 

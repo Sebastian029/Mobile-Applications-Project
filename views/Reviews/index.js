@@ -9,14 +9,11 @@ const ReviewsScreen = ({ navigation, route }) => {
   const [reviewsData, setReviewsData] = useState([]);
 
   useEffect(() => {
-    // Fetch reviews data from JSON server
     const fetchData = async () => {
       try {
         const responseOrder = await config.get(`/reviews`);
         const getResponseOrder = responseOrder.data;
-       // console.log(getResponseOrder);
         console.log(select)
-        // Filtruj recenzje na podstawie userid
         const filteredReviews = getResponseOrder.filter(item => item.userid === select);
         
         setReviewsData(filteredReviews);

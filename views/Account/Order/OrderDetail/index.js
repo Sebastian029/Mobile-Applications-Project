@@ -20,10 +20,6 @@ export default function OrderDetail({navigation, route}){
                         <Text style={styles.productName}>{item.name}</Text>
                     </View>
                     <Text style={styles.productPrice}>{item.price}$</Text>
-                    {/* <Text style={styles.productDiscountedPrice}>{item.discountedPrice}$</Text> */}
-                    {/* <View style={styles.pieces}>
-                        <Text style={styles.basicIcon}>{item.quantity}</Text>
-                    </View> */}
                 </View>
             </Pressable>
         );
@@ -62,7 +58,7 @@ export default function OrderDetail({navigation, route}){
                     <Text style={styles.spec}>Address</Text>
                     <View>
                         <Text style={styles.specAdr}>{selectedItem.address}</Text>
-                        {/* <Text style={styles.specAdr}>Nowy Korczyn</Text> */}
+                        
                     </View>
                 </View>
 
@@ -80,20 +76,13 @@ export default function OrderDetail({navigation, route}){
                     <Text style={styles.spec}>{selectedItem.shipping}$</Text>
                 </View>
 
-                {/* <View style={styles.specification}>
-                    <Text style={styles.spec}>Total Discounts</Text>
-                    <Text style={styles.spec}>100$</Text>
-                </View> */}
+               
 
                 <View style={styles.specification}>
                     <Text style={[styles.spec, {fontWeight:'bold'}]}>Total price</Text>
                     <Text style={[styles.spec, {fontWeight:'bold'}]}>{selectedItem.totalPrice}$</Text>
                 </View>
             </View>
-
-            {/*<Pressable onPress={handleCheckout} style={styles.button}>
-                <Text style={styles.buttonText}>Check out</Text>
-            </Pressable>*/}
 
 
         </SafeAreaView>

@@ -9,7 +9,7 @@ const OrderScreen = ({ navigation }) => {
     const [orderData, setOrderData] = useState([]);
 
     useEffect(() => {
-        // Odczytaj dane z AsyncStorage po załadowaniu komponentu
+        
         const fetchData = async () => {
           try {
             const storedOrderData = await AsyncStorage.getItem('orderData');
@@ -22,7 +22,7 @@ const OrderScreen = ({ navigation }) => {
         };
     
         fetchData();
-      }, []); // Pusta zależność oznacza, że useEffect zostanie uruchomiony tylko raz po zamontowaniu komponentu
+      }, []); 
     
       
 

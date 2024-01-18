@@ -5,12 +5,10 @@ const DeleteAddressScreen = ({ navigation, route }) => {
   const { address, onDelete } = route.params;
 
   const handleDelete = () => {
-    // Wywołaj funkcję onDelete przekazaną przez parametr routingu
     if (onDelete) {
       onDelete(address);
     }
 
-    // Przejdź do poprzedniego ekranu
     navigation.goBack();
   };
 
@@ -32,7 +30,6 @@ const DeleteAddressScreen = ({ navigation, route }) => {
   )
 };
 
-// ... reszta kodu
 
 
 export default DeleteAddressScreen;

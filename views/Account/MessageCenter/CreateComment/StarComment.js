@@ -8,7 +8,7 @@ const StarComment = ({ onStarChange }) => {
 
   const handleStarPress = (index) => {
     setFilledStars(index);
-    onStarChange && onStarChange(index); // Zaktualizowano wywołanie onStarChange z aktualną ilością gwiazdek
+    onStarChange && onStarChange(index); 
   };
 
   const renderStars = () => {

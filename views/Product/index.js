@@ -18,26 +18,19 @@ import styles from './style';
 
 const AddToCart = async () => {
   try {
-    // Retrieve existing items from AsyncStorage
     const existingItemsString = await AsyncStorage.getItem('CartItem');
     const existingItems = existingItemsString ? JSON.parse(existingItemsString) : [];
 
-    // Check if the selected item already exists in the cart
     const itemExistsIndex = existingItems.findIndex(item => item.id === selectedItem.id);
 
     if (itemExistsIndex !== -1) {
-      // Item already exists, update the quantity
-      //existingItems[itemExistsIndex].quantity += 1;
     } else {
-      // Item does not exist, add it to the cart with quantity 1
       const newItemWithQuantity = { ...selectedItem, quantity: 1 };
       existingItems.push(newItemWithQuantity);
     }
 
-    // Save the updated array back to AsyncStorage
     await AsyncStorage.setItem('CartItem', JSON.stringify(existingItems));
   } catch (error) {
-    // Handle errors if any
     console.error('Error adding item to cart:', error);
   }
 

@@ -45,7 +45,6 @@ const ProductPicture = ({ navigation, route }) => {
             const album = await MediaLibrary.createAlbumAsync('expoCamera', asset);
             
 
-  // Wróć do poprzedniego ekranu
         navigation.goBack();
         }
 

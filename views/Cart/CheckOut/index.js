@@ -94,7 +94,6 @@ import { CommonActions } from '@react-navigation/native';
         const updatedOrders = [...existingOrders, orderData];
         await AsyncStorage.setItem('orderData', JSON.stringify(updatedOrders));
 
-        // Iteruj po właścicielach i wysyłaj wiadomości do każdego z nich
         const owners = new Set(cartItems.map((item) => item.userid));
         console.log('tutaj1');
         for (const ownerId of owners) {
@@ -105,12 +104,10 @@ import { CommonActions } from '@react-navigation/native';
             type: 'Comment',
           };
           console.log('tutaj2');
-          // Wysyłka wiadomości na serwer JSON
           await config.post('/message', { ...message, sellid: ownerId });
         }
         console.log('tutaj3');
         await config.post('/orderData',{...orderData, userid: userId});
-        // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
         await AsyncStorage.removeItem('CartItem');
 
 
@@ -129,7 +126,6 @@ import { CommonActions } from '@react-navigation/native';
 
   const deleteBought = async () => {
     try {
-      // 1. Remove items from local storage (AsyncStorage)
       const cartItemsString = await AsyncStorage.getItem('CartItem');
       const storedBootsData = await AsyncStorage.getItem('bootsData');
   
@@ -137,22 +133,17 @@ import { CommonActions } from '@react-navigation/native';
         const cartItems = JSON.parse(cartItemsString);
         const updatedBootsData = JSON.parse(storedBootsData);
   
-        // Filter out items with IDs present in both cartItems and updatedBootsData
         const updatedBootsDataFiltered = updatedBootsData.filter(bootItem => {
           return !cartItems.some(cartItem => cartItem.id === bootItem.id);
         });
-        //console.log(updatedBootsDataFiltered);
-        // Update the bootsData in AsyncStorage
         await AsyncStorage.setItem('bootsData', JSON.stringify(updatedBootsDataFiltered));
   
-        // Delete items from the server
         const owners = new Set(cartItems.map(item => item.id));
   
         for (const ownerId of owners) {
           await config.delete(`/boots/${ownerId}`);
         }
   
-        // Continue with the rest of your logic if needed
       } else {
         console.log('No items found in the cart or bootsData.');
       }
@@ -243,7 +234,7 @@ import { CommonActions } from '@react-navigation/native';
               backgroundColor: pressed ? 'darkorange' : 'orange',
             },
           ]}
-          onPress={onPressCreate} // Użyj funkcji anonimowej tutaj
+          onPress={onPressCreate} 
        >
         <Text style={styles.buttonText}>Pay</Text>
       </Pressable>

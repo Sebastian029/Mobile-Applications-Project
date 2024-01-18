@@ -29,7 +29,6 @@ const ProductPicture = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-        // Request camera and media library permissions on component mount
         requestPermissions();
     }, []);
 

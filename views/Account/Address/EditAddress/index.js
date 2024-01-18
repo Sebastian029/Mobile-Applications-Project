@@ -17,7 +17,6 @@ const EditAddressScreen = ({ navigation, route }) => {
   const [id, setId] = useState('');
   const [userid, setUserid] = useState('');
   useEffect(() => {
-    // Check if address data is passed through route.params
     if (route.params?.address) {
       const { id, name, country, first, last, street, city, region, zip, phone, userid} = route.params.address;
       setUserid(userid);
@@ -37,7 +36,6 @@ const EditAddressScreen = ({ navigation, route }) => {
   
 
   const onSave = () => {
-    // Add your logic to save the edited address data
     const editedAddress = {
       id: id,
       userid : userid,
@@ -57,31 +55,26 @@ const EditAddressScreen = ({ navigation, route }) => {
       return;
     }
 
-    // Validate first and last names
   const nameRegex = /^[a-zA-Z]+$/;
   if (!nameRegex.test(first) || !nameRegex.test(last)) {
     Alert.alert('Error', 'First and last names should contain only letters.');
     return;
   }
 
-  // Validate phone format
   const phoneRegex = /^\+48\d{9}$/;
   if (!phoneRegex.test(phone)) {
     Alert.alert('Error', 'Phone number should be in the format +489123456789.');
     return;
   }
 
-  // Validate ZIP code format
   const zipRegex = /^\d{2}-\d{3}$/;
   if (!zipRegex.test(zip)) {
     Alert.alert('Error', 'ZIP code should be in the format xx-xxx.');
     return;
   }
 
-    // Pass the edited address data to the onSave callback
     route.params.onSave(editedAddress);
 
-    // Navigate back
     navigation.goBack();
   };
 
