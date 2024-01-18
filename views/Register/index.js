@@ -79,7 +79,6 @@ import styles from './style.js';
 
       } catch (error) {
         console.error('Error during registration:', error);
-        // Handle error, show an alert, or update UI accordingly
       }
 
         console.log('register handler');

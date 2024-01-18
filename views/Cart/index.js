@@ -17,8 +17,10 @@ export default function HomeScreen({ navigation }) {
       const serializedItems = await AsyncStorage.getItem('CartItem');
       if (serializedItems !== null) {
         const storedItems = JSON.parse(serializedItems);
-        setItems(storedItems);
-        countTotal(storedItems);
+        
+        const filtered = Array.from(new Set(storedItems))
+        setItems(filtered);
+        countTotal(filtered);
       }
     } catch (error) {
       console.log(error);
@@ -41,11 +43,11 @@ export default function HomeScreen({ navigation }) {
 
     items.forEach((item) => {
       count += item.quantity;
-      basic += item.quantity * item.quantity;
+      basic += item.quantity * item.price;
       tmpPrice += item.price * item.quantity;
     });
 
-    if (tmpPrice > 200 || count <= 0) shipping = 0;
+    if (tmpPrice > 100 || count <= 0) shipping = 0;
 
     setBasicPrice(basic);
     setShippingPrice(shipping);
@@ -90,18 +92,14 @@ export default function HomeScreen({ navigation }) {
 
   const deleteItem = async (itemToDelete) => {
     try {
-      // Remove the item from AsyncStorage (CartItem)
       const serializedItems = await AsyncStorage.getItem('CartItem');
       if (serializedItems !== null) {
         const storedItems = JSON.parse(serializedItems);
 
-        // Filter out the item to be deleted
         const updatedItems = storedItems.filter((item) => item.id !== itemToDelete.id);
 
-        // Save the updated items back to AsyncStorage
         await AsyncStorage.setItem('CartItem', JSON.stringify(updatedItems));
 
-        // Update the state and recalculate total
         setItems(updatedItems);
         countTotal(updatedItems);
       }
@@ -116,7 +114,6 @@ export default function HomeScreen({ navigation }) {
         prevItems.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + num } : i))
       );
 
-      // Save the updated quantity directly to AsyncStorage
       updateQuantityInAsyncStorage(item.id, item.quantity + num);
     }
   };
@@ -127,15 +124,12 @@ export default function HomeScreen({ navigation }) {
       if (serializedItems !== null) {
         const storedItems = JSON.parse(serializedItems);
 
-        // Find the item in AsyncStorage and update its quantity
         const updatedItems = storedItems.map((item) =>
           item.id === itemId ? { ...item, quantity: newQuantity } : item
         );
 
-        // Save the updated items back to AsyncStorage
         await AsyncStorage.setItem('CartItem', JSON.stringify(updatedItems));
 
-        // Recalculate total
         countTotal(updatedItems);
       }
     } catch (error) {
@@ -153,7 +147,6 @@ export default function HomeScreen({ navigation }) {
   };
 
   const handleCheckout = async () => {
-   // console.log(await AsyncStorage.getItem('CartItem'));
     if (totalPrice !== 0) {
       navigation.navigate('CheckOut', {
         totalPrice,

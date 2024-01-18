@@ -42,10 +42,8 @@ const ProductPicture = ({ navigation, route }) => {
             const temporaryUri = `${FileSystem.cacheDirectory}expo-image-${Date.now()}.jpg`;
             await FileSystem.moveAsync({ from: uri, to: temporaryUri});
             const asset = await MediaLibrary.createAssetAsync(temporaryUri)
-            const album = await MediaLibrary.createAlbumAsync('expoCamera', asset);
-            
 
-  // Wróć do poprzedniego ekranu
+
         navigation.goBack();
         }
 
@@ -55,16 +53,17 @@ const ProductPicture = ({ navigation, route }) => {
                 <AntDesign name="left" style={styles.basicIcon} onPress={() => navigation.goBack()} />
                 <Text style={styles.title}>Add SellProduct</Text>
             </View>
-            <Camera style={styles.camera} type={type} ref={ cameraRef }>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.buttonCam} onPress={toggleCameraType}>
-                        <Text style={styles.text}>Flip Camera</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonCam} onPress={takePicture}>
-                        <Text style={styles.text}>Take Picture</Text>
-                    </TouchableOpacity>
-                </View>
-            </Camera>
+            <View style={styles.cameraContainer}>
+                <Camera style={styles.camera} type={type} ref={ cameraRef }/>
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.buttonCam} onPress={toggleCameraType}>
+                    <Text style={styles.text}>Flip Camera</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonCam} onPress={takePicture}>
+                    <Text style={styles.text}>Take Picture</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };

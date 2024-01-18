@@ -10,7 +10,6 @@ const AddressScreen = ({ navigation }) => {
   const [addressData, setAddressData] = useState([]);
 
   useEffect(() => {
-    // Odczytaj dane z AsyncStorage po załadowaniu komponentu
     const fetchData = async () => {
       try {
         const storedAddressData = await AsyncStorage.getItem('addressData');
@@ -29,7 +28,7 @@ const AddressScreen = ({ navigation }) => {
     };
 
     fetchData();
-  }, []); // Pusta zależność oznacza, że useEffect zostanie uruchomiony tylko raz po zamontowaniu komponentu
+  }, []); 
 
   const saveAddressDataToStorage = async (addressData) => {
     try {
@@ -87,7 +86,6 @@ const AddressScreen = ({ navigation }) => {
       const parsedUserData = JSON.parse(storedUserData);
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
-        // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/addressData`, { ...newAddress, userid: userId });
         const responseData = await config.get('/addressData');
        const getResponseAddressData =  responseData.data;
@@ -118,10 +116,8 @@ const AddressScreen = ({ navigation }) => {
         const parsedUserData = JSON.parse(storedUserData);
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
-          // Aktualizuj dane w bazie danych
           await config.put(`/addressData/${originalAddress.id}`, { ...editedAddress, userid: userId });
   
-          // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
           setAddressData(updatedAddressData);
           saveAddressDataToStorage(updatedAddressData);
         } else {
@@ -143,10 +139,8 @@ const AddressScreen = ({ navigation }) => {
       updatedAddressData.splice(index, 1);
     
       try {
-        // Usuń dane z bazy danych
         await config.delete(`/addressData/${addressToDelete.id}`);
         
-        // Aktualizuj stan i zapisz dane adresowe do AsyncStorage
         setAddressData(updatedAddressData);
         saveAddressDataToStorage(updatedAddressData);
       } catch (error) {
@@ -163,11 +157,16 @@ const AddressScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.content} >
+      {addressData.length > 0 ? (
         <FlatList
           data={addressData}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
         />
+        ) : (
+          <Text style={styles.noItemsText}>Addresses are empty</Text>
+        )}
+        
       </View>
 
       <Pressable
@@ -177,7 +176,7 @@ const AddressScreen = ({ navigation }) => {
             backgroundColor: pressed ? 'darkorange' : 'orange',
           },
         ]}
-        onPress={() => navigation.navigate('AddAddress', { onSave: handleSaveAddress })} // Użyj funkcji anonimowej tutaj
+        onPress={() => navigation.navigate('AddAddress', { onSave: handleSaveAddress })} 
       >
         <Text style={styles.buttonText}>Add</Text>
       </Pressable>

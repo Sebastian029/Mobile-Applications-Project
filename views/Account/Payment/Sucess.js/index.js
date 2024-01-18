@@ -8,8 +8,7 @@ const SucessCardScreen = ({ navigation }) => {
     setIsButtonDisabled(true);
     setTimeout(() => {
       setIsButtonDisabled(false);
-    }, 1000); // Set the duration of the delay in milliseconds
-    // Your navigation logic or other actions can be added here
+    }, 1000); 
     navigation.navigate('Payment');
   };
 

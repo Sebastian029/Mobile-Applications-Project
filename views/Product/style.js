@@ -51,25 +51,29 @@ const styles = StyleSheet.create({
         color:'orange',
         fontSize:22,
         fontWeight:'bold',
+        paddingLeft:20
     },
     title:{
         color:'#223263',
         fontSize:16,
         fontWeight:'bold',
         paddingVertical:10,
+        paddingLeft:20
         
     },
     specification:{
         flex:1,
         flexDirection:'row',
         justifyContent:'space-between',
-        width:'80%'
+        width:'80%',
+        
     },
     specLeft:{
         color:'#223263',
         fontSize:14,
         fontWeight:'bold',
-        paddingVertical:5
+        paddingVertical:5,
+        paddingLeft:20
     },
     specRight:{
         color:'gray',

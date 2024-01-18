@@ -40,34 +40,29 @@ const AddAddressScreen = ({ navigation, route }) => {
   }, []);
 
   const onSave = () => {
-    // Check if any field is empty
     if (!name || !country || !first || !last || !street || !city || !region || !zip || !phone) {
       Alert.alert('Error', 'All fields must be filled out.');
       return;
     }
 
-    // Validate first and last names
     const nameRegex = /^[a-zA-Z]+$/;
     if (!nameRegex.test(first) || !nameRegex.test(last)) {
       Alert.alert('Error', 'First and last names should contain only letters.');
       return;
     }
 
-    // Validate phone format
     const phoneRegex = /^\+48\d{9}$/;
     if (!phoneRegex.test(phone)) {
       Alert.alert('Error', 'Phone number should be in the format +489123456789.');
       return;
     }
 
-    // Validate ZIP code format
     const zipRegex = /^\d{2}-\d{3}$/;
     if (!zipRegex.test(zip)) {
       Alert.alert('Error', 'ZIP code should be in the format xx-xxx.');
       return;
     }
 
-    // Truncate other fields to 20 characters
     const truncatedFirst = first.slice(0, 20);
     const truncatedLast = last.slice(0, 20);
     const truncatedStreet = street.slice(0, 20);
@@ -87,10 +82,8 @@ const AddAddressScreen = ({ navigation, route }) => {
       phone: phone,
     };
 
-    // Pass the new address data to the onSave callback
     route.params.onSave(newAddress);
 
-    // Navigate back
     navigation.goBack();
   };
 
@@ -99,8 +92,6 @@ const AddAddressScreen = ({ navigation, route }) => {
     const userLocation = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.Highest, maximumAge: 10000});
    
       setLocation(location);
-      // console.log("Location:");
-      // console.log(location);
 
     try {
       const { coords } = await Location.getCurrentPositionAsync({

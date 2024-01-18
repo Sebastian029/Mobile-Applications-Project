@@ -5,13 +5,11 @@ const DeleteCardScreen = ({ navigation, route }) => {
   const { card, onDelete } = route.params;
 
   const handleDelete = () => {
-    // Wywołaj funkcję onDelete przekazaną przez parametr routingu
     console.log(card);
     if (onDelete) {
       onDelete(card);
     }
 
-    // Przejdź do poprzedniego ekranu
     navigation.goBack();
   };
 
@@ -33,7 +31,6 @@ const DeleteCardScreen = ({ navigation, route }) => {
   )
 };
 
-// ... reszta kodu
 
 
 export default DeleteCardScreen;

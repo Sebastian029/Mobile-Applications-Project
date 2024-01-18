@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import uuid from 'react-native-uuid';
 
-import { View, Text,  StyleSheet, Pressable, FlatList, TextInput} from 'react-native';
+import { View, Text,  StyleSheet, Pressable, FlatList, TextInput, Alert} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from '../../../config';
@@ -8,7 +9,7 @@ import styles from './style';
 import { CommonActions } from '@react-navigation/native';
 
   const CheckOutScreen = ({ navigation, route }) => {
-
+    const [generate, setGenerate] = useState();
     const [cardNumber, setCardNumber] = useState('');
     const [addressStreet, setAddressStreet] = useState('');
     const [addressCity, setAddressCity] = useState('');
@@ -17,7 +18,7 @@ import { CommonActions } from '@react-navigation/native';
     const [itemsCountCheck, setItemsCountCheck] = useState(itemsCount);
     const [basicPriceCheck, setBasicPriceCheck] = useState(basicPrice);
     const [shippingPriceCheck, setShippingPriceCheck] = useState(shippingPrice);
-  
+    
      useEffect(() => {
         
       if (route.params?.card) {
@@ -37,12 +38,28 @@ import { CommonActions } from '@react-navigation/native';
     }, [route.params?.address]);
 
   const [text, setText] = useState('');
+
+  const generateID= () =>{
+    const tmpId = uuid.v4();
+    return tmpId.substring(0, 8);
+  }
   
 
 
   
      const createOrder = async () => {
     try {
+
+      if(!cardNumber){
+          Alert.alert('Error', 'Please select a card.');
+          return;
+      }
+
+      if(!addressCity || !addressStreet){
+        Alert.alert('Error', 'Please select an address.');
+        return;
+      }
+
       const cartItemsString = await AsyncStorage.getItem('CartItem');
       console.log('Cart Items:', JSON.parse(cartItemsString));
 
@@ -54,10 +71,9 @@ import { CommonActions } from '@react-navigation/native';
       
       if (cartItemsString) {
         const cartItems = JSON.parse(cartItemsString);
-        console.log('nig2');
-        // Utwórz strukturę zamówienia
+        
         const orderData = {
-          orderID: 'AAAA2137', // Możesz użyć odpowiedniej logiki do generowania unikalnego ID zamówienia
+          orderID: generateID(), 
           date: new Date().toLocaleDateString(),
           status: 'Packing',
           items: itemsCountCheck,
@@ -78,25 +94,31 @@ import { CommonActions } from '@react-navigation/native';
         const updatedOrders = [...existingOrders, orderData];
         await AsyncStorage.setItem('orderData', JSON.stringify(updatedOrders));
 
-        // Iteruj po właścicielach i wysyłaj wiadomości do każdego z nich
         const owners = new Set(cartItems.map((item) => item.userid));
         console.log('tutaj1');
         for (const ownerId of owners) {
           const message = {
-            title: 'Comment',
-            detail: 'Wiecej miodu elo',
+            title: 'Add comment to your purhase ',
+            detail: 'Thank you for your shopping. Comment on the product you purchased.',
             userid: userId,
             type: 'Comment',
           };
           console.log('tutaj2');
-          // Wysyłka wiadomości na serwer JSON
           await config.post('/message', { ...message, sellid: ownerId });
         }
         console.log('tutaj3');
         await config.post('/orderData',{...orderData, userid: userId});
-        // Opcjonalnie: Wyczyść koszyk po zrealizowanym zamówieniu
+        
+
+
+        deleteBought();
         await AsyncStorage.removeItem('CartItem');
-      }
+          navigation.dispatch(CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'CartHome' }],
+          }));
+          navigation.navigate('CartHome');
+          }
     } catch (error) {
       console.log(error);
     }
@@ -104,30 +126,25 @@ import { CommonActions } from '@react-navigation/native';
 
   const deleteBought = async () => {
     try {
-      // 1. Remove items from local storage (AsyncStorage)
       const cartItemsString = await AsyncStorage.getItem('CartItem');
-      const storedBootsData = await AsyncStorage.getItem('bootsData');
+     
   
-      if (cartItemsString && storedBootsData) {
+      if (cartItemsString ) {
+        const storedBootsData = await AsyncStorage.getItem('bootsData');
         const cartItems = JSON.parse(cartItemsString);
         const updatedBootsData = JSON.parse(storedBootsData);
   
-        // Filter out items with IDs present in both cartItems and updatedBootsData
         const updatedBootsDataFiltered = updatedBootsData.filter(bootItem => {
           return !cartItems.some(cartItem => cartItem.id === bootItem.id);
         });
-        //console.log(updatedBootsDataFiltered);
-        // Update the bootsData in AsyncStorage
         await AsyncStorage.setItem('bootsData', JSON.stringify(updatedBootsDataFiltered));
   
-        // Delete items from the server
         const owners = new Set(cartItems.map(item => item.id));
   
         for (const ownerId of owners) {
           await config.delete(`/boots/${ownerId}`);
         }
   
-        // Continue with the rest of your logic if needed
       } else {
         console.log('No items found in the cart or bootsData.');
       }
@@ -142,16 +159,8 @@ import { CommonActions } from '@react-navigation/native';
   
 
     const onPressCreate = async ()  => {
-      console.log('nig');
       createOrder();
-      deleteBought();
-      await AsyncStorage.removeItem('CartItem');
-      navigation.dispatch(CommonActions.reset({
-        index: 0,
-        routes: [{ name: 'CartHome' }],
-      }));
-      navigation.navigate('CartHome');
-    
+      
     };
 
   return (
@@ -205,7 +214,7 @@ import { CommonActions } from '@react-navigation/native';
               ]}
               onPress={() => navigation.navigate('ChooseAddress')}
               >
-              {addressCity&&addressStreet? <Text style={styles.buttonText}>{addressCity}{addressStreet}</Text>:<Text style={styles.buttonText}>Choose Address</Text>}
+              {addressCity&&addressStreet? <Text style={styles.buttonText}>{addressCity} {addressStreet} {}</Text>:<Text style={styles.buttonText}>Choose Address</Text>}
 
 
           </Pressable>
@@ -227,7 +236,7 @@ import { CommonActions } from '@react-navigation/native';
               backgroundColor: pressed ? 'darkorange' : 'orange',
             },
           ]}
-          onPress={onPressCreate} // Użyj funkcji anonimowej tutaj
+          onPress={onPressCreate} 
        >
         <Text style={styles.buttonText}>Pay</Text>
       </Pressable>

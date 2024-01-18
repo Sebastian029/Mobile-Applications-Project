@@ -33,10 +33,14 @@ const MessageCenterScreen = ({ navigation }) => {
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
-          setUserData(JSON.parse(storedUserData));
+          const parsedUserData=JSON.parse(storedUserData)
+          setUserData(parsedUserData);
+          const userId = parsedUserData.id;
           const responseOrder = await config.get(`/message`);
           const getResponseOrder = responseOrder.data;
-          setMessageData(getResponseOrder);
+
+          const filteredAddressData = getResponseOrder.filter(item => item.userid === userId);
+          setMessageData(filteredAddressData);
           
         }
       } catch (error) {

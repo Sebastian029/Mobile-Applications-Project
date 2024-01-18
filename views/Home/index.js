@@ -9,26 +9,11 @@ import styles from './style';
 
 export default function HomeScreen({ navigation }) {
 
-  const images = {
-    sport: require('../../assets/exploreImages/sport.png'),
-    socks: require('../../assets/exploreImages/socks.png'),
-    elegant: require('../../assets/exploreImages/elegant.png'),
-    slippers: require('../../assets/exploreImages/slippers.png'),
-    winter: require('../../assets/exploreImages/winter.png'),
-    worker: require('../../assets/exploreImages/worker.png'),
-  };
 
-  const data = [
-    { id: '1', img: 'sport', name: 'Sport Shoes' },
-    { id: '2', img: 'socks', name: 'Socks' },
-    { id: '3', img: 'elegant', name: 'Elegant Shoes' },
-    { id: '4', img: 'slippers', name: 'Slippers' },
-    { id: '5', img: 'winter', name: 'Winter Boots' },
-    { id: '6', img: 'worker', name: 'Worker Shoes' },
-  ];
 
   const [newData, setNewData] = useState([]);
   const [newData2, setNewData2] = useState([]);
+  const [newData3, setNewData3] = useState([]);
   const [boots, setBoots] = useState([]);
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -48,6 +33,8 @@ export default function HomeScreen({ navigation }) {
         setNewData(selectedItems);
         const selectedItems2 = getRandomItems(parsedBootsData, 5);
         setNewData2(selectedItems2);
+        const selectedItems3 = getRandomItems(parsedBootsData, 5);
+        setNewData3(selectedItems3);
 
         setBoots(parsedBootsData);
       }
@@ -81,11 +68,9 @@ export default function HomeScreen({ navigation }) {
 
       fetchDataAndUserData();
 
-      // Clean up function (optional)
       return () => {
-        // You can perform cleanup tasks here if needed
       };
-    }, []) // Empty dependency array means this effect will only run once when the component mounts
+    }, []) 
   );
 
   const onRefresh = async () => {
@@ -111,16 +96,7 @@ export default function HomeScreen({ navigation }) {
     }
   };
 
-  const renderCategories = ({ item }) => {
-    return (
-      <View style={styles.productView}>
-        <Image source={images[item.img]} style={[styles.productIcon, { width: 40, height: 40 }]} />
-        <View style={styles.singleProductView}>
-          <Text style={styles.productName}>{item.name}</Text>
-        </View>
-      </View>
-    );
-  };
+ 
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -147,21 +123,24 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
 
+    
         <View style={{ alignSelf: 'flex-row' }}>
-          <Text style={styles.titleText}>Category</Text>
+          <Text style={styles.titleText}>New Products</Text>
           <FlatList
-            data={data}
-            renderItem={renderCategories}
+            data={newData2}
+            renderItem={renderInRow}
             keyExtractor={(item) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           />
         </View>
 
+        
+
         <View style={{ alignSelf: 'flex-row' }}>
           <Text style={styles.titleText}>Mega Sale</Text>
           <FlatList
-            data={newData2}
+            data={newData3}
             renderItem={renderInRow}
             keyExtractor={(item) => item.id}
             horizontal={true}

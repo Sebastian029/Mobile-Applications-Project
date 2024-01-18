@@ -7,14 +7,14 @@ import config from '../../../config';
 
 const MySaleScreen = ({ navigation }) => {
   const [mySaleData, setMySaleData] = useState([]);
-
+  const [saleOrginal, setSaleOrginal] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const storedMySaleData = await AsyncStorage.getItem('bootsData');
         if (storedMySaleData) {
           const allMySaleData = JSON.parse(storedMySaleData);
-          
+          setSaleOrginal(allMySaleData);
           const storedUserData = await AsyncStorage.getItem('userData');
           const parsedUserData = JSON.parse(storedUserData);
   
@@ -22,7 +22,6 @@ const MySaleScreen = ({ navigation }) => {
             const userId = parsedUserData.id;
             console.log("User ID:", userId);
   
-            // Filtruj produkty, aby wyświetlać tylko te z odpowiednim userid
             const filteredMySaleData = allMySaleData.filter(item => item.userid === userId);
             setMySaleData(filteredMySaleData);
           }
@@ -52,7 +51,6 @@ const MySaleScreen = ({ navigation }) => {
       const parsedUserData = JSON.parse(storedUserData);
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
-        // Aktualizuj dane w bazie danych tylko dla nowo dodanego adresu
         await config.post(`/boots`, { ...newMySale, userid: userId });
         
         const responseData = await config.get('/boots');
@@ -61,7 +59,7 @@ const MySaleScreen = ({ navigation }) => {
         const filteredMySaleData = getResponseCardData.filter(item => item.userid === userId);
 
         setMySaleData(filteredMySaleData);
-    saveMySaleDataToStorage(filteredMySaleData);
+    saveMySaleDataToStorage(getResponseCardData);
       } else {
         console.error("Error reading user data from AsyncStorage");
       }
@@ -71,10 +69,10 @@ const MySaleScreen = ({ navigation }) => {
   };
   
   const handleEditMySale = async (editedMySale, originalMySale) => {
-    const index = mySaleData.findIndex((mySale) => mySale.id === originalMySale.id);
+    const index = saleOrginal.findIndex((mySale) => mySale.id === originalMySale.id);
   
     if (index !== -1) {
-      const updatedMySaleData = [...mySaleData];
+      const updatedMySaleData = [...saleOrginal];
       updatedMySaleData[index] = editedMySale;
   
       try {
@@ -82,11 +80,11 @@ const MySaleScreen = ({ navigation }) => {
         const parsedUserData = JSON.parse(storedUserData);
         if (parsedUserData && parsedUserData.id) {
           const userId = parsedUserData.id;
-          // Aktualizuj dane w bazie danych
           await config.put(`/boots/${originalMySale.id}`, { ...editedMySale, userid: userId });
   
-          // Aktualizuj stan i zapisz dane sprzedażowe do AsyncStorage
-          setMySaleData(updatedMySaleData);
+          const filteredMySaleData = updatedMySaleData.filter(item => item.userid === userId);
+          setMySaleData(filteredMySaleData);
+
           saveMySaleDataToStorage(updatedMySaleData);
         } else {
           console.error("Error reading user data from AsyncStorage");
@@ -100,19 +98,24 @@ const MySaleScreen = ({ navigation }) => {
 
 
   const handleDeleteMySale = async (mySaleToDelete) => {
-    const index = mySaleData.findIndex((mySale) => mySale.id === mySaleToDelete.id);
+    const index = saleOrginal.findIndex((mySale) => mySale.id === mySaleToDelete.id);
   
     if (index !== -1) {
-      const updatedMySaleData = [...mySaleData];
+      const updatedMySaleData = [...saleOrginal];
       updatedMySaleData.splice(index, 1);
   
       try {
-        // Usuń dane z bazy danych
+        const storedUserData = await AsyncStorage.getItem('userData');
+        const parsedUserData = JSON.parse(storedUserData);
+        
+          const userId = parsedUserData.id;
         await config.delete(`/boots/${mySaleToDelete.id}`);
   
-        // Aktualizuj stan i zapisz dane sprzedażowe do AsyncStorage
-        setMySaleData(updatedMySaleData);
+        const filteredMySaleData = updatedMySaleData.filter(item => item.userid === userId);
+        setMySaleData(filteredMySaleData);
         saveMySaleDataToStorage(updatedMySaleData);
+        
+        
       } catch (error) {
         console.error('Error deleting data from the database:', error);
       }
@@ -156,7 +159,7 @@ const renderItem = ({ item }) => {
         />
         
           ) : (
-            <Text style={styles.noItemsText}>Cart is empty</Text>
+            <Text style={styles.noItemsText}>Your sale is empty</Text>
             )}
       </View>
 

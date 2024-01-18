@@ -2,240 +2,177 @@
   "users": [
     {
       "id": 1,
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "l",
-      "phoneNumber": 123456789,
-      "birthday": "1990-01-01",
-      "password": "+48123123123",
-      "repeatPassword": "password",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/6d75bd5a-cc9c-473c-b1d5-5d6974e5e25e.jpeg"
-      }
-    },
-    {
-      "firstName": "dominik",
-      "lastName": "Jaroszek",
-      "email": "L",
-      "phoneNumber": "+48234234234",
-      "birthday": "Gh",
-      "password": "P",
-      "repeatPassword": "Password",
-      "id": 2,
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      }
-    },
-    {
       "firstName": "Dominik",
       "lastName": "Jaroszek",
-      "email": "ll",
-      "phoneNumber": "+48456456456",
-      "birthday": "677",
-      "password": "pp",
-      "repeatPassword": "pp",
-      "id": 3,
+      "email": "dominikjaroszekx@gmail.com",
+      "phoneNumber": "+48507898765",
+      "birthday": "25.01.2002",
+      "password": "Dominikx",
+      "repeatPassword": "Dominikx",
       "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/1c075384-6958-4cea-8491-369fdc20f52b.png"
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/06b9140c-9cee-44c9-8ab5-11f279f64c16.jpeg"
       }
     },
     {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNumber": "",
-      "birthday": "",
-      "password": "",
-      "repeatPassword": "",
-      "id": 4
+      "firstName": "Jordan",
+      "lastName": "Jakub",
+      "email": "jordanjakub@gmail.com",
+      "phoneNumber": "+48503890890",
+      "birthday": "26.01.2002",
+      "password": "Jordanx",
+      "repeatPassword": "Jordanx",
+      "id": 2,
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/e6bebd31-7df3-4f8b-9819-f35cc771835c.png"
+      }
     },
     {
-      "firstName": "",
-      "lastName": "",
-      "email": "Dgh",
-      "phoneNumber": "",
-      "birthday": "",
-      "password": "",
-      "repeatPassword": "",
-      "id": 5
-    },
-    {
-      "firstName": "A",
-      "lastName": "A",
-      "email": "A@asd.pl",
-      "phoneNumber": "+48111222333",
-      "birthday": "11-19-2000",
-      "password": "A",
-      "repeatPassword": "A",
-      "id": 6
-    },
-    {
-      "firstName": "A",
-      "lastName": "A",
-      "email": "As@gmail.com",
-      "phoneNumber": "+48123456789",
-      "birthday": "11.01.2000",
-      "password": "A",
-      "repeatPassword": "A",
-      "id": 7
+      "firstName": "Sebastian",
+      "lastName": "Iwan",
+      "email": "sebastianiwan@gmail.com",
+      "phoneNumber": "+48503654321",
+      "birthday": "23.01.2002",
+      "password": "Sebastianx",
+      "repeatPassword": "Sebastianx",
+      "id": 3,
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/872a752a-4267-49e8-bfda-31f41f075e13.png"
+      }
     }
   ],
   "cardData": [
     {
       "id": 1,
-      "number": "9000 0030 1111 4020",
-      "cardHolder": "dominik Jaroszek",
+      "number": "6464664646464664",
+      "cardHolder": "Dominik Jaroszek",
       "expiryDate": "01/2025",
-      "userid": 2
+      "userid": 1
     },
     {
       "number": "6666666644444444",
-      "cardHolder": "Pawel Jan",
+      "cardHolder": "Jakub Jordan",
       "expiryDate": "12/2030",
-      "userid": 1,
-      "id": 4
+      "userid": 2,
+      "id": 2
     },
     {
       "number": "6555555414455444",
-      "cardHolder": "Gdy",
-      "expiryDate": "12/6666",
-      "userid": 1,
-      "id": 5
+      "cardHolder": "Sebastian Iwan",
+      "expiryDate": "12/2028",
+      "userid": 3,
+      "id": 3
     }
   ],
   "addressData": [
     {
-      "id": 4,
-      "userid": 2,
+      "id": 1,
+      "userid": 1,
       "name": "My Addres 1",
       "country": "Polska",
       "first": "Dominik",
       "last": "Jaroszek",
-      "street": "Romualda 4",
+      "street": "Świętokrzyska 4",
       "city": "Kielce",
       "region": "Świętokrzyskie",
-      "zip": "25-001",
+      "zip": "40-051",
       "phone": "+48501747037"
     },
     {
-      "name": "Adres2222",
-      "country": "Polska2",
-      "first": "Dominik",
-      "last": "Jaroszek",
-      "street": "Romualda 4",
-      "city": "Kielce",
-      "region": "Świętokrzyskie",
-      "zip": "25-001",
-      "phone": "501747037",
-      "userid": 1,
-      "id": 5
+      "name": "Moj Adres",
+      "country": "Polska",
+      "first": "Jakub",
+      "last": "Jordan",
+      "street": "Barwin 5",
+      "city": "Warszawa",
+      "region": "Mazowieckie",
+      "zip": "27-002",
+      "phone": "+48501747037",
+      "userid": 2,
+      "id": 2
     },
     {
-      "name": "NIGDY",
+      "name": "Adres",
       "country": "Polska",
-      "first": "Kahshhahj",
-      "last": "Uhs",
-      "street": "Romualda 4",
-      "city": "Kielce",
-      "region": "Świętokrzyskie",
-      "zip": "25-001",
-      "phone": "9u",
-      "userid": 1,
-      "id": 6
-    },
-    {
-      "name": "Oj nie byczq",
-      "country": "Polska",
-      "first": "Kffjsj",
-      "last": "Shjd",
-      "street": "Romualda 4",
-      "city": "Kielce",
-      "region": "Świętokrzyskie",
-      "zip": "25-001",
-      "phone": "64774",
-      "userid": 1,
-      "id": 7
+      "first": "Sebastian",
+      "last": "Iwan",
+      "street": "Rynek 5",
+      "city": "Łódź",
+      "region": "Łódzkie",
+      "zip": "35-003",
+      "phone": "+48432654821",
+      "userid": 3,
+      "id": 3
     }
   ],
   "boots": [
     {
       "id": 1,
+      "userid": 1,
+      "title": "Nike AirPro",
       "category": "sport",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      },
-      "title": "Nie",
-      "price": 190,
-      "size": 40,
       "brand": "Nike",
+      "size": "40",
       "condition": "Good",
-      "description": "des",
-      "userid": 2
+      "description": "Good sport boots",
+      "price": "100",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/85a853cd-855a-4800-afaf-d7d78873082d.jpeg"
+      }
     },
     {
       "id": 2,
-      "category": "sport",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
-      },
-      "title": "Niewiem",
-      "price": 190,
-      "size": 40,
-      "brand": "Nike",
-      "condition": "Good",
-      "description": "des",
-      "userid": 2
-    },
-    {
-      "title": "Uj",
-      "category": "Hh",
-      "brand": "Nng",
-      "size": "Ikl",
-      "condition": "Ff",
-      "description": "Iij",
+      "userid": 1,
+      "title": "New Balance Dirty",
+      "category": "elegant",
+      "brand": "New Balance",
+      "size": "41",
+      "condition": " very Good",
+      "description": "Good for wedding",
       "price": "200",
       "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/95973c72-bb9d-472b-9623-c42f456a0eae.png"
-      },
-      "userid": 1,
-      "id": 3
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
+      }
     },
     {
-      "id": 4,
+      "id": 3,
       "userid": 2,
-      "title": "A",
-      "category": "A",
-      "brand": "A",
-      "size": "33",
-      "condition": "A",
-      "description": "Aa",
-      "price": "38",
-      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/05baf9e3-60a3-4402-88c3-21a66e1762c9.jpeg"
-    },
-    {
-      "id": 5,
-      "userid": 2,
-      "title": "A",
-      "category": "A",
-      "brand": "A",
-      "size": "33",
-      "condition": "A",
-      "description": "A",
-      "price": "99",
-      "img": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-58caca89-7ff5-48b7-ae2b-abccd0fbea62/ImagePicker/10bd4f25-9a68-43e1-998d-a195e94c4595.jpeg"
+      "title": "Adidas Fire",
+      "category": "sport",
+      "brand": "Adidas",
+      "size": "39",
+      "condition": "bad",
+      "description": "Quite dirty",
+      "price": "150",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/a2245d89-c7a2-49f9-9269-b7b2345fe7a2.jpeg"
+      }
     },
     {
       "id": 6,
-      "userid": 4,
-      "title": "Jsjs",
-      "category": "Jsja",
-      "brand": "Jsjs",
-      "size": "40",
-      "condition": "Sjjsu",
-      "description": "Jak",
+      "userid": 2,
+      "title": "Reebook Forest",
+      "category": "sport",
+      "brand": "Reebook",
+      "size": "43",
+      "condition": "good",
+      "description": "good price for good boots",
       "price": "400",
       "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/7559ffac-6db2-4310-9439-8d49ace45704.jpeg"
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
+      }
+    },
+    {
+      "id": 7,
+      "userid": 3,
+      "title": "Reebok Stone",
+      "category": "elegant",
+      "brand": "Reebook",
+      "size": "45",
+      "condition": "very good",
+      "description": "dirty look",
+      "price": "350",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/60445023-9e8d-44bd-a18e-5411f2688dcb.jpeg"
       }
     }
   ],
@@ -243,24 +180,38 @@
     {
       "id": 1,
       "userid": 1,
-      "orderID": "AAAA2137",
+      "orderID": "b830a809-9",
       "date": "15-10-2023",
       "status": "Packing",
-      "items": 2,
-      "price": 500,
-      "totalPrice": 540,
+      "items": 1,
+      "price": 100,
+      "totalPrice": 140,
       "boot": [
         {
           "idp": 1,
-          "name": "Nike",
+          "name": "Nike AirPro",
           "price": 100,
           "img": {
             "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
           }
-        },
+        }
+      ],
+      "address": "Podraje 2, 18-136",
+      "shipping": "40"
+    },
+    {
+      "id": 2,
+      "userid": 2,
+      "orderID": "a900b222-1",
+      "date": "16-10-2023",
+      "status": "Packing",
+      "items": 1,
+      "price": 200,
+      "totalPrice": 240,
+      "boot": [
         {
-          "idp": 2,
-          "name": "Nike",
+          "idp": 1,
+          "name": "Adidas Fresh",
           "price": 200,
           "img": {
             "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
@@ -269,6 +220,80 @@
       ],
       "address": "Podraje 2, 18-136",
       "shipping": "40"
+    },
+    {
+      "id": 3,
+      "userid": 3,
+      "orderID": "d100hd20-0",
+      "date": "14-10-2023",
+      "status": "Packing",
+      "items": 1,
+      "price": 250,
+      "totalPrice": 290,
+      "boot": [
+        {
+          "idp": 1,
+          "name": "Reebook Dirty",
+          "price": 250,
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/c9795fb9-2685-4d00-9384-e58a8b486fd4.jpeg"
+          }
+        }
+      ],
+      "address": "Podraje 2, 18-136",
+      "shipping": "40"
+    },
+    {
+      "orderID": "053fbf2d",
+      "date": "17.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 400,
+      "totalPrice": 400,
+      "boot": [
+        {
+          "idp": 6,
+          "name": "Reebook Forest",
+          "price": "400",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
+          }
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 4
+    },
+    {
+      "orderID": "ec4d7958",
+      "date": "18.01.2024",
+      "status": "Packing",
+      "items": 2,
+      "price": 137,
+      "totalPrice": 137,
+      "boot": [
+        {
+          "idp": 5,
+          "name": "New Ballance Wood",
+          "price": "99",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
+          }
+        },
+        {
+          "idp": 4,
+          "name": "Adidas Snow",
+          "price": "38",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/8abcd028-2dcf-4c9a-bfa1-3a23df236969.jpeg"
+          }
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 5
     }
   ],
   "reviews": [
@@ -277,62 +302,84 @@
       "userid": 1,
       "user": "Sebastian Iwan",
       "stars": 5,
-      "content": "Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do biedronki na lody, i po drodze do domu wtedy jeszcze, już do domu pojechałem."
+      "content": "Świetne buty"
     },
     {
       "id": 2,
       "userid": 1,
-      "user": "Dominik Jaroszek",
+      "user": "Jakub Jordan",
       "stars": 4,
-      "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier."
+      "content": "Niebywała jakość."
     },
     {
       "id": 3,
       "userid": 2,
-      "user": "Blazej Jakubczyk",
+      "user": "Sebastian Iwan",
       "stars": 3,
-      "content": "Zamówiłem buty, które wyglądały na pół podróby, pół nie podróby a pół nie buty. Sprzedawca w bonusie dorzucił cukier wanilinowy, jak pisze w dołączonej kartce, abym poczuł się choć na chwilę jakbym miał cukier.."
+      "content": "Świetne buty jak nowe"
     },
     {
       "id": 4,
       "userid": 2,
+      "user": "Dominik Jaroszek",
+      "stars": 2,
+      "content": "Niebywała jakość ogumienia."
+    },
+    {
+      "id": 5,
+      "userid": 3,
       "user": "Jakub Jordan",
       "stars": 2,
-      "content": "Zagadkowe połączenie nieodgadnionych butów i słodkiego dodatku było jak tajemniczy prezent, który sprawił, że choć na chwilę, zanurzyłem się w świat absurdu, gdzie wszystko było możliwe - nawet czucie się jak cukier."
+      "content": "Świetne."
+    },
+    {
+      "id": 6,
+      "userid": 3,
+      "user": "Dominik Jaroszek",
+      "stars": 2,
+      "content": "Dobre."
     }
   ],
   "message": [
     {
       "id": 1,
-      "title": "Confirm",
-      "detail": "Wiecej miodu elo",
-      "userid": 1,
-      "sellid": 2,
-      "type": "Confirm"
-    },
-    {
-      "id": 2,
       "title": "Add comment to your purhase",
-      "detail": "Wiecej trytolu",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
       "userid": 1,
       "sellid": 2,
       "type": "Comment"
     },
     {
-      "title": "Confirm",
-      "detail": "Wiecej miodu elo",
-      "userid": 1,
-      "type": "Confirm",
+      "id": 2,
+      "title": "Add comment to your purhase",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 2,
+      "sellid": 1,
+      "type": "Comment"
+    },
+    {
+      "title": "Add comment to your purhase",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
       "sellid": 2,
       "id": 3
     },
     {
       "title": "Comment",
       "detail": "Wiecej miodu elo",
-      "userid": 1,
+      "userid": 3,
       "type": "Comment",
       "sellid": 2,
       "id": 4
+    },
+    {
+      "title": "Add comment to your purhase ",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 5
     }
   ]
 }

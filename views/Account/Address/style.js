@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   topBar: {
     width: '100%' ,
     flexDirection: 'row',
-    justifyContent: 'flex-start', // Align items to the left
+    justifyContent: 'flex-start', 
     paddingLeft: 30,
     paddingTop: 45,
     borderBottomWidth: 0.2,
@@ -99,6 +99,13 @@ buttonText:{
     letterSpacing:1
 
 },
+noItemsText:{
+  color:'orange',
+  fontSize:22,
+  paddingVertical:5,
+  textAlign:'center',
+  marginTop:10
+}
 
 
   

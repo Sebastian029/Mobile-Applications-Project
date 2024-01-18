@@ -13,7 +13,6 @@ const PaymentScreen = ({ navigation }) => {
 
   
   useEffect(() => {
-    // Odczytaj dane z AsyncStorage po załadowaniu komponentu
     const fetchData = async () => {
       try {
         const storedCardData = await AsyncStorage.getItem('cardData');
@@ -26,7 +25,7 @@ const PaymentScreen = ({ navigation }) => {
     };
 
     fetchData();
-  }, []); // Pusta zależność oznacza, że useEffect zostanie uruchomiony tylko raz po zamontowaniu komponentu
+  }, []); 
 
   const saveCardDataToStorage = async (cardData) => {
     try {
@@ -37,7 +36,6 @@ const PaymentScreen = ({ navigation }) => {
   };
 
   const renderItem = ({ item }) => {
-    // Formatowanie numeru karty w grupy po 4 cyfry z spacjami
     const formattedCardNumber = item.number.replace(/(\d{4})/g, '$1 ').trim();
   
     return (
@@ -71,7 +69,6 @@ const PaymentScreen = ({ navigation }) => {
       const parsedUserData = JSON.parse(storedUserData);
       if (parsedUserData && parsedUserData.id) {
         const userId = parsedUserData.id;
-        // Dodaj nową kartę do bazy danych
     await config.post(`/cardData`, { ...newCard, userid: userId });
     const responseData = await config.get('/cardData');
     const getResponseCardData =  responseData.data;
@@ -99,13 +96,10 @@ const PaymentScreen = ({ navigation }) => {
       console.log('Deleting card with id:', cardToDelete.id);
   
       try {
-        // Log the URL being requested
         console.log('DELETE request URL:', `/cardData/${cardToDelete.id}`);
   
-        // Usuń dane z bazy danych
         await config.delete(`/cardData/${cardToDelete.id}`);
   
-        // Aktualizuj stan i zapisz dane karty do AsyncStorage
         setCardData(updatedCardData);
         saveCardDataToStorage(updatedCardData);
   
@@ -130,7 +124,12 @@ const PaymentScreen = ({ navigation }) => {
         <Text style={styles.title}>Card</Text>
       </View>
       <View style={[styles.content]}>
+      {cardData.length > 0 ? (
         <FlatList data={cardData} renderItem={renderItem} keyExtractor={(item) => item.number} />
+        ) : (
+          <Text style={styles.noItemsText}>Card data is empty</Text>
+        )}
+        
       </View>
       <Pressable
         style={({ pressed }) => [

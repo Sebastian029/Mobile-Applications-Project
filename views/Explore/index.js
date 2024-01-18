@@ -10,25 +10,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 
   export default function HomeScreen({navigation}){
-    
-    // dummy data
-    const images = {
-      sport: require('../../assets/exploreImages/sport.png'),
-      socks: require('../../assets/exploreImages/socks.png'),
-      elegant: require('../../assets/exploreImages/elegant.png'),
-      slippers: require('../../assets/exploreImages/slippers.png'),
-      winter: require('../../assets/exploreImages/winter.png'),
-      worker: require('../../assets/exploreImages/worker.png'),
-    };
-  
-    const data = [
-      { id: '1', img: 'sport', title: 'Sport Shoes' },
-      { id: '2', img: 'socks', title: 'Socks' },
-      { id: '3', img: 'elegant', title: 'Elegant Shoes' },
-      { id: '4', img: 'slippers', title: 'Slippers' },
-      { id: '5', img: 'winter', title: 'Winter Boots' },
-      { id: '6', img: 'worker', title: 'Worker Shoes' },
-    ];
 
     const [boots, setBoots] = useState([]);
     const { sortName, setSortName } = useContext(ExploreContext);
@@ -48,7 +29,7 @@ import { useFocusEffect } from '@react-navigation/native';
             const parsedBootsData = JSON.parse(storedBootsData);
 
   
-            setBoots(parsedBootsData); // Update state after setting newData and newData2
+            setBoots(parsedBootsData); 
           }
         } catch (error) {
           console.error('Error reading boots data from AsyncStorage:', error);
@@ -93,15 +74,8 @@ import { useFocusEffect } from '@react-navigation/native';
 
     
 
-    // flat list rendering methods
-    const renderItem = ({ item }) => {
-      return (
-        <View style={styles.productIconView}>
-          <Image source={images[item.img]} style={styles.productIcon} />
-          <Text style={styles.productText}>{item.title}</Text>
-        </View>
-      );
-    };
+    
+    
 
     const renderItemHint = ({ item }) => {
       return (
@@ -126,7 +100,6 @@ import { useFocusEffect } from '@react-navigation/native';
     
 
     
-    // onPress handlers
     const clearSearchBar = () => {
       setSearchBar('');
       if(searchBar === '')
@@ -153,7 +126,6 @@ import { useFocusEffect } from '@react-navigation/native';
     }
 
 
-    // use effects to handle filtering items
     useEffect(() => {
       const filteredItems = boots.filter((boot) =>
         boot.title.toLowerCase().includes(searchBar.toLowerCase())
@@ -173,25 +145,16 @@ import { useFocusEffect } from '@react-navigation/native';
     }, [selectedItemName]); 
 
 
-    // changing content 
     const [contentView, setContentView] = useState('default');
     const renderContent = () => {
       switch (contentView) {
         case 'default':
           return (
             <View style={{width:'100%'}}>
-              <View style={styles.titleBar}>
-                <Text style={styles.titleText}>Man Fashion</Text>
-                <AntDesign name="down" style={styles.basicIcon}/>
-              </View>
-
-              <FlatList
-                data={data}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                numColumns={3}
-              />
+              <AntDesign name="search1" style={styles.mainIcon}/>
+                <Text style={styles.titleText}>Search for our products!</Text>
             </View>
+            
           );
           case 'foundItems':
             if (filteredBoots.length > 0) {

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   topBar: {
     width: '100%' ,
     flexDirection: 'row',
-    justifyContent: 'flex-start', // Align items to the left
+    justifyContent: 'flex-start', 
     paddingLeft: 30,
     paddingTop: 45,
     borderBottomWidth: 0.2,
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   title: {
-    marginLeft: 10, // Adjust margin as needed
-    fontSize: 20, // Adjust font size as needed
+    marginLeft: 10, 
+    fontSize: 20, 
     color:'#223263',
     fontWeight:'bold',
   },
@@ -40,21 +40,33 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   profileImage: {
-    width: 120,
-    height: 120,
-    resizeMode: 'contain'
+    width: 200,
+    height: 150,
+    resizeMode: 'contain',
+    borderRadius:30,
 
   },
   profileImagePlaceholder: {
-    width: 120,
-    height: 120,
+    width: 200,
+    height: 140,
     overflow: 'hidden',
-    borderRadius: 60,
     backgroundColor: 'gray',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius:30,
   },
-
+  cameraPlaceholder: {
+    width: 50,
+    height: 50,
+    overflow: 'hidden',
+    backgroundColor: 'white',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    borderRadius:25,
+  },
   content:{
     width:'100%',
     marginLeft:'auto',

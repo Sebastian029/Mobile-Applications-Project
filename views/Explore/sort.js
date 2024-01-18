@@ -17,9 +17,7 @@ import styles from './style';
     const { sortName, setSortName } = useContext(ExploreContext);
 
     const goBack =(sortNameParam) => {
-       // await AsyncStorage.setItem("sortName", sortName);
         setSortName(sortNameParam);
-       // console.log(sortName);
         navigation.goBack();
       
     }
