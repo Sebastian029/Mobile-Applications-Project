@@ -108,7 +108,7 @@ import { CommonActions } from '@react-navigation/native';
         }
         console.log('tutaj3');
         await config.post('/orderData',{...orderData, userid: userId});
-        await AsyncStorage.removeItem('CartItem');
+        
 
 
         deleteBought();
@@ -127,9 +127,10 @@ import { CommonActions } from '@react-navigation/native';
   const deleteBought = async () => {
     try {
       const cartItemsString = await AsyncStorage.getItem('CartItem');
-      const storedBootsData = await AsyncStorage.getItem('bootsData');
+     
   
-      if (cartItemsString && storedBootsData) {
+      if (cartItemsString ) {
+        const storedBootsData = await AsyncStorage.getItem('bootsData');
         const cartItems = JSON.parse(cartItemsString);
         const updatedBootsData = JSON.parse(storedBootsData);
   
@@ -159,6 +160,7 @@ import { CommonActions } from '@react-navigation/native';
 
     const onPressCreate = async ()  => {
       createOrder();
+      
     };
 
   return (

@@ -148,34 +148,6 @@
       }
     },
     {
-      "id": 4,
-      "userid": 2,
-      "title": "Adidas Snow",
-      "category": "sport",
-      "brand": "Adidas",
-      "size": "33",
-      "condition": "Fantastic",
-      "description": "Fantastic boots for everything",
-      "price": "38",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/8abcd028-2dcf-4c9a-bfa1-3a23df236969.jpeg"
-      }
-    },
-    {
-      "id": 5,
-      "userid": 2,
-      "title": "New Ballance Wood",
-      "category": "elegant",
-      "brand": "New Ballance",
-      "size": "35",
-      "condition": "very bad",
-      "description": "very good look in dark",
-      "price": "99",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
-      }
-    },
-    {
       "id": 6,
       "userid": 2,
       "title": "Reebook Forest",
@@ -292,6 +264,36 @@
       "shipping": 0,
       "userid": 3,
       "id": 4
+    },
+    {
+      "orderID": "ec4d7958",
+      "date": "18.01.2024",
+      "status": "Packing",
+      "items": 2,
+      "price": 137,
+      "totalPrice": 137,
+      "boot": [
+        {
+          "idp": 5,
+          "name": "New Ballance Wood",
+          "price": "99",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
+          }
+        },
+        {
+          "idp": 4,
+          "name": "Adidas Snow",
+          "price": "38",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/8abcd028-2dcf-4c9a-bfa1-3a23df236969.jpeg"
+          }
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 5
     }
   ],
   "reviews": [
@@ -362,6 +364,22 @@
       "type": "Comment",
       "sellid": 2,
       "id": 3
+    },
+    {
+      "title": "Comment",
+      "detail": "Wiecej miodu elo",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 4
+    },
+    {
+      "title": "Add comment to your purhase ",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 5
     }
   ]
 }
