@@ -9,17 +9,14 @@ const StarRating = ({ stars }) => {
 
     const starIcons = [];
 
-
-
-    
     for (let i = 0; i < totalStars; i++) {
       if (i < filledStars) {
         starIcons.push(
-            <AntDesign name="star" color={'orange'} size={20}/>
+          <AntDesign key={i} name="star" color={'orange'} size={20}/>
         );
       } else {
         starIcons.push(
-            <AntDesign name="staro" color={'gray'} size={20}/>
+          <AntDesign key={i} name="staro" color={'gray'} size={20}/>
         );
       }
     }

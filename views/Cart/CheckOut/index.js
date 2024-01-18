@@ -212,7 +212,7 @@ import { CommonActions } from '@react-navigation/native';
               ]}
               onPress={() => navigation.navigate('ChooseAddress')}
               >
-              {addressCity&&addressStreet? <Text style={styles.buttonText}>{addressCity}{addressStreet}</Text>:<Text style={styles.buttonText}>Choose Address</Text>}
+              {addressCity&&addressStreet? <Text style={styles.buttonText}>{addressCity} {addressStreet} {}</Text>:<Text style={styles.buttonText}>Choose Address</Text>}
 
 
           </Pressable>
