@@ -35,7 +35,6 @@ const EditMySaleScreen = ({ navigation, route }) => {
       setPrice(price);
       setProfileImage(img);
       
-      console.log('tuttutuu')
     }
   }, [route.params?.mySale]));
 

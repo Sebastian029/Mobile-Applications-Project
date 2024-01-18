@@ -7,8 +7,13 @@ const StarComment = ({ onStarChange }) => {
   const [filledStars, setFilledStars] = useState(0);
 
   const handleStarPress = (index) => {
-    setFilledStars(index);
-    onStarChange && onStarChange(index); 
+    if (index === filledStars) {
+      setFilledStars(0);
+      onStarChange && onStarChange(0);
+    } else {
+      setFilledStars(index);
+      onStarChange && onStarChange(index);
+    }
   };
 
   const renderStars = () => {
@@ -17,14 +22,14 @@ const StarComment = ({ onStarChange }) => {
 
     for (let i = 0; i < totalStars; i++) {
       starIcons.push(
-        <Pressable key={i} onPress={() => handleStarPress(i + 1)}>
-          <AntDesign
-            name={i < filledStars ? 'star' : 'staro'}
-            color={i < filledStars ? 'orange' : 'gray'}
-            size={24}
-            style={{ paddingBottom: 10 }}
-          />
-        </Pressable>
+          <Pressable key={i} onPress={() => handleStarPress(i + 1)}>
+            <AntDesign
+                name={i < filledStars ? 'star' : 'staro'}
+                color={i < filledStars ? 'orange' : 'gray'}
+                size={24}
+                style={{ paddingBottom: 10 }}
+            />
+          </Pressable>
       );
     }
 

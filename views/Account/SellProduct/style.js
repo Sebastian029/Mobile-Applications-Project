@@ -135,17 +135,26 @@ buttonText:{
 
 },
 
+  cameraContainer:{
+    height: '70%',
+    borderWidth: 5,
+    borderColor: 'black',
+    overflow: "hidden"
+  },
+
   camera: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    height: '85%',
+    height: '100%',
+    borderWidth: 5,
   },
 
   buttonContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    marginTop: '7%'
   }
 
 
