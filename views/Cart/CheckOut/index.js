@@ -119,6 +119,7 @@ import { CommonActions } from '@react-navigation/native';
           }));
           navigation.navigate('CartHome');
           }
+          Alert.alert('Success', 'Sucesfully bought boots.')
     } catch (error) {
       console.log(error);
     }

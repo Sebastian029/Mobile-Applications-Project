@@ -120,20 +120,6 @@
       }
     },
     {
-      "id": 2,
-      "userid": 1,
-      "title": "New Balance Dirty",
-      "category": "elegant",
-      "brand": "New Balance",
-      "size": "41",
-      "condition": " very Good",
-      "description": "Good for wedding",
-      "price": "200",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
-      }
-    },
-    {
       "id": 3,
       "userid": 2,
       "title": "Adidas Fire",
@@ -145,20 +131,6 @@
       "price": "150",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/a2245d89-c7a2-49f9-9269-b7b2345fe7a2.jpeg"
-      }
-    },
-    {
-      "id": 6,
-      "userid": 2,
-      "title": "Reebook Forest",
-      "category": "sport",
-      "brand": "Reebook",
-      "size": "43",
-      "condition": "good",
-      "description": "good price for good boots",
-      "price": "400",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
       }
     },
     {
@@ -266,12 +238,64 @@
       "id": 4
     },
     {
-      "orderID": "ec4d7958",
-      "date": "18.01.2024",
+      "orderID": "",
+      "date": "22.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 400,
+      "totalPrice": 400,
+      "boot": [
+        {
+          "idp": 6,
+          "name": "Reebook Forest",
+          "price": "400",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
+          }
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 5
+    },
+    {
+      "orderID": "0117d330",
+      "date": "22.01.2024",
       "status": "Packing",
       "items": 2,
-      "price": 137,
-      "totalPrice": 137,
+      "price": 238,
+      "totalPrice": 238,
+      "boot": [
+        {
+          "idp": 4,
+          "name": "Adidas Snow",
+          "price": "38",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/8abcd028-2dcf-4c9a-bfa1-3a23df236969.jpeg"
+          }
+        },
+        {
+          "idp": 2,
+          "name": "New Balance Dirty",
+          "price": "200",
+          "img": {
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
+          }
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 6
+    },
+    {
+      "orderID": "5a356fc9",
+      "date": "22.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 99,
+      "totalPrice": 109,
       "boot": [
         {
           "idp": 5,
@@ -280,20 +304,12 @@
           "img": {
             "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
           }
-        },
-        {
-          "idp": 4,
-          "name": "Adidas Snow",
-          "price": "38",
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/8abcd028-2dcf-4c9a-bfa1-3a23df236969.jpeg"
-          }
         }
       ],
       "address": "Rynek 5, Łódź",
-      "shipping": 0,
+      "shipping": 10,
       "userid": 3,
-      "id": 5
+      "id": 7
     }
   ],
   "reviews": [
@@ -380,6 +396,30 @@
       "type": "Comment",
       "sellid": 2,
       "id": 5
+    },
+    {
+      "title": "Add comment to your purhase ",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 6
+    },
+    {
+      "title": "Add comment to your purhase ",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 1,
+      "id": 7
+    },
+    {
+      "title": "Add comment to your purhase ",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 8
     }
   ]
 }

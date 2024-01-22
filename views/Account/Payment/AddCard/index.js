@@ -28,10 +28,20 @@ const AddCardScreen = ({ navigation, route }) => {
     }
   
     const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{4}$/;
-    if (!expiryDateRegex.test(expiryDate)) {
-      alert('Please enter a valid expiration date (format MM/YYYY).');
-      return;
-    }
+const currentDate = new Date();
+
+if (!expiryDateRegex.test(expiryDate)) {
+  alert('Please enter a valid expiration date (format MM/YYYY).');
+  return;
+}
+
+const [inputMonth, inputYear] = expiryDate.split('/');
+const expiryDateObject = new Date(Number(inputYear), Number(inputMonth) - 1, 1);
+
+if (expiryDateObject < currentDate) {
+  alert('Card expired.');
+  return;
+}
   
     const newCard = {
       number: cardNumber,

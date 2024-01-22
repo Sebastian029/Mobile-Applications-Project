@@ -191,7 +191,7 @@ const LoginScreen = ({ navigation }) => {
   }catch(error)
   {
     console.log("error: ",error);
-    setLoginError('An error occurred hehe');
+    setLoginError('An error occurred');
   }
   };
 
