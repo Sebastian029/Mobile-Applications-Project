@@ -7,6 +7,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from '../../../config';
 import styles from './style';
 import { CommonActions } from '@react-navigation/native';
+const generateID= () =>{
+  const tmpId = uuid.v4();
+  return tmpId.substring(0, 8);
+}
 
   const CheckOutScreen = ({ navigation, route }) => {
     const [generate, setGenerate] = useState();
@@ -18,7 +22,7 @@ import { CommonActions } from '@react-navigation/native';
     const [itemsCountCheck, setItemsCountCheck] = useState(itemsCount);
     const [basicPriceCheck, setBasicPriceCheck] = useState(basicPrice);
     const [shippingPriceCheck, setShippingPriceCheck] = useState(shippingPrice);
-    
+    const [orderID, setOrderID] = useState(generateID());    
      useEffect(() => {
         
       if (route.params?.card) {
@@ -39,10 +43,6 @@ import { CommonActions } from '@react-navigation/native';
 
   const [text, setText] = useState('');
 
-  const generateID= () =>{
-    const tmpId = uuid.v4();
-    return tmpId.substring(0, 8);
-  }
   
 
 
@@ -73,7 +73,7 @@ import { CommonActions } from '@react-navigation/native';
         const cartItems = JSON.parse(cartItemsString);
         
         const orderData = {
-          orderID: generateID(), 
+          orderID: orderID, 
           date: new Date().toLocaleDateString(),
           status: 'Packing',
           items: itemsCountCheck,
@@ -98,7 +98,7 @@ import { CommonActions } from '@react-navigation/native';
         console.log('tutaj1');
         for (const ownerId of owners) {
           const message = {
-            title: 'Add comment to your purhase ',
+            title: 'Add comment to your purhase ' + orderID ,
             detail: 'Thank you for your shopping. Comment on the product you purchased.',
             userid: userId,
             type: 'Comment',
