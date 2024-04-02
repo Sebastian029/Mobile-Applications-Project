@@ -148,17 +148,17 @@
       }
     },
     {
-      "id": 6,
+      "id": 5,
       "userid": 2,
-      "title": "Reebook Forest",
-      "category": "sport",
-      "brand": "Reebook",
-      "size": "43",
-      "condition": "good",
-      "description": "good price for good boots",
-      "price": "400",
+      "title": "New Ballance Wood",
+      "category": "elegant",
+      "brand": "New Ballance",
+      "size": "35",
+      "condition": "very bad",
+      "description": "very good look in dark",
+      "price": "99",
       "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
       }
     },
     {
@@ -266,21 +266,35 @@
       "id": 4
     },
     {
-      "orderID": "ec4d7958",
-      "date": "18.01.2024",
+      "orderID": "7b02e8f0",
+      "date": "22.01.2024",
       "status": "Packing",
-      "items": 2,
-      "price": 137,
-      "totalPrice": 137,
+      "items": 1,
+      "price": 400,
+      "totalPrice": 400,
       "boot": [
         {
-          "idp": 5,
-          "name": "New Ballance Wood",
-          "price": "99",
+          "idp": 6,
+          "name": "Reebook Forest",
+          "price": "400",
           "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
+            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/d94ce664-aace-4ff3-827c-7148387a04a4.jpeg"
           }
-        },
+        }
+      ],
+      "address": "Rynek 5, Łódź",
+      "shipping": 0,
+      "userid": 3,
+      "id": 5
+    },
+    {
+      "orderID": "85829086",
+      "date": "22.01.2024",
+      "status": "Packing",
+      "items": 1,
+      "price": 38,
+      "totalPrice": 48,
+      "boot": [
         {
           "idp": 4,
           "name": "Adidas Snow",
@@ -291,9 +305,9 @@
         }
       ],
       "address": "Rynek 5, Łódź",
-      "shipping": 0,
+      "shipping": 10,
       "userid": 3,
-      "id": 5
+      "id": 6
     }
   ],
   "reviews": [
@@ -380,6 +394,14 @@
       "type": "Comment",
       "sellid": 2,
       "id": 5
+    },
+    {
+      "title": "Add comment to your purhase 85829086",
+      "detail": "Thank you for your shopping. Comment on the product you purchased.",
+      "userid": 3,
+      "type": "Comment",
+      "sellid": 2,
+      "id": 6
     }
   ]
 }
