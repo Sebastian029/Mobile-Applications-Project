@@ -35,19 +35,19 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, // Adjust margin as needed
     fontSize: 20, // Adjust font size as needed
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
   card:{
     width:'80%',
-    backgroundColor:'#F99C1C',
+    backgroundColor:'#44355B',
     marginLeft:'auto',
     marginRight:'auto',
     marginVertical:20,
     borderRadius:5,
     borderWidth:2,
-    borderColor:'navy'
+    borderColor:'#31263E'
   },
   exitIcon:{
     fontSize:20,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   button:{
     width:'80%',
     height:70,
-    backgroundColor:'#F99C1C',
+    backgroundColor:'#44355B',
     display:'flex',
     justifyContent:'center',
     alignItems:'center',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   buttonText:{
       fontSize:18,
       fontWeight:'bold',
-      color:'#223263',
+      color:'#44355B',
       letterSpacing:1
 
   },

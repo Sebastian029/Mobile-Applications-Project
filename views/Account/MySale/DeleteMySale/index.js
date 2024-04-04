@@ -56,7 +56,7 @@ notFoundView:{
 backButton:{
   width:'80%',
   height:'15%',
-  backgroundColor:'#F99C1C',
+  backgroundColor:'#31263E',
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
@@ -76,7 +76,7 @@ upperText:{
 },
 titleText:{
   fontSize:25,
-  color:'#223263',
+  color:'#44355B',
   fontWeight:'bold',
 }
 

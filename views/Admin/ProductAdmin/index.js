@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 
 import styles from './style';
 
-  export default function ProductScreen({navigation, route}){
+  export default function AdminProductScreen({navigation, route}){
     const { selectedItem} = route.params;
 
     return (
@@ -15,7 +15,7 @@ import styles from './style';
       
         <Pressable style={styles.backBar} onPress={navigation.goBack}>
             <AntDesign name="left" style={styles.backIcon} />
-            <Text style={styles.backTitleText}>Back to products</Text>
+            <Text style={styles.backTitleText}>Back to verification</Text>
         </Pressable>
 
         <View>

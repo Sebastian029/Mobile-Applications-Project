@@ -105,12 +105,7 @@ export default function HomeScreen({ navigation }) {
         contentContainerStyle={styles.scrollViewContent}
       >
 
-        <Pressable style={styles.topBar} onPress={() => navigation.navigate('Explore')}>
-          <View style={styles.searchInput}>
-            <AntDesign name="search1" style={styles.searchIcon} />
-            <Text style={styles.searchText}>Search Product</Text>
-          </View>
-        </Pressable>
+      
 
         <View style={{ alignSelf: 'flex-row' }}>
           <Text style={styles.titleText}>Bestsellers</Text>

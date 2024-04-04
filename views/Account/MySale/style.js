@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, 
     fontSize: 20, 
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -61,14 +61,14 @@ singleProductView:{
   resizeMode: 'contain'
 },
 productName:{
-  color:'#223263',
+  color:'#44355B',
   fontSize:18,
   fontWeight:'bold',
   maxWidth:'60%'
 },
 productPrice:{
   fontSize:18,
-  color:'orange',
+  color:'#44355B',
   fontWeight:'bold'
 },
 basicIcon:{
@@ -82,6 +82,10 @@ itemTop:{
   justifyContent: 'space-between',
   alignItems:'center',
   maxWidth:'100%',
+},
+iconL:{
+  justifyContent: 'space-between',
+  flexDirection:'row',
 },
 
 button:{
@@ -99,11 +103,11 @@ button:{
 buttonText:{
   fontSize:18,
   fontWeight:'bold',
-  color:'#223263',
+  color:'white',
   letterSpacing:1
 },
 noItemsText:{
-  color:'orange',
+  color:'#44355B',
   fontSize:22,
   paddingVertical:5,
   textAlign:'center',

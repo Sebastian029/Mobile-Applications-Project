@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, 
     fontSize: 20, 
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderColor:'lightgray'
   },
   heading:{
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
     paddingBottom:5,
     fontSize:18
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   button:{
     width:'80%',
     height:70,
-    backgroundColor:'#F99C1C',
+    backgroundColor:'#44355B',
     display:'flex',
     justifyContent:'center',
     alignItems:'center',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 },
 buttonText:{
     fontSize:18,
-    fontWeight:'bold',
+    fontWeight:'#44355B',
     color:'#223263',
     letterSpacing:1
 

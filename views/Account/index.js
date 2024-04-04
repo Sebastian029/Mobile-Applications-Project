@@ -54,16 +54,16 @@ const AccountScreen = ({navigation}) => {
                 <Text style={styles.tekst}>Address</Text>
             </View>
         </Pressable>
-        <Pressable onPress={() => navigation.navigate('Message Center')}>
-            <View style={styles.row}>
-                <AntDesign name="message1" style={styles.basicIcon}/>
-                <Text style={styles.tekst}>Message center</Text>
-            </View>
-        </Pressable>
         <Pressable onPress={() => navigation.navigate('My Sale')}>
             <View style={styles.row}>
                 <AntDesign name="wallet" style={styles.basicIcon}/>
                 <Text style={styles.tekst}>My sale</Text>
+            </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate('Info')}>
+            <View style={styles.row}>
+                <AntDesign name="info" style={styles.basicIcon}/>
+                <Text style={styles.tekst}>Info about App</Text>
             </View>
         </Pressable>
 

@@ -9,20 +9,56 @@ const styles = StyleSheet.create({
     display:'flex',
     flexDirection:'column',
   },
-  
+  productView:{
+    paddingLeft:10,
+    dispaly:'flex',
+    flexDirection:'row',
+    paddingVertical:10,
+    width:'100%'
+},
+singleProductView:{
+    flex:1,
+    paddingLeft:20,
+},
+  productIcon:{
+  width:100,
+  height:100,
+  resizeMode: 'contain'
+},
+productName:{
+  color:'#44355B',
+  fontSize:18,
+  fontWeight:'bold',
+  maxWidth:'60%'
+},
+productPrice:{
+  fontSize:18,
+  color:'#44355B',
+  fontWeight:'bold'
+},
   topBar: {
     width: '100%' ,
     flexDirection: 'row',
     justifyContent: 'flex-start', 
-    paddingLeft: 30,
-    paddingTop: 45,
+    paddingLeft: 20,
+    paddingRight:20,
+    paddingTop: 60,
     borderBottomWidth: 0.2,
     borderColor: 'gray',
     paddingBottom: 10,
     backgroundColor: 'white',
-    alignItems:'center'
-    
+    alignItems:'center',
+    justifyContent:'space-between',
   },
+  itemTop:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    alignItems:'center',
+    maxWidth:'100%'
+    
+    
+},
 
   basicIcon: {
     fontSize: 22,
@@ -30,13 +66,13 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 10, 
-    fontSize: 20, 
+    fontSize: 25, 
     color:'#44355B',
     fontWeight:'bold',
   },
 
   content:{
-    height:'75%',
+    height:'85%',
     paddingBottom:20,
     
   },

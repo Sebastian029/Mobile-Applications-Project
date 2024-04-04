@@ -24,6 +24,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
       description: description,
       price: price,
       img: {uri:profileImage},
+      check: 1
     };
 
     if (!title || !category || !brand || !size || !condition || !description || !price) {
@@ -77,7 +78,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
 
     route.params.onSave(newSellProduct);
 
-    navigation.goBack();
+    navigation.navigate('SucessSell');
   };
 
 
@@ -207,7 +208,7 @@ const AddSellProductScreen = ({ navigation, route }) => {
           style={({ pressed }) => [
             styles.button,
             {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
+              backgroundColor: pressed ? '#31263E' : '#31263E',
             },
           ]}
           onPress={onSave}

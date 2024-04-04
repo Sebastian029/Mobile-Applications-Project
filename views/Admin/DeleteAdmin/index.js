@@ -1,13 +1,12 @@
 import React from 'react';
 import { Text, View, Image, TextInput, FlatList, Pressable, StyleSheet} from 'react-native';
 
-const DeleteCardScreen = ({ navigation, route }) => {
-  const { card, onDelete } = route.params;
+const AdminDeleteScreen = ({ navigation, route }) => {
+  const { mySale, onDelete } = route.params;
 
   const handleDelete = () => {
-    console.log(card);
     if (onDelete) {
-      onDelete(card);
+      onDelete(mySale);
     }
 
     navigation.goBack();
@@ -15,10 +14,10 @@ const DeleteCardScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.notFoundView}>
-      <Image source={require('../../../../assets/exploreImages/redCross.png')}/>
+      <Image source={require('../../../assets/exploreImages/redCross.png')}/>
       <Text style={styles.titleText}>Warning!</Text>
       <View>
-	<Text style={styles.upperText}>Are you sure wanna delete card?</Text>
+	<Text style={styles.upperText}>Are you sure wanna delete product?</Text>
   <Text style={styles.upperText}>Changes will be irreversible</Text>
   </View>
       <Pressable style={[styles.backButton, { backgroundColor: '#E22A2A' }]} onPress={handleDelete}>
@@ -31,9 +30,10 @@ const DeleteCardScreen = ({ navigation, route }) => {
   )
 };
 
+// ... reszta kodu
 
 
-export default DeleteCardScreen;
+export default AdminDeleteScreen;
 
 const styles = StyleSheet.create({
   screen:{

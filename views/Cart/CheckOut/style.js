@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
     title: {
         marginLeft: 10, 
         fontSize: 20, 
-        color:'#223263',
+        color:'#44355B',
         fontWeight:'bold',
     },
 
     topText:{
         fontSize:20,
         fontWeight:'bold',
-        color:'#223263',
+        color:'#44355B',
         padding:20
     },
     content:{
@@ -65,25 +65,20 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     productName:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:20,
         fontWeight:'bold',
         maxWidth:'90%'
     },
     productPrice:{
         fontSize:18,
-        color:'orange',
+        color:'#44355B',
         fontWeight:'bold'
-    },
-    productDiscountedPrice:{
-        fontSize:15,
-        color:'gray',
-        textDecorationLine: 'line-through'
     },
     button:{
         width:'80%',
         height:70,
-        backgroundColor:'#F99C1C',
+        backgroundColor:'#31263E',
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
@@ -95,7 +90,7 @@ const styles = StyleSheet.create({
     buttonText:{
         fontSize:18,
         fontWeight:'bold',
-        color:'#223263',
+        color:'white',
         letterSpacing:1
 
     },
@@ -143,13 +138,13 @@ const styles = StyleSheet.create({
         marginRight:'auto'
     },
     spec:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:14,
         paddingVertical:5
     },
 
     noItemsText:{
-        color:'orange',
+        color:'#44355B',
         fontSize:22,
         paddingVertical:5,
         textAlign:'center',
@@ -159,7 +154,7 @@ const styles = StyleSheet.create({
         marginLeft:10,
         marginTop: 5,
         marginBottom:10,
-        color:'#223263',
+        color:'#44355B',
         fontSize: 16,
         fontWeight: 'bold',
     },

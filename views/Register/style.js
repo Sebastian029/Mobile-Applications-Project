@@ -25,22 +25,22 @@ const styles = StyleSheet.create({
         alignItems:'center', 
         width:100,
         height:100,
-        backgroundColor:'orange',
+        backgroundColor:'#44355B',
         borderRadius:35,
-        padding:10
+        padding:10,
     },
 
     firstText:{
-        color:'navy',
+        color:'#44355B',
         fontSize:20,
         fontWeight:'bold',
-        paddingTop:15
+       
     },
 
     secondText:{
         color:'gray',
         fontSize:15,
-        paddingTop:15,
+        paddingTop:0,
         paddingBottom:5
     },
 
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
 
     button:{
-        backgroundColor:'orange',
+        backgroundColor:'#31263E',
         width:'80%',
         height:50,
         margin:10,
@@ -97,8 +97,9 @@ const styles = StyleSheet.create({
     },
 
     signText:{
-        color:'orange',
-        fontSize:15
+        color:'#44355B',
+        fontSize:15,
+        fontWeight:'bold'
     }
    
 })

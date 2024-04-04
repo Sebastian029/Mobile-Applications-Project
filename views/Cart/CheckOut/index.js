@@ -96,16 +96,7 @@ const generateID= () =>{
 
         const owners = new Set(cartItems.map((item) => item.userid));
         console.log('tutaj1');
-        for (const ownerId of owners) {
-          const message = {
-            title: 'Add comment to your purhase ' + orderID ,
-            detail: 'Thank you for your shopping. Comment on the product you purchased.',
-            userid: userId,
-            type: 'Comment',
-          };
-          console.log('tutaj2');
-          await config.post('/message', { ...message, sellid: ownerId });
-        }
+        
         console.log('tutaj3');
         await config.post('/orderData',{...orderData, userid: userId});
         
@@ -117,9 +108,9 @@ const generateID= () =>{
             index: 0,
             routes: [{ name: 'CartHome' }],
           }));
-          navigation.navigate('CartHome');
+          navigation.navigate('SucessBuy');
           }
-          Alert.alert('Success', 'Sucesfully bought boots.')
+          
     } catch (error) {
       console.log(error);
     }
@@ -234,7 +225,7 @@ const generateID= () =>{
           style={({ pressed }) => [
             styles.button,
             {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
+              backgroundColor: pressed ? '#31263E' : '#31263E',
             },
           ]}
           onPress={onPressCreate} 

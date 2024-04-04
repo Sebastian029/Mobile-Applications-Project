@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, // Adjust margin as needed
     fontSize: 20, // Adjust font size as needed
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
 
   tekst: {
-    color:'#223263',
+    color:'#44355B',
     fontSize: 16,
     fontWeight: 'bold',
   }

@@ -72,19 +72,7 @@ export default function HomeScreen({ navigation }) {
             />
           </View>
           <Text style={styles.productPrice}>{item.price}$</Text>
-          {/* <View style={styles.pieces}>
-            <AntDesign
-              name="minus"
-              style={styles.basicIcon}
-              onPress={() => changeQuantity(item, -1)}
-            />
-            <Text style={styles.basicIcon}>{item.quantity}</Text>
-            <AntDesign
-              name="plus"
-              style={styles.basicIcon}
-              onPress={() => changeQuantity(item, 1)}
-            />
-          </View> */}
+
         </View>
       </Pressable>
     );

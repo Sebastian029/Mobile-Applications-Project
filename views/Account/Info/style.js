@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     display:'flex',
     flexDirection:'column',
-    
+
   },
-  
+
   topBar: {
     width: '100%' ,
     flexDirection: 'row',
@@ -21,63 +21,73 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     paddingBottom: 10,
     backgroundColor: 'white',
-    
+
   },
 
   basicIcon: {
     fontSize: 22,
     color: 'gray',
   },
+
   title: {
     marginLeft: 10, 
     fontSize: 20, 
     color:'#44355B',
     fontWeight:'bold',
   },
-  
-  content:{
-    width:'80%',
-    maxHeight:'75%',
-    marginLeft:'auto',
-    marginRight:'auto'
-  },
 
-  header:{
-    fontSize:16,
-    fontWeight:'bold',
+  order: {
+    borderColor: "#ebf0ff",
+    borderWidth: 1,
+    marginTop:10,
+    marginHorizontal:15,
+    borderRadius: 6,
+    padding: 5
+  },
+  textPole:{
+    marginLeft:20,
+    marginRight:20,
+    marginTop:10,
+    
+  },
+  text:{
     color:'#44355B',
-    paddingTop:10
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign:'justify',
+
   },
-  input:{
-    color:'gray',
-    paddingLeft:10
-  },
 
-
-
-  button:{
-    width:'80%',
-    height:70,
-    backgroundColor:'#F99C1C',
+  row:{
+    
     display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:8,
+    flexDirection:'row',
+    gap:15,
+    marginVertical:5,
+    width:'80%',
     marginLeft:'auto',
     marginRight:'auto',
-    marginVertical:10
-},
-buttonText:{
-    fontSize:18,
-    fontWeight:'bold',
-    color:'white',
-    letterSpacing:1
+    alignItems:'start'
+  },
+  leftText:{
 
-},
-  
-  
-  })
-  
-  
+    color:'#44355B',
+    fontSize: 16,
+    fontWeight: 'bold',
+    flex:2
+  },
+  rightText:{
+    textAlign:'right',
+    marginLeft:'auto',
+    color:'gray',
+    paddingRight:10,
+    flex:2,
+    height: '100%'
+  }
+
+})
+
+
+
 
 export default styles;

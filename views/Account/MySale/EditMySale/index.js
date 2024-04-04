@@ -100,7 +100,7 @@ const EditMySaleScreen = ({ navigation, route }) => {
   }
     route.params.onSave(editedSellProduct);
 
-    navigation.goBack();
+    navigation.navigate('SucessSell');
   };
 
   const pickImage = async () => {
@@ -251,7 +251,7 @@ const EditMySaleScreen = ({ navigation, route }) => {
           style={({ pressed }) => [
             styles.button,
             {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
+              backgroundColor: pressed ? '#31263E' : '#31263E',
             },
           ]}
           onPress={onSave}

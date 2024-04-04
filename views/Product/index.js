@@ -10,10 +10,6 @@ import styles from './style';
   export default function ProductScreen({navigation, route}){
     const { selectedItem} = route.params;
 
-    const reviewsHandler = () => {
-      select = selectedItem.userid;
-  navigation.navigate('Reviews', {  select});
-  };
 
 
 const AddToCart = async () => {
@@ -61,6 +57,11 @@ const AddToCart = async () => {
           <Text style={styles.title}>Specification</Text>
 
           <View style={styles.specification}>
+            <Text style={styles.specLeft}>Name</Text>
+            <Text style={styles.specRight}>{selectedItem.title}</Text>
+          </View>
+
+          <View style={styles.specification}>
             <Text style={styles.specLeft}>Size</Text>
             <Text style={styles.specRight}>{selectedItem.size}</Text>
           </View>
@@ -80,10 +81,6 @@ const AddToCart = async () => {
             <Text style={styles.specRight}>{selectedItem.description}</Text>
           </View>
 
-
-          <Pressable onPress={() => reviewsHandler()}>
-            <Text style={styles.productReview}>See user reviews</Text>
-          </Pressable>
 
           <Pressable style={styles.button} onPress={() => AddToCart()}>
             <Text style={styles.buttonText}>Add To Cart</Text>

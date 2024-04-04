@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, 
     fontSize: 20, 
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     alignItems:'start'
 },
 leftText:{
-  color:'#223263',
+  color:'#44355B',
   fontSize: 16,
   fontWeight: 'bold',
   flex:1
@@ -113,7 +113,7 @@ button:{
 buttonText:{
   fontSize:18,
   fontWeight:'bold',
-  color:'#223263',
+  color:'white',
   letterSpacing:1
 
 },

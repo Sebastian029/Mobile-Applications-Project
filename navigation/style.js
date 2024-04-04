@@ -27,11 +27,12 @@ const styles = StyleSheet.create({
   basicIcon: {
     fontSize: 22,
     color: 'gray',
+    
   },
   title: {
     marginLeft: 10, 
     fontSize: 20, 
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 

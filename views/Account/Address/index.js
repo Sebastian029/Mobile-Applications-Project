@@ -63,7 +63,7 @@ const AddressScreen = ({ navigation }) => {
           style={({ pressed }) => [
             styles.buttonSmall,
             {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
+              backgroundColor: pressed ? '#31263E' : '#31263E',
             },
           ]}
           onPress={() =>
@@ -173,7 +173,7 @@ const AddressScreen = ({ navigation }) => {
         style={({ pressed }) => [
           styles.button,
           {
-            backgroundColor: pressed ? 'darkorange' : 'orange',
+            backgroundColor: pressed ? '#31263E' : '#31263E',
           },
         ]}
         onPress={() => navigation.navigate('AddAddress', { onSave: handleSaveAddress })} 

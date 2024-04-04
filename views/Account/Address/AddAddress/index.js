@@ -84,7 +84,7 @@ const AddAddressScreen = ({ navigation, route }) => {
 
     route.params.onSave(newAddress);
 
-    navigation.goBack();
+    navigation.navigate('SucessAddress');
   };
 
   const onGetLocation = async () => {
@@ -217,7 +217,7 @@ const AddAddressScreen = ({ navigation, route }) => {
           style={({ pressed }) => [
             styles.button,
             {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
+              backgroundColor: pressed ? '#31263E' : '#31263E',
             },
           ]}
           onPress={onSave}
@@ -225,19 +225,7 @@ const AddAddressScreen = ({ navigation, route }) => {
           <Text style={styles.buttonText}>Save</Text>
         </Pressable>
       </View>
-      <View style={[styles]}>
-        <Pressable
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: pressed ? 'darkorange' : 'orange',
-            },
-          ]}
-          onPress={() => onGetLocation()}
-        >
-          <Text style={styles.buttonText}>GPS</Text>
-        </Pressable>
-      </View>
+     
     </View>
   );
 };

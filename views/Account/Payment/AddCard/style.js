@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, // Adjust margin as needed
     fontSize: 20, // Adjust font size as needed
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   cardDetail:{
     fontSize:18,
     fontWeight:'bold',
-    color:'#223263',
+    color:'#44355B',
     paddingVertical:10
   },
   cardDetailName:{
     fontSize:18,
     fontWeight:'bold',
-    color:'#223263',
+    color:'#44355B',
   },
   cardDetailInput:{
     fontSize:15,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   buttonText:{
       fontSize:18,
       fontWeight:'bold',
-      color:'#223263',
+      color:'white',
       letterSpacing:1
 
   },

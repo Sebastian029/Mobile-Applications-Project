@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const TabIcon = ({ routeName, focused }) => {
-  const iconColor = focused ? 'orange' : 'gray'; 
+  const iconColor = focused ? '#44355B' : 'gray'; 
 
   switch (routeName) {
     case 'Home':
@@ -21,7 +21,7 @@ const TabIcon = ({ routeName, focused }) => {
 
 const styles = StyleSheet.create({
   icon: {
-    fontSize: 20,
+    fontSize: 20
   },
 });
 

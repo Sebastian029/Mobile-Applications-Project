@@ -7,6 +7,8 @@ import CheckOutScreen from '../views/Cart/CheckOut';
 import PaymentChooseScreen from '../views/Cart/ChooseCard';
 import ChooseAddressScreen from '../views/Cart/ChooseAddress';
 import OrderScreen from '../views/Account/Order/index'
+import SucessBuyScreen from '../views/Cart/SucessBuy';
+
 const Stack = createNativeStackNavigator();
 
 
@@ -18,6 +20,7 @@ export default function CartStackNav(){
         <Stack.Screen name="PaymentChoose" component={PaymentChooseScreen} /> 
         <Stack.Screen name="ChooseAddress" component={ChooseAddressScreen} /> 
         <Stack.Screen name="Order" component={OrderScreen} />
+        <Stack.Screen name="SucessBuy" component={SucessBuyScreen} />
       </Stack.Navigator>
  
   );

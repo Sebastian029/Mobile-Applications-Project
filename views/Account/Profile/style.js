@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
       title: {
         marginLeft: 10, 
         fontSize: 20, 
-        color:'#223263',
+        color:'#44355B',
         fontWeight:'bold',
       },
       cameraContainer: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         paddingLeft:'10%'
     },
     welcomeText:{
-        color:'#223263',
+        color:'#44355B',
         fontSize: 18,
         fontWeight: 'bold',
     },
@@ -132,10 +132,10 @@ const styles = StyleSheet.create({
     },
     icon:{
         fontSize:26,
-        color:'orange',
+        color:'#31263E',
     },
     leftText:{
-        color:'#223263',
+        color:'#44355B',
         fontSize: 16,
         fontWeight: 'bold',
     },

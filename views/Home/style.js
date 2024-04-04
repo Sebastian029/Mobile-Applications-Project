@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     
     screen:{
+        marginTop :40,
         width:'100%',
         height:'100%',
         backgroundColor:'white',
@@ -21,26 +22,10 @@ const styles = StyleSheet.create({
         paddingLeft:10
 
     },
-    searchInput:{
-       backgroundColor:'white',
-       width:'90%',
-       height:40,
-       justifyContent:'space-evenly',
-       paddingLeft:40,
-    },
-    searchIcon:{
-        fontSize:22,
-        color:'orange',
-        position:'absolute',
-    },
-    searchText:{
-        color:'gray',
-        fontWeight:'bold',
-    },
 
 
     titleText:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:20,
         fontWeight:'bold',
         paddingLeft:10,
@@ -49,9 +34,9 @@ const styles = StyleSheet.create({
 
     productView:{
         margin:5,
-        padding:5,
+        padding:10,
         borderWidth:1,
-        borderColor:'orange',
+        borderColor:'#44355B',
         borderRadius:5,
         maxWidth:130,
         maxHeight:180,
@@ -65,20 +50,16 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     productName:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:14,
         fontWeight:'bold',
     },
     productPrice:{
-        fontSize:12,
-        color:'orange',
+        fontSize:15,
+        color:'#44355B',
         fontWeight:'bold'
     },
-    productDiscountedPrice:{
-        fontSize:10,
-        color:'gray',
-        textDecorationLine: 'line-through'
-    },
+    
 
 })
 

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, // Adjust margin as needed
     fontSize: 20, // Adjust font size as needed
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems:'start'
 },
 leftText:{
-  color:'#223263',
+  color:'#44355B',
   fontSize: 16,
   fontWeight: 'bold',
   flex:1
@@ -106,7 +106,7 @@ dataText:{
 button:{
   width:'80%',
   height:70,
-  backgroundColor:'#F99C1C',
+  backgroundColor:'#31263E',
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
@@ -118,7 +118,7 @@ button:{
   buttonCam:{
     width:'40%',
     height:70,
-    backgroundColor:'#F99C1C',
+    backgroundColor:'#31263E',
     display:'flex',
     justifyContent:'center',
     alignItems:'center',
@@ -130,7 +130,7 @@ button:{
 buttonText:{
   fontSize:18,
   fontWeight:'bold',
-  color:'#223263',
+  color:'white',
   letterSpacing:1
 
 },
@@ -155,7 +155,15 @@ buttonText:{
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginTop: '7%'
+  },
+
+  text: {
+    fontSize:13,
+  fontWeight:'bold',
+  color:'white',
+  letterSpacing:1
   }
+
 
 
 

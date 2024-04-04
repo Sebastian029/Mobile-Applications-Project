@@ -4,10 +4,8 @@
       "id": 1,
       "firstName": "Dominik",
       "lastName": "Jaroszek",
-      "email": "dominikjaroszekx@gmail.com",
-      "phoneNumber": "+48507898765",
-      "birthday": "25.01.2002",
-      "password": "Dominikx",
+      "email": "1",
+      "password": "2",
       "repeatPassword": "Dominikx",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/06b9140c-9cee-44c9-8ab5-11f279f64c16.jpeg"
@@ -17,8 +15,6 @@
       "firstName": "Jordan",
       "lastName": "Jakub",
       "email": "jordanjakub@gmail.com",
-      "phoneNumber": "+48503890890",
-      "birthday": "26.01.2002",
       "password": "Jordanx",
       "repeatPassword": "Jordanx",
       "id": 2,
@@ -30,11 +26,20 @@
       "firstName": "Sebastian",
       "lastName": "Iwan",
       "email": "sebastianiwan@gmail.com",
-      "phoneNumber": "+48503654321",
-      "birthday": "23.01.2002",
       "password": "Sebastianx",
       "repeatPassword": "Sebastianx",
       "id": 3,
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/872a752a-4267-49e8-bfda-31f41f075e13.png"
+      }
+    },
+    {
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin",
+      "password": "admin",
+      "repeatPassword": "admin",
+      "id": 4,
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/872a752a-4267-49e8-bfda-31f41f075e13.png"
       }
@@ -117,7 +122,8 @@
       "price": "100",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/85a853cd-855a-4800-afaf-d7d78873082d.jpeg"
-      }
+      },
+      "check" : 1
     },
     {
       "id": 2,
@@ -131,7 +137,8 @@
       "price": "200",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
-      }
+      },
+      "check" : 1
     },
     {
       "id": 3,
@@ -145,7 +152,8 @@
       "price": "150",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/a2245d89-c7a2-49f9-9269-b7b2345fe7a2.jpeg"
-      }
+      },
+      "check" : 1
     },
     {
       "id": 5,
@@ -159,7 +167,8 @@
       "price": "99",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
-      }
+      },
+      "check" : 1
     },
     {
       "id": 7,
@@ -173,7 +182,8 @@
       "price": "350",
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/60445023-9e8d-44bd-a18e-5411f2688dcb.jpeg"
-      }
+      },
+      "check" : 1
     }
   ],
   "orderData": [
@@ -309,99 +319,7 @@
       "userid": 3,
       "id": 6
     }
-  ],
-  "reviews": [
-    {
-      "id": 1,
-      "userid": 1,
-      "user": "Sebastian Iwan",
-      "stars": 5,
-      "content": "Świetne buty"
-    },
-    {
-      "id": 2,
-      "userid": 1,
-      "user": "Jakub Jordan",
-      "stars": 4,
-      "content": "Niebywała jakość."
-    },
-    {
-      "id": 3,
-      "userid": 2,
-      "user": "Sebastian Iwan",
-      "stars": 3,
-      "content": "Świetne buty jak nowe"
-    },
-    {
-      "id": 4,
-      "userid": 2,
-      "user": "Dominik Jaroszek",
-      "stars": 2,
-      "content": "Niebywała jakość ogumienia."
-    },
-    {
-      "id": 5,
-      "userid": 3,
-      "user": "Jakub Jordan",
-      "stars": 2,
-      "content": "Świetne."
-    },
-    {
-      "id": 6,
-      "userid": 3,
-      "user": "Dominik Jaroszek",
-      "stars": 2,
-      "content": "Dobre."
-    }
-  ],
-  "message": [
-    {
-      "id": 1,
-      "title": "Add comment to your purhase",
-      "detail": "Thank you for your shopping. Comment on the product you purchased.",
-      "userid": 1,
-      "sellid": 2,
-      "type": "Comment"
-    },
-    {
-      "id": 2,
-      "title": "Add comment to your purhase",
-      "detail": "Thank you for your shopping. Comment on the product you purchased.",
-      "userid": 2,
-      "sellid": 1,
-      "type": "Comment"
-    },
-    {
-      "title": "Add comment to your purhase",
-      "detail": "Thank you for your shopping. Comment on the product you purchased.",
-      "userid": 3,
-      "type": "Comment",
-      "sellid": 2,
-      "id": 3
-    },
-    {
-      "title": "Comment",
-      "detail": "Wiecej miodu elo",
-      "userid": 3,
-      "type": "Comment",
-      "sellid": 2,
-      "id": 4
-    },
-    {
-      "title": "Add comment to your purhase ",
-      "detail": "Thank you for your shopping. Comment on the product you purchased.",
-      "userid": 3,
-      "type": "Comment",
-      "sellid": 2,
-      "id": 5
-    },
-    {
-      "title": "Add comment to your purhase 85829086",
-      "detail": "Thank you for your shopping. Comment on the product you purchased.",
-      "userid": 3,
-      "type": "Comment",
-      "sellid": 2,
-      "id": 6
-    }
   ]
+  
+  
 }

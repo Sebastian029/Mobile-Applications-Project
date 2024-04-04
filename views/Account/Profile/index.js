@@ -156,17 +156,6 @@ const ProfileScreen = ({ navigation }) => {
                  <Text style={styles.dataText}>{userData.email}</Text>
               </View>
 
-              <View style={styles.row}>
-                 <AntDesign name="phone" style={styles.icon} />
-                 <Text style={styles.leftText}>Phone Number</Text>
-                 <Text style={styles.dataText}>{userData.phoneNumber}</Text>
-              </View>
-
-              <View style={styles.row}>
-                 <AntDesign name="calendar" style={styles.icon} />
-                 <Text style={styles.leftText}>Birthday</Text>
-                 <Text style={styles.dataText}>{userData.birthday}</Text>
-              </View>
 
               <View style={styles.row}>
                  <AntDesign name="lock" style={styles.icon} />

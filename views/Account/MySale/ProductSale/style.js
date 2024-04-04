@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         gap:25,
    },
    backTitleText:{
-    color:'#223263',
+    color:'#44355B',
     fontSize:20,
     fontWeight:'bold',
     },
@@ -43,52 +43,60 @@ const styles = StyleSheet.create({
             padding:10
     },
     shoeName:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:25,
         fontWeight:'bold',
     },
     shoePrice:{
-        color:'orange',
+        color:'#44355B',
         fontSize:22,
         fontWeight:'bold',
         paddingLeft:20
     },
     title:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:16,
         fontWeight:'bold',
-        paddingTop:10,
-        paddingBottom:20,
+        paddingVertical:10,
         paddingLeft:20
+        
     },
     specification:{
         flex:1,
         flexDirection:'row',
         justifyContent:'space-between',
-        width:'80%'
+        width:'95%',
+        
     },
     specLeft:{
-        color:'#223263',
+        color:'#44355B',
         fontSize:14,
         fontWeight:'bold',
         paddingVertical:5,
-        marginHorizontal:5,
         paddingLeft:20
     },
     specRight:{
         color:'gray',
         fontSize:14,
         paddingVertical:5,
-        marginHorizontal:5,
-        maxWidth: '80%'
     },
-    productReview:{
-        color:'orange',
-        fontSize:22,
-        fontWeight:'bold',
+    button:{
+        margin:20,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        width:'90%',
+        height:60,
+        backgroundColor:'#31263E',
         marginLeft:'auto',
         marginRight:'auto',
-        paddingTop:20
+        borderRadius:5,
+    },
+    buttonText:{
+        color:'white',
+        fontSize:20,
+        fontWeight:'bold',
+        letterSpacing:1,
     }
 
 })

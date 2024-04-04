@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10, 
     fontSize: 20, 
-    color:'#223263',
+    color:'#44355B',
     fontWeight:'bold',
   },
 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   leftText:{
 
-    color:'#223263',
+    color:'#44355B',
     fontSize: 16,
     fontWeight: 'bold',
     flex:2

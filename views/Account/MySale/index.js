@@ -128,15 +128,16 @@ const renderItem = ({ item }) => {
       <Image source={item.img} style={styles.productIcon} />
       <View style={styles.singleProductView}>
         <View style={styles.itemTop}>
-          <Text style={styles.productName}>{item.brand} {item.title}</Text>
-          <View>
+          <Text style={styles.productName}> {item.title}</Text>
+          <View style={styles.iconL}>
             <AntDesign name="edit" style={styles.basicIcon}  onPress={() =>
               navigation.navigate('EditMySale', {
                 mySale: item,
                 onSave: (editedMySale) => handleEditMySale(editedMySale, item),
               })}/>
-          </View>
+          
           <AntDesign name="delete" style={styles.basicIcon} onPress={() => navigation.navigate('DeleteMySale', { mySale: item, onDelete: handleDeleteMySale })}/>
+          </View>
         </View>
         <Text style={styles.productPrice}>{item.price}$</Text>
         </View>
@@ -167,7 +168,7 @@ const renderItem = ({ item }) => {
         style={({ pressed }) => [
           styles.button,
           {
-            backgroundColor: pressed ? 'darkorange' : 'orange',
+            backgroundColor: pressed ? '#31263E' : '#31263E',
           },
         ]}
             

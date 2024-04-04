@@ -49,18 +49,10 @@ import styles from './style.js';
         }
 
      
-        const phoneRegex = /^\+48\d{9}$/;
-        if (!phoneRegex.test(phoneNumber)) {
-          Alert.alert('Error', 'Phone number should be in the format +489123456789.');
-          return;
-        }
+        
 
    
-        const birthdayRegex = /^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.(19|20)\d{2}$/;
-        if (!birthdayRegex.test(birthday)) {
-          Alert.alert('Error', 'Make sure that the input follows the DD.MM.YYYY format, and values are in correct range.');
-          return;
-        }
+       
 
 
 
@@ -68,14 +60,11 @@ import styles from './style.js';
           firstName,
           lastName,
           email,
-          phoneNumber,
-          birthday,
           password,
           repeatPassword,
         });
 
   
-        console.log('Response from server:', response.data);
 
       } catch (error) {
         console.error('Error during registration:', error);
@@ -119,15 +108,7 @@ import styles from './style.js';
             <AntDesign name="mail" style={styles.icon}/>
           </View>
 
-          <View style={styles.inputBox}>
-            <TextInput placeholder='Phone Number' style={styles.textInput} onChangeText={(text) => setPhoneNumber(text)}></TextInput>
-            <AntDesign name="phone" style={styles.icon}/>
-          </View>
-
-          <View style={styles.inputBox}>
-            <TextInput placeholder='Birthday     DD.MM.YYYY' style={styles.textInput} onChangeText={(text) => setBirthday(text)}></TextInput>
-            <AntDesign name="calendar" style={styles.icon}/>
-          </View>
+         
 
           <View style={styles.inputBox}>
             <TextInput placeholder='Password' style={styles.textInput} onChangeText={(text) => setPassword(text)}></TextInput>

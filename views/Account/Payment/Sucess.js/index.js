@@ -49,14 +49,19 @@ notFoundView:{
  marginTop:'40%'
 },
 backButton:{
+   
   width:'80%',
-  height:'15%',
-  backgroundColor:'#F99C1C',
+  height:60,
+  backgroundColor:'#31263E',
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
-  borderRadius:8
- },
+  borderRadius:8,
+  marginLeft:'auto',
+  marginRight:'auto',
+  borderBottom:10
+
+},
 
 buttonText:{
 	fontSize:16,
@@ -71,7 +76,7 @@ upperText:{
 },
 titleText:{
   fontSize:25,
-  color:'#223263',
+  color:'#44355B',
   fontWeight:'bold',
 }
 

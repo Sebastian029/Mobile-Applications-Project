@@ -158,11 +158,18 @@ const LoginScreen = ({ navigation }) => {
       const getResponseBoots = responseBoots.data;
       const getResponseOrder = responseOrder.data;
 
+
       const authenticatedUser = getResponseDataUsers.find((user) => user.email === email && user.password === password);
-    
-    
+
+      if (authenticatedUser.email === 'admin' && authenticatedUser.password === 'admin') {
+        saveBootsDataToStorage(getResponseBoots);
+        console.log("hej")
+        navigation.navigate('AdminPanel');
+        return;
+    }
+
     if (authenticatedUser){ 
-      
+      console.log("hej2")
       const authenticatedCardData = getResponseDataCardData.filter((cardData) => {
         const match = cardData.userid === authenticatedUser.id;
         setLoginError('');

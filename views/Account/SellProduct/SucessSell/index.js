@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 import { View, Text, Button, StyleSheet, Image, Pressable } from 'react-native';
 
-const SucessAddressScreen = ({ navigation }) => {
+const SucessSellScreen = ({ navigation }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const handlePress = () => {
     setIsButtonDisabled(true);
     setTimeout(() => {
       setIsButtonDisabled(false);
     }, 1000); 
-    navigation.navigate('Address');
+    navigation.navigate('My Sale');
   };
 
   return (
@@ -17,18 +17,18 @@ const SucessAddressScreen = ({ navigation }) => {
     <Image source={require('../../../../assets/exploreImages/success.png')}/>
     <Text style={styles.titleText}>Success!</Text>
     <View>
-<Text style={styles.upperText}>You successfully added a new address</Text>
+<Text style={styles.upperText}>You successfully added a new your sell</Text>
 </View>
    <Pressable style={styles.backButton} 
    onPress={handlePress}
    disabled={isButtonDisabled}>
-      <Text style={styles.buttonText}>Back to address</Text>
+      <Text style={styles.buttonText}>Back to your My Sale</Text>
    </Pressable>
  </View>
   );
 };
 
-export default SucessAddressScreen;
+export default SucessSellScreen;
 
 const styles = StyleSheet.create({
   screen:{

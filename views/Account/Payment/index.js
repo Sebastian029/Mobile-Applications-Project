@@ -135,7 +135,7 @@ const PaymentScreen = ({ navigation }) => {
         style={({ pressed }) => [
           styles.button,
           {
-            backgroundColor: pressed ? 'darkorange' : 'orange',
+            backgroundColor: pressed ? '#31263E' : '#31263E',
           },
         ]}
         onPress={() => navigation.navigate('AddCard', { onSave: handleSaveCard })}
