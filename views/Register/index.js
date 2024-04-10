@@ -111,12 +111,12 @@ import styles from './style.js';
          
 
           <View style={styles.inputBox}>
-            <TextInput placeholder='Password' style={styles.textInput} onChangeText={(text) => setPassword(text)}></TextInput>
+            <TextInput secureTextEntry placeholder='Password' style={styles.textInput} onChangeText={(text) => setPassword(text)}></TextInput>
             <AntDesign name="unlock" style={styles.icon}/>
           </View>
 
           <View style={styles.inputBox}>
-            <TextInput placeholder='Repeat password' style={styles.textInput} onChangeText={(text) => setRepeatPassword(text)}></TextInput>
+            <TextInput secureTextEntry placeholder='Repeat password' style={styles.textInput} onChangeText={(text) => setRepeatPassword(text)}></TextInput>
             <AntDesign name="lock" style={styles.icon}/>
           </View>
 

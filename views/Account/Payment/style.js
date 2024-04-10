@@ -47,7 +47,10 @@ const styles = StyleSheet.create({
     marginVertical:20,
     borderRadius:5,
     borderWidth:2,
-    borderColor:'navy'
+    borderColor:'#31263E',
+    height:200,
+    display:'flex',
+    justifyContent:'space-between'
   },
   exitIcon:{
     fontSize:20,
@@ -68,8 +71,15 @@ const styles = StyleSheet.create({
     display:'flex',
     flexDirection:'row',
     gap:30,
-    padding:10
+    padding:10,
+    alignItems:'flex-end'
   },
+  // cardDetail:{
+  //   display:'flex',
+  //  
+    
+  // },
+  
   cardDetailTop:{
     marginLeft:'auto',
     color:'white',

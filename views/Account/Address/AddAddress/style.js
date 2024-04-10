@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   
   content:{
     width:'80%',
-    maxHeight:'60%',
+    maxHeight:'70%',
     marginLeft:'auto',
     marginRight:'auto'
   },

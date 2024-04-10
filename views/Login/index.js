@@ -213,7 +213,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={styles.logoBox}>
             <Image style={styles.logo} source={require('../../assets/baseAppIcon.png')} />
           </View>
-          <Text style={styles.firstText}>Let's get started</Text>
+          <Text style={styles.firstText}>Welcome to e-Shop</Text>
         </View>
 
         <View style={styles.mainBox}>

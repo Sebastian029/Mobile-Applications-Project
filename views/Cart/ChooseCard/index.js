@@ -32,17 +32,24 @@ import styles from './style';
       }, []);
 
     
-  
+    
     
 
-    const renderItem = ({ item }) => (
+    const renderItem = ({ item }) => {
+      const formattedCardNumber = item.number.replace(/(\d{4})/g, '$1 ').trim();
+
+   
+        
+
+
+        return(
       <Pressable style={({ pressed }) => [
           styles.card,
           {
               borderColor: pressed ? 'navy' : '#0030ef',
           },
       ]} onPress={() => navigation.navigate('CheckOut', { card: item })}>
-        <Text style={styles.cardNumber}>{item.number}</Text>
+        <Text style={styles.cardNumber}>{formattedCardNumber}</Text>
         <View style={styles.cardBottom}>
           <View>
             <Text style={styles.cardDetailTop}>CARD HOLDER</Text>
@@ -55,7 +62,7 @@ import styles from './style';
         </View>
       </Pressable>
     );
-    
+  }
 
     const handleGoBackAndSaveData = () => {
       navigation.goBack();

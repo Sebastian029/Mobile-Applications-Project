@@ -26,15 +26,15 @@ const styles = StyleSheet.create({
 
     titleText:{
         color:'#44355B',
-        fontSize:20,
+        fontSize:22,
         fontWeight:'bold',
         paddingLeft:10,
-        paddingTop:10
+        paddingTop:17
     },
 
     productView:{
-        margin:5,
-        padding:10,
+        margin:7,
+        padding:8,
         borderWidth:1,
         borderColor:'#44355B',
         borderRadius:5,

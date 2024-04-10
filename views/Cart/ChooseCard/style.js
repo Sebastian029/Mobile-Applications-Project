@@ -47,7 +47,11 @@ const styles = StyleSheet.create({
     marginVertical:20,
     borderRadius:5,
     borderWidth:2,
-    borderColor:'#31263E'
+    paddingTop:40,
+    borderColor:'#31263E',
+    height:200,
+    display:'flex',
+    justifyContent:'space-between'
   },
   exitIcon:{
     fontSize:20,
