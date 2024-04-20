@@ -66,13 +66,6 @@
       "expiryDate": "12/2028",
       "userid": 3,
       "id": 3
-    },
-    {
-      "number": "1666666666666666",
-      "cardHolder": "Dominik Jaroszek",
-      "expiryDate": "11/2024",
-      "userid": 1,
-      "id": 4
     }
   ],
   "addressData": [
@@ -130,7 +123,22 @@
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/85a853cd-855a-4800-afaf-d7d78873082d.jpeg"
       },
-      "check": 1
+      "check": 3
+    },
+    {
+      "id": 2,
+      "userid": 2,
+      "title": "New Balance Dirty",
+      "category": "elegant",
+      "brand": "New Balance",
+      "size": "41",
+      "condition": " very Good",
+      "description": "Good for wedding",
+      "price": "200",
+      "img": {
+        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
+      },
+      "check": 2
     },
     {
       "id": 3,
@@ -145,7 +153,7 @@
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/a2245d89-c7a2-49f9-9269-b7b2345fe7a2.jpeg"
       },
-      "check": 1
+      "check": 3
     },
     {
       "id": 5,
@@ -160,7 +168,7 @@
       "img": {
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/0b5fa5f2-78cb-41c8-bd25-84075aec2f2c.jpeg"
       },
-      "check": 1
+      "check": 3
     },
     {
       "id": 7,
@@ -176,21 +184,6 @@
         "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/60445023-9e8d-44bd-a18e-5411f2688dcb.jpeg"
       },
       "check": 1
-    },
-    {
-      "title": "Adidas Cold",
-      "category": "Sportowe",
-      "brand": "Adidas ",
-      "size": "35",
-      "condition": "Dobry",
-      "description": "Stan świetny szybka wysyłka",
-      "price": "100",
-      "img": {
-        "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/7be9e6d3-790d-41d2-98b5-2add5ec11daf.png"
-      },
-      "check": 1,
-      "userid": 1,
-      "id": 8
     }
   ],
   "orderData": [
@@ -325,28 +318,6 @@
       "shipping": 10,
       "userid": 3,
       "id": 6
-    },
-    {
-      "orderID": "215d334a",
-      "date": "10.04.2024",
-      "status": "Packing",
-      "items": 1,
-      "price": 200,
-      "totalPrice": 200,
-      "boot": [
-        {
-          "idp": 2,
-          "name": "New Balance Dirty",
-          "price": "200",
-          "img": {
-            "uri": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FMyApp-a5effd0c-afb8-458a-a4d8-648f00609cfb/ImagePicker/27e50b8c-99cd-43e5-b08c-4dab3551ae80.jpeg"
-          }
-        }
-      ],
-      "address": "Świętokrzyska 4, Kielce",
-      "shipping": 0,
-      "userid": 1,
-      "id": 7
     }
   ]
 }

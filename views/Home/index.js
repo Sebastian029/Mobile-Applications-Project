@@ -1,16 +1,25 @@
-import { Button, StyleSheet, Text, View, Image, TextInput, ScrollView, Pressable, SafeAreaView, FlatList, RefreshControl } from 'react-native';
-import React, { useState, useEffect, useContext } from 'react';
-import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
-import config from '../../config';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect } from '@react-navigation/native';
-import styles from './style';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  ScrollView,
+  Pressable,
+  SafeAreaView,
+  FlatList,
+  RefreshControl,
+} from "react-native";
+import React, { useState, useEffect, useContext } from "react";
+import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import config from "../../config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
+import styles from "./style";
 
 export default function HomeScreen({ navigation }) {
-
-
-
   const [newData, setNewData] = useState([]);
   const [newData2, setNewData2] = useState([]);
   const [newData3, setNewData3] = useState([]);
@@ -20,38 +29,40 @@ export default function HomeScreen({ navigation }) {
 
   const fetchData = async () => {
     try {
-      const storedBootsData = await AsyncStorage.getItem('bootsData');
+      const storedBootsData = await AsyncStorage.getItem("bootsData");
       if (storedBootsData) {
         const parsedBootsData = JSON.parse(storedBootsData);
-
+        const filteredMySaleData = parsedBootsData.filter(
+          (item) => item.check !== 3
+        );
         const getRandomItems = (arr, count) => {
           const shuffled = arr.sort(() => 0.5 - Math.random());
           return shuffled.slice(0, count);
         };
 
-        const selectedItems = getRandomItems(parsedBootsData, 5);
+        const selectedItems = getRandomItems(filteredMySaleData, 5);
         setNewData(selectedItems);
-        const selectedItems2 = getRandomItems(parsedBootsData, 5);
+        const selectedItems2 = getRandomItems(filteredMySaleData, 5);
         setNewData2(selectedItems2);
-        const selectedItems3 = getRandomItems(parsedBootsData, 5);
+        const selectedItems3 = getRandomItems(filteredMySaleData, 5);
         setNewData3(selectedItems3);
 
-        setBoots(parsedBootsData);
+        setBoots(filteredMySaleData);
       }
     } catch (error) {
-      console.error('Error reading boots data from AsyncStorage:', error);
+      console.error("Error reading boots data from AsyncStorage:", error);
     }
   };
 
   const getUserDataFromStorage = async () => {
     try {
-      const storedUserData = await AsyncStorage.getItem('userData');
+      const storedUserData = await AsyncStorage.getItem("userData");
       if (storedUserData) {
         const parsedUserData = JSON.parse(storedUserData);
         setUserData(parsedUserData);
       }
     } catch (error) {
-      console.error('Error reading user data from AsyncStorage:', error);
+      console.error("Error reading user data from AsyncStorage:", error);
     }
   };
 
@@ -62,15 +73,14 @@ export default function HomeScreen({ navigation }) {
           await fetchData();
           await getUserDataFromStorage();
         } catch (error) {
-          console.error('Error refreshing data:', error);
+          console.error("Error refreshing data:", error);
         }
       };
 
       fetchDataAndUserData();
 
-      return () => {
-      };
-    }, []) 
+      return () => {};
+    }, [])
   );
 
   const onRefresh = async () => {
@@ -83,8 +93,14 @@ export default function HomeScreen({ navigation }) {
   const renderInRow = ({ item }) => {
     if (item.userid !== userData.id) {
       return (
-        <Pressable style={styles.productView} onPress={() => navigation.navigate('Product', { selectedItem: item })}>
-          <Image source={item.img.uri ? { uri: item.img.uri } : { uri: item.img }} style={styles.productIcon} />
+        <Pressable
+          style={styles.productView}
+          onPress={() => navigation.navigate("Product", { selectedItem: item })}
+        >
+          <Image
+            source={item.img.uri ? { uri: item.img.uri } : { uri: item.img }}
+            style={styles.productIcon}
+          />
           <View style={styles.singleProductView}>
             <Text style={styles.productName}>{item.title}</Text>
             <Text style={styles.productPrice}>{item.price}$</Text>
@@ -96,18 +112,15 @@ export default function HomeScreen({ navigation }) {
     }
   };
 
- 
-
   return (
     <SafeAreaView style={styles.screen}>
       <ScrollView
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         contentContainerStyle={styles.scrollViewContent}
       >
-
-      
-
-        <View style={{ alignSelf: 'flex-row' }}>
+        <View style={{ alignSelf: "flex-row" }}>
           <Text style={styles.titleText}>Bestsellers</Text>
           <FlatList
             data={newData}
@@ -118,8 +131,7 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
 
-    
-        <View style={{ alignSelf: 'flex-row' }}>
+        <View style={{ alignSelf: "flex-row" }}>
           <Text style={styles.titleText}>New Products</Text>
           <FlatList
             data={newData2}
@@ -130,9 +142,7 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
 
-        
-
-        <View style={{ alignSelf: 'flex-row' }}>
+        <View style={{ alignSelf: "flex-row" }}>
           <Text style={styles.titleText}>Mega Sale</Text>
           <FlatList
             data={newData3}
@@ -142,7 +152,6 @@ export default function HomeScreen({ navigation }) {
             showsHorizontalScrollIndicator={false}
           />
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );

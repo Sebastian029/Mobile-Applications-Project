@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, Pressable, Alert, Keyboard  } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 
@@ -21,6 +21,8 @@ const AddAddressScreen = ({ navigation, route }) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+
+
 
 
 
